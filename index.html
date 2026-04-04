@@ -168,6 +168,16 @@
     </style>
 </head>
 <body>
+<div style='position:fixed; top:20px; right:20px; z-index:9999;'>
+    <a href='https://wa.me/your-number-here' id='btn-wa' style='background: #25d366; color: white; padding: 10px 20px; border-radius: 50px; font-weight: bold; text-decoration: none; display: flex; align-items: center; gap: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); border: 2px solid white;'>
+        <img src='https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg' width='20' height='20' style='filter: brightness(0) invert(1);'>
+        <span>WhatsApp MS</span>
+    </a>
+</div>
+<style>
+#btn-wa:hover { transform: scale(1.05); background: #128c7e; }
+@media (max-width: 600px) { #btn-wa span { display: none; } #btn-wa { padding: 10px; } }
+</style>
 
     <header>
         <img src="assets/ms_logo_gold.png" class="logo" alt="Logo MS">
@@ -238,3 +248,4 @@
 
 </body>
 </html>
+
