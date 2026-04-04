@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tomo II: Fábricas de Ignorancia | Magisterio Sonorense</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Special+Elite&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #8b0000; /* Rojo Sonorense MS */
+            --bg: #050505;
+            --text: #e0e0e0;
+            --gold: #d4af37;
+            --overlay: rgba(5, 5, 5, 0.88);
+        }
+
+        * { box-sizing: border-box; }
+
+        body, html {
+            margin: 0; padding: 0;
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Special Elite', cursive;
+            overflow-x: hidden;
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
+        }
+
+        /* Scrollbar Personalizada */
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: var(--bg); }
+        ::-webkit-scrollbar-thumb { background: var(--primary); }
+
+        .panel {
+            width: 100%;
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            scroll-snap-align: start;
+            scroll-snap-stop: always;
+        }
+
+        .bg-img {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            object-fit: cover;
+            z-index: 1;
+            transition: transform 12s linear, filter 1.5s ease;
+            filter: brightness(0.6) grayscale(0.2);
+        }
+
+        .panel.active .bg-img {
+            transform: scale(1.15) translate(1%, 1%);
+            filter: brightness(0.4) grayscale(0);
+        }
+
+        .content-box {
+            position: relative;
+            z-index: 10;
+            max-width: 600px;
+            width: 85%;
+            padding: 3rem;
+            background: rgba(5, 5, 5, 0.85);
+            backdrop-filter: blur(15px);
+            border-left: 5px solid var(--primary);
+            border-right: 1px solid rgba(212, 175, 55, 0.2);
+            border-top: 1px solid rgba(255,255,255,0.05);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.9);
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .panel.active .content-box {
+            opacity: 1;
+            transform: translateX(0);
+            transition-delay: 0.8s;
+        }
+
+        .chapter-tag {
+            color: var(--primary);
+            font-family: 'Cinzel', serif;
+            font-size: 0.75rem;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            margin-bottom: 0.8rem;
+            display: block;
+            font-weight: 700;
+        }
+
+        h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            font-size: 2.5rem;
+            margin: 0.5rem 0 1.5rem 0;
+            line-height: 1;
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+            letter-spacing: -1px;
+        }
+
+        .quote {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            color: #bbb;
+            margin-bottom: 2rem;
+            font-size: 1.2rem;
+            line-height: 1.4;
+            padding-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .quote::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0;
+            width: 60px; height: 2px;
+            background: var(--primary);
+        }
+
+        p {
+            line-height: 1.8;
+            font-size: 1.1rem;
+            color: #ccc;
+            margin-bottom: 1.2rem;
+            text-align: justify;
+        }
+
+        strong { color: var(--gold); font-weight: 700; }
+
+        /* Branding y UI Fixed */
+        .ms-logo {
+            position: fixed;
+            top: 25px; left: 25px;
+            z-index: 100;
+            width: 120px; height: auto; /* Ajuste para el nuevo logo */
+            filter: drop-shadow(0 0 10px rgba(0,0,0,0.8));
+            border-radius: 5px;
+        }
+
+        .audio-control {
+            position: fixed;
+            bottom: 30px; right: 30px;
+            z-index: 100;
+            background: rgba(0,0,0,0.6);
+            border: 1px solid var(--primary);
+            color: var(--gold);
+            padding: 8px 15px;
+            font-family: 'Cinzel', serif;
+            font-size: 0.7rem;
+            cursor: pointer;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .audio-control:hover { background: var(--primary); color: white; }
+
+        .progress-nav {
+            position: fixed;
+            right: 20px; top: 50%;
+            transform: translateY(-50%);
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .dot {
+            width: 8px; height: 8px;
+            background: #333;
+            border-radius: 50%;
+            transition: all 0.4s;
+            cursor: pointer;
+        }
+
+        .dot.active {
+            background: var(--primary);
+            transform: scale(1.5);
+            box-shadow: 0 0 10px var(--primary);
+        }
+
+        .footer-sig {
+            position: fixed;
+            bottom: 20px; left: 25px;
+            font-family: 'Cinzel', serif;
+            font-size: 0.65rem;
+            color: grey;
+            letter-spacing: 2px;
+            z-index: 100;
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 600px) {
+            .content-box { padding: 1.5rem; margin: 10px; width: 95%; }
+            h2 { font-size: 1.6rem; }
+            p { font-size: 0.95rem; }
+            .ms-logo { width: 80px; top: 15px; left: 15px; }
+            .progress-nav { right: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Logo nuevo enviado por JAD -->
+    <img src="assets/logo_ms_nuevo.jpg" class="ms-logo" alt="Logo MS">
+    <div class="footer-sig">JADesarrollo ✦ MS</div>
+
+    <div class="audio-control" id="audioBtn">
+        <span id="audioStatus">🔊 AUDIO: ACTIVAR</span>
+    </div>
+
+    <div class="progress-nav" id="progNav">
+        <!-- Generado por JS -->
+    </div>
+
+    <!-- PANELES TOMO III -->
+    <section class="panel" id="p0">
+        <img src="images/hero.png" class="bg-img">
+        <div class="content-box" style="border-left-color: var(--gold);">
+            <span class="chapter-tag">Tomo III</span>
+            <h2>El Equilibrio Estático</h2>
+            <div class="quote">"No estamos atrapados por falta de talento, sino por un equilibrio donde nadie se atreve a ser el primero en cooperar."</div>
+            <p>Bienvenido al <strong>Tomo III</strong> de la serie. Hoy exploramos la parálisis del sistema educativo sonorense y cómo la <strong>Teoría de Juegos</strong> revela las cadenas invisibles que nos mantienen quietos.</p>
+        </div>
+    </section>
+
+    <section class="panel" id="p1">
+        <img src="images/tomo3_cap1_desierto.png" class="bg-img">
+        <div class="content-box">
+            <span class="chapter-tag">Capítulo I</span>
+            <h2>El Desierto Educativo</h2>
+            <div class="quote">"Las estadísticas no mienten: el silencio es el grito más fuerte de nuestras aulas."</div>
+            <p>En Sonora, miles de jóvenes enfrentan el rezago escolar. En la periferia, la escuela se siente como un desierto: un juego estático donde la derrota sistemática es la regla no escrita y el aprendizaje es la excepción.</p>
+        </div>
+    </section>
+
+    <section class="panel" id="p2">
+        <img src="images/tomo3_cap2_fabrica.png" class="bg-img">
+        <div class="content-box">
+            <span class="chapter-tag">Capítulo II</span>
+            <h2>La Fábrica de Caras Blancas</h2>
+            <div class="quote">"Simulamos enseñar, simulan aprender, y todos simulamos que todo está bien."</div>
+            <p>Es un perfecto <strong>juego de suma cero</strong>. El sistema demanda "caras blancas": apariencias de normalidad que garantizan la supervivencia de la burocracia, pero consolidan el fracaso de una generación.</p>
+        </div>
+    </section>
+
+    <section class="panel" id="p3">
+        <img src="images/tomo3_cap3_espejismo.png" class="bg-img">
+        <div class="content-box">
+            <span class="chapter-tag">Capítulo III</span>
+            <h2>Espejismos de Cristal</h2>
+            <div class="quote">"Promesas de 'la nube' para escuelas que no tienen ni techo."</div>
+            <p>La autoridad anuncia ciberbachilleratos tecnológicos para el 2026, pero en los planteles marginados, sin conectividad básica, la reforma es solo un espejismo diseñado para el boletín oficial, no para el aula.</p>
+        </div>
+    </section>
+
+    <section class="panel" id="p4">
+        <img src="images/tomo3_cap4_calamar.png" class="bg-img">
+        <div class="content-box">
+            <span class="chapter-tag">Capítulo IV</span>
+            <h2>Juegos Dinámicos</h2>
+            <div class="quote">"Anticipar el movimiento del otro es el primer paso hacia la libertad."</div>
+            <p>Cuando los alumnos aprenden a identificar que el juego no es ciego, todo cambia. La <strong>anticipación estratégica</strong> de los movimientos burocráticos permite alterar las dinámicas de dominación histórica.</p>
+        </div>
+    </section>
+
+    <section class="panel" id="p5">
+        <img src="images/tomo3_cap5_acordeon.png" class="bg-img">
+        <div class="content-box">
+            <span class="chapter-tag">Capítulo V</span>
+            <h2>El Dilema del Subterfugio</h2>
+            <div class="quote">"El Equilibrio de Nash: ¿Engaño académico o pensamiento crítico?"</div>
+            <p>El sistema castiga la innovación y premia la simulación obediente. Los alumnos se enfrentan al dilema: usar el "acordeón" y sobrevivir, o pensar críticamente y arriesgarse a ser expulsados del carril oficial.</p>
+        </div>
+    </section>
+
+    <section class="panel" id="p6">
+        <img src="images/tomo3_cap6_datos.png" class="bg-img">
+        <div class="content-box">
+            <span class="chapter-tag">Capítulo VI</span>
+            <h2>Datos como Armas</h2>
+            <div class="quote">"La información estructurada es el capital político de los oprimidos."</div>
+            <p>Alfabetización digital real: mapear deficiencias locales con herramientas de visualización de datos (Tableau). Al leer la arquitectura del sistema, los estudiantes abandonan su posición pasiva.</p>
+        </div>
+    </section>
+
+    <section class="panel" id="p7">
+        <img src="images/tomo3_cap7_walter.png" class="bg-img">
+        <div class="content-box">
+            <span class="chapter-tag">Capítulo VII</span>
+            <h2>Lógica Desmedida</h2>
+            <div class="quote">"La pura razón sin ética solo fabrica tiranos más eficientes."</div>
+            <p>Experimentar con la pura manipulación de variables rompe la confianza colectiva. El Neto descubre que la lógica maximizadora sin cohesión social destruye el tejido del equipo de trabajo.</p>
+        </div>
+    </section>
+
+    <section class="panel" id="p8">
+        <img src="images/tomo3_cap8_asada.png" class="bg-img">
+        <div class="content-box">
+            <span class="chapter-tag">Capítulo VIII</span>
+            <h2>La Creencia Común</h2>
+            <div class="quote">"Fuera del aula, frente a las brasas, es donde nace la verdadera unidad."</div>
+            <p>Cuando la confianza desaparece, la entropía gana. Al congregarse en torno a la <strong>Carne Asada</strong> y reconstruir la fe recíproca, se reactiva el pacto de cooperación necesario para la reforma.</p>
+        </div>
+    </section>
+
+    <section class="panel" id="p9">
+        <img src="images/tomo3_cap9_hackeo.png" class="bg-img">
+        <div class="content-box">
+            <span class="chapter-tag">Capítulo IX</span>
+            <h2>Auditoría Estudiantil</h2>
+            <div class="quote">"Desmantelando la narrativa oficial con la luz de la verdad comunitaria."</div>
+            <p>Utilizando sus propios sistemas, la asamblea estudiantil expone que la parálisis administrativa era un <strong>diseño funcional</strong> de control, no una simple ineficiencia presupuestal.</p>
+        </div>
+    </section>
+
+    <section class="panel" id="p10">
+        <img src="images/tomo3_cap10_emancipacion.png" class="bg-img">
+        <div class="content-box" style="border-left-color: var(--gold);">
+            <span class="chapter-tag">Capítulo X</span>
+            <h2>La Emancipación</h2>
+            <div class="quote">"El valor intelectual no reside en un papel, sino en la comprensión del mundo."</div>
+            <p>La educación abandona su etapa fabril para volverse plataforma de transformación. Al coordinarse analíticamente, la hegemonía cede. <strong>La verdadera liberación ha comenzado</strong>.</p>
+        </div>
+    </section>
+
+
+
+    <audio id="bgMusic" loop>
+        <source src="assets/audio/El Pueblo Unido.mp4" type="audio/mp4">
+    </audio>
+
+    <script>
+        // Navegación y Observador
+        const panels = document.querySelectorAll('.panel');
+        const dotsContainer = document.getElementById('progNav');
+        
+        panels.forEach((panel, i) => {
+            const dot = document.createElement('div');
+            dot.className = 'dot';
+            dot.addEventListener('click', () => {
+                panel.scrollIntoView({behavior: 'smooth'});
+            });
+            dotsContainer.appendChild(dot);
+        });
+
+        const dots = document.querySelectorAll('.dot');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    const index = Array.from(panels).indexOf(entry.target);
+                    dots.forEach((d, i) => d.classList.toggle('active', i === index));
+                } else {
+                    entry.target.classList.remove('active');
+                }
+            });
+        }, { threshold: 0.5 });
+
+        panels.forEach(p => observer.observe(p));
+
+        // Control de Audio Estilo MS
+        const audio = document.getElementById('bgMusic');
+        const audioBtn = document.getElementById('audioBtn');
+        const audioStatus = document.getElementById('audioStatus');
+        let playing = false;
+
+        audioBtn.addEventListener('click', () => {
+            if(!playing) {
+                audio.play();
+                audioStatus.innerText = "🔊 AUDIO: ACTIVO";
+                playing = true;
+            } else {
+                audio.pause();
+                audioStatus.innerText = "🔊 AUDIO: PAUSADO";
+                playing = false;
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+file 'C:/Users/USUARIO/.gemini/antigravity/scratch/tomo1_production/tomo1_clip1_prologo_pizarron_1774655094824.png'
+duration 6.0
+file 'C:/Users/USUARIO/.gemini/antigravity/scratch/tomo1_production/tomo1_clip2_terremoto_mapa_1774655113890.png'
+duration 6.0
+file 'C:/Users/USUARIO/.gemini/antigravity/scratch/tomo1_production/tomo1_clip3_reloj_arena_mesa_1774655127505.png'
+duration 6.0

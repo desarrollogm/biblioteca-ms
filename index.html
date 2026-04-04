@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca Digital | Magisterio Sonorense</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Playfair+Display:ital,wght@0,400;1,700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #8b0000;
+            --gold: #d4af37;
+            --bg: #0a0a0a;
+            --card-bg: #1a1a1a;
+            --text: #ffffff;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Roboto', sans-serif;
+            overflow-x: hidden;
+        }
+
+        header {
+            height: 60vh;
+            background: linear-gradient(rgba(10, 10, 10, 0.7), rgba(10, 10, 10, 1)), url('assets/hero_bg.jpg') center/cover;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            border-bottom: 3px solid var(--gold);
+        }
+
+        .logo {
+            width: 150px;
+            margin-bottom: 1.5rem;
+            filter: drop-shadow(0 0 15px var(--gold));
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 3.5rem;
+            margin: 0;
+            letter-spacing: 4px;
+            color: var(--gold);
+            text-transform: uppercase;
+        }
+
+        .subtitle {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-style: italic;
+            color: #ccc;
+            margin-top: 0.5rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: -100px auto 4rem auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .card:hover {
+            transform: translateY(-15px) scale(1.02);
+            border-color: var(--gold);
+            box-shadow: 0 20px 40px rgba(139, 0, 0, 0.3);
+        }
+
+        .card-img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .card-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-tag {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .card-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.4rem;
+            margin: 0 0 1rem 0;
+            line-height: 1.2;
+        }
+
+        .card-desc {
+            font-size: 0.9rem;
+            color: #bbb;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-footer {
+            margin-top: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .btn-read {
+            background: var(--primary);
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: background 0.3s;
+        }
+
+        .card:hover .btn-read {
+            background: #b00000;
+        }
+
+        footer {
+            background: #050505;
+            padding: 3rem;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: #666;
+            font-size: 0.8rem;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; }
+            header { height: 50vh; }
+            .container { margin-top: -50px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="assets/ms_logo_gold.png" class="logo" alt="Logo MS">
+        <h1>Biblioteca Digital</h1>
+        <div class="subtitle">Magisterio Sonorense: Conciencia y Lucha</div>
+    </header>
+
+    <div class="container">
+        <div class="grid">
+            <!-- Tomo 1 -->
+            <a href="tomo1/index.html" class="card">
+                <img src="tomo1/images/hero.png" class="card-img" alt="Tomo I">
+                <div class="card-content">
+                    <span class="card-tag">Tomo I</span>
+                    <h2 class="card-title">Fábricas de Ignorancia</h2>
+                    <p class="card-desc">El inicio de la investigación sobre el sistema educativo y la burocracia que lo paraliza.</p>
+                    <div class="card-footer">
+                        <span class="btn-read">Leer Ahora</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Tomo 2 -->
+            <a href="tomo2/index.html" class="card">
+                <img src="tomo2/images/hero.png" class="card-img" alt="Tomo II">
+                <div class="card-content">
+                    <span class="card-tag">Tomo II</span>
+                    <h2 class="card-title">La Realidad Oculta</h2>
+                    <p class="card-desc">Profundizando en las estructuras de poder y los intereses que afectan al docente sonorense.</p>
+                    <div class="card-footer">
+                        <span class="btn-read">Leer Ahora</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Tomo 3 -->
+            <a href="tomo3/index.html" class="card">
+                <img src="tomo3/images/hero.png" class="card-img" alt="Tomo III">
+                <div class="card-content">
+                    <span class="card-tag">Tomo III</span>
+                    <h2 class="card-title">El Equilibrio Estático</h2>
+                    <p class="card-desc">Análisis de la Teoría de Juegos aplicada a la lucha magisterial y la parálisis del sistema.</p>
+                    <div class="card-footer">
+                        <span class="btn-read">Leer Ahora</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Tomo 8 -->
+            <a href="tomo8/index.html" class="card">
+                <img src="tomo8/images/hero.png" class="card-img" alt="Tomo VIII">
+                <div class="card-content">
+                    <span class="card-tag">Tomo VIII</span>
+                    <h2 class="card-title">Hacia la Emancipación</h2>
+                    <p class="card-desc">La culminación de la estrategia y el renacer de la autonomía docente.</p>
+                    <div class="card-footer">
+                        <span class="btn-read">Leer Ahora</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Magisterio Sonorense (MS) | Comunicación Digital</p>
+        <p>Hermosillo, Sonora, México</p>
+    </footer>
+
+</body>
+</html>

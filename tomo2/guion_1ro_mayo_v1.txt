@@ -1,0 +1,10 @@
+## GUION FINAL: "DIGNIDAD MAGISTERIAL" (1RO DE MAYO)
+**Tono:** Respetuoso, Magisterial, Firme y Solemne.
+**Paleta Visual:** Rojo, Negro y Amarillo.
+
+| Tiempo | Audio (Voz en Off) | Visual (Descripción para IA) |
+| :--- | :--- | :--- |
+| **00-05s** | **(HOOK)** "Colegas, observen este espacio. Un aula en silencio no es solo un vacío, es el testimonio de nuestra lucha." | **[PLANO CINEMATOGRÁFICO]** Escritorio de maestro impecable, luz natural suave, atmósfera solemne. `--ar 9:16` |
+| **05-30s** | **(PROBLEMA)** "Es el compromiso de generaciones que hoy ven su seguridad social vulnerada. La estabilidad del ISSSTE no es una concesión, es un derecho ganado con vocación y servicio." | **[PLANO DETALLE]** Un libro de actas o documentos de seguridad social del ISSSTE. Iluminación profesional. |
+| **30-50s** | **(CITA)** "Por la defensa de nuestras pensiones y la dignidad de nuestro gremio, nos convocamos este 1ro de mayo en la Calle 5 de Febrero." | **[WIDE SHOT]** Muestra de unidad magisterial, banderas del MG con elegancia. Ángulo descriptivo. |
+| **50-60s** | **(CTA)** "Unidos por la justicia y el futuro. Magisterio Sonorense: Presente en la lucha. Los esperamos." | **[HERO SHOT]** Maestros en formación digna, mirando hacia el futuro institucional. Texto: "MOVILIZACIÓN ESTATAL - 1 DE MAYO". |

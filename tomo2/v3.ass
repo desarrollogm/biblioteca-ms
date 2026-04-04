@@ -1,0 +1,15 @@
+[Script Info]
+Title: MS 1ro Mayo - Video 3 (Cita)
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Main,Arial Narrow,90,&H000000FF,&H000000FF,&H00000000,&H00000000,1,0,0,0,100,100,0,0,1,4,4,2,50,50,450,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,0:00:05.00,Main,,0,0,0,,Este 1ro de mayo no marchamos por rutina,\Nmarchamos por justicia y una jubilación digna.
+Dialogue: 0,0:00:05.00,0:00:10.00,Main,,0,0,0,,Nos vemos a las 8 AM\Nen la Calle 5 de Febrero.
+Dialogue: 0,0:00:10.00,0:00:15.00,Main,,0,0,0,,¡Movimiento MS Presente!
