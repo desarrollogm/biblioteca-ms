@@ -168,12 +168,12 @@ h1 {
     width: 100%;
     height: auto;
     display: block;
-    mix-blend-mode: luminosity;
+    filter: brightness(0.7) contrast(1.4) grayscale(1);
     transition: 0.6s;
 }
 
 .image-block:hover img {
-    mix-blend-mode: normal;
+    filter: brightness(0.35) contrast(1.8) grayscale(1) sepia(0.2) hue-rotate(-50deg);
 }
 
 .fade-in {

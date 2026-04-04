@@ -106,12 +106,12 @@
             object-fit: cover;
             transform: scale(1.15);
             transition: transform 3s cubic-bezier(0.1, 0, 0.3, 1), filter 1s ease 2.2s;
-            filter: brightness(1) contrast(1.1);
+            filter: brightness(0.7) contrast(1.4) grayscale(1);
         }
 
         .panel.active .panel-bg {
             transform: scale(1);
-            filter: brightness(0.6) contrast(1.15);
+            filter: brightness(0.35) contrast(1.8) grayscale(1) sepia(0.2) hue-rotate(-50deg); /* Efecto Noir con tinte rojo sutil */
         }
 
         /* Ambient Parallax Effect */
