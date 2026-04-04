@@ -1,0 +1,795 @@
+/* ============================================
+   EL JUEGO DE LAS PENSIONES
+   Storybook Design System
+   ============================================ */
+
+/* === RESET & BASE === */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Color Palette */
+    --noir: #0a0a0f;
+    --noir-deep: #050508;
+    --noir-soft: #14141f;
+    --blood: #8b1a1a;
+    --blood-glow: #b22222;
+    --gold: #c9a94e;
+    --gold-light: #e2cc7a;
+    --gold-dim: #8b7635;
+    --parchment: #f5f0e8;
+    --parchment-warm: #ece4d4;
+    --ink: #2c2c2c;
+    --ink-soft: #5a5a5a;
+    --smoke: rgba(255, 255, 255, 0.06);
+
+    /* Typography */
+    --font-display: 'Cinzel', serif;
+    --font-title: 'Playfair Display', serif;
+    --font-body: 'Lora', serif;
+
+    /* Spacing */
+    --page-pad: clamp(1.5rem, 5vw, 4rem);
+    --section-gap: 2rem;
+
+    /* Transitions */
+    --ease-dramatic: cubic-bezier(0.23, 1, 0.32, 1);
+    --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--noir);
+    color: var(--parchment);
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+    user-select: none;
+    cursor: default;
+}
+
+/* === PROGRESS BAR === */
+.progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--noir-soft);
+    z-index: 1000;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--blood), var(--gold), var(--blood-glow));
+    transition: width 0.6s var(--ease-smooth);
+    box-shadow: 0 0 12px var(--gold-dim);
+}
+
+/* === NAVIGATION === */
+.book-nav {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.6rem 1.2rem;
+    background: rgba(10, 10, 15, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(201, 169, 78, 0.15);
+    border-radius: 50px;
+    z-index: 900;
+    transition: opacity 0.4s var(--ease-smooth), transform 0.4s var(--ease-smooth);
+}
+
+.book-nav:hover {
+    border-color: rgba(201, 169, 78, 0.35);
+}
+
+.nav-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(201, 169, 78, 0.2);
+    border-radius: 50%;
+    background: transparent;
+    color: var(--gold);
+    cursor: pointer;
+    transition: all 0.3s var(--ease-smooth);
+}
+
+.nav-btn:hover {
+    background: rgba(201, 169, 78, 0.12);
+    border-color: var(--gold);
+    transform: scale(1.1);
+}
+
+.nav-btn:active {
+    transform: scale(0.95);
+}
+
+.nav-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.page-indicator {
+    font-family: var(--font-display);
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    color: var(--gold-dim);
+    min-width: 60px;
+    text-align: center;
+}
+
+.nav-fullscreen {
+    margin-left: 0.5rem;
+    border: none;
+    width: 34px;
+    height: 34px;
+    opacity: 0.5;
+}
+
+.nav-fullscreen:hover {
+    opacity: 1;
+    border: none;
+    background: transparent;
+}
+
+/* === BOOK CONTAINER === */
+.book-container {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+/* === PAGES (General) === */
+.page {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.8s var(--ease-dramatic), transform 0.8s var(--ease-dramatic);
+    transform: translateX(60px);
+    overflow: hidden;
+}
+
+
+.page.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+}
+
+.page.exit-left {
+    opacity: 0;
+    transform: translateX(-60px);
+}
+
+/* === COVER PAGE === */
+.page-cover {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.cover-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.cover-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.3) saturate(0.7);
+}
+
+.cover-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg,
+            rgba(10, 10, 15, 0.5) 0%,
+            rgba(10, 10, 15, 0.2) 30%,
+            rgba(10, 10, 15, 0.3) 60%,
+            rgba(10, 10, 15, 0.85) 100%);
+}
+
+.cover-content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    max-width: 700px;
+    padding: var(--page-pad);
+    animation: coverFadeIn 1.5s var(--ease-dramatic) 0.3s both;
+}
+
+@keyframes coverFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.cover-ornament {
+    font-size: 2rem;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    opacity: 0.7;
+}
+
+.cover-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.2rem, 6vw, 4.5rem);
+    font-weight: 900;
+    color: var(--parchment);
+    line-height: 1.1;
+    letter-spacing: 0.04em;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+}
+
+.title-accent {
+    display: block;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light), var(--gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: 1.2em;
+}
+
+.cover-divider {
+    width: 120px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 1.5rem auto;
+}
+
+.cover-subtitle {
+    font-family: var(--font-body);
+    font-size: clamp(0.85rem, 1.8vw, 1.05rem);
+    font-weight: 400;
+    color: var(--parchment-warm);
+    line-height: 1.7;
+    font-style: italic;
+    opacity: 0.85;
+    max-width: 550px;
+    margin: 0 auto;
+}
+
+.cover-meta {
+    margin-top: 2rem;
+}
+
+.cover-genre {
+    font-family: var(--font-display);
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+}
+
+.cover-cta {
+    margin-top: 3rem;
+}
+
+.scroll-hint {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    color: var(--gold-dim);
+    opacity: 0.6;
+    animation: hintPulse 2s ease-in-out infinite;
+}
+
+@keyframes hintPulse {
+
+    0%,
+    100% {
+        opacity: 0.4;
+    }
+
+    50% {
+        opacity: 0.8;
+    }
+}
+
+/* === CHAPTER PAGES === */
+.chapter-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.chapter-layout.reverse .chapter-image-container {
+    order: 2;
+}
+
+.chapter-layout.reverse .chapter-text-container {
+    order: 1;
+}
+
+.chapter-image-container {
+    position: relative;
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--noir-deep);
+}
+
+.chapter-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 8s var(--ease-smooth);
+}
+
+.page.active .chapter-img {
+    transform: scale(1.05);
+}
+
+.chapter-image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+            transparent 70%,
+            var(--noir) 100%);
+    pointer-events: none;
+}
+
+.chapter-layout.reverse .chapter-image-overlay {
+    background: linear-gradient(90deg,
+            var(--noir) 0%,
+            transparent 30%);
+}
+
+.chapter-text-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: clamp(2rem, 5vw, 4rem);
+    padding-right: clamp(2rem, 4vw, 3.5rem);
+    padding-bottom: 5rem;
+    background: var(--noir);
+    position: relative;
+    height: 100vh;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--gold-dim) var(--noir-soft);
+}
+
+.chapter-text-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.chapter-text-container::-webkit-scrollbar-track {
+    background: var(--noir-soft);
+}
+
+.chapter-text-container::-webkit-scrollbar-thumb {
+    background: var(--gold-dim);
+    border-radius: 3px;
+}
+
+.chapter-text-container::-webkit-scrollbar-thumb:hover {
+    background: var(--gold);
+}
+
+.chapter-text-container::before {
+    content: '';
+    position: absolute;
+    top: 15%;
+    left: 0;
+    width: 1px;
+    height: 70%;
+    background: linear-gradient(180deg, transparent, var(--gold-dim), transparent);
+    opacity: 0.3;
+}
+
+.chapter-layout.reverse .chapter-text-container::before {
+    left: auto;
+    right: 0;
+}
+
+.chapter-number {
+    font-family: var(--font-display);
+    font-size: 0.7rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.8rem;
+    opacity: 0;
+    animation: none;
+}
+
+.page.active .chapter-number {
+    animation: textSlideIn 0.8s var(--ease-dramatic) 0.2s forwards;
+}
+
+.chapter-title {
+    font-family: var(--font-title);
+    font-size: clamp(1.6rem, 3.5vw, 2.8rem);
+    font-weight: 700;
+    color: var(--parchment);
+    line-height: 1.2;
+    margin-bottom: 1.2rem;
+    opacity: 0;
+}
+
+.page.active .chapter-title {
+    animation: textSlideIn 0.8s var(--ease-dramatic) 0.35s forwards;
+}
+
+.chapter-epigraph {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    color: var(--gold-light);
+    line-height: 1.6;
+    padding-left: 1.2rem;
+    border-left: 2px solid var(--gold-dim);
+    margin-bottom: 2rem;
+    opacity: 0;
+}
+
+.page.active .chapter-epigraph {
+    animation: textSlideIn 0.8s var(--ease-dramatic) 0.5s forwards;
+}
+
+.chapter-body {
+    opacity: 0;
+}
+
+.page.active .chapter-body {
+    animation: textSlideIn 0.9s var(--ease-dramatic) 0.65s forwards;
+}
+
+.chapter-body p {
+    font-family: var(--font-body);
+    font-size: clamp(0.9rem, 1.3vw, 1.05rem);
+    line-height: 1.85;
+    color: var(--parchment-warm);
+    margin-bottom: 1.2rem;
+    text-align: justify;
+    hyphens: auto;
+}
+
+.chapter-body p strong {
+    color: var(--gold-light);
+    font-weight: 600;
+}
+
+.chapter-body p em {
+    color: var(--gold);
+    font-style: italic;
+}
+
+.chapter-closing {
+    font-style: italic;
+    color: var(--gold) !important;
+    font-size: clamp(0.95rem, 1.4vw, 1.1rem) !important;
+    margin-top: 0.8rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(201, 169, 78, 0.15);
+}
+
+@keyframes textSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* === END COVER === */
+.page-endcover {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--noir-deep);
+    overflow: hidden;
+}
+
+.page-endcover::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(201, 169, 78, 0.05) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.endcover-content {
+    text-align: center;
+    max-width: 550px;
+    padding: var(--page-pad);
+}
+
+.endcover-ornament {
+    font-size: 1.5rem;
+    color: var(--gold-dim);
+    margin: 1.5rem 0;
+    opacity: 0.5;
+}
+
+.endcover-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 7vw, 5rem);
+    font-weight: 400;
+    color: var(--gold);
+    letter-spacing: 0.15em;
+    opacity: 0;
+}
+
+.page-endcover.active .endcover-title {
+    animation: textSlideIn 1.2s var(--ease-dramatic) 0.3s forwards;
+}
+
+.endcover-divider {
+    width: 80px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
+    margin: 1.5rem auto;
+}
+
+.endcover-colophon {
+    opacity: 0;
+}
+
+.page-endcover.active .endcover-colophon {
+    animation: textSlideIn 1s var(--ease-dramatic) 0.8s forwards;
+}
+
+.endcover-colophon p {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    color: var(--parchment-warm);
+    line-height: 1.6;
+    opacity: 0.7;
+}
+
+.endcover-colophon p strong {
+    font-family: var(--font-title);
+    font-size: 1.1rem;
+    color: var(--parchment);
+    opacity: 1;
+}
+
+.endcover-based {
+    font-family: var(--font-display);
+    font-size: 0.65rem !important;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold-dim) !important;
+}
+
+.endcover-frameworks {
+    font-size: 0.75rem !important;
+    color: var(--gold-dim) !important;
+}
+
+.endcover-source {
+    font-size: 0.7rem !important;
+    margin-top: 1rem;
+}
+
+.endcover-date {
+    font-family: var(--font-display);
+    font-size: 0.7rem !important;
+    letter-spacing: 0.15em;
+    color: var(--gold-dim) !important;
+    margin-top: 0.5rem;
+}
+
+/* === WATERMARK === */
+.watermark {
+    position: fixed;
+    bottom: 1rem;
+    right: 1.5rem;
+    font-family: var(--font-display);
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    opacity: 0.4;
+    z-index: 10000;
+    pointer-events: none;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 900px) {
+
+    .chapter-layout,
+    .chapter-layout.reverse {
+        grid-template-columns: 1fr;
+    }
+
+    .chapter-layout.reverse .chapter-image-container,
+    .chapter-layout.reverse .chapter-text-container {
+        order: initial;
+    }
+
+    .chapter-image-container {
+        position: relative;
+        height: 40vh;
+    }
+
+    .chapter-image-overlay {
+        background: linear-gradient(180deg,
+                transparent 50%,
+                var(--noir) 100%) !important;
+    }
+
+    .chapter-text-container {
+        padding: 2rem 1.5rem 5rem;
+        height: auto;
+        max-height: 55vh;
+    }
+
+    .chapter-text-container::before {
+        display: none;
+    }
+
+    .book-nav {
+        bottom: 1rem;
+        padding: 0.4rem 0.8rem;
+    }
+
+    .nav-btn {
+        width: 36px;
+        height: 36px;
+    }
+}
+
+@media (max-width: 480px) {
+    .chapter-image-container {
+        min-height: 35vh;
+        max-height: 40vh;
+    }
+
+    .cover-title {
+        font-size: 2rem;
+    }
+
+    .title-accent {
+        font-size: 1.1em;
+    }
+
+    .chapter-title {
+        font-size: 1.5rem;
+    }
+
+    .chapter-body p {
+        font-size: 0.88rem;
+        text-align: left;
+    }
+}
+
+/* === AMBIENT EFFECTS === */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+    mix-blend-mode: overlay;
+}
+
+/* === PRINT STYLES === */
+@media print {
+
+    .book-nav,
+    .progress-bar {
+        display: none !important;
+    }
+
+    .page {
+        position: relative !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+        page-break-after: always;
+        overflow: visible;
+    }
+
+    body {
+        overflow: visible;
+        height: auto;
+    }
+
+    .book-container {
+        height: auto;
+        overflow: visible;
+    }
+
+.back-to-menu {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 2rem;
+    padding: 0.8rem 1.8rem;
+    background: rgba(10, 10, 15, 0.4);
+    border: 1px solid rgba(201, 169, 78, 0.3);
+    border-radius: 50px;
+    color: var(--gold-light);
+    text-decoration: none;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: all 0.4s var(--ease-smooth);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+}
+
+.back-to-menu:hover {
+    background: var(--gold);
+    color: var(--noir);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(201, 169, 78, 0.3);
+    border-color: var(--gold-light);
+}
+
+.back-to-menu svg {
+    width: 18px;
+    height: 18px;
+    transition: transform 0.4s ease;
+}
+
+.back-to-menu:hover svg {
+    transform: rotate(-10deg) scale(1.1);
+}
+}

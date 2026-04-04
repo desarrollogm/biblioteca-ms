@@ -1,0 +1,246 @@
+:root {
+    --primary: #FFD700; /* MS Gold */
+    --primary-glow: rgba(255, 215, 0, 0.4);
+    --secondary: #4B0082; /* Indigo/Deep Blue */
+    --bg: #030712; /* Rich Black */
+    --card-bg: rgba(30, 41, 59, 0.5);
+    --text: #f8fafc;
+    --text-muted: #94a3b8;
+    --accent: #E31C25;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)), url('images/tomo8_cap1_tablero_mixto.png');
+    background-size: cover;
+    background-position: center;
+    padding: 2rem;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, transparent, var(--bg));
+}
+
+.hero-content {
+    position: relative;
+    z-index: 10;
+    max-width: 800px;
+    animation: fadeIn 1.5s ease-out;
+}
+
+.tomo-badge {
+    background: var(--secondary);
+    padding: 0.5rem 1.5rem;
+    border-radius: 2rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    font-size: 0.9rem;
+    display: inline-block;
+    margin-bottom: 2rem;
+    box-shadow: 0 0 20px rgba(255, 69, 0, 0.4);
+}
+
+h1 {
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    font-weight: 900;
+    line-height: 0.95;
+    margin-bottom: 1.5rem;
+    letter-spacing: -2px;
+    background: linear-gradient(135deg, #fff 50%, var(--primary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+    font-size: 1.4rem;
+    color: var(--text-muted);
+    margin-bottom: 3rem;
+    font-weight: 300;
+}
+
+.cta-button {
+    background: transparent;
+    border: 1px solid var(--primary);
+    color: var(--primary);
+    padding: 1.2rem 2.5rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-radius: 4rem;
+    cursor: pointer;
+    transition: 0.4s;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 0 auto;
+}
+
+.cta-button:hover {
+    background: var(--primary);
+    color: #000;
+    box-shadow: 0 0 30px var(--primary-glow);
+}
+
+.chapter {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6rem 5%;
+    position: relative;
+}
+
+.chapter-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    max-width: 1400px;
+    align-items: center;
+}
+
+.reverse .chapter-content {
+    direction: rtl;
+}
+
+.reverse .text-block {
+    direction: ltr;
+}
+
+.text-block h2 {
+    font-size: 2.5rem;
+    font-weight: 900;
+    margin-bottom: 2rem;
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.text-block p {
+    font-size: 1.25rem;
+    line-height: 1.7;
+    color: var(--text-muted);
+    text-align: justify;
+}
+
+.image-block {
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 2rem;
+    overflow: hidden;
+    box-shadow: 0 40px 80px rgba(0,0,0,0.5);
+    background: #111;
+    transition: 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.image-block:hover {
+    transform: scale(1.02);
+    border-color: var(--primary);
+}
+
+.image-block img {
+    width: 100%;
+    height: auto;
+    display: block;
+    mix-blend-mode: luminosity;
+    transition: 0.6s;
+}
+
+.image-block:hover img {
+    mix-blend-mode: normal;
+}
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 1.2s ease-out;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.footer {
+    padding: 10rem 2rem;
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.back-to-menu {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 2rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 1rem;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    margin-top: 3rem;
+    transition: 0.3s;
+}
+
+.back-to-menu:hover {
+    background: var(--primary);
+    color: #000;
+}
+
+.back-to-menu svg {
+    width: 20px;
+    height: 20px;
+}
+
+#watermark {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    font-weight: 900;
+    font-size: 1.5rem;
+    opacity: 0.1;
+    pointer-events: none;
+    letter-spacing: 5px;
+    z-index: 100;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 968px) {
+    .chapter-content {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+    .reverse .chapter-content {
+        direction: ltr;
+    }
+}
