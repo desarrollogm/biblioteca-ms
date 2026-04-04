@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tomo IV: Ruptura de la Inercia | Magisterio Sonorense</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Special+Elite&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #8b0000; /* Rojo Sonorense MS */
+            --bg: #050505;
+            --text: #e0e0e0;
+            --gold: #d4af37;
+            --overlay: rgba(5, 5, 5, 0.88);
+        }
+
+        * { box-sizing: border-box; }
+
+        body, html {
+            margin: 0; padding: 0;
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Special Elite', cursive;
+            overflow-x: hidden;
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
+        }
+
+        /* Scrollbar Personalizada */
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: var(--bg); }
+        ::-webkit-scrollbar-thumb { background: var(--primary); }
+
+        .panel {
+            width: 100%;
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            scroll-snap-align: start;
+            scroll-snap-stop: always;
+        }
+
+        .bg-img {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            object-fit: cover;
+            z-index: 1;
+            transition: transform 12s linear, filter 1.5s ease;
+            filter: brightness(0.7) contrast(1.4) grayscale(1);
+        }
+
+        .panel.active .bg-img {
+            transform: scale(1.15) translate(1%, 1%);
+            filter: brightness(0.35) contrast(1.8) grayscale(1) sepia(0.2) hue-rotate(-50deg);
+        }
+
+        .content-box {
+            position: relative;
+            z-index: 10;
+            max-width: 600px;
+            width: 85%;
+            padding: 3rem;
+            background: rgba(5, 5, 5, 0.85);
+            backdrop-filter: blur(15px);
+            border-left: 5px solid var(--primary);
+            border-right: 1px solid rgba(212, 175, 55, 0.2);
+            border-top: 1px solid rgba(255,255,255,0.05);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.9);
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .panel.active .content-box {
+            opacity: 1;
+            transform: translateX(0);
+            transition-delay: 0.8s;
+        }
+
+        .chapter-tag {
+            color: var(--primary);
+            font-family: 'Cinzel', serif;
+            font-size: 0.75rem;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            margin-bottom: 0.8rem;
+            display: block;
+            font-weight: 700;
+        }
+
+        h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            font-size: 2.5rem;
+            margin: 0.5rem 0 1.5rem 0;
+            line-height: 1;
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+            letter-spacing: -1px;
+        }
+
+        .quote {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            color: #bbb;
+            margin-bottom: 2rem;
+            font-size: 1.2rem;
+            line-height: 1.4;
+            padding-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .quote::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0;
+            width: 60px; height: 2px;
+            background: var(--primary);
+        }
+
+        p {
+            line-height: 1.8;
+            font-size: 1.1rem;
+            color: #ccc;
+            margin-bottom: 1.2rem;
+            text-align: justify;
+        }
+
+        strong { color: var(--gold); font-weight: 700; }
+
+        /* Branding y UI Fixed */
+        .ms-logo {
+            position: fixed;
+            top: 25px; left: 25px;
+            z-index: 100;
+            width: 120px; height: auto; /* Ajuste para el nuevo logo */
+            filter: drop-shadow(0 0 10px rgba(0,0,0,0.8));
+            border-radius: 5px;
+        }
+
+        .audio-control {
+            position: fixed;
+            bottom: 30px; right: 30px;
+            z-index: 100;
+            background: rgba(0,0,0,0.6);
+            border: 1px solid var(--primary);
+            color: var(--gold);
+            padding: 8px 15px;
+            font-family: 'Cinzel', serif;
+            font-size: 0.7rem;
+            cursor: pointer;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .audio-control:hover { background: var(--primary); color: white; }
+
+        .progress-nav {
+            position: fixed;
+            right: 20px; top: 50%;
+            transform: translateY(-50%);
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .dot {
+            width: 8px; height: 8px;
+            background: #333;
+            border-radius: 50%;
+            transition: all 0.4s;
+            cursor: pointer;
+        }
+
+        .dot.active {
+            background: var(--primary);
+            transform: scale(1.5);
+            box-shadow: 0 0 10px var(--primary);
+        }
+
+        .footer-sig {
+            position: fixed;
+            bottom: 20px; left: 25px;
+            font-family: 'Cinzel', serif;
+            font-size: 0.65rem;
+            color: grey;
+            letter-spacing: 2px;
+            z-index: 100;
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 600px) {
+            .content-box { padding: 1.5rem; margin: 10px; width: 95%; }
+            h2 { font-size: 1.6rem; }
+            p { font-size: 0.95rem; }
+            .ms-logo { width: 80px; top: 15px; left: 15px; }
+            .progress-nav { right: 10px; }
+        }
+    </style>
+</head>
+<body>
+<div style='position:fixed; top:20px; right:150px; z-index:9999;'>
+    <a href='https://wa.me/526442313519?text=Hola%20Profe-Bot%20MS,%20estoy%20viendo%20un%20Tomo%20y%20tengo%20una%20duda.' id='btn-wa-tomo' style='background: #25d366; color: white; padding: 10px 20px; border-radius: 50px; font-weight: bold; text-decoration: none; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); border: 2px solid white; font-family: \"Roboto\", sans-serif; font-size: 12px;'>
+        <img src='https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg' width='16' height='16' style='filter: brightness(0) invert(1);'>
+        <span>Ayuda MS</span>
+    </a>
+</div>
+<style>
+#btn-wa-tomo:hover { transform: scale(1.05); background: #128c7e; }
+@media (max-width: 600px) { #btn-wa-tomo span { display: none; } #btn-wa-tomo { padding: 10px; right: 80px; } }
+</style>
+<a href='../index.html' id='btn-home' style='position:fixed; top:20px; right:20px; z-index:9999; background: #8b0000; color: #d4af37; padding: 10px 20px; border: 2px solid #d4af37; border-radius: 5px; text-decoration: none; font-family: \"Cinzel\", serif; font-weight: bold; font-size: 14px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 1px;'>Regresar</a>
+<style>
+#btn-home:hover { background: #d4af37; color: #8b0000; transform: scale(1.05); }
+@media (max-width: 600px) { #btn-home { padding: 8px 12px; font-size: 10px; top: 10px; right: 10px; } }
+</style>
+
+    <!-- Logo nuevo enviado por JAD -->
+    <img src="assets/logo_ms_nuevo.jpg" class="ms-logo" alt="Logo MS">
+    <div class="footer-sig">JADesarrollo ✦ MS</div>
+
+    <div class="audio-control" id="audioBtn">
+        <span id="audioStatus">🔊 AUDIO: ACTIVAR</span>
+    </div>
+
+    <div class="progress-nav" id="progNav">
+        <!-- Generado por JS -->
+    </div>
+
+    <!-- PANELES TOMO IV -->
+    <section class="panel" id="p0">
+        <img src="images/hero.png" class="bg-img">
+        <div class="content-box" style="border-left-color: var(--gold);">
+            <span class="chapter-tag">Tomo IV</span>
+            <h2>Ruptura de la Inercia</h2>
+            <div class="quote">"La inercia es el último refugio de la complacencia; romperla es el primer acto de la libertad colectiva."</div>
+            <p>Bienvenido al <strong>Tomo IV</strong>. Tras años de parálisis estática, la base magisterial comienza a vibrar en una nueva frecuencia de organización y conciencia táctica.</p>
+        </div>
+    </section>
+
+    <section class="panel" id="p1">
+        <img src="images/tomo4_cap1_silencio.png" class="bg-img">
+        <div class="content-box">
+            <span class="chapter-tag">Capítulo I</span>
+            <h2>El Fin del Silencio</h2>
+            <div class="quote">"Cuando el primer docente pregunta '¿por qué?', el sistema tiembla en sus cimientos."</div>
+            <p>Un aula solitaria en la sierra sonorense. El eco de años de obediencia se rompe con una simple pregunta que resuena en los pasillos: la dignidad no es negociable.</p>
+        </div>
+    </section>
+
+    <section class="panel" id="p2">
+        <img src="images/tomo4_cap2_sombra.png" class="bg-img">
+        <div class="content-box">
+            <span class="chapter-tag">Capítulo II</span>
+            <h2>Convocatoria en la Sombra</h2>
+            <div class="quote">"A la luz de una farola, se forjan los pactos que la luz del sol verá convertidos en victoria."</div>
+            <p>Reuniones discretas en domicilios particulares. Sin siglas oficiales, solo la lealtad entre compañeros que han decidido que el miedo ya no tiene lugar en su mesa.</p>
+        </div>
+    </section>
+
+    <section class="panel" id="p3">
+        <img src="images/tomo4_cap3_codigo.png" class="bg-img">
+        <div class="content-box">
+            <span class="chapter-tag">Capítulo III</span>
+            <h2>El Código de la Unidad</h2>
+            <div class="quote">"La tecnología es el megáfono de los que no tenían voz; la unidad es su algoritmo."</div>
+            <p>Compartiendo documentos encriptados y estrategias de CyberFlow. La inteligencia colectiva supera a la vigilancia burocrática mediante redes de confianza digital.</p>
+        </div>
+    </section>
+
+    <section class="panel" id="p4">
+        <img src="images/tomo4_cap4_desierto.png" class="bg-img">
+        <div class="content-box">
+            <span class="chapter-tag">Capítulo IV</span>
+            <h2>Voz en el Desierto</h2>
+            <div class="quote">"El viento del desierto lleva el clamor de justicia hasta el último rincón de Sonora."</div>
+            <p>En el Valle del Yaqui, un megáfono casero amplifica el llamado. Las comunidades rurales dejan de ser periferia para convertirse en el epicentro del despertar magisterial.</p>
+        </div>
+    </section>
+
+    <section class="panel" id="p5">
+        <img src="images/tomo4_cap5_asamblea.png" class="bg-img">
+        <div class="content-box">
+            <span class="chapter-tag">Capítulo V</span>
+            <h2>La Primera Asamblea</h2>
+            <div class="quote">"Mirarse a los ojos y reconocerse como iguales es el inicio de cualquier revolución."</div>
+            <p>Cientos de rostros determinados. El Profe Kristian toma la palabra bajo la sombra de un tejabán; no pide permiso para luchar, convoca a la construcción de un nuevo destino.</p>
+        </div>
+    </section>
+
+    <section class="panel" id="p6">
+        <img src="images/tomo4_cap6_mapa.png" class="bg-img">
+        <div class="content-box">
+            <span class="chapter-tag">Capítulo VI</span>
+            <h2>Mapeo de la Resistencia</h2>
+            <div class="quote">"Una red de delegados es un escudo infranqueable para los derechos del docente."</div>
+            <p>Puntos rojos se conectan en un mapa estratégico. Desde San Luis Río Colorado hasta Álamos, el Magisterio Sonorense ya no son individuos aislados, es un organismo vivo.</p>
+        </div>
+    </section>
+
+    <section class="panel" id="p7">
+        <img src="images/tomo4_cap7_conciencia.png" class="bg-img">
+        <div class="content-box">
+            <span class="chapter-tag">Capítulo VII</span>
+            <h2>Conciencia de Clase</h2>
+            <div class="quote">"La experiencia del veterano es el faro que guía la energía del joven docente."</div>
+            <p>Un relevo generacional histórico. El conocimiento de las luchas pasadas se fusiona con la audacia de los nuevos maestros para formar un frente inquebrantable.</p>
+        </div>
+    </section>
+
+    <section class="panel" id="p8">
+        <img src="images/tomo4_cap8_censura.png" class="bg-img">
+        <div class="content-box">
+            <span class="chapter-tag">Capítulo VIII</span>
+            <h2>El Muro de la Censura</h2>
+            <div class="quote">"No hay muro lo suficientemente alto para detener una idea cuyo tiempo ha llegado."</div>
+            <p>Panfletos y carteles del MS aparecen sobre la propaganda oficial. La verdad comunitaria perfora la narrativa del 'todo está bien' impuesta desde las oficinas.</p>
+        </div>
+    </section>
+
+    <section class="panel" id="p9">
+        <img src="images/tomo4_cap9_logistica.png" class="bg-img">
+        <div class="content-box">
+            <span class="chapter-tag">Capítulo IX</span>
+            <h2>Logística del Movimiento</h2>
+            <div class="quote">"La organización vence al poder; la preparación garantiza la permanencia."</div>
+            <p>Noches de vigilia preparando pancartas, camiones y consignas. Cada detalle está cuidado porque en la precisión reside la fuerza del contingente del 1 de Mayo.</p>
+        </div>
+    </section>
+
+    <section class="panel" id="p10">
+        <img src="images/tomo4_cap10_marcha.png" class="bg-img">
+        <div class="content-box" style="border-left-color: var(--gold);">
+            <span class="chapter-tag">Capítulo X</span>
+            <h2>Ruptura de la Inercia</h2>
+            <div class="quote">"El primer paso de la Gran Marcha no es físico, es un acto de voluntad colectiva."</div>
+            <p>La inercia se rompe definitivamente. Miles de maestros inician el camino hacia la capital, no para pedir, sino para reclamar el respeto que su labor merece."</p>
+        </div>
+    </section>
+
+
+
+
+    <audio id="bgMusic" loop>
+        <source src="../tomo2/assets/audio/el_pueblo_unido.mp4" type="audio/mp4">
+    </audio>
+
+    <script>
+        // Navegación y Observador
+        const panels = document.querySelectorAll('.panel');
+        const dotsContainer = document.getElementById('progNav');
+        
+        panels.forEach((panel, i) => {
+            const dot = document.createElement('div');
+            dot.className = 'dot';
+            dot.addEventListener('click', () => {
+                panel.scrollIntoView({behavior: 'smooth'});
+            });
+            dotsContainer.appendChild(dot);
+        });
+
+        const dots = document.querySelectorAll('.dot');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    const index = Array.from(panels).indexOf(entry.target);
+                    dots.forEach((d, i) => d.classList.toggle('active', i === index));
+                } else {
+                    entry.target.classList.remove('active');
+                }
+            });
+        }, { threshold: 0.5 });
+
+        panels.forEach(p => observer.observe(p));
+
+        // Control de Audio Estilo MS
+        const audio = document.getElementById('bgMusic');
+        const audioBtn = document.getElementById('audioBtn');
+        const audioStatus = document.getElementById('audioStatus');
+        let playing = false;
+
+        audioBtn.addEventListener('click', () => {
+            if(!playing) {
+                audio.play();
+                audioStatus.innerText = "🔊 AUDIO: ACTIVO";
+                playing = true;
+            } else {
+                audio.pause();
+                audioStatus.innerText = "🔊 AUDIO: PAUSADO";
+                playing = false;
+            }
+        });
+    </script>
+</body>
+</html>
+
+
