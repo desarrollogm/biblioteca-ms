@@ -206,7 +206,17 @@
     </style>
 </head>
 <body>
-<a href='../index.html' id='btn-home' style='position:fixed; top:20px; right:20px; z-index:9999; background: #8b0000; color: #d4af37; padding: 10px 20px; border: 2px solid #d4af37; border-radius: 5px; text-decoration: none; font-family: \"Cinzel\", serif; font-weight: bold; font-size: 14px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 1px;'>Menú Principal</a>
+<div style='position:fixed; top:20px; right:150px; z-index:9999;'>
+    <a href='https://wa.me/526442313519?text=Hola%20Profe-Bot%20MS,%20estoy%20viendo%20un%20Tomo%20y%20tengo%20una%20duda.' id='btn-wa-tomo' style='background: #25d366; color: white; padding: 10px 20px; border-radius: 50px; font-weight: bold; text-decoration: none; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); border: 2px solid white; font-family: \"Roboto\", sans-serif; font-size: 12px;'>
+        <img src='https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg' width='16' height='16' style='filter: brightness(0) invert(1);'>
+        <span>Ayuda MS</span>
+    </a>
+</div>
+<style>
+#btn-wa-tomo:hover { transform: scale(1.05); background: #128c7e; }
+@media (max-width: 600px) { #btn-wa-tomo span { display: none; } #btn-wa-tomo { padding: 10px; right: 80px; } }
+</style>
+<a href='../index.html' id='btn-home' style='position:fixed; top:20px; right:20px; z-index:9999; background: #8b0000; color: #d4af37; padding: 10px 20px; border: 2px solid #d4af37; border-radius: 5px; text-decoration: none; font-family: \"Cinzel\", serif; font-weight: bold; font-size: 14px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 1px;'>Regresar</a>
 <style>
 #btn-home:hover { background: #d4af37; color: #8b0000; transform: scale(1.05); }
 @media (max-width: 600px) { #btn-home { padding: 8px 12px; font-size: 10px; top: 10px; right: 10px; } }
@@ -389,4 +399,5 @@
     </script>
 </body>
 </html>
+
 
