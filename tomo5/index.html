@@ -136,7 +136,7 @@
             position: fixed;
             top: 25px; left: 25px;
             z-index: 100;
-            width: 120px; height: auto; /* Ajuste para el nuevo logo */
+            width: 120px; height: auto;
             filter: drop-shadow(0 0 10px rgba(0,0,0,0.8));
             border-radius: 5px;
         }
@@ -207,7 +207,7 @@
 </head>
 <body>
 <div style='position:fixed; top:20px; right:150px; z-index:9999;'>
-    <a href='https://wa.me/526442313519?text=Hola%20Profe-Bot%20MS,%20estoy%20viendo%20un%20Tomo%20y%20tengo%20una%20duda.' id='btn-wa-tomo' style='background: #25d366; color: white; padding: 10px 20px; border-radius: 50px; font-weight: bold; text-decoration: none; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); border: 2px solid white; font-family: \"Roboto\", sans-serif; font-size: 12px;'>
+    <a href='https://wa.me/526442313519?text=Hola%20Profe-Bot%20MS,%20estoy%20viendo%20un%20Tomo%20y%20tengo%20una%20duda.' id='btn-wa-tomo' style='background: #25d366; color: white; padding: 10px 20px; border-radius: 50px; font-weight: bold; text-decoration: none; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); border: 2px solid white; font-family: "Roboto", sans-serif; font-size: 12px;'>
         <img src='https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg' width='16' height='16' style='filter: brightness(0) invert(1);'>
         <span>Ayuda MS</span>
     </a>
@@ -216,14 +216,13 @@
 #btn-wa-tomo:hover { transform: scale(1.05); background: #128c7e; }
 @media (max-width: 600px) { #btn-wa-tomo span { display: none; } #btn-wa-tomo { padding: 10px; right: 80px; } }
 </style>
-<a href='../index.html' id='btn-home' style='position:fixed; top:20px; right:20px; z-index:9999; background: #8b0000; color: #d4af37; padding: 10px 20px; border: 2px solid #d4af37; border-radius: 5px; text-decoration: none; font-family: \"Cinzel\", serif; font-weight: bold; font-size: 14px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 1px;'>Regresar</a>
+<a href='../index.html' id='btn-home' style='position:fixed; top:20px; right:20px; z-index:9999; background: #8b0000; color: #d4af37; padding: 10px 20px; border: 2px solid #d4af37; border-radius: 5px; text-decoration: none; font-family: "Cinzel", serif; font-weight: bold; font-size: 14px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 1px;'>Regresar</a>
 <style>
 #btn-home:hover { background: #d4af37; color: #8b0000; transform: scale(1.05); }
 @media (max-width: 600px) { #btn-home { padding: 8px 12px; font-size: 10px; top: 10px; right: 10px; } }
 </style>
 
-    <!-- Logo nuevo enviado por JAD -->
-    <img src="assets/logo_ms_nuevo.jpg" class="ms-logo" alt="Logo MS">
+    <img src="../assets/logo_ms_nuevo.jpg" class="ms-logo" alt="Logo MS">
     <div class="footer-sig">JADesarrollo ✦ MS</div>
 
     <div class="audio-control" id="audioBtn">
@@ -232,7 +231,9 @@
 
     <div class="progress-nav" id="progNav">
         <!-- Generado por JS -->
-    </d    <!-- PANELES TOMO V -->
+    </div>
+
+    <!-- PANELES TOMO V -->
     <section class="panel" id="p0">
         <img src="images/hero.png" class="bg-img">
         <div class="content-box" style="border-left-color: var(--gold);">
@@ -304,7 +305,7 @@
     </section>
 
     <section class="panel" id="p7">
-        <img src="images/tomo5_cap7_azar.png" class="bg-box">
+        <img src="images/tomo5_cap7_azar.png" class="bg-img">
         <div class="content-box">
             <span class="chapter-tag">Capítulo VII</span>
             <h2>La Jugada Impredecible</h2>
@@ -339,15 +340,9 @@
             <span class="chapter-tag">Capítulo X</span>
             <h2>El Horizonte Sonorense</h2>
             <div class="quote">"La fábrica ha perdido su control automático; ahora, el mando está en nuestras manos."</div>
-            <p>Concluimos el viaje de los cinco tomos. Con la historia como brújula y la estrategia como motor, el magisterio sonorense asoma a un horizonte de libertad definitiva. ¡Adelante!"</p>
+            <p>Concluimos el viaje de los cinco tomos. Con la historia como brújula y la estrategia como motor, el magisterio sonorense asoma a un horizonte de libertad definitiva. ¡Adelante!</p>
         </div>
     </section>
-u labor merece."</p>
-        </div>
-    </section>
-
-
-
 
     <audio id="bgMusic" loop>
         <source src="../tomo2/assets/audio/el_pueblo_unido.mp4" type="audio/mp4">
@@ -402,5 +397,3 @@ u labor merece."</p>
     </script>
 </body>
 </html>
-
-
