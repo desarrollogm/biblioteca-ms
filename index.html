@@ -165,8 +165,8 @@
 
         @media (max-width: 768px) {
             h1 { font-size: 2.2rem; }
-            header { height: 50vh; }
-            .container { margin-top: -50px; }
+            header { height: auto; padding: 4rem 1rem; }
+            .container { margin-top: 0; }
         }
     </style>
 </head>
@@ -179,8 +179,8 @@
 </div>
 <style>
 #btn-wa:hover { transform: scale(1.05); background: #128c7e; }
-.btn-hero { margin-top: 2rem; background: var(--gold); color: black; padding: 1rem 2rem; border-radius: 50px; text-decoration: none; font-weight: bold; font-family: 'Cinzel', serif; transition: all 0.3s; border: 2px solid transparent; }
-.btn-hero:hover { background: transparent; color: var(--gold); border-color: var(--gold); transform: scale(1.1); }
+.btn-hero { display: inline-block; margin-top: 2rem; margin-bottom: 3rem; background: var(--gold); color: black; padding: 1rem 2rem; border-radius: 50px; text-decoration: none; font-weight: bold; font-family: 'Cinzel', serif; transition: all 0.3s; border: 2px solid transparent; box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3); }
+.btn-hero:hover { background: transparent; color: var(--gold); border-color: var(--gold); transform: scale(1.05); box-shadow: 0 8px 25px rgba(255, 215, 0, 0.5); }
 @media (max-width: 600px) { #btn-wa span { display: none; } #btn-wa { padding: 10px; } }
 </style>
 
