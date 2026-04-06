@@ -1,400 +1,85 @@
-<!DOCTYPE html>
-<html lang="es">
+﻿<!DOCTYPE html>
+<html lang="es-MX">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tomo VIII: El Jaque Mate | Magisterio Sonorense</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Special+Elite&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #8b0000; /* Rojo Sonorense MS */
-            --bg: #050505;
-            --text: #e0e0e0;
-            --gold: #d4af37;
-            --overlay: rgba(5, 5, 5, 0.88);
-        }
-
-        * { box-sizing: border-box; }
-
-        body, html {
-            margin: 0; padding: 0;
-            background: var(--bg);
-            color: var(--text);
-            font-family: 'Special Elite', cursive;
-            overflow-x: hidden;
-            scroll-snap-type: y mandatory;
-            scroll-behavior: smooth;
-        }
-
-        /* Scrollbar Personalizada */
-        ::-webkit-scrollbar { width: 5px; }
-        ::-webkit-scrollbar-track { background: var(--bg); }
-        ::-webkit-scrollbar-thumb { background: var(--primary); }
-
-        .panel {
-            width: 100%;
-            height: 100vh;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            scroll-snap-align: start;
-            scroll-snap-stop: always;
-        }
-
-        .bg-img {
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            object-fit: cover;
-            z-index: 1;
-            transition: transform 12s linear, filter 1.5s ease;
-            filter: brightness(0.7) contrast(1.4) grayscale(1);
-        }
-
-        .panel.active .bg-img {
-            transform: scale(1.15) translate(1%, 1%);
-            filter: brightness(0.35) contrast(1.8) grayscale(1) sepia(0.2) hue-rotate(-50deg);
-        }
-
-        .content-box {
-            position: relative;
-            z-index: 10;
-            max-width: 600px;
-            width: 85%;
-            padding: 3rem;
-            background: rgba(5, 5, 5, 0.85);
-            backdrop-filter: blur(15px);
-            border-left: 5px solid var(--primary);
-            border-right: 1px solid rgba(212, 175, 55, 0.2);
-            border-top: 1px solid rgba(255,255,255,0.05);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.9);
-            opacity: 0;
-            transform: translateX(-50px);
-            transition: all 1.5s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .panel.active .content-box {
-            opacity: 1;
-            transform: translateX(0);
-            transition-delay: 0.8s;
-        }
-
-        .chapter-tag {
-            color: var(--primary);
-            font-family: 'Cinzel', serif;
-            font-size: 0.75rem;
-            letter-spacing: 6px;
-            text-transform: uppercase;
-            margin-bottom: 0.8rem;
-            display: block;
-            font-weight: 700;
-        }
-
-        h2 {
-            font-family: 'Cinzel', serif;
-            color: var(--gold);
-            font-size: 2.5rem;
-            margin: 0.5rem 0 1.5rem 0;
-            line-height: 1;
-            text-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
-            letter-spacing: -1px;
-        }
-
-        .quote {
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            color: #bbb;
-            margin-bottom: 2rem;
-            font-size: 1.2rem;
-            line-height: 1.4;
-            padding-bottom: 1.5rem;
-            position: relative;
-        }
-
-        .quote::after {
-            content: '';
-            position: absolute;
-            bottom: 0; left: 0;
-            width: 60px; height: 2px;
-            background: var(--primary);
-        }
-
-        p {
-            line-height: 1.8;
-            font-size: 1.1rem;
-            color: #ccc;
-            margin-bottom: 1.2rem;
-            text-align: justify;
-        }
-
-        strong { color: var(--gold); font-weight: 700; }
-
-        /* Branding y UI Fixed */
-        .ms-logo {
-            position: fixed;
-            top: 25px; left: 25px;
-            z-index: 100;
-            width: 120px; height: auto;
-            filter: drop-shadow(0 0 10px rgba(0,0,0,0.8));
-            border-radius: 5px;
-        }
-
-        .audio-control {
-            position: fixed;
-            bottom: 30px; right: 30px;
-            z-index: 100;
-            background: rgba(0,0,0,0.6);
-            border: 1px solid var(--primary);
-            color: var(--gold);
-            padding: 8px 15px;
-            font-family: 'Cinzel', serif;
-            font-size: 0.7rem;
-            cursor: pointer;
-            letter-spacing: 1px;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .audio-control:hover { background: var(--primary); color: white; }
-
-        .progress-nav {
-            position: fixed;
-            right: 20px; top: 50%;
-            transform: translateY(-50%);
-            z-index: 100;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .dot {
-            width: 8px; height: 8px;
-            background: #333;
-            border-radius: 50%;
-            transition: all 0.4s;
-            cursor: pointer;
-        }
-
-        .dot.active {
-            background: var(--primary);
-            transform: scale(1.5);
-            box-shadow: 0 0 10px var(--primary);
-        }
-
-        .footer-sig {
-            position: fixed;
-            bottom: 20px; left: 25px;
-            font-family: 'Cinzel', serif;
-            font-size: 0.65rem;
-            color: grey;
-            letter-spacing: 2px;
-            z-index: 100;
-        }
-
-        /* Mobile Adjustments */
-        @media (max-width: 600px) {
-            .content-box { padding: 1.5rem; margin: 10px; width: 95%; }
-            h2 { font-size: 1.6rem; }
-            p { font-size: 0.95rem; }
-            .ms-logo { width: 80px; top: 15px; left: 15px; }
-            .progress-nav { right: 10px; }
-        }
-    </style>
+    <title>Tomo 8: El Jaque Mate - Magisterio Sonorense</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<div style='position:fixed; top:20px; right:150px; z-index:9999;'>
-    <a href='https://wa.me/526442313519?text=Hola%20Profe-Bot%20MS,%20estoy%20viendo%20un%20Tomo%20y%20tengo%20una%20duda.' id='btn-wa-tomo' style='background: #25d366; color: white; padding: 10px 20px; border-radius: 50px; font-weight: bold; text-decoration: none; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); border: 2px solid white; font-family: "Roboto", sans-serif; font-size: 12px;'>
-        <img src='https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg' width='16' height='16' style='filter: brightness(0) invert(1);'>
-        <span>Ayuda MS</span>
-    </a>
-</div>
-<style>
-#btn-wa-tomo:hover { transform: scale(1.05); background: #128c7e; }
-@media (max-width: 600px) { #btn-wa-tomo span { display: none; } #btn-wa-tomo { padding: 10px; right: 80px; } }
-</style>
-<a href='../index.html' id='btn-home' style='position:fixed; top:20px; right:20px; z-index:9999; background: #8b0000; color: #d4af37; padding: 10px 20px; border: 2px solid #d4af37; border-radius: 5px; text-decoration: none; font-family: "Cinzel", serif; font-weight: bold; font-size: 14px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 1px;'>Regresar</a>
-<style>
-#btn-home:hover { background: #d4af37; color: #8b0000; transform: scale(1.05); }
-@media (max-width: 600px) { #btn-home { padding: 8px 12px; font-size: 10px; top: 10px; right: 10px; } }
-</style>
-
-    <!-- Logo Oficial del MS -->
-    <img src="../assets/ms_logo_gold.png" class="ms-logo" alt="Logo MS">
-    <div class="footer-sig">JADesarrollo ✦ MS</div>
-
-    <div class="audio-control" id="audioBtn">
-        <span id="audioStatus">🔊 AUDIO: ACTIVAR</span>
-    </div>
-
-    <div class="progress-nav" id="progNav">
-        <!-- Generado por JS -->
-    </div>
-
-    <!-- PANELES TOMO VIII -->
-    <section class="panel" id="p0">
-        <img src="images/hero.png" class="bg-img">
-        <div class="content-box" style="border-left-color: var(--gold);">
-            <span class="chapter-tag">Tomo VIII</span>
-            <h2>El Jaque Mate</h2>
-            <div class="quote">"El jaque mate no es el fin del juego, es el inicio de nuestra libertad absoluta."</div>
-            <p>Bienvenido al <strong>Gran Final</strong> de la serie. Hoy, la Teoría de Juegos se convierte en realidad política. El tablero de Sonora se abre para una nueva era de dignidad y soberanía magisterial.</p>
+    <header class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <span class="tomo-badge">Tomo 8</span>
+            <h1>EL JAQUE MATE</h1>
+            <p class="subtitle">"La Apertura del Desierto"</p>
+            <button id="start-btn" class="cta-button">Ver la jugada maestra ↓</button>
         </div>
-    </section>
+        <img src="images/tomo7_hero.png" alt="Hero" class="hero-bg-img">
+    </header>
+    <main id="story-container">
+        <!-- Cap 1 -->
+        <section class="chapter fade-in" id="cap1">
+            <div class="chapter-content">
+                <div class="text-block">
+                    <h2>1. El Tablero en Llamas</h2>
+                    <p>Dice la Teoría de Juegos que todo equilibrio estático es, en el fondo, una trampa. En Sonora, el magisterio ha estado atrapado en un equilibrio de suma cero. Si la autoridad ahorra, el docente pierde. Si el sistema sobrevive, la pensión agoniza.</p>
+                </div>
+                <div class="image-block">
+                    <img src="images/tomo8_cap1.png" alt="Ajedrez en la Plaza" loading="lazy">
+                </div>
+            </div>
+        </section>
 
-    <section class="panel" id="p1">
-        <img src="images/tomo8_cap1_tablero_mixto.png" class="bg-img">
-        <div class="content-box">
-            <span class="chapter-tag">Capítulo I</span>
-            <h2>El Tablero Mixto</h2>
-            <div class="quote">"Ante un oponente superior, la incertidumbre táctica es nuestra mayor fortaleza."</div>
-            <p>En el ajedrez político de Sonora, el Estado apuesta por la predictibilidad. El MS introduce la Estrategia Mixta: coordinación descentralizada y aleatoriedad técnica que neutraliza el control institucional.</p>
-        </div>
-    </section>
+        <!-- Cap 2 -->
+        <section class="chapter fade-in reverse" id="cap2">
+            <div class="chapter-content">
+                <div class="text-block">
+                    <h2>2. Equilibrio de Suma Cero</h2>
+                    <p>Y mientras los números en la Ciudad de México dictan nuestra pobreza con la UMA, aquí en el territorio, nuestra gente siente la inclemencia. No es solo dinero, compañero... es el tiempo de una vida entregada al aula.</p>
+                </div>
+                <div class="image-block">
+                    <img src="images/tomo8_cap2.png" alt="Quiebre Técnico ISSSTESON" loading="lazy">
+                </div>
+            </div>
+        </section>
 
-    <section class="panel" id="p2">
-        <img src="images/tomo8_cap2_paradoja_negociador.png" class="bg-img">
-        <div class="content-box">
-            <span class="chapter-tag">Capítulo II</span>
-            <h2>La Paradoja del Negociador</h2>
-            <div class="quote">"Aceptar el equilibrio de sumisión es firmar el acta de nuestra propia pobreza."</div>
-            <p>Históricamente, las cúpulas negociaban migajas en la oscuridad. El MS rompe la Paradoja del Negociador: ya no aceptamos el bono inmediato a cambio de la pensión futura. Operamos bajo transparencia radical.</p>
-        </div>
-    </section>
+        <!-- Cap 3 -->
+        <section class="chapter fade-in" id="cap3">
+            <div class="chapter-content">
+                <div class="text-block">
+                    <h2>3. La Inclemencia del Territorio</h2>
+                    <p>El rostro de la resistencia magisterial en el aula. Condiciones precarias, calor extremo, pero una voluntad inquebrantable. Mtra. Paloma liderando desde la base.</p>
+                </div>
+                <div class="image-block">
+                    <img src="images/tomo8_cap3.png" alt="Paloma en el aula" loading="lazy">
+                </div>
+            </div>
+        </section>
 
-    <section class="panel" id="p3">
-        <img src="images/tomo8_cap3_fpip_jugada_maestra.png" class="bg-img">
-        <div class="content-box">
-            <span class="chapter-tag">Capítulo III</span>
-            <h2>La Jugada del FPIP</h2>
-            <div class="quote">"Justicia matemática para un retiro soberano."</div>
-            <p>El Fondo de Pensión Intergeneracional Protegida (FPIP) es nuestra arquitectura de soberanía. Un modelo blindado donde el ahorro magisterial obliga a una inversión estatal justa de 3.25 a 1.</p>
-        </div>
-    </section>
+        <!-- Cap 4 (Cooming Soon) -->
+        <section class="chapter fade-in reverse" id="cap4">
+            <div class="chapter-content">
+                <div class="text-block">
+                    <h2>4. La Ley de la Escalada</h2>
+                    <p>Próximamente... El protocolo de sincronización técnica para la victoria.</p>
+                </div>
+                <div class="image-block">
+                    <div class="placeholder-img" style="background:#222;height:400px;display:flex;align-items:center;justify-content:center;color:#666;">Cargando estrategia...</div>
+                </div>
+            </div>
+        </section>
 
-    <section class="panel" id="p4">
-        <img src="images/tomo8_cap4_justicia_matematica.png" class="bg-img">
-        <div class="content-box">
-            <span class="chapter-tag">Capítulo IV</span>
-            <h2>Justicia del 100%</h2>
-            <div class="quote">"Dignificar el presente para asegurar el futuro."</div>
-            <p>Exigimos el aumento salarial del 100% como base de la justicia social. Independiente del FPIP, el salario digno es el reconocimiento a la labor docente que sostiene el alma de Sonora.</p>
-        </div>
-    </section>
-
-    <section class="panel" id="p5">
-        <img src="images/tomo8_cap5_ciberbachillerato_soberania.png" class="bg-img">
-        <div class="content-box">
-            <span class="chapter-tag">Capítulo V</span>
-            <h2>Ciber-Emancipación</h2>
-            <div class="quote">"La tecnología en manos del docente es el megáfono de la verdad."</div>
-            <p>Apropiarnos de la IA y el código para desmantelar la carga administrativa. El Ciberbachillerato MS se convierte en un nodo de producción de conocimiento libre, fuera del control burocrático.</p>
-        </div>
-    </section>
-
-    <section class="panel" id="p6">
-        <img src="images/tomo8_cap6_dictador.png" class="bg-img">
-        <div class="content-box">
-            <span class="chapter-tag">Capítulo VI</span>
-            <h2>El Fin del Dictador</h2>
-            <div class="quote">"Rompemos la asimetría del poder con vigilancia técnica constante."</div>
-            <p>En el Juego del Dictador administrativo, el Estado repartía migajas. El MS impone la auditoría del ahorro solidario, obligando a una repartición basada en la equidad real y no en el clientelismo.</p>
-        </div>
-    </section>
-
-    <section class="panel" id="p7">
-        <img src="images/tomo8_cap7_nash.png" class="bg-img">
-        <div class="content-box">
-            <span class="chapter-tag">Capítulo VII</span>
-            <h2>Equilibrio en la Calle</h2>
-            <div class="quote">"La unidad no es un eslogan, es la solución óptima del sistema."</div>
-            <p>Coordinación masiva en el territorio. Si cada maestro actúa solo, todos pierden; al movernos como un solo cuerpo bajo la Matriz Z3, alcanzamos el punto de equilibrio donde el Estado debe ceder.</p>
-        </div>
-    </section>
-
-    <section class="panel" id="p8">
-        <img src="images/tomo8_cap8_axelrod.png" class="bg-img">
-        <div class="content-box">
-            <span class="chapter-tag">Capítulo VIII</span>
-            <h2>Estrategia Tit-for-Tat</h2>
-            <div class="quote">"Cooperación con quien cumple, resistencia con quien traiciona."</div>
-            <p>Aplicamos la reciprocidad estratégica: transparencia por paz social; engaño por movilización total. Una táctica simple y poderosa que garantiza la estabilidad de nuestras conquistas.</p>
-        </div>
-    </section>
-
-    <section class="panel" id="p9">
-        <img src="images/tomo8_cap9_arca.png" class="bg-img">
-        <div class="content-box">
-            <span class="chapter-tag">Capítulo IX</span>
-            <h2>El Arca Magisterial</h2>
-            <div class="quote">"Blindaje intergeneracional contra la amnesia del poder."</div>
-            <p>Nuestro retiro no es un evento estático, es un flujo dinámico que protegemos hoy. El Arca MS garantiza que las reglas de jubilación no cambien a mitad de la partida. El tiempo está de nuestro lado.</p>
-        </div>
-    </section>
-
-    <section class="panel" id="p10">
-        <img src="images/tomo8_cap10_sincronia.png" class="bg-img">
-        <div class="content-box" style="border-left-color: var(--gold);">
-            <span class="chapter-tag">Capítulo X</span>
-            <h2>Jaque Mate</h2>
-            <div class="quote">"El tablero nos pertenece; el futuro es nuestro."</div>
-            <p>Concluimos la serie. Con el 100% salarial y el fondo soberano, el docente sonorense deja de ser una pieza para convertirse en el arquitecto de su libertad. ¡Misión Cumplida!</p>
-        </div>
-    </section>
-
-    <audio id="bgMusic" loop>
-        <source src="../tomo2/assets/audio/el_pueblo_unido.mp4" type="audio/mp4">
-    </audio>
-
-    <script>
-        // Navegación y Observador
-        const panels = document.querySelectorAll('.panel');
-        const dotsContainer = document.getElementById('progNav');
-        
-        panels.forEach((panel, i) => {
-            const dot = document.createElement('div');
-            dot.className = 'dot';
-            dot.addEventListener('click', () => {
-                panel.scrollIntoView({behavior: 'smooth'});
-            });
-            dotsContainer.appendChild(dot);
-        });
-
-        const dots = document.querySelectorAll('.dot');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                    const index = Array.from(panels).indexOf(entry.target);
-                    dots.forEach((d, i) => d.classList.toggle('active', i === index));
-                } else {
-                    entry.target.classList.remove('active');
-                }
-            });
-        }, { threshold: 0.5 });
-
-        panels.forEach(p => observer.observe(p));
-
-        // Control de Audio Estilo MS
-        const audio = document.getElementById('bgMusic');
-        const audioBtn = document.getElementById('audioBtn');
-        const audioStatus = document.getElementById('audioStatus');
-        let playing = false;
-
-        audioBtn.addEventListener('click', () => {
-            if(!playing) {
-                audio.play();
-                audioStatus.innerText = "🔊 AUDIO: ACTIVO";
-                playing = true;
-            } else {
-                audio.pause();
-                audioStatus.innerText = "🔊 AUDIO: PAUSADO";
-                playing = false;
-            }
-        });
-    </script>
+        <footer class="footer">
+            <div class="footer-content">
+                <h3>CONTINUARÁ...</h3>
+                <p>Magisterio Sonorense 2026 - Director's Cut</p>
+                <a href="../index.html" class="back-to-menu">Volver al Panel Central</a>
+            </div>
+        </footer>
+    </main>
+    <div id="watermark">JADesarrollo</div>
+    <script src="script.js"></script>
 </body>
 </html>
