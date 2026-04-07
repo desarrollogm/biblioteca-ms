@@ -31,6 +31,32 @@
         ::-webkit-scrollbar-track { background: var(--bg); }
         ::-webkit-scrollbar-thumb { background: var(--primary); }
 
+        .header {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 100;
+            pointer-events: none;
+        }
+
+        .header h1 {
+            font-family: 'Cinzel', serif;
+            font-weight: 900;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            color: var(--gold);
+            text-transform: uppercase;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.8);
+            opacity: 0.7;
+        }
+
+        .ms-logo {
+            width: 120px;
+            margin-bottom: 10px;
+            filter: drop-shadow(0 0 5px rgba(0,0,0,0.5));
+            pointer-events: auto;
+        }
+
         .panel {
             width: 100%;
             height: 100vh;
@@ -55,7 +81,7 @@
 
         .panel.active .bg-img {
             transform: scale(1.15) translate(1%, 1%);
-            filter: brightness(0.35) contrast(1.8) grayscale(1) sepia(0.2) hue-rotate(-50deg);
+            filter: brightness(0.8) contrast(1.2);
         }
 
         .content-box {
@@ -131,15 +157,7 @@
 
         strong { color: var(--gold); font-weight: 700; }
 
-        /* Branding y UI Fixed */
-        .ms-logo {
-            position: fixed;
-            top: 25px; left: 25px;
-            z-index: 100;
-            width: 120px; height: auto; /* Ajuste para el nuevo logo */
-            filter: drop-shadow(0 0 10px rgba(0,0,0,0.8));
-            border-radius: 5px;
-        }
+        /* Branding unificado en .header */
 
         .audio-control {
             position: fixed;
@@ -222,8 +240,10 @@
 @media (max-width: 600px) { #btn-home { padding: 8px 12px; font-size: 10px; top: 10px; right: 10px; } }
 </style>
 
-    <!-- Logo nuevo enviado por JAD -->
-    <img src="assets/logo_ms_oficial.jpg" class="ms-logo" alt="Logo MS">
+    <header class="header">
+        <img src="../assets/logo_ms_oficial.jpg" class="ms-logo" alt="Logo MS">
+        <h1>Tomo 3: El Equilibrio Estático</h1>
+    </header>
     <div class="footer-sig">JADesarrollo ✦ MS</div>
 
     <div class="audio-control" id="audioBtn">

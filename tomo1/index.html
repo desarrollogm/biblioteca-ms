@@ -48,11 +48,48 @@
             opacity: 0.7;
         }
 
-        .tomo-logo {
-            width: 80px;
+        .ms-logo {
+            width: 120px;
             margin-bottom: 10px;
             filter: drop-shadow(0 0 5px rgba(0,0,0,0.5));
+            pointer-events: auto;
         }
+
+        .progress-nav {
+            position: fixed;
+            right: 20px; top: 50%;
+            transform: translateY(-50%);
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .dot {
+            width: 8px; height: 8px;
+            background: #333;
+            border-radius: 50%;
+            transition: all 0.4s;
+            cursor: pointer;
+        }
+
+        .dot.active {
+            background: var(--primary-red);
+            transform: scale(1.5);
+            box-shadow: 0 0 10px var(--primary-red);
+        }
+
+        .footer-sig {
+            position: fixed;
+            bottom: 20px; left: 25px;
+            font-family: 'Cinzel', serif;
+            font-size: 0.65rem;
+            color: grey;
+            letter-spacing: 2px;
+            z-index: 100;
+        }
+
+        /* Clase ms-logo ya definida arriba */
 
         .audio-control {
             position: fixed;
@@ -117,7 +154,7 @@
 
         .panel.active .panel-bg {
             transform: scale(1);
-            filter: brightness(0.35) contrast(1.8) grayscale(1) sepia(0.2) hue-rotate(-50deg); /* Efecto Noir con tinte rojo sutil */
+            filter: brightness(0.8) contrast(1.2);
         }
 
         /* Ambient Parallax Effect */
@@ -217,9 +254,12 @@
     <div class="watermark">JADesarrollo</div>
 
     <header class="header">
-        <img src="assets/logo_ms_oficial.jpg" class="tomo-logo" alt="Logo MS">
+        <img src="../assets/logo_ms_oficial.jpg" class="ms-logo" alt="Logo MS">
         <h1>Tomo 1: El Juego de las Pensiones</h1>
     </header>
+
+    <div class="progress-nav" id="progNav"></div>
+    <div class="footer-sig">JADesarrollo ✦ MS</div>
 
     <div class="audio-control" id="audioToggle">
         🔊 AUDIO: ACTIVAR
@@ -332,34 +372,35 @@
     </audio>
 
     <script>
-        // Intersection Observer para activar animaciones
+        // Control de Navegación y Observador
         const panels = document.querySelectorAll('.panel');
-        const options = {
-            threshold: 0.5
-        };
+        const dotsContainer = document.getElementById('progNav');
+        
+        panels.forEach((panel, i) => {
+            const dot = document.createElement('div');
+            dot.className = 'dot';
+            dot.addEventListener('click', () => {
+                panel.scrollIntoView({behavior: 'smooth'});
+            });
+            dotsContainer.appendChild(dot);
+        });
 
+        const dots = document.querySelectorAll('.dot');
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('active');
-                    updateProgress(entry.target.id);
+                    const index = Array.from(panels).indexOf(entry.target);
+                    dots.forEach((d, i) => d.classList.toggle('active', i === index));
                 } else {
                     entry.target.classList.remove('active');
                 }
             });
-        }, options);
+        }, { threshold: 0.5 });
 
-        panels.forEach(panel => observer.observe(panel));
+        panels.forEach(p => observer.observe(p));
 
-        // Progress Bar logic
-        function updateProgress(id) {
-            const num = parseInt(id.replace('p', ''));
-            const total = panels.length;
-            const percentage = (num / total) * 100;
-            document.getElementById('progress').style.width = percentage + '%';
-        }
-
-        // Audio Logic
+        // Control de Audio Estilo MS
         const audio = document.getElementById('bgMusic');
         const audioToggle = document.getElementById('audioToggle');
         let isPlaying = false;
