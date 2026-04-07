@@ -3,171 +3,400 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tomo 7: La Historia Predictiva y el Tablero de las Pensiones</title>
-    <meta name="description" content="Tomo 7 de la serie Fábricas de Ignorancia: Crisis de las pensiones, Historia Predictiva y Soberanía Magisterial 2025-2026.">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <title>Tomo 7: El Pliego de la Dignidad | Magisterio Sonorense</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Cinzel:wght@700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #050505;
+            --primary-red: #d32f2f;
+            --accent-gold: #ffc107;
+            --text-white: #f5f5f5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-white);
+            overflow-x: hidden;
+            scroll-snap-type: y mandatory;
+            height: 100vh;
+        }
+
+        .header {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 100;
+            pointer-events: none;
+        }
+
+        .header h1 {
+            font-family: 'Cinzel', serif;
+            font-weight: 900;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.8);
+            opacity: 0.7;
+        }
+
+        .audio-control {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 100;
+            background: rgba(0,0,0,0.6);
+            padding: 12px 24px;
+            border-radius: 50px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 900;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            color: var(--accent-gold);
+        }
+
+        .audio-control:hover {
+            border-color: var(--primary-red);
+            transform: scale(1.05);
+            background: rgba(211, 47, 47, 0.2);
+        }
+
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: var(--primary-red);
+            width: 0%;
+            z-index: 200;
+            box-shadow: 0 0 15px var(--primary-red);
+            transition: width 0.5s ease;
+        }
+
+        .panel {
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            scroll-snap-align: start;
+            overflow: hidden;
+        }
+
+        .panel-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: scale(1.15);
+            transition: transform 3s cubic-bezier(0.1, 0, 0.3, 1), filter 1s ease 2.2s;
+            filter: brightness(0.7) contrast(1.4) grayscale(1);
+        }
+
+        .panel.active .panel-bg {
+            transform: scale(1);
+            filter: brightness(0.35) contrast(1.8) grayscale(1) sepia(0.2) hue-rotate(-50deg);
+        }
+
+        .panel:nth-child(even) .panel-bg { transform-origin: top right; }
+        .panel:nth-child(odd) .panel-bg { transform-origin: bottom left; }
+
+        .panel-content {
+            position: relative;
+            z-index: 2;
+            width: 90%;
+            max-width: 650px;
+            padding: 40px;
+            background: linear-gradient(135deg, rgba(10, 10, 10, 0.9) 0%, rgba(30, 0, 0, 0.8) 100%);
+            border-left: 6px solid var(--primary-red);
+            backdrop-filter: blur(15px);
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1.5s cubic-bezier(0.19, 1, 0.22, 1) 1.5s;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+        }
+
+        .panel.active .panel-content {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .panel-number {
+            font-size: 0.85rem;
+            color: var(--primary-red);
+            font-weight: 900;
+            letter-spacing: 4px;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .panel-title {
+            font-family: 'Cinzel', serif;
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: var(--accent-gold);
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            line-height: 1.1;
+        }
+
+        .panel-text {
+            font-size: 1.15rem;
+            line-height: 1.7;
+            color: #ececec;
+            font-weight: 400;
+            font-style: italic;
+            border-top: 1px solid rgba(255,193,7,0.2);
+            padding-top: 20px;
+        }
+
+        .watermark {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            font-size: 0.8rem;
+            opacity: 0.8;
+            letter-spacing: 4px;
+            color: var(--accent-gold);
+            z-index: 100;
+            font-family: 'Cinzel', serif;
+            text-transform: uppercase;
+            text-shadow: 0 0 10px rgba(255, 193, 7, 0.5);
+            border-bottom: 2px solid var(--primary-red);
+            padding-bottom: 5px;
+        }
+
+        .btn-wa-tomo {
+            position: fixed;
+            top: 20px;
+            right: 150px;
+            z-index: 9999;
+            background: #25d366;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: bold;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            border: 2px solid white;
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+        }
+
+        .btn-home {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 9999;
+            background: #8b0000;
+            color: #d4af37;
+            padding: 10px 20px;
+            border: 2px solid #d4af37;
+            border-radius: 5px;
+            text-decoration: none;
+            font-family: 'Cinzel', serif;
+            font-weight: bold;
+            font-size: 14px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 600px) {
+            .btn-wa-tomo span { display: none; }
+            .btn-home { padding: 8px 12px; font-size: 10px; }
+            .panel-title { font-size: 1.5rem; }
+            .panel-text { font-size: 1rem; }
+        }
+    </style>
 </head>
 <body>
-    <header class="hero">
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <span class="tomo-badge">Tomo 7</span>
-            <h1>La Historia Predictiva y el Tablero de las Pensiones</h1>
-            <p class="subtitle">Análisis Estratégico de la Crisis 2025-2026 en el Magisterio de Sonora</p>
-            <button id="start-btn" class="cta-button">Comenzar el análisis estratégico <span>↓</span></button>
-        </div>
+    <div class="progress-bar" id="progress"></div>
+    <div class="watermark">JADesarrollo</div>
+
+    <header class="header">
+        <h1>Tomo 7: El Pliego de la Dignidad</h1>
     </header>
 
-    <main id="story-container">
-        <!-- Cap 1 -->
-        <section class="chapter fade-in" id="cap1">
-            <div class="chapter-content">
-                <div class="text-block">
-                    <h2>1. El Escenario de la Historia Predictiva</h2>
-                    <p>La "Historia Predictiva" —un marco analítico que fusiona la psicohistoria con la Teoría de Juegos— nos permite anticipar que el sistema de pensiones magisteriales en México se aproxima a un punto de ruptura crítico en el bienio 2025-2026. En este tablero, el Estado no es un observador pasivo, sino un "Game Master" que redefine las reglas para garantizar la estabilidad fiscal a costa de la seguridad social del docente. Comprender este ajedrez actuarial es el primer paso para una defensa soberana en Sonora.</p>
-                </div>
-                <div class="image-block">
-                    <img src="images/tomo7_cap1.png" alt="El tablero de las pensiones en México 2026" loading="lazy">
-                </div>
+    <a href="https://wa.me/526442313519" class="btn-wa-tomo">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="16" height="16" style="filter: brightness(0) invert(1);">
+        <span>Ayuda MS</span>
+    </a>
+    <a href="../index.html" class="btn-home">Regresar</a>
+
+    <div class="audio-control" id="audioToggle">🔊 AUDIO: ACTIVAR</div>
+
+    <main>
+        <!-- PORTADA -->
+        <section class="panel" id="p0">
+            <img src="assets/images/portada.png" alt="Portada" class="panel-bg">
+            <div class="panel-content">
+                <span class="panel-number">INICIO</span>
+                <h2 class="panel-title">El Pliego de la Dignidad</h2>
+                <p class="panel-text">"La ruta técnica hacia la soberanía magisterial. Una demanda de justicia que no acepta esperas."</p>
             </div>
         </section>
 
-        <!-- Cap 2 -->
-        <section class="chapter fade-in reverse" id="cap2">
-            <div class="chapter-content">
-                <div class="text-block">
-                    <h2>2. La Jugada del Estado: Suma Cero</h2>
-                    <p>En 2025, el gobierno federal impulsó decretos que, bajo una retórica de beneficio social, plantean un escenario de "suma cero". Al proponer jubilaciones anticipadas con montos cerrados de 16 mil pesos, se busca comprar la paz administrativa inmediata hipotecando la viabilidad futura del fondo. En la termodinámica fiscal del sistema, cada peso desviado de la infraestructura educativa para cubrir déficits pensionarios mal gestionados es una pérdida neta para el magisterio sonorense.</p>
-                </div>
-                <div class="image-block">
-                    <img src="images/tomo7_cap2.png" alt="La trampa de la jubilación anticipada y el gasto fiscal" loading="lazy">
-                </div>
+        <!-- CAP 1 -->
+        <section class="panel" id="p1">
+            <img src="assets/images/panel1.png" alt="Cap 1" class="panel-bg">
+            <div class="panel-content">
+                <span class="panel-number">CAPÍTULO I</span>
+                <h2 class="panel-title">Historia Predictiva</h2>
+                <p class="panel-text">"Nuestros datos revelan un futuro que la autoridad pretende ignorar. La auditoría es la clave."</p>
             </div>
         </section>
 
-        <!-- Cap 3 -->
-        <section class="chapter fade-in" id="cap3">
-            <div class="chapter-content">
-                <div class="text-block">
-                    <h2>3. Fragilidad Intergeneracional</h2>
-                    <p>El sistema está generando una fractura entre generaciones de docentes. Los nuevos ingresos, sujetos a los regímenes de cuentas individuales (AFORES) de la Ley 2007, enfrentan una vejez precaria, mientras que los regímenes anteriores se ven amenazados por la falta de sustentabilidad del fondo común. Esta erosión de la "Creencia Común" destruye la solidaridad gremial. Si el magisterio permite que el Estado divida sus intereses por edad, la "Fábrica de Ignorancia" administrativa habrá ganado una batalla decisiva.</p>
-                </div>
-                <div class="image-block">
-                    <img src="images/tomo7_cap3.png" alt="Hipotecando el futuro de las nuevas generaciones" loading="lazy">
-                </div>
+        <!-- CAP 2 -->
+        <section class="panel" id="p2">
+            <img src="assets/images/panel2.png" alt="Cap 2" class="panel-bg">
+            <div class="panel-content">
+                <span class="panel-number">CAPÍTULO II</span>
+                <h2 class="panel-title">El Golpe de la UMA</h2>
+                <p class="panel-text">"Cuando el retiro se convierte en una cifra devaluada, el magisterio se levanta con razones."</p>
             </div>
         </section>
 
-        <!-- Cap 4 -->
-        <section class="chapter fade-in reverse" id="cap4">
-            <div class="chapter-content">
-                <div class="text-block">
-                    <h2>4. La Captura del Corporativismo</h2>
-                    <p>El charrismo sindical, personificado en la dirigencia nacional del SNTE y sus réplicas estatales como la Sección 28 en Sonora, funciona como un aparato de contención. Su estrategia ha sido históricamente la "captura del aula" para fines político-partidistas. Al alinearse con la autoridad federal a cambio de prebendas, el sindicato oficialista deja de ser un defensor de los derechos para convertirse en el gestor de la sumisión docente. La liberación de las bases exige desmantelar esta mediación corrupta.</p>
-                </div>
-                <div class="image-block">
-                    <img src="images/tomo7_cap4.png" alt="El control vertical del charrismo sindical" loading="lazy">
-                </div>
+        <!-- CAP 3 -->
+        <section class="panel" id="p3">
+            <img src="assets/images/panel3.png" alt="Cap 3" class="panel-bg">
+            <div class="panel-content">
+                <span class="panel-number">CAPÍTULO III</span>
+                <h2 class="panel-title">Jubilados en Lucha</h2>
+                <p class="panel-text">"Nuestros veteranos no son el pasado, son el escudo moral que protege el futuro de los noveles."</p>
             </div>
         </section>
 
-        <!-- Cap 5 -->
-        <section class="chapter fade-in" id="cap5">
-            <div class="chapter-content">
-                <div class="text-block">
-                    <h2>5. El Laberinto de la Alquimia Actuarial</h2>
-                    <p>Las recientes propuestas para incrementar la aportación patronal al 13.87% son representaciones de una "alquimia actuarial" que simula soluciones sin abordar la raíz: la abrogación de la Ley del ISSSTE de 2007. Se negocian porcentajes marginales mientras se mantienen acuerdos con fondos de inversión que lucran con el ahorro magisterial. Para el MS, aceptar estas migajas sin una reforma estructural profunda equivale a ceder la soberanía sobre el tiempo de vida dedicado al servicio educativo.</p>
-                </div>
-                <div class="image-block">
-                    <img src="images/tomo7_cap5.png" alt="Los negocios financieros detrás del retiro docente" loading="lazy">
-                </div>
+        <!-- CAP 4 -->
+        <section class="panel" id="p4">
+            <img src="assets/images/panel4.png" alt="Cap 4" class="panel-bg">
+            <div class="panel-content">
+                <span class="panel-number">CAPÍTULO IV</span>
+                <h2 class="panel-title">El Rescate del FPIP</h2>
+                <p class="panel-text">"Blindar el fondo de pensiones hoy es asegurar que mañana no falte el pan en ninguna mesa docente."</p>
             </div>
         </section>
 
-        <!-- Cap 6 -->
-        <section class="chapter fade-in reverse" id="cap6">
-            <div class="chapter-content">
-                <div class="text-block">
-                    <h2>6. El Dilema del Desafío (Game of Chicken)</h2>
-                    <p>En la mesa de negociación, el magisterio se enfrenta a un "Juego del Cobarde" (Chicken Match). La resistencia magisterial, a través de la CNTE y las bases sonorenses, ha planteado una postura de no retroceso, advirtiendo incluso la necesidad de boicots estratégicos a eventos internacionales si no hay justicia laboral. En esta colisión de voluntades, el Estado apuesta por el desgaste físico del docente, mientras que nosotros apostamos por la firmeza de la conciencia colectiva.</p>
-                </div>
-                <div class="image-block">
-                    <img src="images/tomo7_cap6.png" alt="Resistencia magisterial frente al Mundial 2026" loading="lazy">
-                </div>
+        <!-- CAP 5 -->
+        <section class="panel" id="p5">
+            <img src="assets/images/panel5.png" alt="Cap 5" class="panel-bg">
+            <div class="panel-content">
+                <span class="panel-number">CAPÍTULO V</span>
+                <h2 class="panel-title">Bóveda de Resiliencia</h2>
+                <p class="panel-text">"Donde guardamos no solo recursos, sino la esperanza técnica de una victoria colectiva."</p>
             </div>
         </section>
 
-        <!-- Cap 7 -->
-        <section class="chapter fade-in" id="cap7">
-            <div class="chapter-content">
-                <div class="text-block">
-                    <h2>7. Estrategia de Información Perfecta</h2>
-                    <p>A diferencia de épocas pasadas, el magisterio sonorense cuenta hoy con acceso a información técnica que neutraliza el engaño mediático institucional. La resistencia dinámica implica anticipar los movimientos del "Game Master" mediante el análisis presupuestal real. Si el Estado ofrece beneficios cosméticos, nuestra respuesta debe ser la auditoría constante. No estamos solicitando concesiones; estamos exigiendo la restitución de la certidumbre en el retiro que ya ha sido financiado por nuestro trabajo.</p>
-                </div>
-                <div class="image-block">
-                    <img src="images/tomo7_cap7.png" alt="Información perfecta y estrategia de resistencia" loading="lazy">
-                </div>
+        <!-- CAP 6 -->
+        <section class="panel" id="p6">
+            <img src="assets/images/panel6.png" alt="Cap 6" class="panel-bg">
+            <div class="panel-content">
+                <span class="panel-number">CAPÍTULO VI</span>
+                <h2 class="panel-title">Transparencia Radical</h2>
+                <p class="panel-text">"Bajo la luz de la verdad, las sombras del viejo sistema comienzan a disiparse."</p>
             </div>
         </section>
 
-        <!-- Cap 8 -->
-        <section class="chapter fade-in reverse" id="cap8">
-            <div class="chapter-content">
-                <div class="text-block">
-                    <h2>8. El Laberinto del Presupuesto Estatal</h2>
-                    <p>Para 2026, Sonora proyecta un presupuesto educativo histórico de más de 30 mil millones de pesos. Sin embargo, en un sistema de baja cohesión social (falta de Asabiyyah), el capital financiero se disuelve en la ineficiencia administrativa y el clientelismo sindical. El magisterio debe velar porque estos recursos se orienten a la soberanía pedagógica y tecnológica —especialmente ante los nuevos retos del Ciberbachillerato e IA— y no a fortalecer la burocracia estatal.</p>
-                </div>
-                <div class="image-block">
-                    <img src="images/tomo7_cap8.png" alt="Presupuesto histórico y soberanía tecnológica sonorense" loading="lazy">
-                </div>
+        <!-- CAP 7 -->
+        <section class="panel" id="p7">
+            <img src="assets/images/panel7.png" alt="Cap 7" class="panel-bg">
+            <div class="panel-content">
+                <span class="panel-number">CAPÍTULO VII</span>
+                <h2 class="panel-title">Fin de la Opacidad</h2>
+                <p class="panel-text">"Deducciones claras. Cuentas sanas. Un sindicato que sirve al maestro, no al burócrata."</p>
             </div>
         </section>
 
-        <!-- Cap 9 -->
-        <section class="chapter fade-in" id="cap9">
-            <div class="chapter-content">
-                <div class="text-block">
-                    <h2>9. Praxis y Territorialización</h2>
-                    <p>La implementación de la Nueva Escuela Mexicana (NEM) en el territorio sonorense requiere una praxis que rompa con la estandarización fabril. Territorializar el aprendizaje significa que el aula deje de ser un espacio de simulación para convertirse en un nodo de resolución de problemas comunitarios. El docente debe apropiarse de la autonomía curricular como una herramienta de resistencia, transformando la técnica en conocimiento que sirva auténticamente al desarrollo de su comunidad.</p>
-                </div>
-                <div class="image-block">
-                    <img src="images/tomo7_cap9.png" alt="Territorialización pedagógica y la Nueva Escuela Mexicana" loading="lazy">
-                </div>
+        <!-- CAP 8 -->
+        <section class="panel" id="p8">
+            <img src="assets/images/panel8.png" alt="Cap 8" class="panel-bg">
+            <div class="panel-content">
+                <span class="panel-number">CAPÍTULO VIII</span>
+                <h2 class="panel-title">Cooperativismo MS</h2>
+                <p class="panel-text">"La unión de esfuerzos individuales genera la potencia de la soberanía financiera magisterial."</p>
             </div>
         </section>
 
-        <!-- Cap 10 -->
-        <section class="chapter fade-in reverse" id="cap10">
-            <div class="chapter-content">
-                <div class="text-block">
-                    <h2>10. El Horizonte de la Soberanía</h2>
-                    <p>El análisis concluye con una premisa innegociable: la pensión docente es la compensación diferida por una vida de servicio, y su defensa es un acto de soberanía intelectual. Mediante la inducción hacia atrás, hemos identificado que solo la coordinación desde las bases permitirá alterar el destino de precariedad que otros han diseñado para nosotros. El magisterio sonorense está listo para dar el paso definitivo: dejar de ser empleados de la fábrica para ser arquitectos de su propia libertad.</p>
-                </div>
-                <div class="image-block">
-                    <img src="images/tomo7_cap10.png" alt="Jaque mate a la privatización y victoria magisterial" loading="lazy">
-                </div>
+        <!-- CAP 9 -->
+        <section class="panel" id="p9">
+            <img src="assets/images/panel9.png" alt="Cap 9" class="panel-bg">
+            <div class="panel-content">
+                <span class="panel-number">CAPÍTULO IX</span>
+                <h2 class="panel-title">Aula de la Victoria</h2>
+                <p class="panel-text">"La lucha se enseña con el ejemplo. Cada maestro es un líder en su propio territorio."</p>
             </div>
         </section>
 
-        <footer class="footer">
-            <div class="footer-content">
-                <h3>FIN DE LA SERIE: TOMO 7</h3>
-                <p>Historia Predictiva y Soberanía de las Pensiones - Magisterio Sonorense</p>
-                <a href="../ControlPanel_Fabricas/index.html" class="back-to-menu">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <rect x="3" y="3" width="7" height="7"></rect>
-                        <rect x="14" y="3" width="7" height="7"></rect>
-                        <rect x="14" y="14" width="7" height="7"></rect>
-                        <rect x="3" y="14" width="7" height="7"></rect>
-                    </svg>
-                    Volver al Panel
-                </a>
+        <!-- CAP 10 -->
+        <section class="panel" id="p10">
+            <img src="assets/images/panel10.png" alt="Cap 10" class="panel-bg">
+            <div class="panel-content">
+                <span class="panel-number">CAPÍTULO X</span>
+                <h2 class="panel-title">La Firma del Destino</h2>
+                <p class="panel-text">"El pliego ha sido entregado. De aquí en adelante, el destino lo escribimos nosotros. ¡CONTINUARÁ!"</p>
             </div>
-        </footer>
+        </section>
     </main>
 
-    <div id="watermark">JADesarrollo</div>
-    <script src="script.js"></script>
+    <audio id="bgMusic" loop>
+        <source src="assets/audio/bg.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        const panels = document.querySelectorAll('.panel');
+        const options = { threshold: 0.5 };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    updateProgress(entry.target.id);
+                } else {
+                    entry.target.classList.remove('active');
+                }
+            });
+        }, options);
+
+        panels.forEach(panel => observer.observe(panel));
+
+        function updateProgress(id) {
+            const num = parseInt(id.replace('p', ''));
+            const total = panels.length - 1;
+            const percentage = (num / total) * 100;
+            document.getElementById('progress').style.width = percentage + '%';
+        }
+
+        const audio = document.getElementById('bgMusic');
+        const audioToggle = document.getElementById('audioToggle');
+        let isPlaying = false;
+
+        audioToggle.addEventListener('click', () => {
+            if (isPlaying) {
+                audio.pause();
+                audioToggle.textContent = '🔇 AUDIO: APAGADO';
+            } else {
+                audio.play();
+                audioToggle.textContent = '🔊 AUDIO: ENCENDIDO';
+            }
+            isPlaying = !isPlaying;
+        });
+    </script>
 </body>
 </html>

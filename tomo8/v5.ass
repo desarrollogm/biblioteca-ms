@@ -1,0 +1,17 @@
+[Script Info]
+Title: Tomo 8 Cap 5 - Zona Económica III
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Default,Outfit,65,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,1,0,0,0,100,100,0,0,1,2,2,2,100,100,200,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.50,0:00:04.50,Default,,0,0,0,,{\fad(500,500)}La Zona Económica III no es un privilegio geográfico.
+Dialogue: 0,0:00:04.70,0:00:07.50,Default,,0,0,0,,{\fad(300,300)}Es justicia histórica.
+Dialogue: 0,0:00:07.70,0:00:12.00,Default,,0,0,0,,{\fad(300,300)}Durante décadas, el magisterio ha sostenido el sistema con salarios de zona dos.
+Dialogue: 0,0:00:12.20,0:00:15.50,Default,,0,0,0,,{\fad(300,300)}Mientras el costo de vida es de zona tres.
+Dialogue: 0,0:00:15.70,0:00:20.00,Default,,0,0,0,,{\fad(300,300)}Es hora de que el salario refleje la dignidad de nuestra labor.

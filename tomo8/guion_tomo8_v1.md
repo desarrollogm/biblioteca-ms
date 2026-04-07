@@ -45,7 +45,62 @@
 **AUDIO (Ambos en Unísono - El Profr. Kristina cierra)**:
 "El jaque mate de las pensiones no es el fin del juego... es el inicio de nuestra libertad. Magisterio Sonorense: Cohesión, Territorio y Futuro."
 
-**Texto en Pantalla**:
-**TOMO 8: LA EDUCACIÓN EN MÉXICO Y SUS PENSIONES**
+---
+
+## ESCENA 5: ZONA ECONÓMICA III (JUSTICIA SALARIAL)
+
+**Visual**: Primer plano de una boleta de pago (talón de cheque) antiguo vs un gráfico digital proyectado que muestra el ajuste del 100% de la compensación. El texto "Zona III" brilla en oro sobre un mapa de Sonora. 
+
+**AUDIO (Profr. Kristina)**: 
+"La **Zona Económica III** no es un privilegio geográfico, es justicia histórica. Durante décadas, el magisterio sonorense ha sostenido el sistema con salarios de zona dos mientras el costo de vida es de zona tres. Es hora de que el salario refleje la dignidad de nuestra labor."
+
+---
+
+## ESCENA 6: EL ACUERDO GENERACIONAL (FPIP)
+
+**Visual**: Una mano joven (maestro novel) y una mano con experiencia (maestro jubilado) depositando juntas una moneda de oro simbólica en una bóveda transparente marcada como "FPIP". Al fondo, la escuela de los sueños del MS.
+
+**AUDIO (Mtra. Paloma)**: 
+"El **Fondo de Pensión Intergeneracional Protegida** es el escudo que nos libera de la UMA. No es una promesa política, es una estructura blindada por la base. Hoy sembramos la pensión que cosecharán quienes apenas están entrando al aula."
+
+---
+
+## ESCENA 7: LA TOMA DEL DESTINO
+
+**Visual**: Toma panorámica de la Plaza de los 100 Años en Hermosillo. Miles de maestros vestidos de blanco, rojo y negro. El sol se pone, iluminando la multitud con un resplandor dorado. El cielo está despejado, simbolizando claridad y victoria.
+
+**AUDIO (Ambos)**: 
+"Cuando la base toma conciencia de su poder técnico y político, el destino deja de ser una incertidumbre para convertirse en un mandato. La Auditoría de Fondos ha comenzado. Nada se oculta bajo la luz del MS."
+
+---
+
+## ESCENA 8: EL JAQUE MATE FINAL
+
+**Visual**: El tablero de ajedrez ahora está vacío de piezas negras. Solo quedan las piezas doradas organizadas en una formación de protección. El Rey Negro ha sido reemplazado por un libro abierto: "El Pliego de la Dignidad".
+
+**AUDIO (Profr. Kristina)**: 
+"El Jaque Mate no fue para destruir a nadie, sino para salvar nuestra jubilación. Tablero limpio. Transparencia total. El Magisterio Sonorense ha ganado el derecho a un futuro digno."
+
+---
+
+## ESCENA 9: LA VICTORIA DE LA UNIDAD
+
+**Visual**: Maestros celebrando con júbilo, abrazos y banderas del MS en alto. Rostros de esperanza y determinación. El logotipo del MS aparece en pantalla con una animación de destello metálico oro.
+
+**AUDIO (Mtra. Paloma)**: 
+"Esta victoria no tiene dueños, solo protagonistas: tú, yo, y cada maestro que decidió no bajar la guardia. La unidad técnica es nuestra mayor fortaleza."
+
+---
+
+## ESCENA 10: EL GUARDIÁN DEL FUTURO
+
+**Visual**: Un maestro de pie frente al horizonte, mirando hacia adelante. Varios niños (alumnos) corren hacia la escuela. El Profe-Bot aparece a su lado como un consultor digital. Fundido a negro con el logo del Magisterio Sonorense.
+
+**AUDIO (Profr. Kristina - Cierre Final)**: 
+"Hoy cerramos el Tomo Ocho, pero la historia de nuestra dignidad apenas inicia. Soy el Profr. Kristina, y junto a la Mtra. Paloma, seguiremos vigilando que el FPIP nunca deje de ser el guardián de tus sueños. Magisterio Sonorense: ¡Presente!"
+
+---
+
+**FIN DEL TOMO 8: EL JAQUE MATE DE LAS PENSIONES**
 *Producido por el Magisterio Sonorense en Colaboración con NotebookLM & Gemini*
-**V4 PRO CINEMATIC**
+**V4 PRO CINEMATIC - EDICIÓN DE COLECCIÓN**
