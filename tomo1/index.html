@@ -48,6 +48,12 @@
             opacity: 0.7;
         }
 
+        .tomo-logo {
+            width: 80px;
+            margin-bottom: 10px;
+            filter: drop-shadow(0 0 5px rgba(0,0,0,0.5));
+        }
+
         .audio-control {
             position: fixed;
             bottom: 20px;
@@ -105,7 +111,7 @@
             height: 100%;
             object-fit: cover;
             transform: scale(1.15);
-            transition: transform 3s cubic-bezier(0.1, 0, 0.3, 1), filter 1s ease 2.2s;
+            transition: transform 3s cubic-bezier(0.1, 0, 0.3, 1), filter 1s ease 4.5s;
             filter: brightness(0.7) contrast(1.4) grayscale(1);
         }
 
@@ -133,7 +139,7 @@
             backdrop-filter: blur(15px);
             opacity: 0;
             transform: translateY(50px);
-            transition: all 1.5s cubic-bezier(0.19, 1, 0.22, 1) 2.2s;
+            transition: all 1.5s cubic-bezier(0.19, 1, 0.22, 1) 4.5s;
             box-shadow: 0 25px 50px rgba(0,0,0,0.5);
         }
 
@@ -211,6 +217,7 @@
     <div class="watermark">JADesarrollo</div>
 
     <header class="header">
+        <img src="assets/logo_ms_oficial.jpg" class="tomo-logo" alt="Logo MS">
         <h1>Tomo 1: El Juego de las Pensiones</h1>
     </header>
 
