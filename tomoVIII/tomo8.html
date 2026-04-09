@@ -17,6 +17,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Tomo VIII: El Jaque Mate | Magisterio Sonorense">
     <meta name="twitter:image" content="https://desarrollogm.github.io/biblioteca-ms/tomoVIII/images/og_image.png">
+    <link rel="icon" type="image/png" href="../assets/favicon-ms.png">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Cinzel:wght@700;900&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -300,7 +301,7 @@
         <h1>Tomo 8: El Jaque Mate</h1>
     </header>
 
-    <div class="audio-control" id="audioToggle">🔊 AUDIO: ACTIVAR</div>
+    <div class="audio-control" id="audioToggle">🔊 ACTIVAR HIMNO MS</div>
 
     <main>
         <!-- PORTADA -->
@@ -415,7 +416,7 @@
     </main>
 
     <audio id="bgMusic" loop>
-        <source src="assets/audio/bg.mp3" type="audio/mpeg">
+        <source src="assets/audio/himno_ms.mp3" type="audio/mpeg">
     </audio>
 
     <script>
@@ -453,10 +454,10 @@
         audioToggle.addEventListener('click', () => {
             if (isPlaying) {
                 audio.pause();
-                audioToggle.textContent = '🔇 AUDIO: APAGADO';
+                audioToggle.textContent = '🔇 HIMNO: APAGADO';
             } else {
                 audio.play();
-                audioToggle.textContent = '🔊 AUDIO: ENCENDIDO';
+                audioToggle.textContent = '🔊 HIMNO: ENCENDIDO';
             }
             isPlaying = !isPlaying;
         });
