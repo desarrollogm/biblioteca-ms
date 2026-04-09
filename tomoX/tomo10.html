@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tomo X: La Revolución del Magisterio | Biblioteca Digital MS</title>
+    <meta name="description" content="El Algoritmo Político vs La Revolución del Magisterio. Teoría de Juegos y Memoria Histórica en la lucha de Sonora.">
+    <meta property="og:title" content="Tomo X: La Revolución del Magisterio | Biblioteca Digital MS">
+    <meta property="og:description" content="El capítulo final de la saga cinematográfica Fábricas de Ignorancia. La victoria de la base.">
+    <meta property="og:image" content="https://desarrollogm.github.io/biblioteca-ms/tomoX/assets/images/portada.png">
+    <meta property="og:url" content="https://desarrollogm.github.io/biblioteca-ms/tomoX/tomo10.html">
+    <meta property="og:type" content="article">
+    <link rel="icon" type="image/png" href="../assets/favicon-ms.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Cinzel:wght@700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #050505;
+            --primary-red: #d32f2f;
+            --accent-gold: #ffc107;
+            --text-white: #f5f5f5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-white);
+            overflow-x: hidden;
+            scroll-snap-type: y mandatory;
+            height: 100vh;
+        }
+
+        .header {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 100;
+            pointer-events: none;
+        }
+
+        .header h1 {
+            font-family: 'Cinzel', serif;
+            font-weight: 900;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.8);
+            opacity: 0.7;
+        }
+
+        .ms-logo {
+            width: 120px;
+            margin-bottom: 10px;
+            filter: drop-shadow(0 0 5px rgba(0,0,0,0.5));
+            pointer-events: auto;
+        }
+
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: var(--primary-red);
+            width: 0%;
+            z-index: 200;
+            box-shadow: 0 0 15px var(--primary-red);
+            transition: width 0.5s ease;
+        }
+
+        .panel {
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            scroll-snap-align: start;
+            overflow: hidden;
+        }
+
+        .panel-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: scale(1.15);
+            transition: transform 3s cubic-bezier(0.1, 0, 0.3, 1), filter 1s ease;
+            filter: brightness(0.5) contrast(1.4);
+        }
+
+        .panel.active .panel-bg {
+            transform: scale(1);
+            filter: brightness(0.7) contrast(1.2);
+        }
+
+        .panel-content {
+            position: relative;
+            z-index: 2;
+            width: 90%;
+            max-width: 650px;
+            padding: 40px;
+            background: linear-gradient(135deg, rgba(10, 10, 10, 0.9) 0%, rgba(30, 0, 0, 0.8) 100%);
+            border-left: 6px solid var(--primary-red);
+            backdrop-filter: blur(15px);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s ease 0.5s;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+        }
+
+        .panel.active .panel-content {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .panel-number {
+            font-size: 0.8rem;
+            color: var(--primary-red);
+            font-weight: 900;
+            letter-spacing: 4px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .panel-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--accent-gold);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            line-height: 1.2;
+        }
+
+        .panel-text {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: #ececec;
+            font-weight: 400;
+            font-style: italic;
+        }
+
+        .progress-nav {
+            position: fixed;
+            right: 20px; top: 50%;
+            transform: translateY(-50%);
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .dot {
+            width: 8px; height: 8px;
+            background: #444;
+            border-radius: 50%;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .dot.active {
+            background: var(--primary-red);
+            transform: scale(1.4);
+            box-shadow: 0 0 10px var(--primary-red);
+        }
+
+        .btn-home {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 9999;
+            background: #8b0000;
+            color: #d4af37;
+            padding: 10px 20px;
+            border: 2px solid #d4af37;
+            border-radius: 5px;
+            text-decoration: none;
+            font-family: 'Cinzel', serif;
+            font-weight: bold;
+            font-size: 14px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+
+        @media (max-width: 600px) {
+            .panel-content { padding: 25px; }
+            .panel-title { font-size: 1.4rem; }
+            .panel-text { font-size: 0.95rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-bar" id="progress"></div>
+    <header class="header">
+        <img src="../assets/logo_ms_oficial.jpg" class="ms-logo" alt="Logo MS">
+        <h1>Tomo X: La Revolución del Magisterio</h1>
+    </header>
+
+    <div class="progress-nav" id="progNav"></div>
+    <a href="../index.html" class="btn-home">Regresar</a>
+
+    <main>
+        <!-- PORTADA -->
+        <section class="panel" id="p0">
+            <img src="assets/images/portada.png" alt="Portada" class="panel-bg">
+            <div class="panel-content">
+                <span class="panel-number">FINAL DE SAGA</span>
+                <h2 class="panel-title">La Revolución del Magisterio y el Algoritmo Político</h2>
+                <p class="panel-text">"El enfrentamiento final entre la ingeniería social del Estado y la memoria histórica de las bases educadoras."</p>
+            </div>
+        </section>
+
+        <!-- CAP 1 -->
+        <section class="panel" id="p1">
+            <img src="assets/images/panel1.png" alt="Cap 1" class="panel-bg">
+            <div class="panel-content">
+                <span class="panel-number">CAPÍTULO I</span>
+                <h2 class="panel-title">La Ruta de Optimización</h2>
+                <p class="panel-text">"Ellos creen que el azar decide nuestro destino. Pero el Estado no juega a los dados; juega a la Programación Dinámica."</p>
+            </div>
+        </section>
+
+        <!-- CAP 2 -->
+        <section class="panel" id="p2">
+            <img src="assets/images/panel2.png" alt="Cap 2" class="panel-bg">
+            <div class="panel-content">
+                <span class="panel-number">CAPÍTULO II</span>
+                <h2 class="panel-title">La Montaña Roja</h2>
+                <p class="panel-text">"El algoritmo tiene un punto ciego: la Memoria Histórica. Reclamamos la herencia de dignidad de Othón Salazar para Sonora."</p>
+            </div>
+        </section>
+
+        <!-- CAP 3 -->
+        <section class="panel" id="p3">
+            <img src="assets/images/panel3.png" alt="Cap 3" class="panel-bg">
+            <div class="panel-content">
+                <span class="panel-number">CAPÍTULO III</span>
+                <h2 class="panel-title">Asimetría Informativa</h2>
+                <p class="panel-text">"Ganan cuando saben todo de nosotros y nosotros no sabemos nada de ellos. Romper la asimetría es el primer paso de la revolución."</p>
+            </div>
+        </section>
+
+        <!-- CAP 4 -->
+        <section class="panel" id="p4">
+            <img src="assets/images/panel4.png" alt="Cap 4" class="panel-bg">
+            <div class="panel-content">
+                <span class="panel-number">CAPÍTULO IV</span>
+                <h2 class="panel-title">El Charrismo Algorítmico</h2>
+                <p class="panel-text">"El sindicato ya no es un líder, es un cortafuegos digital. Una variable de ajuste para filtrar nuestras demandas genuinas."</p>
+            </div>
+        </section>
+
+        <!-- CAP 5 -->
+        <section class="panel" id="p5">
+            <img src="assets/images/panel5.png" alt="Cap 5" class="panel-bg">
+            <div class="panel-content">
+                <span class="panel-number">CAPÍTULO V</span>
+                <h2 class="panel-title">Dilema del Prisionero</h2>
+                <p class="panel-text">"Nos segmentan para que la cooperación parezca arriesgada. Pero nuestra fuerza es indivisible: activos y jubilados en un solo frente."</p>
+            </div>
+        </section>
+
+        <!-- CAP 6 -->
+        <section class="panel" id="p6">
+            <img src="assets/images/panel6.png" alt="Cap 6" class="panel-bg">
+            <div class="panel-content">
+                <span class="panel-number">CAPÍTULO VI</span>
+                <h2 class="panel-title">Tit for Tat</h2>
+                <p class="panel-text">"A cada protesta responden con una sanción. Es su lógica de castigo inmediato, diseñada para condicionar nuestra obediencia a través del miedo."</p>
+            </div>
+        </section>
+
+        <!-- CAP 7 -->
+        <section class="panel" id="p7">
+            <img src="assets/images/panel7.png" alt="Cap 7" class="panel-bg">
+            <div class="panel-content">
+                <span class="panel-number">CAPÍTULO VII</span>
+                <h2 class="panel-title">Error del Sistema</h2>
+                <p class="panel-text">"La conciencia no es programable. Cuando el maestro genera su propia información, el algoritmo del Estado entra en conflicto."</p>
+            </div>
+        </section>
+
+        <!-- CAP 8 -->
+        <section class="panel" id="p8">
+            <img src="assets/images/panel8.png" alt="Cap 8" class="panel-bg">
+            <div class="panel-content">
+                <span class="panel-number">CAPÍTULO VIII</span>
+                <h2 class="panel-title">1958 vs 2026</h2>
+                <p class="panel-text">"Los rostros del poder cambian, pero su represión es la misma. De Díaz Ordaz a hoy, la respuesta siempre es el garrote ante la razón educadora."</p>
+            </div>
+        </section>
+
+        <!-- CAP 9 -->
+        <section class="panel" id="p9">
+            <img src="assets/images/panel9.png" alt="Cap 9" class="panel-bg">
+            <div class="panel-content">
+                <span class="panel-number">CAPÍTULO IX</span>
+                <h2 class="panel-title">Hackeo al Equilibrio</h2>
+                <p class="panel-text">"Ya no es óptimo quedarse callado. El nuevo equilibrio es la Acción Colectiva Sincronizada que rompe su casino de ignorancia."</p>
+            </div>
+        </section>
+
+        <!-- CAP 10 -->
+        <section class="panel" id="p10">
+            <img src="assets/images/panel10.png" alt="Cap 10" class="panel-bg">
+            <div class="panel-content">
+                <span class="panel-number">CAPÍTULO X</span>
+                <h2 class="panel-title">Revolución Sincronizada</h2>
+                <p class="panel-text">"¡Jaque Mate al Olvido! El algoritmo ha colapsado. La verdad del magisterio en movimiento clausura para siempre la Fábrica de Ignorancia."</p>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const panels = document.querySelectorAll('.panel');
+        const dotsContainer = document.getElementById('progNav');
+        const progress = document.getElementById('progress');
+        
+        panels.forEach((panel, i) => {
+            const dot = document.createElement('div');
+            dot.className = 'dot';
+            dot.addEventListener('click', () => {
+                panel.scrollIntoView({behavior: 'smooth'});
+            });
+            dotsContainer.appendChild(dot);
+        });
+
+        const dots = document.querySelectorAll('.dot');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    const index = Array.from(panels).indexOf(entry.target);
+                    dots.forEach((d, i) => d.classList.toggle('active', i === index));
+                    const percent = (index / (panels.length - 1)) * 100;
+                    progress.style.width = percent + '%';
+                } else {
+                    entry.target.classList.remove('active');
+                }
+            });
+        }, { threshold: 0.5 });
+
+        panels.forEach(p => observer.observe(p));
+    </script>
+</body>
+</html>
