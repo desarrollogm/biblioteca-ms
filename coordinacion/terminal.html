@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terminal de Inteligencia MS - Acceso Restringido</title>
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --term-green: #00ff41;
+            --term-red: #ff3e3e;
+            --term-bg: #0a0a0a;
+            --term-dim: #008f11;
+        }
+
+        body {
+            background-color: var(--term-bg);
+            color: var(--term-green);
+            font-family: 'Share+Tech+Mono', monospace;
+            margin: 0;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            border: 1px solid var(--term-dim);
+            padding: 20px;
+            box-shadow: 0 0 20px rgba(0, 255, 65, 0.1);
+        }
+
+        .header {
+            text-align: center;
+            border-bottom: 2px solid var(--term-green);
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .warning-box {
+            border: 1px solid var(--term-red);
+            color: var(--term-red);
+            padding: 15px;
+            margin-bottom: 30px;
+            animation: blink 2s infinite;
+        }
+
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0.7; }
+            100% { opacity: 1; }
+        }
+
+        h2 {
+            color: #fff;
+            border-left: 5px solid var(--term-green);
+            padding-left: 10px;
+            font-size: 1.2rem;
+            margin-top: 40px;
+        }
+
+        .intel-item {
+            margin-bottom: 25px;
+            background: rgba(0, 255, 65, 0.05);
+            padding: 15px;
+            border-radius: 4px;
+        }
+
+        .label {
+            font-weight: bold;
+            color: #fff;
+            display: block;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        .meat {
+            color: #ccc;
+            line-height: 1.6;
+        }
+
+        .highlight {
+            color: var(--term-green);
+            font-weight: bold;
+        }
+
+        .danger {
+            color: var(--term-red);
+            font-weight: bold;
+        }
+
+        .footer {
+            margin-top: 50px;
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--term-dim);
+            border-top: 1px solid var(--term-dim);
+            padding-top: 20px;
+        }
+
+        /* Password Overlay */
+        #lock-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--term-bg);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+        }
+
+        #lock-screen input {
+            background: transparent;
+            border: 1px solid var(--term-green);
+            color: var(--term-green);
+            padding: 10px;
+            font-family: inherit;
+            font-size: 1.2rem;
+            text-align: center;
+            width: 250px;
+            outline: none;
+        }
+
+        #lock-screen p {
+            margin-bottom: 20px;
+        }
+
+        .btn-access {
+            margin-top: 20px;
+            background: var(--term-green);
+            color: #000;
+            border: none;
+            padding: 10px 30px;
+            font-family: inherit;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .btn-access:hover {
+            background: #fff;
+        }
+
+        #content {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="lock-screen">
+        <p>[SISTEMA DE SEGURIDAD MAGISTERIAL]</p>
+        <p>INGRESE LLAVE DE COORDINACIÓN:</p>
+        <input type="password" id="passkey" autocomplete="off">
+        <button class="btn-access" onclick="validate()">ACCEDER</button>
+        <p id="error-msg" style="color: var(--term-red); margin-top: 10px; display: none;">LLAVE INCORRECTA. ACCESO DENEGADO.</p>
+    </div>
+
+    <div id="content" class="container">
+        <div class="header">
+            <h1>Dossier: Operación Carne Asada</h1>
+            <p>Clasificación: CONFIDENCIAL | Nivel: COORDINADOR</p>
+        </div>
+
+        <div class="warning-box">
+            ADVERTENCIA: Esta información contiene hallazgos de OSINT sobre el despojo financiero programado para 2026. Prohibida su difusión fuera de los círculos de confianza del Magisterio Sonorense.
+        </div>
+
+        <h2>01. El Marco Legal (Iniciativa 2026)</h2>
+        <div class="intel-item">
+            <span class="label">Objetivo de la Ley:</span>
+            <p class="meat">La "Ley para el Fomento de la Inversión en Infraestructura Estratégica" presentada en la Gaceta Parlamentaria (Marzo 2026) busca facultar al Ejecutivo para usar los <span class="danger">Sistemas de Ahorro para el Retiro (SAR)</span> de forma preferente para financiar obras públicas.</p>
+        </div>
+
+        <h2>02. La Carnita: El Rol de BlackRock</h2>
+        <div class="intel-item">
+            <span class="label">El Jugador: BlackRock / GIP (Global Infrastructure Partners)</span>
+            <p class="meat">Tras la reunión de <span class="highlight">Larry Fink</span> con la presidencia en Abril 2026, se ha identificado que BlackRock utilizará a GIP como el vehículo principal para gestionar las inversiones público-privadas. El plan es absorber el ahorro magisterial inyectándolo en proyectos de infraestructura masivos.</p>
+        </div>
+
+        <h2>03. Instrumentos de Despojo (CKDes y CERPIs)</h2>
+        <div class="intel-item">
+            <span class="label">Modus Operandi:</span>
+            <p class="meat">Estos certificados funcionan como <span class="danger">"Cajas Negras"</span>. Los documentos de la CNSF confirman que:</p>
+            <ul class="meat">
+                <li><span class="danger">Iliquidez Extrema:</span> El dinero de los profes puede quedar atrapado hasta por <span class="highlight">50 años</span>.</li>
+                <li><span class="danger">Cero Garantías:</span> NO hay obligación de pago de principal ni intereses. Si la carretera o planta falla, el ahorro se pierde.</li>
+                <li><span class="danger">Dilución Punitiva:</span> Si el fondo no tiene liquidez para inyectar más capital cuando se le pide, pierden lo que ya habían invertido.</li>
+            </ul>
+        </div>
+
+        <h2>04. Análisis Táctico para Sonora</h2>
+        <div class="intel-item">
+            <span class="label">Amenaza Local:</span>
+            <p class="meat">Existe el riesgo inminente de que los remanentes de la <span class="highlight">Caja de Ahorros</span> y fondos del <span class="highlight">ISSSTESON</span> sean comprometidos en estos instrumentos de "Desarrollo con Bienestar", dejando al magisterio sin flujo para préstamos personales o pensiones dignas a corto plazo.</p>
+        </div>
+
+        <div class="footer">
+            [ TERMINAL CIBERNÉTICA MS - JAQUE MATE AL OLVIDO ]
+        </div>
+    </div>
+
+    <script>
+        function validate() {
+            const key = document.getElementById('passkey').value;
+            if (key === 'Qnp391Ms') {
+                document.getElementById('lock-screen').style.display = 'none';
+                document.getElementById('content').style.display = 'block';
+                sessionStorage.setItem('ms_session', 'active');
+            } else {
+                document.getElementById('error-msg').style.display = 'block';
+                setTimeout(() => {
+                    document.getElementById('error-msg').style.display = 'none';
+                }, 2000);
+            }
+        }
+
+        // Auto-unlock if session active
+        if (sessionStorage.getItem('ms_session') === 'active') {
+            document.getElementById('lock-screen').style.display = 'none';
+            document.getElementById('content').style.display = 'block';
+        }
+
+        // Enter key support
+        document.getElementById('passkey').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                validate();
+            }
+        });
+    </script>
+</body>
+</html>

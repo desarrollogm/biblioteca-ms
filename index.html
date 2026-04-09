@@ -192,7 +192,7 @@
 </style>
 
     <header>
-        <img src="assets/logo_ms_oficial.jpg" class="logo" alt="Logo MS">
+        <img src="assets/logo_ms_oficial.jpg" alt="Logo MS" class="logo" id="main-logo">
         <h1>Biblioteca Digital</h1>
         <div class="subtitle">Magisterio Sonorense: Conciencia y Lucha</div>
     </header>
@@ -337,6 +337,32 @@
         <p>Cd. Obregón, Sonora, México</p>
     </footer>
 
+    <script>
+        // Lógica de acceso para coordinadores (5 clics rápidos)
+        let logoClicks = 0;
+        let lastClickTime = 0;
+        const mainLogo = document.getElementById('main-logo');
+
+        mainLogo.addEventListener('click', () => {
+            const currentTime = new Date().getTime();
+            if (currentTime - lastClickTime < 500) {
+                logoClicks++;
+            } else {
+                logoClicks = 1;
+            }
+            lastClickTime = currentTime;
+
+            if (logoClicks === 5) {
+                const key = prompt("ACCESO RESTRINGIDO - Ingrese Llave de Coordinación:");
+                if (key === 'Qnp391Ms') {
+                    window.location.href = 'coordinacion/terminal.html';
+                } else if (key !== null) {
+                    alert("Llave incorrecta. Intento registrado.");
+                    logoClicks = 0;
+                }
+            }
+        });
+    </script>
 </body>
 </html>
 
