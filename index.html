@@ -337,11 +337,92 @@
         <p>Cd. Obregón, Sonora, México</p>
     </footer>
 
+    <!-- Modal de Seguridad Coordinadores -->
+    <div id="security-modal" class="s-modal">
+        <div class="s-modal-content">
+            <h3>ACCESO RESTRINGIDO</h3>
+            <p>Ingrese Llave de Coordinación</p>
+            <div class="password-wrapper">
+                <input type="password" id="modal-key" placeholder="••••••••">
+                <button id="toggle-eye" type="button">👁️</button>
+            </div>
+            <div class="modal-btns">
+                <button onclick="closeModal()" class="btn-cancel">Cancelar</button>
+                <button onclick="checkKey()" class="btn-enter">Entrar</button>
+            </div>
+            <p id="modal-error" class="error-msg">Llave incorrecta</p>
+        </div>
+    </div>
+
+    <style>
+        .s-modal {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            backdrop-filter: blur(5px);
+            align-items: center;
+            justify-content: center;
+        }
+        .s-modal-content {
+            background: #1a1a1a;
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--gold);
+            text-align: center;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
+        }
+        .s-modal-content h3 { color: var(--gold); margin-top: 0; letter-spacing: 2px; }
+        .password-wrapper { position: relative; margin: 1.5rem 0; }
+        #modal-key {
+            width: 100%;
+            padding: 12px;
+            background: #000;
+            border: 1px solid #333;
+            color: #fff;
+            border-radius: 6px;
+            font-size: 1.1rem;
+            box-sizing: border-box;
+            text-align: center;
+        }
+        #toggle-eye {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2rem;
+            filter: grayscale(1);
+        }
+        .modal-btns { display: flex; gap: 10px; justify-content: center; }
+        .modal-btns button {
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            font-family: inherit;
+        }
+        .btn-cancel { background: #333; color: #fff; border: none; }
+        .btn-enter { background: var(--gold); color: #000; border: none; }
+        .error-msg { color: #ff3e3e; display: none; margin-top: 10px; font-size: 0.9rem; }
+    </style>
+
     <script>
-        // Lógica de acceso para coordinadores (5 clics rápidos)
         let logoClicks = 0;
         let lastClickTime = 0;
         const mainLogo = document.getElementById('main-logo');
+        const modal = document.getElementById('security-modal');
+        const keyInput = document.getElementById('modal-key');
+        const eyeBtn = document.getElementById('toggle-eye');
+        const errorMsg = document.getElementById('modal-error');
 
         mainLogo.addEventListener('click', () => {
             const currentTime = new Date().getTime();
@@ -353,14 +434,35 @@
             lastClickTime = currentTime;
 
             if (logoClicks === 5) {
-                const key = prompt("ACCESO RESTRINGIDO - Ingrese Llave de Coordinación:");
-                if (key === 'Qnp391Ms') {
-                    window.location.href = 'coordinacion/terminal.html';
-                } else if (key !== null) {
-                    alert("Llave incorrecta. Intento registrado.");
-                    logoClicks = 0;
-                }
+                modal.style.display = 'flex';
+                keyInput.focus();
+                logoClicks = 0;
             }
+        });
+
+        function closeModal() {
+            modal.style.display = 'none';
+            keyInput.value = '';
+            errorMsg.style.display = 'none';
+        }
+
+        function checkKey() {
+            if (keyInput.value === 'Qnp391Ms') {
+                window.location.href = 'coordinacion/terminal.html';
+            } else {
+                errorMsg.style.display = 'block';
+                setTimeout(() => errorMsg.style.display = 'none', 2000);
+            }
+        }
+
+        eyeBtn.addEventListener('click', () => {
+            const type = keyInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            keyInput.setAttribute('type', type);
+            eyeBtn.textContent = type === 'password' ? '👁️' : '🕶️';
+        });
+
+        keyInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') checkKey();
         });
     </script>
 </body>

@@ -162,12 +162,18 @@
     <div id="lock-screen">
         <p>[SISTEMA DE SEGURIDAD MAGISTERIAL]</p>
         <p>INGRESE LLAVE DE COORDINACIÓN:</p>
-        <input type="password" id="passkey" autocomplete="off">
+        <div class="password-wrapper" style="width: 300px; margin: 0 auto;">
+            <input type="password" id="passkey" autocomplete="off" placeholder="••••••••" 
+                   style="width: 100%; padding: 10px; background: transparent; border: 1px solid var(--term-green); color: var(--term-green); font-family: inherit; font-size: 1.2rem; text-align: center; box-sizing: border-box;">
+            <button id="toggle-eye-term" type="button" 
+                    style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; color: var(--term-green); font-size: 1.2rem;">👁️</button>
+        </div>
         <button class="btn-access" onclick="validate()">ACCEDER</button>
         <p id="error-msg" style="color: var(--term-red); margin-top: 10px; display: none;">LLAVE INCORRECTA. ACCESO DENEGADO.</p>
     </div>
 
     <div id="content" class="container">
+        <!-- ... resto del contenido ... -->
         <div class="header">
             <h1>Dossier: Operación Carne Asada</h1>
             <p>Clasificación: CONFIDENCIAL | Nivel: COORDINADOR</p>
@@ -212,9 +218,11 @@
     </div>
 
     <script>
+        const passInput = document.getElementById('passkey');
+        const eyeBtn = document.getElementById('toggle-eye-term');
+
         function validate() {
-            const key = document.getElementById('passkey').value;
-            if (key === 'Qnp391Ms') {
+            if (passInput.value === 'Qnp391Ms') {
                 document.getElementById('lock-screen').style.display = 'none';
                 document.getElementById('content').style.display = 'block';
                 sessionStorage.setItem('ms_session', 'active');
@@ -226,17 +234,20 @@
             }
         }
 
+        eyeBtn.addEventListener('click', () => {
+            const type = passInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passInput.setAttribute('type', type);
+            eyeBtn.textContent = type === 'password' ? '👁️' : '🕶️';
+        });
+
         // Auto-unlock if session active
         if (sessionStorage.getItem('ms_session') === 'active') {
             document.getElementById('lock-screen').style.display = 'none';
             document.getElementById('content').style.display = 'block';
         }
 
-        // Enter key support
-        document.getElementById('passkey').addEventListener('keypress', function (e) {
-            if (e.key === 'Enter') {
-                validate();
-            }
+        passInput.addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') validate();
         });
     </script>
 </body>
