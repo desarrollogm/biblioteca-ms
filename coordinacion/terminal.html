@@ -173,10 +173,10 @@
     </div>
 
     <div id="content" class="container">
-        <!-- ... resto del contenido ... -->
         <div class="header">
             <h1>Dossier: Operación Carne Asada</h1>
             <p>Clasificación: CONFIDENCIAL | Nivel: COORDINADOR</p>
+            <button onclick="killSession()" class="btn-cancel" style="margin-top: 10px; font-size: 0.7rem;">[ MATAR ACTIVIDAD / SALIR ]</button>
         </div>
 
         <div class="warning-box">
@@ -189,27 +189,27 @@
             <p class="meat">La "Ley para el Fomento de la Inversión en Infraestructura Estratégica" presentada en la Gaceta Parlamentaria (Marzo 2026) busca facultar al Ejecutivo para usar los <span class="danger">Sistemas de Ahorro para el Retiro (SAR)</span> de forma preferente para financiar obras públicas.</p>
         </div>
 
-        <h2>02. La Carnita: El Rol de BlackRock</h2>
+        <h2>02. La Carnita: El Rol de BlackRock y GIP</h2>
         <div class="intel-item">
-            <span class="label">El Jugador: BlackRock / GIP (Global Infrastructure Partners)</span>
-            <p class="meat">Tras la reunión de <span class="highlight">Larry Fink</span> con la presidencia en Abril 2026, se ha identificado que BlackRock utilizará a GIP como el vehículo principal para gestionar las inversiones público-privadas. El plan es absorber el ahorro magisterial inyectándolo en proyectos de infraestructura masivos.</p>
+            <span class="label">El Enemigo en la Sombra:</span>
+            <p class="meat">Tras la reunión de <span class="highlight">Larry Fink</span> (CEO de BlackRock) y la presidencia en Abril 2026, se ha identificado que el consorcio internacional utilizará a <span class="highlight">Global Infrastructure Partners (GIP)</span> como el aspirador de fondos magisteriales.</p>
         </div>
 
-        <h2>03. Instrumentos de Despojo (CKDes y CERPIs)</h2>
+        <h2>03. El Aguacate y la Cebolla: Impacto en Sonora 🌵</h2>
         <div class="intel-item">
-            <span class="label">Modus Operandi:</span>
-            <p class="meat">Estos certificados funcionan como <span class="danger">"Cajas Negras"</span>. Los documentos de la CNSF confirman que:</p>
+            <span class="label">Puntos de Despojo Detectados:</span>
             <ul class="meat">
-                <li><span class="danger">Iliquidez Extrema:</span> El dinero de los profes puede quedar atrapado hasta por <span class="highlight">50 años</span>.</li>
-                <li><span class="danger">Cero Garantías:</span> NO hay obligación de pago de principal ni intereses. Si la carretera o planta falla, el ahorro se pierde.</li>
-                <li><span class="danger">Dilución Punitiva:</span> Si el fondo no tiene liquidez para inyectar más capital cuando se le pide, pierden lo que ya habían invertido.</li>
+                <li><span class="highlight">Modernización del Puerto de Guaymas:</span> Identificado como zona de "Inversión Mixta" donde los fondos del SAR se usarán para obra civil, pero la concesión operativa favorecerá a manos privadas.</li>
+                <li><span class="highlight">Plan Sonora (Energía):</span> Los excedentes de la <span class="danger">Caja de Ahorro</span> y reservas del <span class="danger">ISSSTESON</span> están en la mira para fondear plantas fotovoltaicas bajo instrumentos de Certificados (CKDes/CERPIs).</li>
+                <li><span class="danger">El Riesgo del "Secuestro":</span> Estos fondos quedan congelados hasta por <span class="highlight">50 años</span>. No hay dinero líquido para préstamos personales a profes activos ni para pagos de emergencia a jubilados.</li>
             </ul>
         </div>
 
-        <h2>04. Análisis Táctico para Sonora</h2>
-        <div class="intel-item">
-            <span class="label">Amenaza Local:</span>
-            <p class="meat">Existe el riesgo inminente de que los remanentes de la <span class="highlight">Caja de Ahorros</span> y fondos del <span class="highlight">ISSSTESON</span> sean comprometidos en estos instrumentos de "Desarrollo con Bienestar", dejando al magisterio sin flujo para préstamos personales o pensiones dignas a corto plazo.</p>
+        <h2>04. El Poste: Conclusión Estratégica 🍨</h2>
+        <div class="intel-item" style="border: 2px solid var(--term-green);">
+            <p class="meat" style="font-size: 1.1rem; text-align: center;">
+                "Nuestras pensiones <span class="danger">NO SON CAPITAL DE RIESGO</span> para sus negocios de infraestructura. El 1 de Mayo marchamos para darle <span class="highlight">JAQUE MATE AL ALGORITMO DEL DESPOJO</span>. Nuestra memoria y nuestro ahorro no se negocian."
+            </p>
         </div>
 
         <div class="footer">
@@ -232,6 +232,11 @@
                     document.getElementById('error-msg').style.display = 'none';
                 }, 2000);
             }
+        }
+
+        function killSession() {
+            sessionStorage.removeItem('ms_session');
+            window.location.href = '../index.html';
         }
 
         eyeBtn.addEventListener('click', () => {
