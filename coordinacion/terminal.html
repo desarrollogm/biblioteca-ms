@@ -11,12 +11,13 @@
             --term-red: #ff3e3e;
             --term-bg: #0a0a0a;
             --term-dim: #008f11;
+            --term-yellow: #ffeb3b;
         }
 
         body {
             background-color: var(--term-bg);
             color: var(--term-green);
-            font-family: 'Share+Tech+Mono', monospace;
+            font-family: 'Share Tech Mono', monospace;
             margin: 0;
             padding: 20px;
             overflow-x: hidden;
@@ -106,7 +107,6 @@
             padding-top: 20px;
         }
 
-        /* Password Overlay */
         #lock-screen {
             position: fixed;
             top: 0;
@@ -131,10 +131,6 @@
             text-align: center;
             width: 250px;
             outline: none;
-        }
-
-        #lock-screen p {
-            margin-bottom: 20px;
         }
 
         .btn-access {
@@ -162,9 +158,8 @@
     <div id="lock-screen">
         <p>[SISTEMA DE SEGURIDAD MAGISTERIAL]</p>
         <p>INGRESE LLAVE DE COORDINACIÓN:</p>
-        <div class="password-wrapper" style="width: 300px; margin: 0 auto;">
-            <input type="password" id="passkey" autocomplete="off" placeholder="••••••••" 
-                   style="width: 100%; padding: 10px; background: transparent; border: 1px solid var(--term-green); color: var(--term-green); font-family: inherit; font-size: 1.2rem; text-align: center; box-sizing: border-box;">
+        <div class="password-wrapper" style="position: relative; width: 300px; margin: 0 auto;">
+            <input type="password" id="passkey" autocomplete="off" placeholder="••••••••">
             <button id="toggle-eye-term" type="button" 
                     style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; color: var(--term-green); font-size: 1.2rem;">👁️</button>
         </div>
@@ -176,178 +171,61 @@
         <div class="header">
             <h1>Dossier: Operación Carne Asada</h1>
             <p>Clasificación: CONFIDENCIAL | Nivel: COORDINADOR</p>
-            <button onclick="killSession()" class="btn-cancel" style="margin-top: 10px; font-size: 0.7rem;">[ MATAR ACTIVIDAD / SALIR ]</button>
+            <button onclick="killSession()" class="btn-access" style="padding: 5px 15px; font-size: 0.7rem;">[ SALIR ]</button>
         </div>
 
         <div class="warning-box">
-            ADVERTENCIA: Esta información contiene hallazgos de OSINT sobre el despojo financiero programado para 2026. Prohibida su difusión fuera de los círculos de confianza del Magisterio Sonorense.
-        </div>
-
-        <h2>01. El Marco Legal (Iniciativa 2026)</h2>
-        <div class="intel-item">
-            <span class="label">Objetivo de la Ley:</span>
-            <p class="meat">La "Ley para el Fomento de la Inversión en Infraestructura Estratégica" presentada en la Gaceta Parlamentaria (Marzo 2026) busca facultar al Ejecutivo para usar los <span class="danger">Sistemas de Ahorro para el Retiro (SAR)</span> de forma preferente para financiar obras públicas.</p>
-        </div>
-
-        <h2>02. La Carnita: El Rol de BlackRock y GIP</h2>
-        <div class="intel-item">
-            <span class="label">El Enemigo en la Sombra:</span>
-            <p class="meat">Tras la reunión de <span class="highlight">Larry Fink</span> (CEO de BlackRock) y la presidencia en Abril 2026, se ha identificado que el consorcio internacional utilizará a <span class="highlight">Global Infrastructure Partners (GIP)</span> como el aspirador de fondos magisteriales.</p>
-        </div>
-
-        <h2>03. El Aguacate y la Cebolla: Impacto en Sonora 🌵</h2>
-        <div class="intel-item">
-            <span class="label">Puntos de Despojo Detectados:</span>
-            <ul class="meat">
-                <li><span class="highlight">Modernización del Puerto de Guaymas:</span> Identificado como zona de "Inversión Mixta" donde los fondos del SAR se usarán para obra civil, pero la concesión operativa favorecerá a manos privadas.</li>
-                <li><span class="highlight">Plan Sonora (Energía):</span> Los excedentes de la <span class="danger">Caja de Ahorro</span> y reservas del <span class="danger">ISSSTESON</span> están en la mira para fondear plantas fotovoltaicas bajo instrumentos de Certificados (CKDes/CERPIs).</li>
-                <li><span class="danger">El Riesgo del "Secuestro":</span> Estos fondos quedan congelados hasta por <span class="highlight">50 años</span>. No hay dinero líquido para préstamos personales a profes activos ni para pagos de emergencia a jubilados.</li>
-            </ul>
-        </div>
-
-        <h2>06. El Golem Federal: El Asalto al PENSIONISSSTE 🏛️</h2>
-        <div class="intel-item">
-            <span class="label">Actores Clave (Misión Federal):</span>
-            <ul class="meat">
-                <li><span class="highlight">Dr. Martí Batres Guadarrama:</span> Director General del ISSSTE. Encargado de alinear los fondos de vivienda y retiro con los objetivos del Plan Federal 2026-2030.</li>
-                <li><span class="highlight">Mtro. Julio César Cervantes Parra:</span> Presidente de la CONSAR. Orquestador de la flexibilización normativa para permitir que las Afores financien proyectos gubernamentales de alto riesgo.</li>
-            </ul>
-            <span class="label">El Golpe del 7 de Abril (Ley 2026):</span>
-            <p class="meat">Con la aprobación de la <span class="danger">Ley para el Fomento de la Inversión en Infraestructura Estratégica</span> (07/Abril/2026), se faculta el desvío de hasta el <span class="highlight">30%</span> de los recursos administrados por PENSIONISSSTE hacia vehículos de inversión mixta sin garantía de liquidez inmediata.</p>
-        </div>
-
-        <h2>07. La Bebida: Protocolo de Contención Estratégica 🍺</h2>
-        <div class="intel-item" style="border: 2px solid var(--term-red);">
-            <span class="label">Consigna de Acción:</span>
-            <p class="meat">La marcha del 1 de Mayo es solo el inicio. El "trago fuerte" contra el despojo legal se basa en el **Protocolo de Amparos Masivos**. Se están preparando los formatos de suspensión de acto reclamado para bloquear la transferencia de fondos individuales hacia los CKDes del Plan Sonora y el Puerto de Guaymas.</p>
-            <p class="meat" style="font-style: italic;">"Si tocan un peso del ISSSTE, paramos el país a nivel federal."</p>
-        </div>
-
-        <h2>08. El Fraude del Siglo: El Hoyo Fiscal del 54.7% 🕳️</h2>
-        <div class="intel-item" style="border-left: 5px solid var(--term-red);">
-            <p class="meat">¡Alerta, compañeros! El gobierno ha admitido que la deuda pública (SHRFSP) ha estallado al <span class="danger">54.7% del PIB</span> en 2026. Están quebrados y tienen hambre de su ahorro. El PENSIONISSSTE y el ISSSTESON son su única salida para no caer en impago internacional.</p>
-        </div>
-
-        <h2>09. El Espejismo del Litio (El Rescate de Ganfeng) 🔋</h2>
-        <div class="intel-item">
-            <p class="meat">El Plan Sonora es un barril sin fondo. El Estado mexicano enfrenta un arbitraje billonario con los chinos de <span class="highlight">Ganfeng Lithium</span>. ¡Quieren usar el capital magisterial como "escudo" financiero para rescatar una empresa estatal (LitioMx) que no tiene ni para la nómina! Están apostando su jubilación a un proyecto quebrado legalmente.</p>
-        </div>
-
-        <h2>10. Directorio de Presión: ¿Quiénes nos están robando? 🎯</h2>
-        <div class="intel-item" style="background: rgba(255, 62, 62, 0.1); border: 1px solid var(--term-red);">
-            <span class="label">Objetivos en Hacienda (SHCP):</span>
-            <ul class="meat">
-                <li><span class="danger">Édgar Amador Zamora:</span> Secretario de Hacienda. El autor intelectual de usar las AFOREs como caja chica nacional.</li>
-                <li><span class="danger">Bertha Gómez Castro:</span> Subsecretaria de Egresos. ¡La que cierra la llave a las medicinas del ISSSTE pero la abre para BlackRock!</li>
-                <li><span class="danger">Héctor Santana Suárez:</span> Jefe de Pensiones (USPSS). El técnico que redactó la letra chiquita del despojo en la CONSAR.</li>
-            </ul>
-            <p class="meat" style="font-weight: bold; text-align: center; margin-top: 10px;">¡EL 1 DE MAYO NO SOLO MARCHAMOS, LOS TENEMOS IDENTIFICADOS!</p>
+            ADVERTENCIA: Información de OSINT sobre el despojo financiero programado para 2026. Uso exclusivo del Magisterio Sonorense.
         </div>
 
         <h2>12. Arsenal de Pruebas Institucionales (DC) 📜</h2>
-        <div class="intel-item" style="border: 1px solid var(--term-dim); background: rgba(0, 255, 65, 0.02);">
-            <p class="meat">Compañeros coordinadores, aquí tienen la **Artillería Pesada**. Estos no son rumores; son documentos oficiales de las instituciones con folios y sellos. Pueden abrirlos e imprimirlos para usarlos como prueba irrefutable ante la base magisterial:</p>
-            
+        <div class="intel-item" style="border: 1px solid var(--term-dim);">
+            <p class="meat">Artillería Pesada: Evidencia oficial para asambleas:</p>
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px;">
-                <a href="../documentos/Reporte_Hacienda_Deuda_2026.html" target="_blank" 
-                   class="btn-access" style="text-decoration: none; text-align: center; font-size: 0.8rem; background: #800000; color: white;">
-                    [ PDF: REPORTE HACIENDA 54.7% ]
-                </a>
-                <a href="../documentos/Arbitraje_Ganfeng_ICSID.html" target="_blank" 
-                   class="btn-access" style="text-decoration: none; text-align: center; font-size: 0.8rem; background: #004d40; color: white;">
-                    [ PDF: ARBITRAJE CIADI-GANFENG ]
-                </a>
-                <a href="../documentos/Plan_Modernizacion_Guaymas_2026.html" target="_blank" 
-                   class="btn-access" style="text-decoration: none; text-align: center; font-size: 0.8rem; background: #263238; color: white;">
-                    [ PDF: DICTAMEN PUERTO GUAYMAS ]
-                </a>
-                <a href="../documentos/Corrupcion_Fundacion_ISSSTE.html" target="_blank" 
-                   class="btn-access" style="text-decoration: none; text-align: center; font-size: 0.8rem; background: #c62828; color: white;">
-                    [ PDF: T-BONE CORRUPCIÓN ISSSTE ]
-                </a>
-                <a href="../documentos/Analisis_AFORE_Robo_Hormiga.html" target="_blank" 
-                   class="btn-access" style="text-decoration: none; text-align: center; font-size: 0.8rem; background: #c62828; color: white;">
-                    [ PDF: EL ROBO INVISIBLE - AFORES ]
-                </a>
-                <a href="https://www.senado.gob.mx/66/gaceta_del_senado" target="_blank" 
-                   class="btn-access" style="text-decoration: none; text-align: center; font-size: 0.8rem;">
-                    [ LINK: GACETA DEL SENADO ]
-                </a>
+                <a href="../documentos/Reporte_Hacienda_Deuda_2026.html" target="_blank" class="btn-access" style="text-decoration: none; font-size: 0.7rem;">[ HACIENDA 54.7% ]</a>
+                <a href="../documentos/Arbitraje_Ganfeng_ICSID.html" target="_blank" class="btn-access" style="text-decoration: none; font-size: 0.7rem;">[ CIADI-GANFENG ]</a>
+                <a href="../documentos/Plan_Modernizacion_Guaymas_2026.html" target="_blank" class="btn-access" style="text-decoration: none; font-size: 0.7rem;">[ PTO. GUAYMAS ]</a>
+                <a href="../documentos/Corrupcion_Fundacion_ISSSTE.html" target="_blank" class="btn-access" style="text-decoration: none; font-size: 0.7rem; background: var(--term-red);">[ T-BONE ISSSTE ]</a>
+                <a href="../documentos/Analisis_AFORE_Robo_Hormiga.html" target="_blank" class="btn-access" style="text-decoration: none; font-size: 0.7rem; background: var(--term-red);">[ ROBO AFORES ]</a>
+                <a href="https://www.senado.gob.mx/66/gaceta_del_senado" target="_blank" class="btn-access" style="text-decoration: none; font-size: 0.7rem;">[ GACETA SENADO ]</a>
             </div>
-            
-            <p class="meat" style="font-size: 0.7rem; margin-top: 15px; color: var(--term-dim);">
-                NOTA: Cada documento incluye un **Código QR** de validación. Si algún funcionario intenta desmentirlos, solo tienen que escanear el QR frente a ellos para mostrar el portal oficial del Gobierno o el Banco Mundial.
-            </p>
         </div>
 
-        <h2>14. El T-Bone del ISSSTE: La Caja Negra de la "Fundación" 🏥</h2>
-        <div class="intel-item" style="border-left: 5px solid #c62828;">
-            <p class="meat">Compañeros, la tripa del instituto está podrida. Se han detectado <span class="danger">27 centros hospitalarios</span> invadidos por una fundación privada que hace negocio con los espacios públicos sin pagar un solo peso de renta. A eso súmenle el robo de <span class="highlight">5 millones</span> en sillas y prótesis que nunca llegaron a los enfermos.</p>
-        </div>
-
-        <h2>15. Termómetro de Injusticia: ¿Dónde quedó la bolita? 🌡️</h2>
-        <div class="intel-item" style="background: rgba(198, 40, 40, 0.05); text-align: center;">
-            <p class="meat" style="font-weight: bold;">BRECHA PENSIONARIA (MENSUAL)</p>
-            <div style="width: 100%; height: 30px; background: #333; border-radius: 15px; overflow: hidden; margin: 15px 0;">
-                <div style="width: 10%; height: 100%; background: #4CAF50; float: left;"></div>
-                <div style="width: 90%; height: 100%; background: #f44336; float: left;"></div>
-            </div>
-            <div style="display: flex; justify-content: space-between; font-size: 0.7rem;">
-                <span style="color: #4CAF50;">[ MAESTRO ($34K) ]</span>
-                <span style="color: #f44336;">[ EX-FUNCIONARIO VIP ($300K+) ]</span>
-            </div>
-            <p class="meat" style="margin-top: 15px; font-style: italic;">"Mientras usted lucha por sus 10 UMAs, ellos cobran como reyes con su dinero."</p>
-        </div>
-
-        <h2>16. Listado de Beneficiarios VIP (La Casta Institucional) 🤴</h2>
-        <div class="intel-item" style="border: 1px solid var(--term-dim); font-family: monospace;">
-            <p class="meat" style="color: var(--term-yellow);">[ ACCESO RESTRINGIDO: BASE DE DATOS DE MEGAPENSIONES ]</p>
-            <ul class="meat" style="list-style: none; padding-left: 0;">
-                <li>>> <span class="danger">JOSÉ REYES BAEZA:</span> $309,054.00 mens. (Ex-Director)</li>
-                <li>>> <span class="danger">RAFAEL NAVARRO M.:</span> $275,340.00 mens. (Ex-Dir. Médico)</li>
-                <li>>> <span class="danger">JOSÉ NARRO ROBLES:</span> $5,000,000 (Desvío Insumos)</li>
-                <li>>> <span class="danger">DELIA MENDÍA Z.:</span> $210,120.00 mens. (Ex-Sec. Gral.)</li>
-                <li>>> <span class="danger">IGNACIO CAMPILLO:</span> $195,400.00 mens. (Ex-Planeación)</li>
+        <h2>16. Listado de Beneficiarios VIP (La Casta) 🤴</h2>
+        <div class="intel-item" style="border: 1px solid var(--term-dim);">
+            <ul class="meat" style="list-style: none; padding-left: 0; font-family: monospace;">
+                <li>>> <span class="danger">JOSÉ REYES BAEZA:</span> $309,054.00 mens.</li>
+                <li>>> <span class="danger">RAFAEL NAVARRO M.:</span> $275,340.00 mens.</li>
+                <li>>> <span class="danger">JOSÉ NARRO ROBLES:</span> $5,000,000 (Desvío)</li>
+                <li>>> <span class="danger">DELIA MENDÍA Z.:</span> $210,120.00 mens.</li>
+                <li>>> <span class="danger">IGNACIO CAMPILLO:</span> $195,400.00 mens.</li>
             </ul>
-            <p class="meat" style="font-size: 0.6rem; border-top: 1px solid #333; padding-top: 10px; opacity: 0.7;">
-                <span class="highlight">BLINDAJE LEGAL:</span> Información basada en auditorías GS-2025. Se respeta la presunción de inocencia. Datos para uso exclusivo de inteligencia sindical.
+        </div>
+
+        <h2>18. Inteligencia Sonora: El Jaque Mate al Despojo Federal 🕵️‍♂️</h2>
+        <div class="intel-item" style="border-left: 5px solid #ff3d00;">
+            <p class="meat">En Sonora estamos <span class="highlight">Sincronizando la Verdad</span>. El modelo de AFORE es la misma semilla que asfixia al ISSSTESON. No seguimos agendas externas, defendemos autonomía.</p>
+        </div>
+
+        <h2>19. La Grúa del Desierto: Tu Patrimonio en Riesgo 🏗️</h2>
+        <div class="intel-item" style="text-align: center; background: rgba(255, 61, 0, 0.05);">
+            <p class="meat" style="font-family: monospace; color: var(--term-yellow);">
+                [ BANORTE / SANTANDER / SHCP ] <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|| <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;[GRÚA]<--- EXTRACCIÓN <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|| <br>
+                &nbsp;[ TU PATRIMONIO ]
             </p>
-            <p class="meat" style="font-size: 0.75rem; color: var(--term-yellow);">
-                NOTA: Estos personajes constituyeron la red de lucro con espacio público. <span class="danger">¡IDENTIFÍCALOS EN LA MARCHA!</span>
+            <p class="meat" style="font-size: 0.8rem; font-style: italic;">
+                "Sonora se defiende solo. Inteligencia local contra el robo federal."
             </p>
         </div>
 
         <h2>17. Monitor de Tráfico (Ojo de Halcón) 🦅</h2>
         <div class="intel-item">
-            <span class="label">Estado del Monitoreo:</span>
-            <p class="meat">Sistema de rastreo de visitantes activo. Registro compatible con secciones federales y estatales.</p>
+            <p class="meat">Sistema de rastreo activo. Análisis de impacto regional.</p>
             <a href="https://docs.google.com/spreadsheets/d/1FhrwxOYz9pzc1VkFOQOTTQu4dn9hsWs9gY_Z7LKn1Nk/edit?gid=0#gid=0" 
-               target="_blank" 
-               style="color: var(--term-green); text-decoration: underline; font-weight: bold;">[ VER REGISTRO DE INTELIGENCIA (GOOGLE SHEETS) ]</a>
-        </div>
-
-        <h2>18. Análisis de Inteligencia: El Discurso de Filiberto 🕵️‍♂️</h2>
-        <div class="intel-item" style="border-left: 5px solid #ff3d00;">
-            <p class="meat">Compañeros, la estrategia de Filiberto Frausto nos da la clave para el 1 de Mayo. El Gobierno usa la <span class="highlight">Agnotología (Confusión)</span> para esconder que el dinero de nuestras AFORES se va en "minusvalías" para fondear crisis mundiales.</p>
-            <p class="meat" style="font-weight: bold;">RENDIJA TÁCTICA:</p>
-            <ul class="meat">
-                <li>>> No hablar de porcentajes; hablar de <span class="danger">ROBO PATRIMONIAL</span>.</li>
-                <li>>> Conectar la falta de medicinas con el capital fugado a otros países.</li>
-            </ul>
-        </div>
-
-        <h2>19. La Grúa de Extracción: Tu Patrimonio en Riesgo 🏗️</h2>
-        <div class="intel-item" style="text-align: center; background: rgba(255, 61, 0, 0.05);">
-            <p class="meat" style="font-family: monospace; color: var(--term-yellow);">
-                [ GOBIERNO/BANCOS ] <br>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|| <br>
-                &nbsp;&nbsp;&nbsp;&nbsp;[GRÚA]<--- EXTRACCIÓN <br>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|| <br>
-                &nbsp;[ TU AFORE ]
-            </p>
-            <p class="meat" style="font-size: 0.8rem; font-style: italic;">
-                "Usted da la clase, ellos se llevan el ahorro."
-            </p>
+               target="_blank" style="color: var(--term-green); font-weight: bold;">[ VER REGISTRO DE INTELIGENCIA ]</a>
         </div>
 
         <div class="footer">
@@ -366,9 +244,7 @@
                 sessionStorage.setItem('ms_session', 'active');
             } else {
                 document.getElementById('error-msg').style.display = 'block';
-                setTimeout(() => {
-                    document.getElementById('error-msg').style.display = 'none';
-                }, 2000);
+                setTimeout(() => { document.getElementById('error-msg').style.display = 'none'; }, 2000);
             }
         }
 
@@ -383,15 +259,12 @@
             eyeBtn.textContent = type === 'password' ? '👁️' : '🕶️';
         });
 
-        // Auto-unlock if session active
         if (sessionStorage.getItem('ms_session') === 'active') {
             document.getElementById('lock-screen').style.display = 'none';
             document.getElementById('content').style.display = 'block';
         }
 
-        passInput.addEventListener('keypress', function (e) {
-            if (e.key === 'Enter') validate();
-        });
+        passInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') validate(); });
     </script>
     <script src="../assets/js/intel_tracker.js"></script>
 </body>
