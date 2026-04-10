@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>REPORTE DE AUDITORÍA FORENSE: FUNDACIÓN ISSSTE & PENSIONES DORADAS</title>
+    <style>
+        body { font-family: "Georgia", serif; padding: 45px; line-height: 1.6; color: #222; max-width: 900px; margin: auto; background: #fff; }
+        .header { text-align: center; border-bottom: 2px solid #800000; padding-bottom: 20px; }
+        .folio { float: right; font-weight: bold; font-family: monospace; color: #800000; }
+        h1 { margin: 15px 0; font-size: 1.6rem; color: #800000; }
+        .alert-ribbon { background: #800000; color: white; text-align: center; padding: 10px; font-weight: bold; margin: 20px 0; }
+        .findings-table { width: 100%; border-collapse: collapse; margin: 25px 0; }
+        .findings-table th, .findings-table td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        .findings-table th { background-color: #f9f9f9; }
+        .thermometer-container { margin: 40px 0; text-align: center; }
+        .thermometer-bar { width: 100%; height: 40px; background: #eee; border-radius: 20px; position: relative; overflow: hidden; border: 1px solid #ccc; }
+        .fill-maestro { width: 10%; height: 100%; background: #4CAF50; float: left; }
+        .fill-vip { width: 90%; height: 100%; background: #f44336; float: left; }
+        .label-maestro { color: #4CAF50; font-weight: bold; }
+        .label-vip { color: #f44336; font-weight: bold; }
+        .highlight { background: #ffff00; font-weight: bold; }
+        .footer { margin-top: 60px; border-top: 2px solid #eee; padding-top: 20px; display: flex; justify-content: space-between; align-items: center; }
+        @media print { .no-print { display: none; } }
+    </style>
+</head>
+<body>
+    <div class="folio">EXPEDIENTE: COR-ISSSTE-2026-X</div>
+    <div class="header">
+        <p style="text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px;">Dirección General del ISSSTE | Saneamiento Financiero</p>
+        <h1>REPORTE DE HALLAZGOS FORENSES ACTUALIZADO AL 2026</h1>
+    </div>
+
+    <div class="alert-ribbon">CONFIDENCIAL: RELEVAMIENTO DE CORRUPCIÓN ESTRUCTURAL</div>
+
+    <p>Tras la auditoría interna liderada por la actual administración (Batres, 2025-2026), se han detectado esquemas de desvío sistemático en las siguientes áreas:</p>
+
+    <table class="findings-table">
+        <tr>
+            <th>Concepto</th>
+            <th>Hallazgo Detectado</th>
+            <th>Impacto Financiero</th>
+        </tr>
+        <tr>
+            <td><strong>Fundación ISSSTE A.C.</strong></td>
+            <td>Uso ilegal de 27 centros hospitalarios para negocios privados (cafeterías/máquinas) sin contrato.</td>
+            <td class="highlight">Millonario / No cuantificado</td>
+        </tr>
+        <tr>
+            <td><strong>Desvío de Insumos</strong></td>
+            <td>Compra de sillas y prótesis (2017-2024) desaparecidos de los inventarios oficiales.</td>
+            <td class="highlight">$5,000,000+ MXN (Fase 1)</td>
+        </tr>
+        <tr>
+            <td><strong>Pensiones Irregulares</strong></td>
+            <td>8,000 ex-funcionarios cobrando por encima del límite constitucional de 10 UMAs.</td>
+            <td class="highlight">Gasto excesivo sistemático</td>
+        </tr>
+    </table>
+
+    <div class="thermometer-container">
+        <h3>TERMÓMETRO DE INJUSTICIA (MENSUAL)</h3>
+        <p>Comparativa de la brecha pensionaria en el sector ISSSTE</p>
+        <div class="thermometer-bar">
+            <div class="fill-maestro"></div>
+            <div class="fill-vip"></div>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-top: 10px;">
+            <span class="label-maestro">Pensión Tope Maestro (10 UMAs): ~$34,000</span>
+            <span class="label-vip">Pensión VIP Ex-Funcionarios: $300,000+</span>
+        </div>
+    </div>
+
+    <p><strong>CONCLUSIÓN DE INTELIGENCIA:</strong> Los recursos "faltantes" para quimioterapias, cirugías y equipo de diagnóstico están siendo consumidos por la <span class="highlight">carga burocrática VIP</span> y las rentas omitidas de la Fundación corporativa.</p>
+
+    <div class="footer">
+        <div>
+            <p>Firma: Dirección de Inteligencia y Saneamiento Administrativo</p>
+            <p style="font-size: 0.7rem;">QR de Validación: dof.gob.mx/2026/issste/auditoria</p>
+        </div>
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=80x80&data=https://www.gob.mx/issste/articulos/marti-batres-anuncia-recuperacion-de-espacios-publicos-y-limpieza-de-corrupcion" alt="QR Link">
+    </div>
+
+    <button class="no-print" onclick="window.print()" style="margin-top: 20px; cursor: pointer; padding: 10px 20px; width: 100%;">[ DESCARGAR T-BONE DE EVIDENCIA (PDF) ]</button>
+</body>
+</html>
