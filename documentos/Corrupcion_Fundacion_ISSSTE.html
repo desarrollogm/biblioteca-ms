@@ -2,134 +2,65 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>REPORTE DE AUDITORÍA FORENSE: FUNDACIÓN ISSSTE & PENSIONES DORADAS</title>
+    <title>EVIDENCIA DC: AUDITORÍA DE GESTIÓN PATRIMONIAL ISSSTE - EXPEDIENTE 2026</title>
     <style>
-        body { font-family: "Georgia", serif; padding: 45px; line-height: 1.6; color: #222; max-width: 900px; margin: auto; background: #fff; }
-        .header { text-align: center; border-bottom: 2px solid #800000; padding-bottom: 20px; }
-        .folio { float: right; font-weight: bold; font-family: monospace; color: #800000; }
-        h1 { margin: 15px 0; font-size: 1.6rem; color: #800000; }
-        .alert-ribbon { background: #800000; color: white; text-align: center; padding: 10px; font-weight: bold; margin: 20px 0; }
-        .findings-table { width: 100%; border-collapse: collapse; margin: 25px 0; }
-        .findings-table th, .findings-table td { border: 1px solid #ddd; padding: 12px; text-align: left; }
-        .findings-table th { background-color: #f9f9f9; }
-        .thermometer-container { margin: 40px 0; text-align: center; }
-        .thermometer-bar { width: 100%; height: 40px; background: #eee; border-radius: 20px; position: relative; overflow: hidden; border: 1px solid #ccc; }
-        .fill-maestro { width: 10%; height: 100%; background: #4CAF50; float: left; }
-        .fill-vip { width: 90%; height: 100%; background: #f44336; float: left; }
-        .label-maestro { color: #4CAF50; font-weight: bold; }
-        .label-vip { color: #f44336; font-weight: bold; }
-        .highlight { background: #ffff00; font-weight: bold; }
-        .footer { margin-top: 60px; border-top: 2px solid #eee; padding-top: 20px; display: flex; justify-content: space-between; align-items: center; }
+        body { font-family: 'Inter', Arial, sans-serif; background: #fff; color: #1a1a1a; padding: 40px; line-height: 1.5; }
+        .audit-container { border: 2px solid #000; padding: 40px; max-width: 850px; margin: auto; position: relative; }
+        .header-official { text-align: center; border-bottom: 2px solid #000; padding-bottom: 20px; margin-bottom: 30px; }
+        .header-official h1 { font-size: 1.4rem; text-transform: uppercase; letter-spacing: 2px; margin: 0; }
+        .alert-institutional { border: 1px solid #000; padding: 15px; background: #f0f0f0; margin-bottom: 30px; font-weight: bold; text-align: center; }
+        .section-header { font-weight: bold; text-decoration: underline; margin: 25px 0 10px; text-transform: uppercase; }
+        .findings-box { border: 1px solid #ccc; padding: 20px; background: #fafafa; margin: 20px 0; }
+        .qr-section { display: flex; justify-content: space-between; align-items: center; margin-top: 40px; border-top: 2px solid #000; padding-top: 20px; }
+        .seal-institutional { border: 3px double #000; padding: 10px; display: inline-block; font-weight: bold; text-transform: uppercase; transform: rotate(-5deg); position: absolute; top: 30px; right: 30px; }
+        .footer-audit { font-size: 0.8rem; text-align: center; margin-top: 30px; color: #666; }
         @media print { .no-print { display: none; } }
     </style>
 </head>
 <body>
-    <div class="folio">EXPEDIENTE: COR-ISSSTE-2026-X</div>
-    <div class="header">
-        <p style="text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px;">Dirección General del ISSSTE | Saneamiento Financiero</p>
-        <h1>REPORTE DE HALLAZGOS FORENSES ACTUALIZADO AL 2026</h1>
-    </div>
-
-    <div class="alert-ribbon">CONFIDENCIAL: RELEVAMIENTO DE CORRUPCIÓN ESTRUCTURAL</div>
-
-    <h3>TOP 5: LA CASTA DE LAS MEGAPENSIONES (NIVEL FEDERAL)</h3>
-    <p>Estos montos fueron "legalizados" mediante juicios amañados en tribunales administrativos, saltándose el tope de 10 UMAs que se le impone al magisterio.</p>
-    
-    <table class="findings-table">
-        <tr>
-            <th>Persona Vinculada / Fundador</th>
-            <th>Cargo / Rol</th>
-            <th>Monto / Hallazgo</th>
-            <th>Contexto Judicial</th>
-        </tr>
-        <tr>
-            <td><strong>José Reyes Baeza Terrazas</strong></td>
-            <td>Ex-Director ISSSTE (Fundador)</td>
-            <td class="highlight" style="color:#d00">$309,054.00 (Mens)</td>
-            <td>Vinculado a la red de 27 centros invadidos.</td>
-        </tr>
-        <tr>
-            <td><strong>Rafael Manuel Navarro M.</strong></td>
-            <td>Ex-Director Médico (Co-Fundador)</td>
-            <td class="highlight" style="color:#d00">$275,340.00 (Mens)</td>
-            <td>Firmante de convenios de la Fundación.</td>
-        </tr>
-        <tr>
-            <td><strong>José Narro Robles</strong></td>
-            <td>Ex-Sec. Salud (Miembro Fundador)</td>
-            <td class="highlight" style="color:#d00">$5,000,000 (Desvío)</td>
-            <td>Constituyó la red de lucro con espacio público.</td>
-        </tr>
-        <tr>
-            <td><strong>Delia Mendía Zubiete</strong></td>
-            <td>Ex-Secretaria Gral. (Operadora)</td>
-            <td class="highlight" style="color:#d00">$210,120.00 (Mens)</td>
-            <td>Coordinación de contratos irregulares.</td>
-        </tr>
-        <tr>
-            <td><strong>José Ignacio Campillo</strong></td>
-            <td>Área de Planeación (Socio)</td>
-            <td class="highlight" style="color:#d00">$195,400.00 (Mens)</td>
-            <td>Blindaje administrativo de la red.</td>
-        </tr>
-    </table>
-
-    <p>Tras la auditoría interna liderada por la actual administración (Batres, 2025-2026), se han detectado esquemas de desvío sistemático en las siguientes áreas:</p>
-
-    <table class="findings-table">
-        <tr>
-            <th>Concepto</th>
-            <th>Hallazgo Detectado</th>
-            <th>Impacto Financiero</th>
-        </tr>
-        <tr>
-            <td><strong>Fundación ISSSTE A.C.</strong></td>
-            <td>Uso ilegal de 27 centros hospitalarios para negocios privados (cafeterías/máquinas) sin contrato.</td>
-            <td class="highlight">Millonario / No cuantificado</td>
-        </tr>
-        <tr>
-            <td><strong>Desvío de Insumos</strong></td>
-            <td>Compra de sillas y prótesis (2017-2024) desaparecidos de los inventarios oficiales.</td>
-            <td class="highlight">$5,000,000+ MXN (Fase 1)</td>
-        </tr>
-        <tr>
-            <td><strong>Pensiones Irregulares</strong></td>
-            <td>8,000 ex-funcionarios cobrando por encima del límite constitucional de 10 UMAs.</td>
-            <td class="highlight">Gasto excesivo sistemático</td>
-        </tr>
-    </table>
-
-    <div class="thermometer-container">
-        <h3>TERMÓMETRO DE INJUSTICIA (MENSUAL)</h3>
-        <p>Comparativa de la brecha pensionaria en el sector ISSSTE</p>
-        <div class="thermometer-bar">
-            <div class="fill-maestro"></div>
-            <div class="fill-vip"></div>
+    <div class="audit-container">
+        <div class="seal-institutional">Copia de Auditoría</div>
+        <div class="header-official">
+            <h1>Dictamen sobre Gestión de Infraestructura Pública</h1>
+            <p>Dirección de Análisis Administrativo | Eje de Transparencia Magisterial</p>
         </div>
-        <div style="display: flex; justify-content: space-between; margin-top: 10px;">
-            <span class="label-maestro">Pensión Tope Maestro (10 UMAs): ~$34,000</span>
-            <span class="label-vip">Pensión VIP Ex-Funcionarios: $300,000+</span>
+
+        <div class="alert-institutional">
+            NOTIFICACIÓN TÉCNICA: Se han documentado irregularidades en el uso de espacios públicos del ISSSTE por parte de entidades privadas bajo la denominación "Fundación ISSSTE A.C.".
         </div>
-    </div>
 
-    <p><strong>CONCLUSIÓN DE INTELIGENCIA:</strong> Los recursos "faltantes" para quimioterapias, cirugías y equipo de diagnóstico están siendo consumidos por la <span class="highlight">carga burocrática VIP</span> y las rentas omitidas de la Fundación corporativa.</p>
+        <div class="section-header">01. Antecedentes de la Revisión Administrativa</div>
+        <p>Durante el ciclo fiscal 2025-2026, se identificó la ocupación no autorizada de áreas clínicas y administrativas por parte de organizaciones externas, lo cual compromete la capacidad operativa de las unidades médicas destinadas a la atención del gremio docente.</p>
 
-    <p style="font-size: 0.6rem; color: #666; margin-top: 40px; text-align: justify; border: 1px solid #eee; padding: 10px;">
-        <strong>ADVERTENCIA LEGAL:</strong> La información contenida en este reporte proviene de auditorías públicas, boletines oficiales de la Dirección General del ISSSTE (2025) y denuncias presentadas ante la Fiscalía General de la República. Toda persona mencionada goza de la **Presunción de Inocencia** hasta que se dicte una sentencia definitiva en los procesos judiciales en curso. Este documento tiene fines informativos y de transparencia sindical para el Magisterio Sonorense.
-    </p>
+        <div class="section-header">02. Hallazgos de la Intervención Gubernamental</div>
+        <div class="findings-box">
+            <ul>
+                <li><strong>Recuperación de Activos:</strong> El Gobierno de México ha iniciado procedimientos de clausura y recuperación de inmuebles utilizados para fines comerciales ajenos a la seguridad social.</li>
+                <li><strong>Desvío de Recursos:</strong> Se estima un impacto presupuestario significativo derivado del usufructo gratuito de servicios e infraestructura por parte de la mencionada asociación civil.</li>
+                <li><strong>Efecto en la Derechohabiencia:</strong> Esta gestión irregular ha contribuido al retraso en cirugías y quimioterapias por falta de espacios adecuados disponibles.</li>
+            </ul>
+        </div>
 
-    <div class="footer">
-        <div>
-            <p>Firma: Dirección de Inteligencia y Saneamiento Administrativo</p>
+        <div class="section-header">03. Marco Jurídico y Acciones de Transparencia</div>
+        <p>Las acciones de recuperación se sustentan en el marco de la austeridad republicana y el saneamiento de las instituciones de salud. La base docente tiene el derecho profesional de supervisar que las cuotas de seguridad social sean reinvertidas exclusivamente en servicios de salud de calidad.</p>
+
+        <div class="qr-section">
             <div style="text-align: center;">
-                <p>EVIDENCIA RECUPERACIÓN (OFICIAL):</p>
-                <!-- URL ESTABLE ISSSTE RECUPEARACIÓN -->
-                <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://www.gob.mx/issste/prensa/issste-recupera-espacios-publicos-ocupados-indebidamente-por-la-fundacion-issste-ac" alt="QR RECUPERACION ISSSTE">
-                <p style="font-size: 0.7rem; color: #800000; margin-top: 5px;">Sellos de Clausura y Auditoría</p>
+                <p style="font-size: 0.8rem;">REPOSITORIO DE PRENSA (ISSSTE):</p>
+                <!-- PORTAL RAÍZ ESTABLE -->
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://www.gob.mx/issste/archivo/prensa" alt="QR ISSSTE ROOT">
+                <p style="font-size: 0.6rem; margin-top: 5px;">Búsqueda: "Recuperación de Espacios"</p>
+            </div>
+            <div style="text-align: right;">
+                <p style="font-weight: bold;">#PRESTIGIODOCENTE2026</p>
+                <p>Coordinación de Gestión y Seguimiento</p>
             </div>
         </div>
-    </div>
 
-    <button class="no-print" onclick="window.print()" style="margin-top: 20px; cursor: pointer; padding: 10px 20px; width: 100%;">[ DESCARGAR T-BONE DE EVIDENCIA (PDF) ]</button>
+        <div class="footer-audit">
+            ESTE DOCUMENTO CONSTITUYE SUSTENTO TÉCNICO PARA EL PLIEGO PETITORIO SECCIONAL.
+        </div>
+    </div>
+    <button class="no-print" onclick="window.print()" style="margin-top: 20px; width: 100%; padding: 15px; background: #000; color: #fff; border: none; font-weight: bold; cursor: pointer;">DESCARGAR ANEXO TÉCNICO (PDF)</button>
 </body>
 </html>

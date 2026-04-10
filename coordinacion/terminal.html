@@ -3,254 +3,254 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TERMINAL DE INTELIGENCIA MS - SONORA PRIMERO</title>
-    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <title>CONSOLA DE AUDITORÍA ESTRATÉGICA - MAGISTERIO SONORENSE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --term-green: #00ff41;
-            --term-red: #ff3e3e;
-            --term-bg: #050505;
-            --term-dim: #006400;
-            --term-yellow: #ffeb3b;
-            --glow: 0 0 10px rgba(0, 255, 65, 0.5);
+            --audit-primary: #00ff41;
+            --audit-alert: #ff3e3e;
+            --audit-bg: #0a0a0a;
+            --audit-dim: #004d1a;
+            --audit-header: #800000;
+            --audit-text: #e0e0e0;
         }
 
         body {
-            background-color: var(--term-bg);
-            color: var(--term-green);
-            font-family: 'Share Tech Mono', monospace;
+            background-color: var(--audit-bg);
+            color: var(--audit-text);
+            font-family: 'Roboto Mono', monospace;
             margin: 0;
             padding: 20px;
             overflow-x: hidden;
-            text-shadow: var(--glow);
-        }
-
-        /* Scanline Effect */
-        body::before {
-            content: " ";
-            display: block;
-            position: fixed;
-            top: 0; left: 0; bottom: 0; right: 0;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-            z-index: 2;
-            background-size: 100% 2px, 3px 100%;
-            pointer-events: none;
         }
 
         .container {
-            max-width: 950px;
+            max-width: 1000px;
             margin: 0 auto;
-            border: 2px solid var(--term-dim);
-            padding: 30px;
-            box-shadow: 0 0 30px rgba(0, 255, 65, 0.1);
+            border: 1px solid var(--audit-dim);
+            padding: 40px;
+            background: rgba(0, 0, 0, 0.8);
+            box-shadow: 0 0 40px rgba(0, 0, 0, 1);
             position: relative;
-            z-index: 3;
         }
 
         .header {
             text-align: center;
-            border-bottom: 3px double var(--term-green);
-            padding-bottom: 15px;
-            margin-bottom: 40px;
+            border-bottom: 2px solid var(--audit-header);
+            padding-bottom: 20px;
+            margin-bottom: 50px;
         }
 
         .header h1 {
             margin: 0;
-            font-size: 2rem;
+            font-size: 1.6rem;
             text-transform: uppercase;
-            letter-spacing: 5px;
-            color: #fff;
+            letter-spacing: 3px;
+            color: var(--audit-header);
+            font-weight: 700;
         }
 
-        .warning-box {
-            border: 1px solid var(--term-red);
-            color: var(--term-red);
+        .institutional-alert {
+            border-left: 5px solid var(--audit-alert);
+            background: rgba(255, 62, 62, 0.05);
             padding: 20px;
             margin-bottom: 40px;
-            background: rgba(255, 62, 62, 0.05);
-            animation: blink 2.5s infinite;
-            text-align: center;
-            font-weight: bold;
-        }
-
-        @keyframes blink {
-            0% { opacity: 1; border-color: var(--term-red); }
-            50% { opacity: 0.8; border-color: #fff; }
-            100% { opacity: 1; border-color: var(--term-red); }
+            font-size: 0.95rem;
+            color: #fff;
         }
 
         h2 {
-            border-left: 8px solid var(--term-green);
-            padding-left: 15px;
-            font-size: 1.4rem;
-            margin-top: 50px;
-            text-transform: uppercase;
-            background: rgba(0, 255, 65, 0.1);
-            color: #fff;
-        }
-
-        .intel-item {
-            margin-bottom: 30px;
-            padding: 20px;
-            border-radius: 4px;
-            border: 1px solid rgba(0, 255, 65, 0.2);
-            transition: all 0.3s;
-        }
-
-        .intel-item:hover {
-            border-color: var(--term-green);
-            background: rgba(0, 255, 65, 0.08);
-        }
-
-        .meat {
-            color: #d1d1d1;
-            line-height: 1.8;
             font-size: 1.1rem;
+            color: var(--audit-primary);
+            border-bottom: 1px solid var(--audit-dim);
+            padding-bottom: 10px;
+            margin-top: 60px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
-        .highlight { color: var(--term-green); font-weight: bold; }
-        .danger { color: var(--term-red); font-weight: bold; text-decoration: underline; }
-        .sonora { color: var(--term-yellow); font-weight: bold; }
+        .intel-report {
+            margin-bottom: 40px;
+            padding: 20px 0;
+        }
 
-        .btn-access {
+        .report-content {
+            line-height: 1.8;
+            font-size: 1rem;
+            text-align: justify;
+        }
+
+        .term-highlight { color: var(--audit-primary); font-weight: bold; }
+        .danger-report { color: var(--audit-alert); border-bottom: 1px dashed var(--audit-alert); }
+
+        .btn-portal {
             display: inline-block;
-            margin: 10px;
-            background: var(--term-dim);
-            color: #fff;
-            border: 1px solid var(--term-green);
-            padding: 12px 20px;
+            margin: 8px;
+            background: transparent;
+            color: var(--audit-primary);
+            border: 1px solid var(--audit-primary);
+            padding: 12px 24px;
             font-family: inherit;
             cursor: pointer;
-            font-weight: bold;
+            font-size: 0.85rem;
             text-decoration: none;
-            text-align: center;
-            transition: 0.2s;
+            transition: all 0.3s;
+            text-transform: uppercase;
         }
 
-        .btn-access:hover {
-            background: var(--term-green);
+        .btn-portal:hover {
+            background: var(--audit-primary);
             color: #000;
-            box-shadow: 0 0 15px var(--term-green);
+            box-shadow: 0 0 20px rgba(0, 255, 65, 0.4);
         }
 
-        #lock-screen {
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.9rem;
+        }
+
+        .data-table th {
+            text-align: left;
+            border-bottom: 2px solid var(--audit-dim);
+            padding: 10px;
+            color: var(--audit-primary);
+        }
+
+        .data-table td {
+            padding: 12px 10px;
+            border-bottom: 1px solid rgba(0, 77, 26, 0.3);
+        }
+
+        #security-lock {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: var(--term-bg);
+            background: var(--audit-bg);
             display: flex; flex-direction: column; justify-content: center; align-items: center;
             z-index: 10000;
         }
 
-        #lock-screen input {
-            background: #000; border: 1px solid var(--term-green);
-            color: var(--term-green); padding: 15px; width: 300px;
-            font-family: inherit; font-size: 1.5rem; text-align: center;
-            box-shadow: var(--glow);
+        .lock-input {
+            background: transparent; border: none; border-bottom: 2px solid var(--audit-primary);
+            color: var(--audit-primary); padding: 10px; width: 320px;
+            font-family: inherit; font-size: 1.2rem; text-align: center;
+            outline: none; margin-bottom: 20px;
         }
 
-        .status-badge {
-            background: #006400; color: #fff; padding: 2px 10px; font-size: 0.8rem; border-radius: 10px; margin-left: 10px;
+        .footer {
+            margin-top: 60px;
+            font-size: 0.75rem;
+            text-align: center;
+            opacity: 0.6;
+            border-top: 1px solid var(--audit-dim);
+            padding-top: 20px;
         }
     </style>
 </head>
 <body>
 
-    <div id="lock-screen">
-        <p style="color: #fff; font-size: 1.5rem;">[ CODIFICACIÓN SONORA PRIMERO ]</p>
-        <p>IDENTIFÍQUESE COORDINADOR:</p>
-        <div style="position: relative;">
-            <input type="password" id="passkey" placeholder="LLAVE DE ACCESO" autocomplete="off">
-            <button id="toggle-eye-term" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: none; border: none; color: var(--term-green); cursor: pointer;">👁️</button>
-        </div>
-        <button class="btn-access" style="margin-top: 30px; width: 330px;" onclick="validate()">INIT_SESSION</button>
-        <p id="error-msg" style="color: var(--term-red); margin-top: 20px; display: none;">[ ERROR: ACCESO DENEGADO ]</p>
+    <div id="security-lock">
+        <h1 style="color: #fff; font-size: 1.2rem; margin-bottom: 30px;">[ ACCESO DE COORDINACIÓN ESTRATÉGICA ]</h1>
+        <input type="password" id="access-code" class="lock-input" placeholder="INGRESAR CLAVE INSTITUCIONAL">
+        <button class="btn-portal" style="width: 320px;" onclick="authenticate()">VERIFICAR CREDENCIALES</button>
+        <p id="auth-error" style="color: var(--audit-alert); margin-top: 20px; display: none;">[ ERROR: AUTENTICACIÓN FALLIDA ]</p>
     </div>
 
-    <div id="content" class="container">
+    <div id="dashboard-content" class="container" style="display: none;">
         <div class="header">
-            <h1>OPERACIÓN CARNE ASADA <span style="font-size: 0.8rem; vertical-align: middle; color: var(--term-yellow);">V2.0</span></h1>
-            <p style="color: var(--term-dim);">ESTADO: ACTIVO | AUTONOMÍA: 100% | FUENTE: INTELIGENCIA MS</p>
+            <h1>SISTEMA DE AUDITORÍA ESTRATÉGICA MAGISTERIAL</h1>
+            <p style="color: var(--audit-primary); font-size: 0.9rem;">CONVOCATORIA Y GESTIÓN DE EVIDENCIAS | MAYO 2026</p>
         </div>
 
-        <div class="warning-box">
-            ALERTA: ESTA INFORMACIÓN ES PIMIENTA PURA PARA EL 1 DE MAYO. PLEBES, SI ESTO CAE EN MANOS DE LOS CHARROS, PERDEMOS EL JALÓN.
+        <div class="institutional-alert">
+            <strong>COMUNICADO DE COORDINACIÓN:</strong> Este portal consolida la documentación técnica necesaria para fundamentar el pliego petitorio del 1 de mayo. Se recomienda el uso responsable y profesional de los datos aquí expuestos.
         </div>
 
-        <h2>12. ARSENAL DE PRUEBAS (CERO 404) 📜</h2>
-        <div class="intel-item">
-            <p class="meat">Aquí está el aguacate, plebes. Escaneen y comprueben en vivo. Si el gobierno respira, Hacienda miente, y el CIADI juzga, aquí está la prueba:</p>
-            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-top: 20px;">
-                <a href="../documentos/Reporte_Hacienda_Deuda_2026.html" target="_blank" class="btn-access">[ SHCP: DEUDA 2026 ]</a>
-                <a href="../documentos/Arbitraje_Ganfeng_ICSID.html" target="_blank" class="btn-access">[ CIADI: CASO GANFENG ]</a>
-                <a href="../documentos/Plan_Modernizacion_Guaymas_2026.html" target="_blank" class="btn-access">[ ASIPONA: PTO. GUAYMAS ]</a>
-                <a href="../documentos/Corrupcion_Fundacion_ISSSTE.html" target="_blank" class="btn-access" style="background: #800000;">[ T-BONE: ROBO ISSSTE ]</a>
-                <a href="../documentos/Analisis_AFORE_Robo_Hormiga.html" target="_blank" class="btn-access" style="background: #800000;">[ EL ZARPAZO AFORE ]</a>
-                <a href="https://www.senado.gob.mx/66/gaceta_del_senado" target="_blank" class="btn-access">[ GACETA SENADO ]</a>
+        <h2>01. MARCO NORMATIVO Y CONTEXTO FEDERAL</h2>
+        <div class="intel-report">
+            <p class="report-content">La implementación de la Ley de los Sistemas de Ahorro para el Retiro ha generado una reestructura en la gestión de pasivos laborales. Es fundamental analizar el impacto de las inversiones en instrumentos de renta variable sobre la certidumbre prestacional de los trabajadores de la educación.</p>
+        </div>
+
+        <h2>02. EVIDENCIA DOCUMENTAL (ANEXOS DE AUDITORÍA)</h2>
+        <div class="intel-report">
+            <p class="report-content">Acceda a los informes oficiales y documentos de análisis forense recolectados por la Dirección de Inteligencia Institucional. Todos los enlaces apuntan a servidores raíz para garantizar la disponibilidad absoluta.</p>
+            <div style="display: flex; flex-wrap: wrap; justify-content: center; margin-top: 20px;">
+                <a href="../documentos/Analisis_AFORE_Robo_Hormiga.html" target="_blank" class="btn-portal">AUDITORÍA AFORE 2026</a>
+                <a href="../documentos/Reporte_Hacienda_Deuda_2026.html" target="_blank" class="btn-portal">BALANCE DE DEUDA PÚBLICA</a>
+                <a href="../documentos/Arbitraje_Ganfeng_ICSID.html" target="_blank" class="btn-portal">DICTAMEN ARBITRAJE INTERNACIONAL</a>
+                <a href="../documentos/Plan_Modernizacion_Guaymas_2026.html" target="_blank" class="btn-portal">PROYECCIÓN LOGÍSTICA REGIONAL</a>
+                <a href="../documentos/Corrupcion_Fundacion_ISSSTE.html" target="_blank" class="btn-portal">REPORTE GESTIÓN ISSSTE</a>
+            </div>
+            <div style="display: flex; flex-wrap: wrap; justify-content: center; margin-top: 10px;">
+                <a href="https://www.gob.mx/consar" target="_blank" class="btn-portal">PORTAL CONSAR</a>
+                <a href="https://www.hacienda.gob.mx/" target="_blank" class="btn-portal">PORTAL SHCP</a>
+                <a href="https://www.gob.mx/issste/archivo/prensa" target="_blank" class="btn-portal">PRENSA ISSSTE</a>
+                <a href="https://www.puertodeguaymas.com.mx/" target="_blank" class="btn-portal">PORTAL ASIPONA</a>
             </div>
         </div>
 
-        <h2>16. LOS PARÁSITOS DE LA CASTA VIP 🤴</h2>
-        <div class="intel-item" style="border-color: var(--term-red);">
-            <p class="meat">Mírenlos machín, ellos cobran por no hacer nada mientras tú estás frente al grupo:</p>
-            <ul class="meat" style="list-style: none; padding-left: 0; font-family: monospace;">
-                <li>>> <span class="danger">JOSÉ REYES BAEZA:</span> $309,054.00 mens. <span class="status-badge">RECAUDADOR</span></li>
-                <li>>> <span class="danger">RAFAEL NAVARRO M.:</span> $275,340.00 mens. <span class="status-badge">EXTRACTOR</span></li>
-                <li>>> <span class="danger">JOSÉ NARRO ROBLES:</span> $5,000,000 DE DESVÍO. <span class="status-badge">CÁNCER</span></li>
-                <li>>> <span class="danger">DELIA MENDÍA Z.:</span> $210,120.00 mens. <span class="status-badge">CÓMPLICE</span></li>
-            </ul>
+        <h2>03. REGISTRO DE GESTIÓN DE ÉLITE ADMINISTRATIVA</h2>
+        <div class="intel-report">
+            <p class="report-content">Desglose de percepciones y responsabilidades administrativas de los funcionarios con impacto directo en la toma de decisiones presupuestarias:</p>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>FUNCIONARIO</th>
+                        <th>CARGO</th>
+                        <th>ESTADO DE GESTIÓN</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>JOSÉ REYES BAEZA</td><td>EX-DIRECTOR GENERAL</td><td class="danger-report">BAJO AUDITORÍA</td></tr>
+                    <tr><td>RAFAEL NAVARRO M.</td><td>DIRECCIÓN FINANCIERA</td><td class="danger-report">OBSERVACION PRESUPUESTAL</td></tr>
+                    <tr><td>JOSÉ NARRO ROBLES</td><td>SISTEMA DE SALUD</td><td class="danger-report">FALTANTES DOCUMENTADOS</td></tr>
+                </tbody>
+            </table>
         </div>
 
-        <h2>18. EL JALÓN DEL DESIERTO: SONORA PRIMERO ⚡</h2>
-        <div class="intel-item" style="border-left: 10px solid var(--term-yellow);">
-            <p class="meat">Plebes, ya les ganamos el jalón a los del centro. Nosotros no marchamos por órdenes de nadie. El AFORE es el cáncer y el <span class="sonora">ISSSTESON</span> es el paciente que están dejando morir. ¡Nuestra jubilación no se negocia con burócratas de la CDMX!</p>
+        <h2>04. ANÁLISIS DE VULNERABILIDAD SOCIAL EN SONORA</h2>
+        <div class="intel-report">
+            <p class="report-content">La situación financiera del <span class="term-highlight">ISSSTESON</span> se encuentra vinculada a la falta de aportaciones federales y al desplazamiento de capitales regionales hacia proyectos de inversionistas externos. Esta vulneración estructural compromete la calidad del servicio médico para el gremio docente sonorense.</p>
         </div>
 
-        <h2>19. LA GRÚA CRIMINAL: TU SUITY EN PELIGRO 🏗️</h2>
-        <div class="intel-item" style="text-align: center; border: 2px dashed var(--term-yellow);">
-            <p class="meat" style="font-family: monospace; color: var(--term-yellow); font-size: 1.2rem;">
-                [ BANORTE / SANTANDER / SHCP ] <br>
+        <h2>05. MODELO DE EXTRACCIÓN PATRIMONIAL</h2>
+        <div class="intel-report" style="text-align: center;">
+            <p class="report-content" style="font-family: inherit; color: var(--audit-primary); border: 1px solid var(--audit-dim); padding: 20px; display: inline-block;">
+                [ ÉLITE FINANCIERA / BANCA PRIVADA ] <br>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|| <br>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[LA GRÚA]<--- SAQUEO <br>
+                &nbsp;[ INSTRUMENTOS DE DEUDA ] <br>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|| <br>
-                &nbsp;&nbsp;&nbsp;[ TU PATRIMONIO ]
-            </p>
-            <p class="meat" style="font-style: italic; color: #fff;">
-                "En el desierto protegemos la madriguera. ¡La grúa federal no pasa en Sonora!"
+                [ PATRIMONIO DOCENTE SONORA ]
             </p>
         </div>
 
         <div class="footer">
-            [ TERMINAL CIBERNÉTICA MS V2.0 - SONORA PRIMERO O NADA ]
+            CONSOLA ESTRATÉGICA MS V3.1 - INSTITUCIONALIDAD Y RESISTENCIA TÉCNICA
         </div>
     </div>
 
     <script>
-        const passInput = document.getElementById('passkey');
-        const eyeBtn = document.getElementById('toggle-eye-term');
-
-        function validate() {
-            if (passInput.value === 'Qnp391Ms') {
-                document.getElementById('lock-screen').style.display = 'none';
-                document.getElementById('content').style.display = 'block';
-                sessionStorage.setItem('ms_session', 'active');
+        function authenticate() {
+            const code = document.getElementById('access-code').value;
+            if (code === 'Qnp391Ms') {
+                document.getElementById('security-lock').style.display = 'none';
+                document.getElementById('dashboard-content').style.display = 'block';
+                sessionStorage.setItem('audit_auth', 'true');
             } else {
-                document.getElementById('error-msg').style.display = 'block';
-                setTimeout(() => { document.getElementById('error-msg').style.display = 'none'; }, 2000);
+                document.getElementById('auth-error').style.display = 'block';
+                setTimeout(() => { document.getElementById('auth-error').style.display = 'none'; }, 2000);
             }
         }
 
-        eyeBtn.addEventListener('click', () => {
-            const type = passInput.getAttribute('type') === 'password' ? 'text' : 'password';
-            passInput.setAttribute('type', type);
-            eyeBtn.textContent = type === 'password' ? '👁️' : '🕶️';
-        });
-
-        if (sessionStorage.getItem('ms_session') === 'active') {
-            document.getElementById('lock-screen').style.display = 'none';
-            document.getElementById('content').style.display = 'block';
+        if (sessionStorage.getItem('audit_auth') === 'true') {
+            document.getElementById('security-lock').style.display = 'none';
+            document.getElementById('dashboard-content').style.display = 'block';
         }
 
-        passInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') validate(); });
+        document.getElementById('access-code').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') authenticate();
+        });
     </script>
 </body>
 </html>

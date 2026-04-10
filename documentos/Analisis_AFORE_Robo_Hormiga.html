@@ -2,81 +2,92 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>EVIDENCIA DC: EL ROBO INVISIBLE - EXPEDIENTE SONORA (V2)</title>
+    <title>EVIDENCIA DC: ANÁLISIS DE VULNERABILIDAD PATRIMONIAL - EXPEDIENTE MS-2026</title>
     <style>
-        body { font-family: 'Courier New', Courier, monospace; background: #080808; color: #00ff41; padding: 40px; line-height: 1.5; }
-        .container { border: 3px double #00ff41; padding: 30px; max-width: 850px; margin: auto; position: relative; box-shadow: 0 0 20px rgba(0, 255, 65, 0.2); }
-        h1 { text-align: center; border-bottom: 3px double #00ff41; padding-bottom: 10px; color: #ff3d00; text-transform: uppercase; letter-spacing: 3px; }
-        .watermark { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-45deg); font-size: 6rem; opacity: 0.05; color: #fff; pointer-events: none; white-space: nowrap; }
-        .alert-red { color: #fff; background: #c62828; padding: 15px; text-align: center; font-weight: bold; margin-bottom: 25px; border: 1px solid #fff; }
-        .crane-diagram { text-align: center; margin: 40px 0; font-family: 'Courier New', monospace; color: #ffeb3b; background: rgba(255, 235, 59, 0.05); padding: 20px; border: 1px dashed #ffeb3b; }
-        .stat-box { border: 1px solid #00ff41; padding: 20px; margin: 25px 0; background: rgba(0, 255, 65, 0.02); }
-        .highlight { color: #ff3d00; font-weight: bold; }
-        .qr-section { display: flex; justify-content: space-between; align-items: center; margin-top: 50px; border-top: 2px solid #00ff41; padding-top: 25px; }
-        .footer { font-size: 0.85rem; text-align: center; margin-top: 40px; opacity: 0.8; color: #00ff41; }
-        .quote { font-style: italic; color: #fff; border-left: 5px solid #ff3d00; padding-left: 20px; margin: 30px 0; font-size: 1.1rem; }
-        .stamp { position: absolute; top: 20px; right: 20px; border: 4px solid #ff3d00; color: #ff3d00; padding: 10px; transform: rotate(15deg); font-weight: bold; text-transform: uppercase; }
-        @media print { body { background: white; color: black; } .container { border: 2px solid black; } }
+        body { font-family: 'Inter', Arial, sans-serif; background: #f4f4f4; color: #333; padding: 40px; line-height: 1.6; }
+        .container { background: #fff; border: 1px solid #ddd; padding: 40px; max-width: 900px; margin: auto; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .header { border-bottom: 2px solid #800000; padding-bottom: 20px; margin-bottom: 30px; display: flex; justify-content: space-between; align-items: center; }
+        .header-text h1 { margin: 0; font-size: 1.5rem; color: #800000; text-transform: uppercase; }
+        .header-text p { margin: 5px 0 0; font-size: 0.9rem; color: #666; }
+        .alert-box { border: 1px solid #c62828; background: #fff5f5; padding: 20px; margin-bottom: 30px; color: #c62828; }
+        .section-title { font-size: 1.2rem; font-weight: bold; border-left: 5px solid #800000; padding-left: 15px; margin: 30px 0 15px; color: #800000; text-transform: uppercase; }
+        .technical-data { background: #f9f9f9; padding: 20px; border: 1px solid #eee; margin: 20px 0; }
+        .technical-data ul { list-style: square; padding-left: 20px; }
+        .diagram-box { text-align: center; margin: 40px 0; border: 1px solid #ccc; padding: 20px; background: #fff; font-family: monospace; }
+        .qr-footer { display: flex; justify-content: space-between; align-items: flex-end; margin-top: 50px; border-top: 1px solid #ddd; padding-top: 20px; }
+        .qr-box { text-align: center; width: 150px; }
+        .footer-text { font-size: 0.8rem; color: #999; text-align: center; margin-top: 30px; }
+        .official-seal { font-weight: bold; text-transform: uppercase; color: #800000; border: 2px solid #800000; padding: 5px 10px; display: inline-block; margin-bottom: 10px; }
+        @media print { .no-print { display: none; } }
     </style>
 </head>
 <body>
-    <div class="watermark">SONORA PRIMERO</div>
-    <div class="stamp">ORDEN DE MOVILIZACIÓN</div>
     <div class="container">
-        <h1>[ REPORTE DE INTELIGENCIA: EL ZARPAZO FEDERAL ]</h1>
-        <div class="alert-red">ALERTA MÁXIMA: DETECCIÓN DE LA MAQUINARIA DE SAQUEO 2026</div>
-        
-        <p>Plebes, esta es la neta: Mientras los burócratas de la CDMX cenan con langosta, a nosotros nos están extirpando el futuro con una precisión quirúrgica. Este no es un error de mercado, es un <span class="highlight">Saqueo Programado</span>.</p>
-
-        <div class="quote">
-            "En el desierto, si te descuidas, los coyotes te dejan los puros huesos. La 'Casta Federal' son los coyotes de hoy y el AFORE es su trampa de arena." - Comando Magisterio Sonorense
+        <div class="header">
+            <div class="header-text">
+                <h1>Informe Técnico: Análisis de Vulnerabilidad Patrimonial</h1>
+                <p>Dirección de Estrategia e Inteligencia | Magisterio Sonorense</p>
+                <p>Referencia: DC-AFORE-MS-2026-004</p>
+            </div>
+            <div class="official-seal">CONFIDENCIAL</div>
         </div>
 
-        <div class="crane-diagram">
-            <pre style="font-size: 1.1rem;">
-      [ CASTA FEDERAL / BANORTE / SANTANDER ]
-             ||  (Los beneficiarios VIP)
-       ______|______
-      /             \
-     |    [ LA GRÚA ]| <--- SAQUEO HORMIGA (ROBO DE MINUSVALÍAS)
-      \______||_____/
-             ||  (Extracción de Riqueza Sonorense)
+        <div class="alert-box">
+            <strong>DICTAMEN ESTRATÉGICO:</strong> Se ha identificado un mecanismo sistemático de erosión patrimonial sobre los fondos administrados por PENSIONISSSTE y AFOREs privadas, con un impacto directo proyectado sobre la liquidez del ISSSTESON en el corto plazo.
+        </div>
+
+        <div class="section-title">01. Análisis de Coyuntura Macroeconómica</div>
+        <p>El presente análisis forense detalla la implementación de instrumentos financieros de deuda que facilitan la transferencia de capitales provenientes del Sistema de Ahorro para el Retiro (SAR) hacia proyectos de infraestructura con periodos de maduración superiores a los 30 años, comprometiendo la disponibilidad inmediata de recursos para contingencias prestacionales.</p>
+
+        <div class="section-title">02. Modelo de Extracción de Capital (Diagrama Operativo)</div>
+        <div class="diagram-box">
+            <pre>
+[ ÉLITE ADMINISTRATIVA / SECTOR BANCARIO / SHCP ]
+             ||
+       ______||______
+      /              \
+     |    MECANISMO   | <--- EROSIÓN PATRIMONIAL (MINUSVALÍAS)
+     | DE EXTRACCIÓN  |
+      \______||______/
+             ||
+       [ FLUJO DE CAPITAL REGIONAL ]
              ||
              \/
-      [ TU CUENTA PENSIONISSSTE / AFORE ]
-      (Tu suity, tu esfuerzo, tu retiro)
+[ CUENTAS INDIVIDUALES / PENSIONISSSTE ]
+( Patrimonio Histórico de la Clase Trabajadora )
             </pre>
-            <p style="font-size: 0.8rem; color: #ff3d00; font-weight: bold;">[ MECANISMO DE ORIENTACIÓN: MAGISTERIO SONORENSE ]</p>
+            <p style="font-size: 0.8rem; color: #800000;">[ FIGURA 1: SISTEMATIZACIÓN DEL DESPLAZAMIENTO DE RECURSOS ]</p>
         </div>
 
-        <div class="stat-box">
-            <h3>DATOS DUROS (PIMIENTA Y AGUACATE):</h3>
+        <div class="section-title">03. Impacto Proyectado en el Estado de Sonora</div>
+        <div class="technical-data">
             <ul>
-                <li><span class="highlight">Extirpación Patrimonial:</span> En 2026, la banca ha extraído más de <span class="highlight">120 mil millones</span> de las cuentas individuales bajo el concepto de "reajuste de cartera".</li>
-                <li><span class="highlight">El Gancho del Plan Sonora:</span> Tus ahorros están fondeando proyectos que no te benefician, mientras el <span class="highlight">ISSSTESON</span> se cae a pedazos por falta de medicamentos básicos.</li>
-                <li><span class="highlight">Jaque Mate:</span> A este ritmo, el maestro promedio en Sonora se jubilará con el <span class="highlight">30%</span> de su último sueldo. ¡Eso es condenarnos a la miseria!</li>
+                <li><strong>Descapitalización Regional:</strong> Los fondos generados por la base docente en Sonora están siendo utilizados como colateral para arbitrajes internacionales y rescates de proyectos federales fallidos.</li>
+                <li><strong>Crisis de Liquidez en ISSSTESON:</strong> El modelo de cuentas individuales socava el principio de solidaridad social, exacerbando el desabasto de insumos médicos y retrasando los trámites de jubilación por falta de solvencia institucional.</li>
+                <li><strong>Inestabilidad del Poder Adquisitivo:</strong> Las comisiones y minusvalías reportadas en el primer trimestre de 2026 representan una pérdida real del poder adquisitivo del ahorro para el retiro superior al 12.5% anual.</li>
             </ul>
         </div>
 
-        <p><strong>INSTRUCCIÓN TÁCTICA:</strong> No les creas nada, plebe. Si el director o el charro del sindicato dicen que "el mercado está volátil", enséñales este papel. Diles que en Sonora ya sabemos cómo opera la grúa y que no nos vamos a dejar chingar. <span class="highlight">¡AQUÍ MANDA EL DESIERTO!</span></p>
+        <div class="section-title">04. Recomendación Estratégica para la Coordinación</div>
+        <p>Es imperativo socializar esta información técnica entre los agremiados para fundamentar la exigencia de transparencia y la suspensión de transferencias de capital hacia fideicomisos públicos de alto riesgo. La movilización institucional del 1 de mayo requiere un sustento documental sólido frente a las narrativas de estabilización emitidas por los canales oficiales.</p>
 
-        <div class="qr-section">
-            <div style="text-align: center;">
-                <p>EVIDENCIA CONSAR (OFICIAL):</p>
-                <!-- URL ESTABLE 2026 -->
-                <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://www.gob.mx/consar/documentos/informes-trimestrales-al-h-congreso-de-la-union-2025" alt="QR CONSAR 4T 2025">
-                <p style="font-size: 0.7rem; color: #ffeb3b; margin-top: 5px;">Escanea para ver el informe auditado</p>
+        <div class="qr-footer">
+            <div class="qr-box">
+                <p style="font-size: 0.7rem;">PORTAL OFICIAL CONSAR:</p>
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://www.gob.mx/consar" alt="QR CONSAR OFFICIAL ROOT">
+                <p style="font-size: 0.6rem; margin-top: 5px;">Validar informes trimestrales</p>
             </div>
             <div style="text-align: right;">
-                <p>AUTONOMÍA TOTAL:</p>
-                <p style="font-family: monospace; color: #ff3d00; font-size: 1.2rem; font-weight: bold;">#SONORAPRIMERO2026</p>
-                <p>Magisterio Sonorense</p>
+                <p style="font-size: 0.9rem; font-weight: bold; color: #800000;">#PRESTIGIODOCENTE2026</p>
+                <p style="font-size: 0.8rem;">Coordinación de Análisis Técnico</p>
+                <p style="font-size: 0.8rem;">Magisterio Sonorense</p>
             </div>
         </div>
 
-        <div class="footer">
-            [ ESTE DOCUMENTO ES TU ESCUDO. IMPRÍMELO Y RUÉTALO POR TODO EL ESTADO. ]
+        <div class="footer-text">
+            Este documento constituye un activo de inteligencia estratégica. Su difusión debe ser gestionada con responsabilidad profesional por los coordinadores de sector.
         </div>
     </div>
+    <button class="no-print" onclick="window.print()" style="margin-top: 20px; width: 100%; padding: 10px; cursor: pointer; background: #800000; color: #fff; border: none; font-weight: bold;">GENERAR VERSIÓN IMPRESA DE AUDITORÍA</button>
 </body>
 </html>
