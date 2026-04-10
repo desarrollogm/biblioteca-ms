@@ -29,8 +29,8 @@
             margin: 0 auto;
             border: 1px solid var(--audit-dim);
             padding: 40px;
-            background: rgba(0, 0, 0, 0.8);
-            box-shadow: 0 0 40px rgba(0, 0, 0, 1);
+            background: rgba(0, 0, 0, 0.95);
+            box-shadow: 0 0 50px rgba(0, 0, 0, 1);
             position: relative;
         }
 
@@ -60,7 +60,7 @@
         }
 
         h2 {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             color: var(--audit-primary);
             border-bottom: 1px solid var(--audit-dim);
             padding-bottom: 10px;
@@ -69,19 +69,30 @@
             letter-spacing: 2px;
         }
 
-        .intel-report {
-            margin-bottom: 40px;
-            padding: 20px 0;
+        .tactical-box {
+            border: 1px dashed var(--audit-primary);
+            padding: 25px;
+            margin: 20px 0;
+            background: rgba(0, 255, 65, 0.03);
+        }
+
+        .tactical-title {
+            color: var(--audit-primary);
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            display: block;
+            font-size: 0.9rem;
         }
 
         .report-content {
             line-height: 1.8;
-            font-size: 1rem;
+            font-size: 1.05rem;
             text-align: justify;
         }
 
         .term-highlight { color: var(--audit-primary); font-weight: bold; }
-        .danger-report { color: var(--audit-alert); border-bottom: 1px dashed var(--audit-alert); }
+        .danger-text { color: var(--audit-alert); font-weight: bold; }
 
         .btn-portal {
             display: inline-block;
@@ -108,22 +119,25 @@
             display: block;
             width: 100%;
             margin-top: 50px;
-            background: var(--audit-alert);
+            background: #440000;
             color: #fff;
-            border: none;
+            border: 1px solid var(--audit-alert);
             padding: 15px;
             font-family: inherit;
             cursor: pointer;
             font-weight: bold;
             text-transform: uppercase;
             letter-spacing: 2px;
+            transition: 0.3s;
         }
+
+        .btn-kill:hover { background: var(--audit-alert); }
 
         .data-table {
             width: 100%;
             border-collapse: collapse;
             margin: 20px 0;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
         }
 
         .data-table th {
@@ -174,20 +188,62 @@
 
     <div id="dashboard-content" class="container" style="display: none;">
         <div class="header">
-            <h1>SISTEMA DE AUDITORÍA ESTRATÉGICA MAGISTERIAL</h1>
-            <p style="color: var(--audit-primary); font-size: 0.9rem;">CONVOCATORIA Y GESTIÓN DE EVIDENCIAS | MAYO 2026</p>
+            <h1>CONSOLA DE AUDITORÍA ESTRATÉGICA MS</h1>
+            <p style="color: var(--audit-primary); font-size: 0.9rem;">INTELIGENCIA TÉCNICA PARA LA MOVILIZACIÓN DEL 1 DE MAYO</p>
         </div>
 
         <div class="institutional-alert">
-            <strong>NOTIFICACIÓN:</strong> Esta sesión de auditoría es monitoreada. Utilice el botón de cierre al finalizar para asegurar la confidencialidad de los datos.
+            <strong>DICTAMEN TÉCNICO:</strong> Se ha consolidado la evidencia financiera y discursiva para la defensa de la autonomía regional de Sonora. El uso de esta información es estrictamente táctico.
         </div>
 
-        <h2>01. MARCO NORMATIVO FEDERAL</h2>
+        <h2>01. MARCO DE VULNERABILIDAD FEDERAL</h2>
         <div class="intel-report">
-            <p class="report-content">Se analiza la implementación de la Ley Federal de Pensiones y su impacto en la soberanía estatal de Sonora. La centralización de recursos financieros representa una vulnerabilidad crítica para las prestaciones locales.</p>
+            <p class="report-content">La política fiscal 2026 orienta el ahorro de los trabajadores de la educación hacia fideicomisos de infraestructura de alto riesgo, comprometiendo la liquidez futura de las pensiones estatales.</p>
         </div>
 
-        <h2>02. EVIDENCIA DOCUMENTAL (ANEXOS DC)</h2>
+        <h2>02. AUDITORÍA DE PERCEPCIONES (ÉLITE ADMINISTRATIVA)</h2>
+        <div class="intel-report">
+            <p class="report-content">Desglose de remuneraciones mensuales integrales identificadas en portales de transparencia y auditorías externas. Estas cifras contrastan con la asfixia presupuestaria denunciada en el sector salud:</p>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>NOMBRE</th>
+                        <th>REMUNERACIÓN MENSUAL</th>
+                        <th>OBSERVACIÓN FORESTAL</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>JOSÉ REYES BAEZA</td><td class="term-highlight">$309,054.00</td><td>Ex-Director (Bajo Auditoría)</td></tr>
+                    <tr><td>RAFAEL NAVARRO M.</td><td class="term-highlight">$275,340.00</td><td>Anomalía en Fideicomisos</td></tr>
+                    <tr><td>DELIA MENDÍA Z.</td><td class="term-highlight">$210,120.00</td><td>Remuneración no justificada</td></tr>
+                    <tr><td>JOSÉ NARRO ROBLES</td><td class="danger-text">$5,000,000.00</td><td class="danger-text">DESVÍO DOCUMENTADO (SALUD)</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2>03. CAJA DE HERRAMIENTAS TÁCTICAS (VIDEO FRAUSTO / ZACATECAS)</h2>
+        <div class="intel-report">
+            <p class="report-content">El análisis técnico del discurso de Filiberto Frausto revela una trampa de "unidad vertical" diseñada para neutralizar la resistencia sonorense. Use estas herramientas ante la base:</p>
+            
+            <div class="tactical-box">
+                <span class="tactical-title">HERRAMIENTA 1: EL ESPEJO DE ZACATECAS (EL LÍMITE DEL CENTRALISMO)</span>
+                <p class="report-content">Argumente que en Zacatecas (estado del Prof. Frausto), el sistema de pensiones ISSSTEZAC colapsó con un déficit de 500 MDP. <strong>La "unidad" que propone nos lleva a ese mismo destino.</strong> Sonora es autónoma porque tiene el ISSSTESON; la unión con el centro es la entrega de nuestra liquidez.</p>
+            </div>
+
+            <div class="tactical-box">
+                <span class="tactical-title">HERRAMIENTA 2: NEUTRALIZACIÓN DE LA "UNIDAD" SIN TRANSPARENCIA</span>
+                <p class="report-content">Ante el llamado a la unidad, responda institucionalmente: <strong>"La unidad solo es posible bajo el principio de auditoría compartida".</strong> Si ellos guardan silencio sobre las minusvalías de la AFORE, su unidad no es gremial, es complicidad bancaria.</p>
+            </div>
+
+            <div class="tactical-box">
+                <span class="tactical-title">HERRAMIENTA 3: LA TRAMPA DE LA VERTICALIDAD</span>
+                <p class="report-content">Identifique que Frausto habla desde una estructura que busca centralizar las cuotas. Sonora debe defender el <strong>Modelismo Estatal</strong>. Nuestra fuerza no viene de la CDMX, sino de la soberanía de nuestros fondos regionales.</p>
+            </div>
+
+            <a href="https://www.facebook.com/share/v/17GzmtyRSV/" target="_blank" class="btn-portal" style="border-color: var(--audit-alert); color: var(--audit-alert);">ACCEDER A EVIDENCIA DISCURSIVA (VIDEO)</a>
+        </div>
+
+        <h2>04. EVIDENCIA DOCUMENTAL (ANEXOS DC)</h2>
         <div class="intel-report">
             <div style="display: flex; flex-wrap: wrap; justify-content: center;">
                 <a href="../documentos/Analisis_AFORE_Robo_Hormiga.html" target="_blank" class="btn-portal">AUDITORÍA AFORE</a>
@@ -204,46 +260,21 @@
             </div>
         </div>
 
-        <h2>03. REGISTRO DE ÉLITE ADMINISTRATIVA</h2>
-        <div class="intel-report">
-            <table class="data-table">
-                <thead>
-                    <tr>
-                        <th>FUNCIONARIO</th>
-                        <th>CARGO</th>
-                        <th>ESTADO DE GESTIÓN</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td>JOSÉ REYES BAEZA</td><td>EX-DIRECTOR GENERAL</td><td class="danger-report">BAJO PROCESO</td></tr>
-                    <tr><td>RAFAEL NAVARRO M.</td><td>DIRECCIÓN FINANCIERA</td><td class="danger-report">OBSERVACION AUDITORÍA</td></tr>
-                    <tr><td>JOSÉ NARRO ROBLES</td><td>SISTEMA DE SALUD</td><td class="danger-report">FALTANTES DOCUMENTADOS</td></tr>
-                    <tr><td>DELIA MENDÍA Z.</td><td>COORDINACIÓN ADMINISTRATIVA</td><td class="danger-report">SOLVENCIA PENDIENTE</td></tr>
-                </tbody>
-            </table>
-        </div>
-
-        <h2>04. ANÁLISIS DE DESVIACIÓN DISCURSIVA (CASO ZACATECAS)</h2>
-        <div class="intel-report">
-            <p class="report-content">El análisis técnico del discurso emitido desde Zacatecas (Filiberto Frausto) revela una tendencia hacia el centralismo sindical que compromete la autonomía del Magisterio Sonorense. El mensaje de "unidad vertical" se identifica como una táctica de neutralización de las demandas regionales legítimas.</p>
-            <a href="https://www.facebook.com/share/v/17GzmtyRSV/" target="_blank" class="btn-portal" style="margin-top: 15px; border-color: var(--audit-alert); color: var(--audit-alert);">ACCEDER A EVIDENCIA VIDEO-GRÁFICA</a>
-        </div>
-
-        <h2>05. MODELO DE EXTRACCIÓN PATRIMONIAL (LA GRÚA)</h2>
+        <h2>05. MECANISMO DE EXTRACCIÓN PATRIMONIAL (LA GRÚA)</h2>
         <div class="intel-report" style="text-align: center;">
-            <p class="report-content" style="border: 1px solid var(--audit-dim); padding: 25px; display: inline-block;">
-                [ ÉLITE FINANCIERA / BANCO BANORTE-SANTANDER ] <br>
+            <p class="report-content" style="border: 1px solid var(--audit-dim); padding: 25px; display: inline-block; background: rgba(0, 0, 0, 0.5);">
+                [ ÉLITE FINANCIERA / SECTOR BANCO ] <br>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|| <br>
-                &nbsp;&nbsp;[ LA GRÚA: EXTRACCIÓN DE MINUSVALÍAS ] <br>
+                &nbsp;[ LA GRÚA: EXTRACCIÓN DE LIQUIDEZ ] <br>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|| <br>
                 [ PATRIMONIO DOCENTE SONORA ]
             </p>
         </div>
 
-        <button class="btn-kill" onclick="killOperation()">[ TERMINAR OPERACIÓN Y CERRAR CONSOLA ]</button>
+        <button class="btn-kill" onclick="killOperation()">[ FINALIZAR OPERACIÓN Y CERRAR CONSOLA SEGURA ]</button>
 
         <div class="footer">
-            CONSOLA ESTRATÉGICA MS V3.2 - INSTITUCIONALIDAD Y SOBERANÍA TÉCNICA
+            CONSOLA ESTRATÉGICA MS V3.3 - INTELIGENCIA TÉCNICA SUPERIOR
         </div>
     </div>
 
