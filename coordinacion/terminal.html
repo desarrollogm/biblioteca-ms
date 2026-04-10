@@ -3,15 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terminal de Inteligencia MS - Acceso Restringido</title>
+    <title>TERMINAL DE INTELIGENCIA MS - SONORA PRIMERO</title>
     <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
     <style>
         :root {
             --term-green: #00ff41;
             --term-red: #ff3e3e;
-            --term-bg: #0a0a0a;
-            --term-dim: #008f11;
+            --term-bg: #050505;
+            --term-dim: #006400;
             --term-yellow: #ffeb3b;
+            --glow: 0 0 10px rgba(0, 255, 65, 0.5);
         }
 
         body {
@@ -21,215 +22,205 @@
             margin: 0;
             padding: 20px;
             overflow-x: hidden;
+            text-shadow: var(--glow);
+        }
+
+        /* Scanline Effect */
+        body::before {
+            content: " ";
+            display: block;
+            position: fixed;
+            top: 0; left: 0; bottom: 0; right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            z-index: 2;
+            background-size: 100% 2px, 3px 100%;
+            pointer-events: none;
         }
 
         .container {
-            max-width: 900px;
+            max-width: 950px;
             margin: 0 auto;
-            border: 1px solid var(--term-dim);
-            padding: 20px;
-            box-shadow: 0 0 20px rgba(0, 255, 65, 0.1);
+            border: 2px solid var(--term-dim);
+            padding: 30px;
+            box-shadow: 0 0 30px rgba(0, 255, 65, 0.1);
+            position: relative;
+            z-index: 3;
         }
 
         .header {
             text-align: center;
-            border-bottom: 2px solid var(--term-green);
-            padding-bottom: 10px;
-            margin-bottom: 30px;
+            border-bottom: 3px double var(--term-green);
+            padding-bottom: 15px;
+            margin-bottom: 40px;
         }
 
         .header h1 {
             margin: 0;
-            font-size: 1.5rem;
+            font-size: 2rem;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 5px;
+            color: #fff;
         }
 
         .warning-box {
             border: 1px solid var(--term-red);
             color: var(--term-red);
-            padding: 15px;
-            margin-bottom: 30px;
-            animation: blink 2s infinite;
+            padding: 20px;
+            margin-bottom: 40px;
+            background: rgba(255, 62, 62, 0.05);
+            animation: blink 2.5s infinite;
+            text-align: center;
+            font-weight: bold;
         }
 
         @keyframes blink {
-            0% { opacity: 1; }
-            50% { opacity: 0.7; }
-            100% { opacity: 1; }
+            0% { opacity: 1; border-color: var(--term-red); }
+            50% { opacity: 0.8; border-color: #fff; }
+            100% { opacity: 1; border-color: var(--term-red); }
         }
 
         h2 {
+            border-left: 8px solid var(--term-green);
+            padding-left: 15px;
+            font-size: 1.4rem;
+            margin-top: 50px;
+            text-transform: uppercase;
+            background: rgba(0, 255, 65, 0.1);
             color: #fff;
-            border-left: 5px solid var(--term-green);
-            padding-left: 10px;
-            font-size: 1.2rem;
-            margin-top: 40px;
         }
 
         .intel-item {
-            margin-bottom: 25px;
-            background: rgba(0, 255, 65, 0.05);
-            padding: 15px;
+            margin-bottom: 30px;
+            padding: 20px;
             border-radius: 4px;
+            border: 1px solid rgba(0, 255, 65, 0.2);
+            transition: all 0.3s;
         }
 
-        .label {
-            font-weight: bold;
-            color: #fff;
-            display: block;
-            margin-bottom: 5px;
-            text-transform: uppercase;
-            font-size: 0.9rem;
+        .intel-item:hover {
+            border-color: var(--term-green);
+            background: rgba(0, 255, 65, 0.08);
         }
 
         .meat {
-            color: #ccc;
-            line-height: 1.6;
+            color: #d1d1d1;
+            line-height: 1.8;
+            font-size: 1.1rem;
         }
 
-        .highlight {
-            color: var(--term-green);
+        .highlight { color: var(--term-green); font-weight: bold; }
+        .danger { color: var(--term-red); font-weight: bold; text-decoration: underline; }
+        .sonora { color: var(--term-yellow); font-weight: bold; }
+
+        .btn-access {
+            display: inline-block;
+            margin: 10px;
+            background: var(--term-dim);
+            color: #fff;
+            border: 1px solid var(--term-green);
+            padding: 12px 20px;
+            font-family: inherit;
+            cursor: pointer;
             font-weight: bold;
-        }
-
-        .danger {
-            color: var(--term-red);
-            font-weight: bold;
-        }
-
-        .footer {
-            margin-top: 50px;
+            text-decoration: none;
             text-align: center;
-            font-size: 0.8rem;
-            color: var(--term-dim);
-            border-top: 1px solid var(--term-dim);
-            padding-top: 20px;
+            transition: 0.2s;
+        }
+
+        .btn-access:hover {
+            background: var(--term-green);
+            color: #000;
+            box-shadow: 0 0 15px var(--term-green);
         }
 
         #lock-screen {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0; width: 100%; height: 100%;
             background: var(--term-bg);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
             z-index: 10000;
         }
 
         #lock-screen input {
-            background: transparent;
-            border: 1px solid var(--term-green);
-            color: var(--term-green);
-            padding: 10px;
-            font-family: inherit;
-            font-size: 1.2rem;
-            text-align: center;
-            width: 250px;
-            outline: none;
+            background: #000; border: 1px solid var(--term-green);
+            color: var(--term-green); padding: 15px; width: 300px;
+            font-family: inherit; font-size: 1.5rem; text-align: center;
+            box-shadow: var(--glow);
         }
 
-        .btn-access {
-            margin-top: 20px;
-            background: var(--term-green);
-            color: #000;
-            border: none;
-            padding: 10px 30px;
-            font-family: inherit;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        .btn-access:hover {
-            background: #fff;
-        }
-
-        #content {
-            display: none;
+        .status-badge {
+            background: #006400; color: #fff; padding: 2px 10px; font-size: 0.8rem; border-radius: 10px; margin-left: 10px;
         }
     </style>
 </head>
 <body>
 
     <div id="lock-screen">
-        <p>[SISTEMA DE SEGURIDAD MAGISTERIAL]</p>
-        <p>INGRESE LLAVE DE COORDINACIÓN:</p>
-        <div class="password-wrapper" style="position: relative; width: 300px; margin: 0 auto;">
-            <input type="password" id="passkey" autocomplete="off" placeholder="••••••••">
-            <button id="toggle-eye-term" type="button" 
-                    style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; color: var(--term-green); font-size: 1.2rem;">👁️</button>
+        <p style="color: #fff; font-size: 1.5rem;">[ CODIFICACIÓN SONORA PRIMERO ]</p>
+        <p>IDENTIFÍQUESE COORDINADOR:</p>
+        <div style="position: relative;">
+            <input type="password" id="passkey" placeholder="LLAVE DE ACCESO" autocomplete="off">
+            <button id="toggle-eye-term" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: none; border: none; color: var(--term-green); cursor: pointer;">👁️</button>
         </div>
-        <button class="btn-access" onclick="validate()">ACCEDER</button>
-        <p id="error-msg" style="color: var(--term-red); margin-top: 10px; display: none;">LLAVE INCORRECTA. ACCESO DENEGADO.</p>
+        <button class="btn-access" style="margin-top: 30px; width: 330px;" onclick="validate()">INIT_SESSION</button>
+        <p id="error-msg" style="color: var(--term-red); margin-top: 20px; display: none;">[ ERROR: ACCESO DENEGADO ]</p>
     </div>
 
     <div id="content" class="container">
         <div class="header">
-            <h1>Dossier: Operación Carne Asada</h1>
-            <p>Clasificación: CONFIDENCIAL | Nivel: COORDINADOR</p>
-            <button onclick="killSession()" class="btn-access" style="padding: 5px 15px; font-size: 0.7rem;">[ SALIR ]</button>
+            <h1>OPERACIÓN CARNE ASADA <span style="font-size: 0.8rem; vertical-align: middle; color: var(--term-yellow);">V2.0</span></h1>
+            <p style="color: var(--term-dim);">ESTADO: ACTIVO | AUTONOMÍA: 100% | FUENTE: INTELIGENCIA MS</p>
         </div>
 
         <div class="warning-box">
-            ADVERTENCIA: Información de OSINT sobre el despojo financiero programado para 2026. Uso exclusivo del Magisterio Sonorense.
+            ALERTA: ESTA INFORMACIÓN ES PIMIENTA PURA PARA EL 1 DE MAYO. PLEBES, SI ESTO CAE EN MANOS DE LOS CHARROS, PERDEMOS EL JALÓN.
         </div>
 
-        <h2>12. Arsenal de Pruebas Institucionales (DC) 📜</h2>
-        <div class="intel-item" style="border: 1px solid var(--term-dim);">
-            <p class="meat">Artillería Pesada: Evidencia oficial para asambleas:</p>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px;">
-                <a href="../documentos/Reporte_Hacienda_Deuda_2026.html" target="_blank" class="btn-access" style="text-decoration: none; font-size: 0.7rem;">[ HACIENDA 54.7% ]</a>
-                <a href="../documentos/Arbitraje_Ganfeng_ICSID.html" target="_blank" class="btn-access" style="text-decoration: none; font-size: 0.7rem;">[ CIADI-GANFENG ]</a>
-                <a href="../documentos/Plan_Modernizacion_Guaymas_2026.html" target="_blank" class="btn-access" style="text-decoration: none; font-size: 0.7rem;">[ PTO. GUAYMAS ]</a>
-                <a href="../documentos/Corrupcion_Fundacion_ISSSTE.html" target="_blank" class="btn-access" style="text-decoration: none; font-size: 0.7rem; background: var(--term-red);">[ T-BONE ISSSTE ]</a>
-                <a href="../documentos/Analisis_AFORE_Robo_Hormiga.html" target="_blank" class="btn-access" style="text-decoration: none; font-size: 0.7rem; background: var(--term-red);">[ ROBO AFORES ]</a>
-                <a href="https://www.senado.gob.mx/66/gaceta_del_senado" target="_blank" class="btn-access" style="text-decoration: none; font-size: 0.7rem;">[ GACETA SENADO ]</a>
+        <h2>12. ARSENAL DE PRUEBAS (CERO 404) 📜</h2>
+        <div class="intel-item">
+            <p class="meat">Aquí está el aguacate, plebes. Escaneen y comprueben en vivo. Si el gobierno respira, Hacienda miente, y el CIADI juzga, aquí está la prueba:</p>
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-top: 20px;">
+                <a href="../documentos/Reporte_Hacienda_Deuda_2026.html" target="_blank" class="btn-access">[ SHCP: DEUDA 2026 ]</a>
+                <a href="../documentos/Arbitraje_Ganfeng_ICSID.html" target="_blank" class="btn-access">[ CIADI: CASO GANFENG ]</a>
+                <a href="../documentos/Plan_Modernizacion_Guaymas_2026.html" target="_blank" class="btn-access">[ ASIPONA: PTO. GUAYMAS ]</a>
+                <a href="../documentos/Corrupcion_Fundacion_ISSSTE.html" target="_blank" class="btn-access" style="background: #800000;">[ T-BONE: ROBO ISSSTE ]</a>
+                <a href="../documentos/Analisis_AFORE_Robo_Hormiga.html" target="_blank" class="btn-access" style="background: #800000;">[ EL ZARPAZO AFORE ]</a>
+                <a href="https://www.senado.gob.mx/66/gaceta_del_senado" target="_blank" class="btn-access">[ GACETA SENADO ]</a>
             </div>
         </div>
 
-        <h2>16. Listado de Beneficiarios VIP (La Casta) 🤴</h2>
-        <div class="intel-item" style="border: 1px solid var(--term-dim);">
+        <h2>16. LOS PARÁSITOS DE LA CASTA VIP 🤴</h2>
+        <div class="intel-item" style="border-color: var(--term-red);">
+            <p class="meat">Mírenlos machín, ellos cobran por no hacer nada mientras tú estás frente al grupo:</p>
             <ul class="meat" style="list-style: none; padding-left: 0; font-family: monospace;">
-                <li>>> <span class="danger">JOSÉ REYES BAEZA:</span> $309,054.00 mens.</li>
-                <li>>> <span class="danger">RAFAEL NAVARRO M.:</span> $275,340.00 mens.</li>
-                <li>>> <span class="danger">JOSÉ NARRO ROBLES:</span> $5,000,000 (Desvío)</li>
-                <li>>> <span class="danger">DELIA MENDÍA Z.:</span> $210,120.00 mens.</li>
-                <li>>> <span class="danger">IGNACIO CAMPILLO:</span> $195,400.00 mens.</li>
+                <li>>> <span class="danger">JOSÉ REYES BAEZA:</span> $309,054.00 mens. <span class="status-badge">RECAUDADOR</span></li>
+                <li>>> <span class="danger">RAFAEL NAVARRO M.:</span> $275,340.00 mens. <span class="status-badge">EXTRACTOR</span></li>
+                <li>>> <span class="danger">JOSÉ NARRO ROBLES:</span> $5,000,000 DE DESVÍO. <span class="status-badge">CÁNCER</span></li>
+                <li>>> <span class="danger">DELIA MENDÍA Z.:</span> $210,120.00 mens. <span class="status-badge">CÓMPLICE</span></li>
             </ul>
         </div>
 
-        <h2>18. Inteligencia Sonora: El Jaque Mate al Despojo Federal 🕵️‍♂️</h2>
-        <div class="intel-item" style="border-left: 5px solid #ff3d00;">
-            <p class="meat">En Sonora estamos <span class="highlight">Sincronizando la Verdad</span>. El modelo de AFORE es la misma semilla que asfixia al ISSSTESON. No seguimos agendas externas, defendemos autonomía.</p>
+        <h2>18. EL JALÓN DEL DESIERTO: SONORA PRIMERO ⚡</h2>
+        <div class="intel-item" style="border-left: 10px solid var(--term-yellow);">
+            <p class="meat">Plebes, ya les ganamos el jalón a los del centro. Nosotros no marchamos por órdenes de nadie. El AFORE es el cáncer y el <span class="sonora">ISSSTESON</span> es el paciente que están dejando morir. ¡Nuestra jubilación no se negocia con burócratas de la CDMX!</p>
         </div>
 
-        <h2>19. La Grúa del Desierto: Tu Patrimonio en Riesgo 🏗️</h2>
-        <div class="intel-item" style="text-align: center; background: rgba(255, 61, 0, 0.05);">
-            <p class="meat" style="font-family: monospace; color: var(--term-yellow);">
+        <h2>19. LA GRÚA CRIMINAL: TU SUITY EN PELIGRO 🏗️</h2>
+        <div class="intel-item" style="text-align: center; border: 2px dashed var(--term-yellow);">
+            <p class="meat" style="font-family: monospace; color: var(--term-yellow); font-size: 1.2rem;">
                 [ BANORTE / SANTANDER / SHCP ] <br>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|| <br>
-                &nbsp;&nbsp;&nbsp;&nbsp;[GRÚA]<--- EXTRACCIÓN <br>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|| <br>
-                &nbsp;[ TU PATRIMONIO ]
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|| <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[LA GRÚA]<--- SAQUEO <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|| <br>
+                &nbsp;&nbsp;&nbsp;[ TU PATRIMONIO ]
             </p>
-            <p class="meat" style="font-size: 0.8rem; font-style: italic;">
-                "Sonora se defiende solo. Inteligencia local contra el robo federal."
+            <p class="meat" style="font-style: italic; color: #fff;">
+                "En el desierto protegemos la madriguera. ¡La grúa federal no pasa en Sonora!"
             </p>
-        </div>
-
-        <h2>17. Monitor de Tráfico (Ojo de Halcón) 🦅</h2>
-        <div class="intel-item">
-            <p class="meat">Sistema de rastreo activo. Análisis de impacto regional.</p>
-            <a href="https://docs.google.com/spreadsheets/d/1FhrwxOYz9pzc1VkFOQOTTQu4dn9hsWs9gY_Z7LKn1Nk/edit?gid=0#gid=0" 
-               target="_blank" style="color: var(--term-green); font-weight: bold;">[ VER REGISTRO DE INTELIGENCIA ]</a>
         </div>
 
         <div class="footer">
-            [ TERMINAL CIBERNÉTICA MS - JAQUE MATE AL OLVIDO ]
+            [ TERMINAL CIBERNÉTICA MS V2.0 - SONORA PRIMERO O NADA ]
         </div>
     </div>
 
@@ -248,11 +239,6 @@
             }
         }
 
-        function killSession() {
-            sessionStorage.removeItem('ms_session');
-            window.location.href = '../index.html';
-        }
-
         eyeBtn.addEventListener('click', () => {
             const type = passInput.getAttribute('type') === 'password' ? 'text' : 'password';
             passInput.setAttribute('type', type);
@@ -266,6 +252,5 @@
 
         passInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') validate(); });
     </script>
-    <script src="../assets/js/intel_tracker.js"></script>
 </body>
 </html>
