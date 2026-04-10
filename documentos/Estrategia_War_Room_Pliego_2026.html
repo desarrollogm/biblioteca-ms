@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>WAR ROOM MS: ESTRATEGIA Y PLIEGO PETITORIO 2026</title>
+    <style>
+        :root {
+            --primary: #00ff41;
+            --danger: #ff3e3e;
+            --warning: #ffcc00;
+            --bg: #050505;
+            --card-bg: #0a0a0a;
+            --text: #e0e0e0;
+            --accent: #d4af37;
+        }
+        body { font-family: 'JetBrains Mono', 'Courier New', monospace; background: var(--bg); color: var(--text); margin: 0; padding: 30px; line-height: 1.5; }
+        .bunker { border: 2px solid #222; max-width: 1000px; margin: auto; padding: 40px; position: relative; overflow: hidden; }
+        .bunker::before { content: "TOP SECRET // WAR ROOM MS"; position: absolute; top: 10px; right: 20px; font-size: 0.7rem; color: #444; }
+        
+        .header { border-bottom: 3px solid var(--primary); padding-bottom: 20px; margin-bottom: 40px; }
+        .header h1 { margin: 0; font-size: 1.8rem; color: var(--primary); text-transform: uppercase; letter-spacing: 3px; }
+        .header p { margin: 5px 0 0; color: #777; font-size: 0.9rem; }
+
+        .module { background: var(--card-bg); border: 1px solid #222; padding: 25px; margin-bottom: 30px; border-left: 5px solid var(--primary); transition: all 0.3s; }
+        .module:hover { border-color: var(--primary); box-shadow: 0 0 20px rgba(0, 255, 65, 0.1); }
+        .module-title { font-weight: bold; color: var(--primary); margin-bottom: 15px; font-size: 1.1rem; text-transform: uppercase; display: flex; align-items: center; }
+        .module-title span { margin-right: 15px; }
+
+        .demand-list { list-style: none; padding: 0; }
+        .demand-item { margin-bottom: 15px; padding-left: 20px; border-left: 1px solid #333; }
+        .demand-item b { color: var(--accent); display: block; margin-bottom: 5px; }
+
+        .protocol-box { background: rgba(255, 62, 62, 0.05); border: 1px dashed var(--danger); padding: 20px; margin: 20px 0; }
+        .protocol-rule { color: var(--danger); font-weight: bold; font-size: 1.1rem; text-align: center; padding: 10px; border: 1px solid var(--danger); margin-top: 10px; }
+
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        
+        .stats-box { text-align: center; padding: 20px; border: 1px solid #222; background: #000; }
+        .stats-val { font-size: 2rem; font-weight: bold; color: var(--primary); }
+        .stats-label { font-size: 0.7rem; color: #777; text-transform: uppercase; }
+
+        .btn-print { background: var(--primary); color: black; border: none; padding: 15px 30px; font-weight: bold; cursor: pointer; width: 100%; text-transform: uppercase; margin-top: 20px; }
+        
+        @media (max-width: 768px) { .grid { grid-template-columns: 1fr; } }
+        @media print { .no-print { display: none; } body { background: white; color: black; } .bunker { border: none; } .module { border: 1px solid black; } }
+    </style>
+</head>
+<body>
+    <div class="bunker">
+        <div class="header">
+            <h1>Manual de Operaciones Estratégicas 2026</h1>
+            <p>Magisterio Sonorense | Centro de Mando Táctico | V4.0</p>
+        </div>
+
+        <div class="module">
+            <div class="module-title"><span>01</span> PLIEGO PETITORIO CONSOLIDADO (ARIETE NACIONAL)</div>
+            <div class="grid">
+                <div class="demand-item">
+                    <b>JUBILACIÓN DIGNA (FPIP)</b>
+                    Abrogación de la Ley ISSSTE 2007. Retorno al sistema solidario mediante el Fondo de Pensión Intergeneracional Protegida. Eliminación de las UMAs como base de cálculo.
+                </div>
+                <div class="demand-item">
+                    <b>EXTINCIÓN DE USICAMM</b>
+                    Cese inmediato del "aparato de opacidad". Sustitución por un sistema de carrera diseñado por y para el magisterio, con transparencia total en basificación.
+                </div>
+                <div class="demand-item">
+                    <b>REZONIFICACIÓN SONORA</b>
+                    Aplicación de tabuladores de Zona Libre de la Frontera Norte a Cajeme, Navojoa y Hermosillo. Reclamación histórica de quinquenios y arraigo indígena (Art. 45).
+                </div>
+                <div class="demand-item">
+                    <b>SALUD DE PRIMER MUNDO</b>
+                    Auditoría a Birmex y Megafarmacia. Abasto garantizado de medicamentos y modernización de infraestructura hospitalaria en Sonora.
+                </div>
+            </div>
+        </div>
+
+        <div class="module" style="border-left-color: var(--danger);">
+            <div class="module-title" style="color: var(--danger);"><span>02</span> PROTOCOLOS DEL WAR ROOM (VOCERÍA)</div>
+            <p>Directrices inquebrantables para el manejo de la narrativa pública y el control de daños:</p>
+            <div class="protocol-box">
+                <p>Ante cualquier cuestionamiento sobre la representación actual del movimiento, la respuesta autorizada es única y definitiva:</p>
+                <div class="protocol-rule">"RAMSÉS VALENZUELA INFANTE FUE VOCERO, HASTA NUEVO AVISO."</div>
+                <p style="font-size: 0.8rem; text-align: center; color: #555; margin-top: 10px;">[ NO AGREGAR DETALLES, NO EMITIR POSTURAS ADICIONALES ]</p>
+            </div>
+            <p><strong>Línea Institucional:</strong> Mantener tono formal y técnico. Evitar la confrontación estéril. Nuestra fuerza reside en el dato duro (Estudios Actuariales, Reportes ASF).</p>
+        </div>
+
+        <div class="module" style="border-left-color: var(--warning);">
+            <div class="module-title" style="color: var(--warning);"><span>03</span> EXPEDIENTE DE CRISIS: EL CASO BIRMEX</div>
+            <p>Evidencia técnica para desmontar la narrativa oficial de salud:</p>
+            <div class="grid">
+                <div class="stats-box">
+                    <div class="stats-val">$1,044 MDP</div>
+                    <div class="stats-label">Sin aclarar (ASF 2023)</div>
+                </div>
+                <div class="stats-box">
+                    <div class="stats-val">8.5%</div>
+                    <div class="stats-label">Eficiencia Megafarmacia</div>
+                </div>
+            </div>
+            <p style="font-size: 0.9rem; margin-top: 15px;">La Auditoría Superior de la Federación (ASF) confirma la entrega de medicamentos caducados y pagos a empresas fantasma. Birmex es el "Talón de Aquiles" del sistema prestacional.</p>
+        </div>
+
+        <div class="module">
+            <div class="module-title"><span>04</span> CONTRA-INTELIGENCIA: EL ENGENDRÓ CEPEDA</div>
+            <p>Por qué la propuesta del SNTE (Alfonso Cepeda Salas) es una trampa:</p>
+            <ul style="font-size: 0.9rem;">
+                <li><b>Fortalece a las Afores:</b> No abroga la ley, solo aumenta aportaciones para alimentar el capital financiero.</li>
+                <li><b>Beneficio Diferido:</b> El impacto positivo se verá hasta el año 2050. No resuelve las jubilaciones actuales.</li>
+                <li><b>Trampa de la UMA:</b> Mantiene el tope en UMAs, permitiendo que la inflación siga devorando el poder adquisitivo del jubilado.</li>
+            </ul>
+        </div>
+
+        <div class="module" style="border-left-color: var(--accent);">
+            <div class="module-title" style="color: var(--accent);"><span>05</span> PIMIENTA TÁCTICA: PREGUNTAS INCÓMODAS</div>
+            <p>Brigadas del Grupo 000 deben cuestionar en asambleas:</p>
+            <ul style="font-size: 0.9rem; color: var(--accent);">
+                <li>¿Por qué el SNTE celebra un aumento del 13% que no cubre ni la inflación real de la canasta básica?</li>
+                <li>¿Dónde están los 211,000 millones de pesos del ahorro federal que deberían ir a las pensiones?</li>
+                <li>¿Por qué la SEC Sonora oculta las plazas vacantes del PAAE?</li>
+            </ul>
+        </div>
+
+        <button class="btn-print no-print" onclick="window.print()">DESCARGAR MANUAL DE OPERACIONES (PDF)</button>
+        
+        <p style="text-align: center; color: #333; font-size: 0.7rem; margin-top: 30px;">
+            SISTEMA DE INTELIGENCIA MS // WAR ROOM // ACCESO NIVEL 00 // SONORA 2026
+        </p>
+    </div>
+</body>
+</html>
