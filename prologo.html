@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prólogo General | Biblioteca Digital MS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Playfair+Display:ital,wght@0,400;1,700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-red: #8b0000;
+            --accent-gold: #d4af37;
+            --bg-deep: #050505;
+            --text-light: #f5f5f5;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-deep);
+            color: var(--text-light);
+            font-family: 'Playfair Display', serif;
+            overflow-x: hidden;
+            line-height: 1.8;
+        }
+
+        .cinematic-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(139, 0, 0, 0.15) 0%, rgba(5, 5, 5, 1) 100%);
+            z-index: -1;
+        }
+
+        .scroll-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 15vh 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 10vh;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeIn 2s forwards;
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 3rem;
+            color: var(--accent-gold);
+            letter-spacing: 4px;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .subtitle {
+            font-family: 'Roboto', sans-serif;
+            font-size: 1rem;
+            letter-spacing: 5px;
+            color: var(--primary-red);
+            font-weight: 700;
+        }
+
+        .prologue-text {
+            font-size: 1.4rem;
+            text-align: justify;
+            margin-bottom: 50vh;
+        }
+
+        p {
+            margin-bottom: 4rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 1s ease-out;
+        }
+
+        p.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .highlight {
+            color: var(--accent-gold);
+            font-weight: 700;
+        }
+
+        .signature {
+            text-align: right;
+            margin-top: 10vh;
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+            color: var(--accent-gold);
+            opacity: 0;
+        }
+
+        .signature.visible {
+            opacity: 1;
+            animation: fadeIn 2s forwards;
+        }
+
+        .btn-enter {
+            display: block;
+            width: fit-content;
+            margin: 10vh auto;
+            padding: 1.5rem 3rem;
+            background: transparent;
+            color: var(--accent-gold);
+            border: 2px solid var(--accent-gold);
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            transition: all 0.4s;
+            opacity: 0;
+        }
+
+        .btn-enter.visible {
+            opacity: 1;
+            animation: pulse-gold 2s infinite;
+        }
+
+        .btn-enter:hover {
+            background: var(--accent-gold);
+            color: var(--bg-deep);
+            box-shadow: 0 0 30px var(--accent-gold);
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulse-gold {
+            0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4); }
+            70% { box-shadow: 0 0 0 20px rgba(212, 175, 55, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+        }
+
+        .audio-control {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: rgba(139, 0, 0, 0.2);
+            border: 1px solid var(--accent-gold);
+            color: var(--accent-gold);
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Cinzel', serif;
+            font-size: 0.8rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s;
+        }
+
+        .audio-control:hover {
+            background: var(--accent-gold);
+            color: var(--bg-deep);
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 2rem; }
+            .prologue-text { font-size: 1.1rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="cinematic-bg"></div>
+
+    <div class="scroll-container">
+        <header>
+            <h1>Prólogo General</h1>
+            <div class="subtitle">La Arquitectura de la Verdad</div>
+        </header>
+
+        <div class="prologue-text" id="text-body">
+            <p>**Compañeras y compañeros, guardianes del saber y de la patria:**</p>
+            
+            <p>Esta obra no es un frío compendio de leyes o un análisis distante de reformas que nos han herido. Lo que tienen ante ustedes es, en esencia, un <span class="highlight">Grito de Rebelión Escrita</span>, un mapa de navegación trazado con la sangre, el sudor y la esperanza de quienes nos negamos a ser olvidados.</p>
+            
+            <p>A través de estos once tomos, no solo diseccionamos el desmantelamiento de nuestras pensiones o el asedio a la educación pública; estamos forjando el <span class="highlight">Arsenal de la Verdad</span> necesario para recuperar nuestro destino.</p>
+            
+            <p>Durante décadas, las sombras del poder han manufacturado el silencio bajo el velo de la "modernidad". Nos han querido convencer de que nuestra precariedad es un destino manifiesto, de que el desmantelamiento de nuestras jubilaciones y la burocratización de nuestra labor son simples "daños colaterales".</p>
+            
+            <p>Pero este compendio es la prueba matemática y moral de lo contrario. Mediante la <span class="highlight">Agnotología Sistémica</span> y la <span class="highlight">Teoría de Juegos</span>, demostramos que la desinformación no es un accidente, sino un producto político diseñado para mantenernos en un Dilema del Prisionero permanente.</p>
+            
+            <p>Desde la heroica resistencia de la CNTE hasta las jornadas bajo el sol incandescente de Sonora, hemos demostrado que el tablero no es inamovible. Hoy, con la <span class="highlight">Nueva Escuela Mexicana</span>, tenemos la oportunidad de hacer del aula nuestro campo de batalla pedagógico y social.</p>
+            
+            <p>No mendigamos justicia, la construimos. No rogamos por nuestro retiro, lo defendemos con la ciencia del dato y la conciencia de la lucha colectiva. La territorialización del aprendizaje y nuestra unión son el escudo invulnerable contra los embates privatizadores.</p>
+            
+            <p>Que estas páginas no solo se lean, sino que <span class="highlight">se sientan</span>. Que enciendan el fuego en cada asamblea y en cada corazón docente. Porque la dignidad de un maestro no tiene precio, y nuestra unión es la fuerza implacable que hará caer las "Fábricas de Ignorancia".</p>
+
+            <div class="signature">
+                ¡Hasta la victoria siempre!<br>
+                Profr. Kristian Copado
+            </div>
+
+            <a href="index.html" class="btn-enter" id="final-btn">Entrar a la Biblioteca</a>
+        </div>
+    </div>
+
+    <button class="audio-control" id="audioToggle">🔊 Mística Sonora</button>
+
+    <audio id="bgAudio" loop>
+        <source src="assets/audio/himno_ms.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('p, .signature, .btn-enter').forEach(el => observer.observe(el));
+
+        const audio = document.getElementById('bgAudio');
+        const audioBtn = document.getElementById('audioToggle');
+
+        audioBtn.addEventListener('click', () => {
+            if (audio.paused) {
+                audio.play();
+                audioBtn.textContent = '⏸︎ Pausar Mística';
+            } else {
+                audio.pause();
+                audioBtn.textContent = '🔊 Mística Sonora';
+            }
+        });
+    </script>
+    <script src="assets/js/intel_tracker.js"></script>
+</body>
+</html>
