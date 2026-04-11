@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tomo XI: Rebelión del Desierto | Biblioteca Digital MS</title>
+    <meta name="description" content="Tomo XI de la serie Fábricas de Ignorancia: Rebelión del Desierto. El hackeo magisterial y la victoria técnica de las bases en Sonora.">
+    <meta property="og:title" content="Tomo XI: Rebelión del Desierto | Biblioteca Digital MS">
+    <meta property="og:description" content="La insurgencia técnica en el corazón de Sonora. Paloma y Kristian lideran el hackeo definitivo al sistema de control.">
+    <meta property="og:image" content="https://desarrollogm.github.io/biblioteca-ms/tomoXI/assets/images/portada.png">
+    <meta property="og:url" content="https://desarrollogm.github.io/biblioteca-ms/tomoXI/tomo11.html">
+    <meta property="og:type" content="article">
+    <link rel="icon" type="image/png" href="../assets/favicon-ms.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Cinzel:wght@700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #050505;
+            --primary-red: #d32f2f;
+            --accent-gold: #ffc107;
+            --text-white: #f5f5f5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-white);
+            overflow-x: hidden;
+            scroll-snap-type: y mandatory;
+            height: 100vh;
+        }
+
+        .header {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 100;
+            pointer-events: none;
+        }
+
+        .header h1 {
+            font-family: 'Cinzel', serif;
+            font-weight: 900;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.8);
+            opacity: 0.7;
+        }
+
+        .ms-logo {
+            width: 120px;
+            margin-bottom: 10px;
+            filter: drop-shadow(0 0 5px rgba(0,0,0,0.5));
+            pointer-events: auto;
+        }
+
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: var(--primary-red);
+            width: 0%;
+            z-index: 200;
+            box-shadow: 0 0 15px var(--primary-red);
+            transition: width 0.5s ease;
+        }
+
+        .panel {
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            scroll-snap-align: start;
+            overflow: hidden;
+        }
+
+        .panel-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: scale(1.15);
+            transition: transform 3s cubic-bezier(0.1, 0, 0.3, 1), filter 1s ease;
+            filter: brightness(0.5) contrast(1.4);
+        }
+
+        .panel.active .panel-bg {
+            transform: scale(1);
+            filter: brightness(0.7) contrast(1.2);
+        }
+
+        .panel-content {
+            position: relative;
+            z-index: 2;
+            width: 90%;
+            max-width: 650px;
+            padding: 40px;
+            background: linear-gradient(135deg, rgba(10, 10, 10, 0.9) 0%, rgba(30, 0, 0, 0.8) 100%);
+            border-left: 6px solid var(--primary-red);
+            backdrop-filter: blur(15px);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s ease 0.5s;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+        }
+
+        .panel.active .panel-content {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .panel-number {
+            font-size: 0.8rem;
+            color: var(--primary-red);
+            font-weight: 900;
+            letter-spacing: 4px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .panel-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--accent-gold);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            line-height: 1.2;
+        }
+
+        .panel-text {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: #ececec;
+            font-weight: 400;
+            font-style: italic;
+        }
+
+        .progress-nav {
+            position: fixed;
+            right: 20px; top: 50%;
+            transform: translateY(-50%);
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .dot {
+            width: 8px; height: 8px;
+            background: #444;
+            border-radius: 50%;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .dot.active {
+            background: var(--primary-red);
+            transform: scale(1.4);
+            box-shadow: 0 0 10px var(--primary-red);
+        }
+
+        .btn-home {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 9999;
+            background: #8b0000;
+            color: #d4af37;
+            padding: 10px 20px;
+            border: 2px solid #d4af37;
+            border-radius: 5px;
+            text-decoration: none;
+            font-family: 'Cinzel', serif;
+            font-weight: bold;
+            font-size: 14px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+
+        @media (max-width: 600px) {
+            .panel-content { padding: 25px; }
+            .panel-title { font-size: 1.4rem; }
+            .panel-text { font-size: 0.95rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-bar" id="progress"></div>
+    <header class="header">
+        <img src="../assets/logo_ms_oficial.jpg" class="ms-logo" alt="Logo MS">
+        <h1>Tomo XI: Rebelión del Desierto</h1>
+    </header>
+
+    <div class="progress-nav" id="progNav"></div>
+    <a href="../index.html" class="btn-home">Regresar</a>
+
+    <main>
+        <!-- PORTADA -->
+        <section class="panel" id="p0">
+            <img src="assets/images/portada.png" alt="Portada" class="panel-bg">
+            <div class="panel-content">
+                <span class="panel-number">TOMO XI</span>
+                <h2 class="panel-title">Rebelión del Desierto: El Hackeo Magisterial</h2>
+                <p class="panel-text">"El inicio de la insurgencia técnica en el corazón de Sonora. El fin del silencio y el inicio del nuevo equilibrio docente."</p>
+            </div>
+        </section>
+
+        <!-- CAP 1 -->
+        <section class="panel" id="p1">
+            <img src="assets/images/panel1.png" alt="Cap 1" class="panel-bg">
+            <div class="panel-content">
+                <span class="panel-number">CAPÍTULO I</span>
+                <h2 class="panel-title">El Tablero de la Ciudad</h2>
+                <p class="panel-text">"Paloma y Kristian decodifican el mapa de voluntades: Hermosillo y Obregón ya no son solo puntos en un plano, son nodos de resistencia sincronizada."</p>
+            </div>
+        </section>
+
+        <!-- CAP 2 -->
+        <section class="panel" id="p2">
+            <img src="assets/images/panel2.png" alt="Cap 2" class="panel-bg">
+            <div class="panel-content">
+                <span class="panel-number">CAPÍTULO II</span>
+                <h2 class="panel-title">El Dilema del Educador</h2>
+                <p class="panel-text">"Frente al Palacio, la sombra del poder intenta imponer su lógica. Pero el maestro sonorense ya no elige entre dos males; diseña su propia tercera opción: la dignidad."</p>
+            </div>
+        </section>
+
+        <!-- CAP 3 -->
+        <section class="panel" id="p3">
+            <img src="assets/images/panel3.png" alt="Cap 3" class="panel-bg">
+            <div class="panel-content">
+                <span class="panel-number">CAPÍTULO III</span>
+                <h2 class="panel-title">La Matriz de Cooperación</h2>
+                <p class="panel-text">"En la calidez del aula, la base se reconoce. La cooperación no es un riesgo, es un algoritmo de supervivencia colectiva que el charrismo no puede hackear."</p>
+            </div>
+        </section>
+
+        <!-- CAP 4 -->
+        <section class="panel" id="p4">
+            <img src="assets/images/panel4.png" alt="Cap 4" class="panel-bg">
+            <div class="panel-content">
+                <span class="panel-number">CAPÍTULO IV</span>
+                <h2 class="panel-title">Sombras de Nash</h2>
+                <p class="panel-text">"La Plaza Zaragoza respira conciencia. El equilibrio de sumisión se ha roto. Cada paso sobre el pavimento es una variable que el Estado no pudo prever."</p>
+            </div>
+        </section>
+
+        <!-- CAP 5 -->
+        <section class="panel" id="p5">
+            <img src="assets/images/panel5.png" alt="Cap 5" class="panel-bg">
+            <div class="panel-content">
+                <span class="panel-number">CAPÍTULO V</span>
+                <h2 class="panel-title">La Paradoja de Braess</h2>
+                <p class="panel-text">"Intentan saturar nuestras rutas de comunicación, pero el flujo de conciencia es ahora imparable e irreversible. El caos del poder es nuestro orden."</p>
+            </div>
+        </section>
+
+        <!-- CAP 6 -->
+        <section class="panel" id="p6">
+            <img src="assets/images/panel6.png" alt="Cap 6" class="panel-bg">
+            <div class="panel-content">
+                <span class="panel-number">CAPÍTULO VI</span>
+                <h2 class="panel-title">El Submarino de la Realidad</h2>
+                <p class="panel-text">"Bajo la superficie de la burocracia, encontramos la verdad: el despojo institucional se detiene con datos precisos y coraje inquebrantable."</p>
+            </div>
+        </section>
+
+        <!-- CAP 7 -->
+        <section class="panel" id="p7">
+            <img src="assets/images/panel7.png" alt="Cap 7" class="panel-bg">
+            <div class="panel-content">
+                <span class="panel-number">CAPÍTULO VII</span>
+                <h2 class="panel-title">Teorema de Convergencia</h2>
+                <p class="panel-text">"Cuando miles de voluntades convergen en un solo punto, la geometría del poder se ve obligada a reconfigurarse ante la fuerza de la base."</p>
+            </div>
+        </section>
+
+        <!-- CAP 8 -->
+        <section class="panel" id="p8">
+            <img src="assets/images/panel8.png" alt="Cap 8" class="panel-bg">
+            <div class="panel-content">
+                <span class="panel-number">CAPÍTULO VIII</span>
+                <h2 class="panel-title">Singularidad Magisterial</h2>
+                <p class="panel-text">"Hemos alcanzado el punto crítico. Ya no hay camino de regreso al silencio; el futuro del magisterio es hoy y nos pertenece a todos."</p>
+            </div>
+        </section>
+
+        <!-- CAP 9 -->
+        <section class="panel" id="p9">
+            <img src="assets/images/panel9.png" alt="Cap 9" class="panel-bg">
+            <div class="panel-content">
+                <span class="panel-number">CAPÍTULO IX</span>
+                <h2 class="panel-title">Auditoría de la Victoria</h2>
+                <p class="panel-text">"No solo ganamos en la calle, ganamos en la técnica. El pliego petitorio es ahora la nueva regla del juego político en Sonora."</p>
+            </div>
+        </section>
+
+        <!-- CAP 10 -->
+        <section class="panel" id="p10">
+            <img src="assets/images/panel10.png" alt="Cap 10" class="panel-bg">
+            <div class="panel-content">
+                <span class="panel-number">CAPÍTULO X</span>
+                <h2 class="panel-title">El Origen del Nuevo Magisterio</h2>
+                <p class="panel-text">"¡Jaque Mate al Olvido! La Rebelión del Desierto clava su bandera definitiva: un magisterio libre, soberano y eterno. Fin de la Fábrica de Ignorancia."</p>
+            </div>
+        </section>
+
+        <!-- EPÍLOGO -->
+        <section class="panel" id="pend">
+            <img src="assets/images/portada.png" alt="Fin" class="panel-bg" style="filter: brightness(0.3) blur(5px);">
+            <div class="panel-content" style="text-align: center; border-left: none; border: 1px solid var(--accent-gold);">
+                <span class="panel-number">TOMO XI COMPLETADO</span>
+                <h2 class="panel-title">MAGISTERIO SONORENSE</h2>
+                <p class="panel-text" style="margin-bottom: 30px;">"La historia no se escribe con algoritmos, se escribe con la dignidad de quien educa."</p>
+                <a href="../index.html" class="btn-portal" style="border: 2px solid var(--accent-gold); color: var(--accent-gold); text-decoration: none; padding: 10px 30px; border-radius: 5px; font-family: 'Cinzel', serif; font-weight: bold; display: inline-block;">VOLVER AL PORTAL</a>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const panels = document.querySelectorAll('.panel');
+        const dotsContainer = document.getElementById('progNav');
+        const progress = document.getElementById('progress');
+        
+        panels.forEach((panel, i) => {
+            const dot = document.createElement('div');
+            dot.className = 'dot';
+            dot.addEventListener('click', () => {
+                panel.scrollIntoView({behavior: 'smooth'});
+            });
+            dotsContainer.appendChild(dot);
+        });
+
+        const dots = document.querySelectorAll('.dot');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    const index = Array.from(panels).indexOf(entry.target);
+                    dots.forEach((d, i) => d.classList.toggle('active', i === index));
+                    const percent = (index / (panels.length - 1)) * 100;
+                    progress.style.width = percent + '%';
+                } else {
+                    entry.target.classList.remove('active');
+                }
+            });
+        }, { threshold: 0.5 });
+
+        panels.forEach(p => observer.observe(p));
+    </script>
+<script src="../assets/js/intel_tracker.js"></script></body>
+</html>
