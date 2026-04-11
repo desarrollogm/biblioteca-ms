@@ -6,9 +6,13 @@
     <title>Tomo IX: La Paradoja del Desierto | Biblioteca Digital MS</title>
     <meta name="description" content="Cinética Revolucionaria: Agnotología y Teoría de Juegos en la lucha del Magisterio Sonorense.">
     <meta property="og:title" content="Tomo IX: La Paradoja del Desierto | Biblioteca Digital MS">
-    <meta property="og:description" content="Una historia cinematográfica sobre la resistencia táctica del magisterio federal.">
+    <meta property="og:description" content="Desentrañando la producción de la ignorancia y el despliegue del Arsenal de la Verdad.">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     <meta property="og:image" content="https://desarrollogm.github.io/biblioteca-ms/tomoIX/assets/images/portada.png">
+    <meta property="og:image:type" content="image/png">
     <meta property="og:url" content="https://desarrollogm.github.io/biblioteca-ms/tomoIX/tomo9.html">
+    <meta property="og:site_name" content="Biblioteca Digital MS">
     <meta property="og:type" content="article">
     <link rel="icon" type="image/png" href="../assets/favicon-ms.png">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Cinzel:wght@700;900&display=swap" rel="stylesheet">
@@ -39,7 +43,7 @@
             position: fixed;
             top: 20px;
             left: 20px;
-            z-index: 100;
+            z-index: 1000;
             pointer-events: none;
         }
 
@@ -68,7 +72,7 @@
             height: 4px;
             background: var(--primary-red);
             width: 0%;
-            z-index: 200;
+            z-index: 2000;
             box-shadow: 0 0 15px var(--primary-red);
             transition: width 0.5s ease;
         }
@@ -92,13 +96,13 @@
             height: 100%;
             object-fit: cover;
             transform: scale(1.15);
-            transition: transform 3s cubic-bezier(0.1, 0, 0.3, 1), filter 1s ease;
-            filter: brightness(0.6) contrast(1.3);
+            transition: transform 3s cubic-bezier(0.1, 0, 0.3, 1), filter 1s ease 4.5s;
+            filter: brightness(0.6) contrast(1.2) grayscale(0.5);
         }
 
         .panel.active .panel-bg {
             transform: scale(1);
-            filter: brightness(0.8) contrast(1.1);
+            filter: brightness(0.7) contrast(1.1);
         }
 
         .panel-content {
@@ -111,8 +115,8 @@
             border-left: 6px solid var(--primary-red);
             backdrop-filter: blur(15px);
             opacity: 0;
-            transform: translateY(30px);
-            transition: all 1s ease 0.5s;
+            transform: translateY(50px);
+            transition: all 1.5s cubic-bezier(0.19, 1, 0.22, 1) 0.5s;
             box-shadow: 0 25px 50px rgba(0,0,0,0.5);
         }
 
@@ -122,54 +126,41 @@
         }
 
         .panel-number {
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             color: var(--primary-red);
             font-weight: 900;
             letter-spacing: 4px;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             display: block;
         }
 
         .panel-title {
             font-family: 'Cinzel', serif;
-            font-size: 1.8rem;
+            font-size: 2.2rem;
             font-weight: 900;
             color: var(--accent-gold);
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             text-transform: uppercase;
-            line-height: 1.2;
+            line-height: 1.1;
         }
 
         .panel-text {
             font-size: 1.05rem;
-            line-height: 1.6;
-            color: #ececec;
+            line-height: 1.5;
+            color: var(--accent-gold);
             font-weight: 400;
             font-style: italic;
+            border-top: 1px solid rgba(255,193,7,0.2);
+            padding-top: 15px;
+            margin-bottom: 15px;
         }
 
-        .progress-nav {
-            position: fixed;
-            right: 20px; top: 50%;
-            transform: translateY(-50%);
-            z-index: 100;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .dot {
-            width: 8px; height: 8px;
-            background: #444;
-            border-radius: 50%;
-            transition: all 0.3s;
-            cursor: pointer;
-        }
-
-        .dot.active {
-            background: var(--primary-red);
-            transform: scale(1.4);
-            box-shadow: 0 0 10px var(--primary-red);
+        .panel-description {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #ccc;
+            font-weight: 300;
+            text-align: justify;
         }
 
         .audio-control {
@@ -216,74 +207,94 @@
             justify-content: center;
         }
 
-        .btn-home:hover {
-            background: var(--accent-gold);
-            color: #8b0000;
-            transform: scale(1.05);
-            box-shadow: 0 0 20px rgba(255, 193, 7, 0.4);
-        }
-
-        .audio-control:hover {
-            background: var(--primary-red);
-            transform: scale(1.1) translateY(-5px);
-            box-shadow: 0 0 25px rgba(211, 47, 47, 0.5);
-        }
-
-        .audio-control.playing {
-            background: var(--accent-gold);
-            color: #8b0000;
-            box-shadow: 0 0 20px var(--accent-gold);
-            animation: pulse-gold 2s infinite;
-        }
-
-        @keyframes pulse-gold {
-            0% { box-shadow: 0 0 0 0 rgba(255, 193, 7, 0.7); }
-            70% { box-shadow: 0 0 0 15px rgba(255, 193, 7, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(255, 193, 7, 0); }
-        }
-
-        .footer-sig {
+        .btn-wa-tomo {
             position: fixed;
-            bottom: 20px; left: 25px;
+            top: 20px;
+            right: 150px;
+            z-index: 9999;
+            background: #25d366;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: bold;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            border: 2px solid white;
             font-family: 'Inter', sans-serif;
-            font-size: 0.65rem;
-            font-weight: 700;
-            color: rgba(255, 255, 255, 0.4);
-            z-index: 1000;
-            letter-spacing: 1px;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+            font-size: 12px;
         }
 
-        @media (max-width: 600px) {
-            .panel-content { padding: 25px; }
-            .panel-title { font-size: 1.4rem; }
-            .panel-text { font-size: 0.95rem; }
+        .progress-nav {
+            position: fixed;
+            right: 20px; top: 50%;
+            transform: translateY(-50%);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .dot {
+            width: 8px; height: 8px;
+            background: #333;
+            border-radius: 50%;
+            transition: all 0.4s;
+            cursor: pointer;
+        }
+
+        .dot.active {
+            background: var(--primary-red);
+            transform: scale(1.5);
+            box-shadow: 0 0 10px var(--primary-red);
+        }
+
+        .watermark {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            font-size: 0.8rem;
+            opacity: 0.8;
+            letter-spacing: 4px;
+            color: var(--accent-gold);
+            z-index: 1000;
+            font-family: 'Cinzel', serif;
+            text-transform: uppercase;
+            text-shadow: 0 0 10px rgba(255, 193, 7, 0.5);
+            border-bottom: 2px solid var(--primary-red);
+            padding-bottom: 5px;
         }
     </style>
 </head>
 <body>
     <div class="progress-bar" id="progress"></div>
+    <div class="watermark">JADesarrollo</div>
+
     <header class="header">
         <img src="../assets/logo_ms_oficial.jpg" class="ms-logo" alt="Logo MS">
         <h1>Tomo IX: La Paradoja del Desierto</h1>
     </header>
 
     <div class="progress-nav" id="progNav"></div>
-    <div class="footer-sig">JADesarrollo ✦ MS</div>
+    <a href="https://wa.me/526442313519" class="btn-wa-tomo">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="16" height="16" style="filter: brightness(0) invert(1);">
+        <span>Ayuda MS</span>
+    </a>
     <a href="../index.html" class="btn-home">Regresar</a>
 
     <div class="audio-control" id="audioToggle">🔊 ACTIVAR HIMNO MS</div>
 
-    <audio id="himnoAudio" loop>
-        <source src="../assets/audio/himno_ms.mp3" type="audio/mpeg">
-    </audio>
+    <main>
         <!-- PORTADA -->
         <section class="panel" id="p0">
             <img src="assets/images/portada.png" alt="Portada" class="panel-bg">
             <div class="panel-content">
                 <span class="panel-number">INICIO</span>
-                <h2 class="panel-title">La Paradoja del Desierto</h2>
-                <p class="panel-text">"La resistencia nace donde el sistema espera el olvido. Una historia de táctica, verdad y dignidad magisterial."</p>
+                <h2 class="panel-title">Fábricas de Ignorancia</h2>
+                <p class="panel-text">"Donde la desinformación institucional se convierte en el veneno de la base. El despertar comienza con la verdad técnica."</p>
+                <p class="panel-description">Las Fábricas de Ignorancia no son edificios físicos; son procesos culturales diseñados para mantener al maestro en la oscuridad sobre su propio patrimonio. Este tomo desmantela la maquinaria de opacidad que ha permitido el despojo silencioso en Sonora durante décadas.</p>
             </div>
         </section>
 
@@ -292,8 +303,9 @@
             <img src="assets/images/panel1.png" alt="Cap 1" class="panel-bg">
             <div class="panel-content">
                 <span class="panel-number">CAPÍTULO I</span>
-                <h2 class="panel-title">El Casino de la Agnotología</h2>
-                <p class="panel-text">"En el Palacio, la ignorancia no es falta de saber, es un producto manufacturado. Te cuentan de bonos mientras devalúan tu retiro."</p>
+                <h2 class="panel-title">La Máquina del Olvido</h2>
+                <p class="panel-text">"Un sistema que borra la historia laboral del docente es un sistema que le roba su futuro retiro."</p>
+                <p class="panel-description">La desvinculación de los registros históricos del FONE y el ISSSTESON ha creado un 'limbo administrativo' donde miles de millones de pesos se han perdido. El olvido no es accidental, es una estrategia para evitar la rendición de cuentas sobre las cuotas magisteriales.</p>
             </div>
         </section>
 
@@ -302,8 +314,9 @@
             <img src="assets/images/panel2.png" alt="Cap 2" class="panel-bg">
             <div class="panel-content">
                 <span class="panel-number">CAPÍTULO II</span>
-                <h2 class="panel-title">La Ciudad de los Espejismos</h2>
-                <p class="panel-text">"En Obregón, la UMA es el lente que deforma la realidad. Te hacen creer que el dinero alcanza, mientras la inflación devora el futuro."</p>
+                <h2 class="panel-title">Espejismos Presupuestales</h2>
+                <p class="panel-text">"Cifras que relucen en los informes oficiales pero que se desvanecen en la realidad de la farmacia y la clínica."</p>
+                <p class="panel-description">La narrativa gubernamental sobre la 'solvencia del instituto' es un espejismo cruel. Mientras desvían recursos para gasto corriente, el jubiliado padece el desabasto. Analizamos la ingeniería del engaño que maquilla balances para ocultar la bancarrota moral del sistema.</p>
             </div>
         </section>
 
@@ -312,8 +325,9 @@
             <img src="assets/images/panel3.png" alt="Cap 3" class="panel-bg">
             <div class="panel-content">
                 <span class="panel-number">CAPÍTULO III</span>
-                <h2 class="panel-title">El Dilema del Jubilado</h2>
-                <p class="panel-text">"La Agnotología del hospital: te distraen con propaganda mientras la farmacia del ISSSTE cierra sus puertas. El dilema es resistir o esperar el turno del olvido."</p>
+                <h2 class="panel-title">El Casino de la Agnotología</h2>
+                <p class="panel-text">"Cuando el patrón controla la información, el trabajador siempre apuesta a perder en el juego de las pensiones."</p>
+                <p class="panel-description">La agnotología es la producción deliberada de la ignorancia. El patrón fomenta la confusión sobre la UMA y los quinquenios para que el maestro no sepa cuánto le están robando. El Arsenal de la Verdad es el antídoto contra este casino de sombras.</p>
             </div>
         </section>
 
@@ -322,8 +336,9 @@
             <img src="assets/images/panel4.png" alt="Cap 4" class="panel-bg">
             <div class="panel-content">
                 <span class="panel-number">CAPÍTULO IV</span>
-                <h2 class="panel-title">La Rebelión del Desierto Urbano</h2>
-                <p class="panel-text">"La señal se sincroniza. Hermosillo y Obregón ya no son puntos aislados; son una red de conciencia que el sistema no puede apagar."</p>
+                <h2 class="panel-title">El Gran Desfalco Forense</h2>
+                <p class="panel-text">"Seguir la ruta del dinero no es un deseo, es una obligación técnica para recuperar nuestro patrimonio."</p>
+                <p class="panel-description">La auditoría forense es nuestra arma principal. Hemos identificado los nodos donde el flujo de capital se desvía hacia empresas fantasma y gastos partidistas. El dinero del maestro es intocable y su destino debe ser estrictamente para la seguridad social y el retiro.</p>
             </div>
         </section>
 
@@ -332,8 +347,9 @@
             <img src="assets/images/panel5.png" alt="Cap 5" class="panel-bg">
             <div class="panel-content">
                 <span class="panel-number">CAPÍTULO V</span>
-                <h2 class="panel-title">El Círculo de Novikov</h2>
-                <p class="panel-text">"La trampa de las comisiones de análisis. El sistema intenta absorber la protesta en un bucle infinito donde nada cambia."</p>
+                <h2 class="panel-title">Laberinto de la Burocracia</h2>
+                <p class="panel-text">"Enterrados bajo montañas de trámites ficticios, nuestros derechos mueren por inanición administrativa."</p>
+                <p class="panel-description">La burocracia excesiva es una táctica de desgaste. Al complicar el acceso a la información laboral, el sistema busca que el docente desista de reclamar lo que es suyo. La digitalización técnica del MS rompe este laberinto y pone la verdad a un pulso de distancia.</p>
             </div>
         </section>
 
@@ -342,8 +358,9 @@
             <img src="assets/images/panel6.png" alt="Cap 6" class="panel-bg">
             <div class="panel-content">
                 <span class="panel-number">CAPÍTULO VI</span>
-                <h2 class="panel-title">Congestión Cognitiva</h2>
-                <p class="panel-text">"¡A las calles! Si no hay justicia en el talón de pago, habrá resistencia en el asfalto. El mensaje al gobierno y al sindicato es claro: se acabó el silencio."</p>
+                <h2 class="panel-title">Arquitectos del Silencio</h2>
+                <p class="panel-text">"Quien calla otorga, y quien oculta despoja. El silencio oficial es el cómplice del viejo sistema sindical."</p>
+                <p class="panel-description">El contubernio entre las cúpulas sindicales y la autoridad ha creado un pacto de silencio que ha asfixiado al magisterio. Desmontamos esta alianza de intereses oscuros devolviendo la voz a la asamblea y la transparencia a las cuotas de nómina.</p>
             </div>
         </section>
 
@@ -352,8 +369,9 @@
             <img src="assets/images/panel7.png" alt="Cap 7" class="panel-bg">
             <div class="panel-content">
                 <span class="panel-number">CAPÍTULO VII</span>
-                <h2 class="panel-title">Eco en los Ejidos</h2>
-                <p class="panel-text">"Del sur al norte, la resistencia llega a Navojoa y al campo. Donde hay un maestro, hay una trinchera de la verdad federal."</p>
+                <h2 class="panel-title">Tormenta de Consciencia</h2>
+                <p class="panel-text">"Cuando la base despierta con datos reales, el desierto entero se levanta en una sola voluntad de cambio."</p>
+                <p class="panel-description">La información técnica genera una reacción en cadena. No hay fuerza más grande que un maestro consciente de su propia fuerza económica. Esta tormenta de arena barrerá con los vestigios del clientelismo y fundará una nueva soberanía magisterial.</p>
             </div>
         </section>
 
@@ -362,8 +380,9 @@
             <img src="assets/images/panel8.png" alt="Cap 8" class="panel-bg">
             <div class="panel-content">
                 <span class="panel-number">CAPÍTULO VIII</span>
-                <h2 class="panel-title">El Juego del Gallina</h2>
-                <p class="panel-text">"Frente a frente con la cúpula. Amenazan con sanciones, pero nosotros apostamos a la dignidad. ¿Quién parpadeará primero?"</p>
+                <h2 class="panel-title">El Maestro como Auditor</h2>
+                <p class="panel-text">"Cada docente es un nodo de vigilancia. Ya no esperamos que auditen, nosotros somos la auditoría."</p>
+                <p class="panel-description">La capacitación en análisis de nómina y derecho laboral forense es el pilar de nuestra autonomía. El sistema no puede mentirle a quien ya sabe leer entre líneas. La base técnica es el máximo organismo de fiscalización del nuevo Sonora magisterial.</p>
             </div>
         </section>
 
@@ -372,8 +391,9 @@
             <img src="assets/images/panel9.png" alt="Cap 9" class="panel-bg">
             <div class="panel-content">
                 <span class="panel-number">CAPÍTULO IX</span>
-                <h2 class="panel-title">El Grito Sincronizado</h2>
-                <p class="panel-text">"Todas las delegaciones en una sola frecuencia. El jaque mate técnico a la fragmentación sindical."</p>
+                <h2 class="panel-title">Soberanía de Datos</h2>
+                <p class="panel-text">"Los datos son el nuevo petróleo de la lucha social. El Arsenal de la Verdad es nuestra refinería moral."</p>
+                <p class="panel-description">Poseer la verdad técnica es poseer el poder de negociación. Al centralizar nuestra propia inteligencia de datos, dictamos los términos del diálogo. Ya no vamos a las mesas a escuchar, vamos a imponer las realidades que la autoridad quiere seguir ignorando.</p>
             </div>
         </section>
 
@@ -382,16 +402,54 @@
             <img src="assets/images/panel10.png" alt="Cap 10" class="panel-bg">
             <div class="panel-content">
                 <span class="panel-number">CAPÍTULO X</span>
-                <h2 class="panel-title">Jaque Mate al Olvido</h2>
-                <p class="panel-text">"La marea federal inunda Hermosillo. Rumbo al 1 de Mayo, la victoria de la conciencia es inevitable. ¡Resistencia Magisterial!"</p>
+                <h2 class="panel-title">Oasis de Dignidad</h2>
+                <p class="panel-text">"Al final del camino de sombras, la luz de la justicia brilla para todos los hijos del desierto. ¡PRESENTE!"</p>
+                <p class="panel-description">La victoria es inevitable cuando la base se funde con la verdad técnica. El Oasis de Dignidad es el legado que dejamos a los nuevos maestros: un sistema de pensiones blindado, una salud garantizada y una voz que nunca más volverá a ser silenciada.</p>
+            </div>
+        </section>
+
+        <!-- CAP 11 -->
+        <section class="panel" id="p11">
+            <img src="assets/images/panel2.png" alt="Cap 11" class="panel-bg">
+            <div class="panel-content">
+                <span class="panel-number">CAPÍTULO XI</span>
+                <h2 class="panel-title">Justicia Reivindicada</h2>
+                <p class="panel-text">"La balanza se inclina finalmente hacia el lado de la razón magisterial, despojando al poder de su velo de impunidad."</p>
+                <p class="panel-description">Hemos desarticulado cada argumento fiscal del estado. La riqueza de Sonora alcanza para sus maestros si se eliminan los parásitos administrativos. Reclamar lo que es nuestro no es pedir un favor, es ejecutar una sentencia de justicia histórica y profesional.</p>
+            </div>
+        </section>
+
+        <!-- CAP 12 -->
+        <section class="panel" id="p12">
+            <img src="assets/images/panel4.png" alt="Cap 12" class="panel-bg">
+            <div class="panel-content">
+                <span class="panel-number">CAPÍTULO XII</span>
+                <h2 class="panel-title">El Pacto del Desierto</h2>
+                <p class="panel-text">"Una alianza sellada en la arena y la lucha, que ningún decreto podrá romper jamás."</p>
+                <p class="panel-description">Este pacto une a activos y jubilados en una sola vanguardia técnica. No aceptaremos soluciones parciales que dividan nuestra fuerza. Somos un solo frente, una sola voluntad y un solo Arsenal de la Verdad que marchará unido este 1 de Mayo hacia la gloria.</p>
+            </div>
+        </section>
+
+        <!-- CAP 13 -->
+        <section class="panel" id="p13">
+            <img src="assets/images/panel6.png" alt="Cap 13" class="panel-bg">
+            <div class="panel-content">
+                <span class="panel-number">CAPÍTULO XIII</span>
+                <h2 class="panel-title">Victoria Técnica Total</h2>
+                <p class="panel-text">"El amanecer de la verdad ha llegado. El magisterio sonorense es hoy más fuerte, más sabio y finalmente libre."</p>
+                <p class="panel-description">Cierra la serie la confirmación de nuestro poderío intelectual. Hemos ganado la guerra de la información y con ello, la autoridad moral para dirigir nuestro propio destino. El 1 de Mayo el mundo verá el triunfo definitivo del magisterio sobre las Fábricas de Ignorancia.</p>
             </div>
         </section>
     </main>
 
+    <audio id="himnoAudio" loop>
+        <source src="../assets/audio/himno_ms.mp3" type="audio/mpeg">
+    </audio>
+
     <script>
         const panels = document.querySelectorAll('.panel');
         const dotsContainer = document.getElementById('progNav');
-        const progress = document.getElementById('progress');
+        const progressBar = document.getElementById('progress');
         
         panels.forEach((panel, i) => {
             const dot = document.createElement('div');
@@ -409,8 +467,9 @@
                     entry.target.classList.add('active');
                     const index = Array.from(panels).indexOf(entry.target);
                     dots.forEach((d, i) => d.classList.toggle('active', i === index));
-                    const percent = (index / (panels.length - 1)) * 100;
-                    progress.style.width = percent + '%';
+                    
+                    const progress = ((index) / (panels.length - 1)) * 100;
+                    progressBar.style.width = progress + '%';
                 } else {
                     entry.target.classList.remove('active');
                 }
@@ -419,7 +478,6 @@
 
         panels.forEach(p => observer.observe(p));
 
-        // Audio Logic
         const audio = document.getElementById('himnoAudio');
         const audioBtn = document.getElementById('audioToggle');
         

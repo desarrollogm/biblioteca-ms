@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-MX">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tomo 1: El Juego de las Pensiones | Biblioteca Digital MS</title>
-    <meta name="description" content="Descubre el origen del desfalco magisterial en este cómic interactivo cinematográfico.">
-    <meta property="og:title" content="Tomo I: Fábricas de Ignorancia | Biblioteca Digital MS">
+    <title>Tomo I: Fábricas de Ignorancia | Biblioteca Digital MS</title>
+    <meta name="description" content="El origen del desfalco magisterial y el despertar técnico del Magisterio Sonorense.">
+    <meta property="og:title" content="Tomo I: El Juego de las Pensiones | Biblioteca Digital MS">
     <meta property="og:description" content="Descubre el origen del desfalco magisterial en este cómic interactivo cinematográfico.">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
@@ -15,7 +15,7 @@
     <meta property="og:site_name" content="Biblioteca Digital MS">
     <meta property="og:type" content="article">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Tomo I: Fábricas de Ignorancia | Magisterio Sonorense">
+    <meta name="twitter:title" content="Tomo I: El Juego de las Pensiones | Magisterio Sonorense">
     <meta name="twitter:image" content="https://desarrollogm.github.io/biblioteca-ms/tomoI/images/og_image.png">
     <link rel="icon" type="image/png" href="../assets/favicon-ms.png">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Cinzel:wght@700;900&display=swap" rel="stylesheet">
@@ -98,12 +98,10 @@
             bottom: 20px; left: 25px;
             font-family: 'Cinzel', serif;
             font-size: 0.65rem;
-            color: grey;
+            color: rgba(255, 255, 255, 0.4);
             letter-spacing: 2px;
             z-index: 100;
         }
-
-        /* Clase ms-logo ya definida arriba */
 
         .audio-control {
             position: fixed;
@@ -217,13 +215,8 @@
             filter: brightness(0.8) contrast(1.2);
         }
 
-        /* Ambient Parallax Effect */
-        .panel:nth-child(even) .panel-bg {
-            transform-origin: top right;
-        }
-        .panel:nth-child(odd) .panel-bg {
-            transform-origin: bottom left;
-        }
+        .panel:nth-child(even) .panel-bg { transform-origin: top right; }
+        .panel:nth-child(odd) .panel-bg { transform-origin: bottom left; }
 
         .panel-content {
             position: relative;
@@ -242,7 +235,7 @@
 
         .panel.active .panel-content {
             opacity: 1;
-            transform: translateX(0);
+            transform: translateY(0);
         }
 
         .panel-number {
@@ -265,16 +258,24 @@
         }
 
         .panel-text {
-            font-size: 1.15rem;
-            line-height: 1.7;
-            color: #ececec;
+            font-size: 1.05rem;
+            line-height: 1.5;
+            color: var(--accent-gold);
             font-weight: 400;
             font-style: italic;
             border-top: 1px solid rgba(255,193,7,0.2);
-            padding-top: 20px;
+            padding-top: 15px;
+            margin-bottom: 15px;
         }
 
-        /* Watermark for JAD */
+        .panel-description {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #ccc;
+            font-weight: 300;
+            text-align: justify;
+        }
+
         .watermark {
             position: fixed;
             bottom: 30px;
@@ -291,132 +292,199 @@
             padding-bottom: 5px;
         }
 
+        .btn-wa-tomo {
+            position: fixed;
+            top: 20px;
+            right: 150px;
+            z-index: 9999;
+            background: #25d366;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: bold;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            border: 2px solid white;
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+        }
     </style>
 </head>
 <body>
-<div style='position:fixed; top:20px; right:150px; z-index:9999;'>
-    <a href='https://wa.me/526442313519?text=Hola%20Profe-Bot%20MS,%20estoy%20viendo%20un%20Tomo%20y%20tengo%20una%20duda.' id='btn-wa-tomo' style='background: #25d366; color: white; padding: 10px 20px; border-radius: 50px; font-weight: bold; text-decoration: none; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); border: 2px solid white; font-family: \"Roboto\", sans-serif; font-size: 12px;'>
-        <img src='https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg' width='16' height='16' style='filter: brightness(0) invert(1);'>
-        <span>Ayuda MS</span>
-    </a>
-</div>
-<style>
-#btn-wa-tomo:hover { transform: scale(1.05); background: #128c7e; }
-@media (max-width: 600px) { #btn-wa-tomo span { display: none; } #btn-wa-tomo { padding: 10px; right: 80px; } }
-</style>
-<a href="../index.html" class="btn-home">Regresar</a>
-
     <div class="progress-bar" id="progress"></div>
     <div class="watermark">JADesarrollo</div>
 
     <header class="header">
         <img src="../assets/logo_ms_oficial.jpg" class="ms-logo" alt="Logo MS">
-        <h1>Tomo 1: El Juego de las Pensiones</h1>
+        <h1>Tomo I: Fábricas de Ignorancia</h1>
     </header>
 
     <div class="progress-nav" id="progNav"></div>
     <div class="footer-sig">JADesarrollo ✦ MS</div>
 
+    <a href="https://wa.me/526442313519" class="btn-wa-tomo">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="16" height="16" style="filter: brightness(0) invert(1);">
+        <span>Ayuda MS</span>
+    </a>
+    <a href="../index.html" class="btn-home">Regresar</a>
+
     <div class="audio-control" id="audioToggle">🔊 ACTIVAR HIMNO MS</div>
 
     <main>
-        <!-- CAPITULO 1 -->
+        <!-- PORTADA -->
+        <section class="panel" id="p0">
+            <img src="assets/images/panel1.png" alt="Portada" class="panel-bg">
+            <div class="panel-content">
+                <span class="panel-number">INICIO</span>
+                <h2 class="panel-title">El Juego de las Pensiones</h2>
+                <p class="panel-text">"Bienvenidos a la Fábrica de Ignorancia, donde el futuro del maestro se procesa en las sombras del presupuesto."</p>
+                <p class="panel-description">Este primer tomo revela la ingeniería del desfalco. No es un error administrativo, es un sistema diseñado para erosionar la seguridad social del docente. Aquí comienza el Arsenal de la Verdad, la herramienta definitiva para la soberanía técnica del magisterio sonorense.</p>
+            </div>
+        </section>
+
+        <!-- CAP 1 -->
         <section class="panel" id="p1">
             <img src="assets/images/panel1.png" alt="Reino Fracturado" class="panel-bg">
             <div class="panel-content">
                 <span class="panel-number">CAPÍTULO I</span>
                 <h2 class="panel-title">El Reino Fracturado</h2>
                 <p class="panel-text">"En esta tierra donde el sol quema parejo, los que cargan el edificio son los primeros en sentir cuándo se viene abajo."</p>
+                <p class="panel-description">No se trata de una grieta superficial; es una falla estructural en el contrato social que antes protegía al docente. En Sonora, la seguridad social se ha erosionado bajo el peso de una burocracia que olvidó que sin el maestro en el aula, el estado es solo un cascarón vacío. La fractura es profunda y requiere una intervención forense inmediata.</p>
             </div>
         </section>
 
-        <!-- CAPITULO 2 -->
+        <!-- CAP 2 -->
         <section class="panel" id="p2">
             <img src="assets/images/panel2.png" alt="Alquimista" class="panel-bg">
             <div class="panel-content">
                 <span class="panel-number">CAPÍTULO II</span>
                 <h2 class="panel-title">El Alquimista Desesperado</h2>
                 <p class="panel-text">"Cuando te arrinconan, ya no eliges entre el bien y el mal. Eliges entre sobrevivir o desaparecer."</p>
+                <p class="panel-description">El administrador se convierte en un mago de las cifras, tratando de hacer aparecer recursos donde solo hay deudas acumuladas. Pero la alquimia financiera tiene un costo real: la incertidumbre de quien ya dio su vida por la educación y ahora ve su futuro en manos de un malabarista presupuestal sin escrúpulos.</p>
             </div>
         </section>
 
-        <!-- CAPITULO 3 -->
+        <!-- CAP 3 -->
         <section class="panel" id="p3">
             <img src="assets/images/panel3.png" alt="Naipes" class="panel-bg">
             <div class="panel-content">
                 <span class="panel-number">CAPÍTULO III</span>
                 <h2 class="panel-title">Castillos de Naipes</h2>
                 <p class="panel-text">"El poder no lo ejercen los que lo necesitan, sino los que lo desean con un hambre que no se les quita."</p>
+                <p class="panel-description">Las estructuras sindicales y gubernamentales se entrelazan en una arquitectura frágil. Cada promesa incumplida es un naipe más en una torre que desafía la gravedad del descontento social. La estabilidad es solo una ilusión sostenida por el silencio forzado de las bases y la complicidad de las cúpulas.</p>
             </div>
         </section>
 
-        <!-- CAPITULO 4 -->
+        <!-- CAP 4 -->
         <section class="panel" id="p4">
             <img src="assets/images/panel4.png" alt="Facciones" class="panel-bg">
             <div class="panel-content">
                 <span class="panel-number">CAPÍTULO IV</span>
                 <h2 class="panel-title">Las Facciones del Bosque</h2>
                 <p class="panel-text">"Tres bandos que podrían ser uno solo escogen, en cambio, el veneno de la división."</p>
+                <p class="panel-description">La fragmentación del magisterio es la herramienta más barata y efectiva del control político. Mientras nos desgastamos en pugnas internas por siglas y colores, el objetivo común —la justicia laboral y pensionaria— se pierde en la espesura de la desconfianza sembrada deliberadamente.</p>
             </div>
         </section>
 
-        <!-- CAPITULO 5 -->
+        <!-- CAP 5 -->
         <section class="panel" id="p5">
             <img src="assets/images/panel5.png" alt="Cacería" class="panel-bg">
             <div class="panel-content">
                 <span class="panel-number">CAPÍTULO V</span>
                 <h2 class="panel-title">La Gran Cacería del Ciervo</h2>
                 <p class="panel-text">"El venado dorado espera en el claro del monte. Pero pa' cazarlo, todos tienen que jalar parejos."</p>
+                <p class="panel-description">La victoria técnica requiere una coordinación quirúrgica y una voluntad de acero. No basta con el deseo de cambio; se necesita la alineación de cada actor en el territorio. El grito de protesta debe sincronizarse con el rigor de la propuesta técnica para ser verdaderamente imparable.</p>
             </div>
         </section>
 
-        <!-- CAPITULO 6 -->
+        <!-- CAP 6 -->
         <section class="panel" id="p6">
             <img src="assets/images/panel6.png" alt="Trocas" class="panel-bg">
             <div class="panel-content">
                 <span class="panel-number">CAPÍTULO VI</span>
                 <h2 class="panel-title">Carrera al Precipicio</h2>
                 <p class="panel-text">"Dos trocas van a toda madre contra el barranco. Gana el que obligue al otro a dar el volantazo primero."</p>
+                <p class="panel-description">Es el dilema del prisionero llevado a las carreteras. La autoridad juega al desgaste, esperando que el magisterio ceda ante la presión. Pero nuestro motor es la dignidad acumulada, y en esta carrera, el volantazo no es una opción para quien ya no tiene nada que perder.</p>
             </div>
         </section>
 
-        <!-- CAPITULO 7 -->
+        <!-- CAP 7 -->
         <section class="panel" id="p7">
             <img src="assets/images/panel7.png" alt="Susurros" class="panel-bg">
             <div class="panel-content">
                 <span class="panel-number">CAPÍTULO VII</span>
                 <h2 class="panel-title">Susurros de Desconfianza</h2>
                 <p class="panel-text">"Las instituciones no se mueren por falta de lana. Se mueren cuando ya nadie le cree al otro."</p>
+                <p class="panel-description">El capital más valioso de un movimiento es su legitimidad ética. Cuando la base deja de reconocerse en sus representantes, el vacío se llena con el eco de la traición. Restaurar la fe en la lucha colectiva mediante hechos técnicos es la tarea más urgente de esta era.</p>
             </div>
         </section>
 
-        <!-- CAPITULO 8 -->
+        <!-- CAP 8 -->
         <section class="panel" id="p8">
             <img src="assets/images/panel8.png" alt="Ajedrez" class="panel-bg">
             <div class="panel-content">
                 <span class="panel-number">CAPÍTULO VIII</span>
                 <h2 class="panel-title">El Tablero Infinito</h2>
                 <p class="panel-text">"Los ajedrecistas que calculan infinitos a veces olvidan la lección más simple: a veces, la mejor jugada es dejar de jugar."</p>
+                <p class="panel-description">La Teoría de Juegos nos enseña que hay trampas diseñadas para nunca terminar, ciclos de negociación eternos. Romper el tablero es dejar de validar un sistema que se alimenta de nuestra paciencia. Es hora de imponer los términos de la base soberana.</p>
             </div>
         </section>
 
-        <!-- CAPITULO 9 -->
+        <!-- CAP 9 -->
         <section class="panel" id="p9">
             <img src="assets/images/panel9.png" alt="Voz" class="panel-bg">
             <div class="panel-content">
                 <span class="panel-number">CAPÍTULO IX</span>
                 <h2 class="panel-title">Poder de la Segunda Voz</h2>
                 <p class="panel-text">"El que habla primero enseña las cartas. El que habla al último controla la partida."</p>
+                <p class="panel-description">La paciencia estratégica es nuestra nueva virtud cardinal. Escuchar los titubeos del poder antes de lanzar la contrapropuesta técnica nos permite posicionar el Pliego de la Dignidad no como una petición, sino como una sentencia histórica que ya no pueden ignorar.</p>
             </div>
         </section>
 
-        <!-- CAPITULO 10 -->
+        <!-- CAP 10 -->
         <section class="panel" id="p10">
             <img src="assets/images/panel10.png" alt="Legado" class="panel-bg">
             <div class="panel-content">
                 <span class="panel-number">CAPÍTULO X</span>
                 <h2 class="panel-title">El Legado Perdido</h2>
                 <p class="panel-text">"Al final, los granos del reloj de arena no distinguen entre los que ganaron y los que perdieron. Nomás caen."</p>
+                <p class="panel-description">¿Fuimos la generación que aceptó el desfalco o la que reconstruyó la esperanza desde las cenizas? La historia de Sonora nos observa con rigor, y el tiempo de actuar es ahora o nunca. El Arsenal de la Verdad es nuestro testamento de lucha.</p>
+            </div>
+        </section>
+
+        <!-- CAP 11 -->
+        <section class="panel" id="p11">
+            <img src="assets/images/panel11.png" alt="Transición" class="panel-bg">
+            <div class="panel-content">
+                <span class="panel-number">CAPÍTULO XI</span>
+                <h2 class="panel-title">La Transición de la Consciencia</h2>
+                <p class="panel-text">"El despertar no es un evento, es un proceso que comienza cuando dejas de creer en el destino que te impusieron."</p>
+                <p class="panel-description">El magisterio sonorense entra en una fase de desintoxicación ideológica. El viejo sistema basaba su control en la opacidad informativa. Hoy, la asimetría de información se rompe con datos duros: demostramos que el déficit de pensiones no es culpa del trabajador, sino de la gestión.</p>
+            </div>
+        </section>
+
+        <!-- CAP 12 -->
+        <section class="panel" id="p12">
+            <img src="assets/images/panel12.png" alt="Algoritmo" class="panel-bg">
+            <div class="panel-content">
+                <span class="panel-number">CAPÍTULO XII</span>
+                <h2 class="panel-title">El Algoritmo de la Esperanza</h2>
+                <p class="panel-text">"La tecnología, en manos de la base, es el arma más letal contra la mentira burocrática."</p>
+                <p class="panel-description">Implementamos herramientas de análisis forense digital para que cada maestro pueda proyectar su propia ruta de jubilación con total certidumbre. No dependemos de las 'cifras alegres' de la autoridad; tenemos nuestro propio motor de cálculo y nuestra propia verdad.</p>
+            </div>
+        </section>
+
+        <!-- CAP 13 -->
+        <section class="panel" id="p13">
+            <img src="assets/images/panel13.png" alt="Silencio" class="panel-bg">
+            <div class="panel-content">
+                <span class="panel-number">CAPÍTULO XIII</span>
+                <h2 class="panel-title">El Silencio del Poder</h2>
+                <p class="panel-text">"Cuando el de arriba calla, es porque el de abajo ya empezó a rugir."</p>
+                <p class="panel-description">La falta de respuesta oficial ante el Pliego de la Dignidad es la prueba definitiva de que su arquitectura de control ha sido vulnerada. Estamos en la preparación final para la movilización total: la base está informada, tecnificada y lista para la victoria final el 1 de Mayo.</p>
             </div>
         </section>
     </main>
@@ -426,7 +494,6 @@
     </audio>
 
     <script>
-        // Control de Navegación y Observador
         const panels = document.querySelectorAll('.panel');
         const dotsContainer = document.getElementById('progNav');
         
@@ -446,6 +513,10 @@
                     entry.target.classList.add('active');
                     const index = Array.from(panels).indexOf(entry.target);
                     dots.forEach((d, i) => d.classList.toggle('active', i === index));
+                    
+                    // Update progress bar
+                    const progress = ((index) / (panels.length - 1)) * 100;
+                    document.getElementById('progress').style.width = progress + '%';
                 } else {
                     entry.target.classList.remove('active');
                 }
@@ -472,5 +543,3 @@
     </script>
 <script src="../assets/js/intel_tracker.js"></script></body>
 </html>
-
-

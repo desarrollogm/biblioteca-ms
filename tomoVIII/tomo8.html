@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tomo 8: El Jaque Mate | Biblioteca Digital MS</title>
+    <title>Tomo VIII: El Jaque Mate | Biblioteca Digital MS</title>
     <meta name="description" content="Gran Final: La aplicación de la Teoría de Juegos y la victoria soberana del Magisterio Sonorense.">
     <meta property="og:title" content="Tomo VIII: El Jaque Mate | Biblioteca Digital MS">
     <meta property="og:description" content="Gran Final: La aplicación de la Teoría de Juegos y la victoria soberana del Magisterio Sonorense.">
@@ -14,9 +14,6 @@
     <meta property="og:url" content="https://desarrollogm.github.io/biblioteca-ms/tomoVIII/tomo8.html">
     <meta property="og:site_name" content="Biblioteca Digital MS">
     <meta property="og:type" content="article">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Tomo VIII: El Jaque Mate | Magisterio Sonorense">
-    <meta name="twitter:image" content="https://desarrollogm.github.io/biblioteca-ms/tomoVIII/images/og_image.png">
     <link rel="icon" type="image/png" href="../assets/favicon-ms.png">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Cinzel:wght@700;900&display=swap" rel="stylesheet">
     <style>
@@ -46,7 +43,7 @@
             position: fixed;
             top: 20px;
             left: 20px;
-            z-index: 100;
+            z-index: 1000;
             pointer-events: none;
         }
 
@@ -66,6 +63,40 @@
             margin-bottom: 10px;
             filter: drop-shadow(0 0 5px rgba(0,0,0,0.5));
             pointer-events: auto;
+        }
+
+        .progress-nav {
+            position: fixed;
+            right: 20px; top: 50%;
+            transform: translateY(-50%);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .dot {
+            width: 8px; height: 8px;
+            background: #333;
+            border-radius: 50%;
+            transition: all 0.4s;
+            cursor: pointer;
+        }
+
+        .dot.active {
+            background: var(--primary-red);
+            transform: scale(1.5);
+            box-shadow: 0 0 10px var(--primary-red);
+        }
+
+        .footer-sig {
+            position: fixed;
+            bottom: 20px; left: 25px;
+            font-family: 'Cinzel', serif;
+            font-size: 0.65rem;
+            color: rgba(255, 255, 255, 0.4);
+            letter-spacing: 2px;
+            z-index: 1000;
         }
 
         .audio-control {
@@ -116,26 +147,6 @@
             background: var(--accent-gold);
             color: #8b0000;
             transform: scale(1.05);
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
-        }
-
-        .audio-control:hover {
-            background: var(--primary-red);
-            transform: scale(1.1) translateY(-5px);
-            box-shadow: 0 0 25px rgba(139, 0, 0, 0.5);
-        }
-
-        .audio-control.playing {
-            background: var(--accent-gold);
-            color: #8b0000;
-            box-shadow: 0 0 20px var(--accent-gold);
-            animation: pulse-gold 2s infinite;
-        }
-
-        @keyframes pulse-gold {
-            0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7); }
-            70% { box-shadow: 0 0 0 15px rgba(212, 175, 55, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
         }
 
         .progress-bar {
@@ -145,7 +156,7 @@
             height: 4px;
             background: var(--primary-red);
             width: 0%;
-            z-index: 200;
+            z-index: 2000;
             box-shadow: 0 0 15px var(--primary-red);
             transition: width 0.5s ease;
         }
@@ -170,16 +181,13 @@
             object-fit: cover;
             transform: scale(1.15);
             transition: transform 3s cubic-bezier(0.1, 0, 0.3, 1), filter 1s ease 4.5s;
-            filter: brightness(0.7) contrast(1.4) grayscale(1);
+            filter: brightness(0.6) contrast(1.2) grayscale(0.5);
         }
 
         .panel.active .panel-bg {
             transform: scale(1);
-            filter: brightness(0.8) contrast(1.2);
+            filter: brightness(0.7) contrast(1.1);
         }
-
-        .panel:nth-child(even) .panel-bg { transform-origin: top right; }
-        .panel:nth-child(odd) .panel-bg { transform-origin: bottom left; }
 
         .panel-content {
             position: relative;
@@ -192,7 +200,7 @@
             backdrop-filter: blur(15px);
             opacity: 0;
             transform: translateY(50px);
-            transition: all 1.5s cubic-bezier(0.19, 1, 0.22, 1) 4.5s;
+            transition: all 1.5s cubic-bezier(0.19, 1, 0.22, 1) 0.5s;
             box-shadow: 0 25px 50px rgba(0,0,0,0.5);
         }
 
@@ -221,29 +229,22 @@
         }
 
         .panel-text {
-            font-size: 1.15rem;
-            line-height: 1.7;
-            color: #ececec;
+            font-size: 1.05rem;
+            line-height: 1.5;
+            color: var(--accent-gold);
             font-weight: 400;
             font-style: italic;
             border-top: 1px solid rgba(255,193,7,0.2);
-            padding-top: 20px;
+            padding-top: 15px;
+            margin-bottom: 15px;
         }
 
-        .watermark {
-            position: fixed;
-            bottom: 30px;
-            left: 30px;
-            font-size: 0.8rem;
-            opacity: 0.8;
-            letter-spacing: 4px;
-            color: var(--accent-gold);
-            z-index: 100;
-            font-family: 'Cinzel', serif;
-            text-transform: uppercase;
-            text-shadow: 0 0 10px rgba(255, 193, 7, 0.5);
-            border-bottom: 2px solid var(--primary-red);
-            padding-bottom: 5px;
+        .panel-description {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #ccc;
+            font-weight: 300;
+            text-align: justify;
         }
 
         .btn-wa-tomo {
@@ -266,56 +267,31 @@
             font-size: 12px;
         }
 
-
-
-        .progress-nav {
+        .watermark {
             position: fixed;
-            right: 20px; top: 50%;
-            transform: translateY(-50%);
-            z-index: 100;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .dot {
-            width: 8px; height: 8px;
-            background: #333;
-            border-radius: 50%;
-            transition: all 0.4s;
-            cursor: pointer;
-        }
-
-        .dot.active {
-            background: var(--primary-red);
-            transform: scale(1.5);
-            box-shadow: 0 0 10px var(--primary-red);
-        }
-
-        .footer-sig {
-            position: fixed;
-            bottom: 20px; left: 25px;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.65rem;
-            font-weight: 700;
-            color: rgba(255, 255, 255, 0.4);
+            bottom: 30px;
+            left: 30px;
+            font-size: 0.8rem;
+            opacity: 0.8;
+            letter-spacing: 4px;
+            color: var(--accent-gold);
             z-index: 1000;
-            letter-spacing: 1px;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
-        }
-
-        @media (max-width: 600px) {
-            .btn-wa-tomo span { display: none; }
-            .btn-home { padding: 8px 12px; font-size: 10px; }
-            .panel-title { font-size: 1.5rem; }
-            .panel-text { font-size: 1rem; }
-            .progress-nav { right: 10px; }
+            font-family: 'Cinzel', serif;
+            text-transform: uppercase;
+            text-shadow: 0 0 10px rgba(255, 193, 7, 0.5);
+            border-bottom: 2px solid var(--primary-red);
+            padding-bottom: 5px;
         }
     </style>
 </head>
 <body>
     <div class="progress-bar" id="progress"></div>
     <div class="watermark">JADesarrollo</div>
+
+    <header class="header">
+        <img src="../assets/logo_ms_oficial.jpg" class="ms-logo" alt="Logo MS">
+        <h1>Tomo VIII: El Jaque Mate</h1>
+    </header>
 
     <div class="progress-nav" id="progNav"></div>
     <div class="footer-sig">JADesarrollo ✦ MS</div>
@@ -326,11 +302,6 @@
     </a>
     <a href="../index.html" class="btn-home">Regresar</a>
 
-    <header class="header">
-        <img src="../assets/logo_ms_oficial.jpg" class="ms-logo" alt="Logo MS">
-        <h1>Tomo 8: El Jaque Mate</h1>
-    </header>
-
     <div class="audio-control" id="audioToggle">🔊 ACTIVAR HIMNO MS</div>
 
     <main>
@@ -339,8 +310,9 @@
             <img src="assets/images/portada.png" alt="Portada" class="panel-bg">
             <div class="panel-content">
                 <span class="panel-number">INICIO</span>
-                <h2 class="panel-title">El Jaque Mate de las Pensiones</h2>
-                <p class="panel-text">"La Apertura del Desierto: La jugada final por la soberanía del magisterio sonorense ha comenzado."</p>
+                <h2 class="panel-title">El Jaque Mate Final</h2>
+                <p class="panel-text">"La jugada que redefine la historia magisterial en Sonora. El cierre de una era de sombras y el inicio de la luz técnica."</p>
+                <p class="panel-description">El Jaque Mate no es solo la última movida en el tablero; es el despliegue total del Arsenal de la Verdad. Aquí, la Teoría de Juegos se encuentra con la voluntad inquebrantable del maestro. Cada panel es una lección de estrategia que asegura nuestra victoria irreversible frente a la opacidad administrativa.</p>
             </div>
         </section>
 
@@ -350,7 +322,8 @@
             <div class="panel-content">
                 <span class="panel-number">CAPÍTULO I</span>
                 <h2 class="panel-title">El Tablero en Llamas</h2>
-                <p class="panel-text">"Todo equilibrio estático es una trampa. En Sonora, el magisterio ha roto el ciclo de la derrota."</p>
+                <p class="panel-text">"Cuando el viejo sistema se quema bajo el fuego de la auditoría, solo la verdad técnica permanece de pie."</p>
+                <p class="panel-description">Las estructuras obsoletas están colapsando. La base ha encendido la llama de la información transparente y no hay cortina de humo que pueda apagarla. Estamos presenciando el fin de la simulación burocrática en Sonora, dando paso a una gobernanza magisterial autónoma y tecnificada.</p>
             </div>
         </section>
 
@@ -360,7 +333,8 @@
             <div class="panel-content">
                 <span class="panel-number">CAPÍTULO II</span>
                 <h2 class="panel-title">Equilibrio de Suma Cero</h2>
-                <p class="panel-text">"Mientras los números dictan pobreza con la UMA, nuestra gente siente la inclemencia. No es solo dinero, es tiempo de vida."</p>
+                <p class="panel-text">"Lo que ellos guardan en la opacidad es la vida de retiro que nos han robado centavo a centavo."</p>
+                <p class="panel-description">Entendemos el juego: para que ellos luzcan presupuestos 'sanos', aplican la UMA como un torniquete a nuestras pensiones. El equilibrio de Nash se rompe cuando el jugador magisterial decide que la única opción racional es la movilización total por el regreso al esquema de salarios mínimos.</p>
             </div>
         </section>
 
@@ -370,7 +344,8 @@
             <div class="panel-content">
                 <span class="panel-number">CAPÍTULO III</span>
                 <h2 class="panel-title">Inclemencia del Territorio</h2>
-                <p class="panel-text">"El rostro de la resistencia magisterial está en el aula. Condiciones duras, pero una voluntad inquebrantable."</p>
+                <p class="panel-text">"El desierto no perdona a los débiles, y el magisterio sonorense se ha forjado en la dureza de su propia lucha."</p>
+                <p class="panel-description">La mística de nuestra tierra nos da la resistencia necesaria. Del Valle del Yaqui al Río Sonora, la red de maestros es un tejido impenetrable de soporte mutuo. Esta inclemencia territorial es nuestro mejor entrenamiento para la resistencia de largo aliento que la victoria demanda.</p>
             </div>
         </section>
 
@@ -380,7 +355,8 @@
             <div class="panel-content">
                 <span class="panel-number">CAPÍTULO IV</span>
                 <h2 class="panel-title">La Ley de la Escalada</h2>
-                <p class="panel-text">"Miles de voces se unen en Hermosillo. La base despierta y el tablero del poder comienza a temblar."</p>
+                <p class="panel-text">"Cada paso hacia Hermosillo es un grado más en la presión técnica que la autoridad no puede ignorar."</p>
+                <p class="panel-description">La movilización es un algoritmo de fuerza creciente. No es caos, es orden estratégico. La escalada está fríamente calculada para forzar la apertura de los libros de contabilidad y la firma de acuerdos con carácter de ley. Nuestra fuerza es nuestra mayor razón técnica.</p>
             </div>
         </section>
 
@@ -390,7 +366,8 @@
             <div class="panel-content">
                 <span class="panel-number">CAPÍTULO V</span>
                 <h2 class="panel-title">Zona Económica III</h2>
-                <p class="panel-text">"Justicia histórica para Sonora. Salarios que reflejen el costo de vida real del docente."</p>
+                <p class="panel-text">"Igualdad ante el costo de vida; justicia ante la labor educativa en el rincón más vibrante de la nación."</p>
+                <p class="panel-description">El reclamo de la Zona III es el reconocimiento de nuestra geografía económica. El salario del docente debe ser soberano y suficiente para enfrentar la realidad de Sonora. No es un aumento, es la corrección técnica de un desequilibrio histórico que ha asfixiado nuestras mesas.</p>
             </div>
         </section>
 
@@ -400,7 +377,8 @@
             <div class="panel-content">
                 <span class="panel-number">CAPÍTULO VI</span>
                 <h2 class="panel-title">Acuerdo Generacional</h2>
-                <p class="panel-text">"El FPIP: Un escudo donde noveles y veteranos siembran juntos el futuro de su retiro."</p>
+                <p class="panel-text">"El brazo fuerte del activo protegiendo la sabiduría del jubilado; una alianza indisoluble."</p>
+                <p class="panel-description">El FPIP y el Sistema de Pensiones nos unen en un solo destino. Hemos blindado nuestra cooperación eliminando las brechas informativas que antes nos dividían. Hoy, el docente de nuevo ingreso lucha por el jubilado de hoy sabiendo que está construyendo su propia balsa de salvación.</p>
             </div>
         </section>
 
@@ -410,7 +388,8 @@
             <div class="panel-content">
                 <span class="panel-number">CAPÍTULO VII</span>
                 <h2 class="panel-title">La Toma del Destino</h2>
-                <p class="panel-text">"La Plaza de los 100 Años es testigo del poder de la unidad. La Auditoría es irreversible."</p>
+                <p class="panel-text">"La plaza se llena no de gente, sino de voluntades técnicas que han dicho: ¡Basta!"</p>
+                <p class="panel-description">Ocupar los espacios públicos con la legitimidad de los datos es la toma final del destino. La autoridad se encuentra frente a un espejo donde sus omisiones son evidentes. La Auditoría Forense es la llave que abre la puerta a una nueva realidad administrativa en el ISSSTESON.</p>
             </div>
         </section>
 
@@ -420,7 +399,8 @@
             <div class="panel-content">
                 <span class="panel-number">CAPÍTULO VIII</span>
                 <h2 class="panel-title">El Jaque Mate Final</h2>
-                <p class="panel-text">"Tablero limpio. Las piezas del olvido han caído. Es el triunfo de la certidumbre sobre el miedo."</p>
+                <p class="panel-text">"Sin piezas que mover, la mentira del sistema se rinde ante la evidencia irrefutable del magisterio."</p>
+                <p class="panel-description">Hemos posicionado nuestras demandas en el centro del tablero estatal. La victoria técnica es total porque no hay argumento que pueda sostener el desvío de cuotas frente a un magisterio que conoce sus derechos al centavo. La jugada maestra ha concluido.</p>
             </div>
         </section>
 
@@ -430,7 +410,8 @@
             <div class="panel-content">
                 <span class="panel-number">CAPÍTULO IX</span>
                 <h2 class="panel-title">Fuerza de la Unidad</h2>
-                <p class="panel-text">"Esta victoria pertenece a la base. La cohesión es nuestra mayor fortaleza para 2026."</p>
+                <p class="panel-text">"Más allá de las siglas, el Magisterio Sonorense es una sola alma en pie de guerra por la paz económica."</p>
+                <p class="panel-description">La fragmentación ha sido históricamente el arma del opresor. Mediante la unidad de las bases, hemos anulado esa estrategia. Nuestra cohesión interna es el capital con el que negociaremos un futuro digno para los siguientes 50 años en Sonora.</p>
             </div>
         </section>
 
@@ -440,7 +421,41 @@
             <div class="panel-content">
                 <span class="panel-number">CAPÍTULO X</span>
                 <h2 class="panel-title">Guardián del Futuro</h2>
-                <p class="panel-text">"La vigilancia continúa con la nueva generación de líderes. Los sueños docentes están protegidos. ¡PRESENTE!"</p>
+                <p class="panel-text">"La vigilancia nunca termina. El Arsenal de la Verdad es ahora el patrimonio vivo de nuestras familias."</p>
+                <p class="panel-description">Cerramos la octalogía original con una promesa: no permitiremos que la historia se repita. Cada maestro es ahora un nodo de auditoría, un guardián de la justicia y un faro de consciencia social. La victoria es nuestra, y la custodia de esta biblioteca es el primer paso para protegerla.</p>
+            </div>
+        </section>
+
+        <!-- CAP 11 -->
+        <section class="panel" id="p11">
+            <img src="assets/images/panel11.png" alt="Cap 11" class="panel-bg">
+            <div class="panel-content">
+                <span class="panel-number">CAPÍTULO XI</span>
+                <h2 class="panel-title">Justicia en el Desierto</h2>
+                <p class="panel-text">"Que el viento de Sonora lleve este mensaje: el magisterio ha ganado su lugar en la historia."</p>
+                <p class="panel-description">A pesar de las amenazas y los intentos de cooptación, la base se mantuvo firme. La justicia lograda no es una concesión, es una conquista técnica. El pliego petitorio es ahora la hoja de ruta obligada para cualquier administración estatal presente y futura.</p>
+            </div>
+        </section>
+
+        <!-- CAP 12 -->
+        <section class="panel" id="p12">
+            <img src="assets/images/panel12.png" alt="Cap 12" class="panel-bg">
+            <div class="panel-content">
+                <span class="panel-number">CAPÍTULO XII</span>
+                <h2 class="panel-title">El Despertar del Gigante</h2>
+                <p class="panel-text">"Una vez que el maestro entiende su poder, no hay estructura de opresión que se mantenga en pie."</p>
+                <p class="panel-description">El despertar es colectivo. Hemos pasado de la queja a la propuesta técnica, de la división a la solidaridad total. El gigante magisterial ha recordado quién es y que su voz es el motor fundamental del desarrollo de Sonora. Su rugido es ahora una sinfonía de justicia.</p>
+            </div>
+        </section>
+
+        <!-- CAP 13 -->
+        <section class="panel" id="p13">
+            <img src="assets/images/panel13.png" alt="Cap 13" class="panel-bg">
+            <div class="panel-content">
+                <span class="panel-number">CAPÍTULO XIII</span>
+                <h2 class="panel-title">El Amanecer Magisterial</h2>
+                <p class="panel-text">"El sol brilla hoy con una nueva fuerza. El Arsenal de la Verdad ha cumplido su misión."</p>
+                <p class="panel-description">Recibimos el nuevo día con la frente en alto. El 1 de Mayo será la consagración de este esfuerzo histórico. Hemos blindado el retiro de nuestros compañeros y asegurado que el aula siga siendo el espacio sagrado de la libertad y la verdad. ¡Victoria total!</p>
             </div>
         </section>
     </main>
@@ -452,6 +467,7 @@
     <script>
         const panels = document.querySelectorAll('.panel');
         const dotsContainer = document.getElementById('progNav');
+        const progressBar = document.getElementById('progress');
         
         panels.forEach((panel, i) => {
             const dot = document.createElement('div');
@@ -469,6 +485,9 @@
                     entry.target.classList.add('active');
                     const index = Array.from(panels).indexOf(entry.target);
                     dots.forEach((d, i) => d.classList.toggle('active', i === index));
+                    
+                    const progress = ((index) / (panels.length - 1)) * 100;
+                    progressBar.style.width = progress + '%';
                 } else {
                     entry.target.classList.remove('active');
                 }
@@ -477,7 +496,6 @@
 
         panels.forEach(p => observer.observe(p));
 
-        // Audio Logic
         const audio = document.getElementById('himnoAudio');
         const audioBtn = document.getElementById('audioToggle');
         

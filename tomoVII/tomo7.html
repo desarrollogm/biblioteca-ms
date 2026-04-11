@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tomo 7: El Pliego de la Dignidad | Biblioteca Digital MS</title>
-    <meta name="description" content="Desglose técnico de las demandas: Auditoría, Ley de Pensiones, FPIP y Justicia para el Jubilado.">
+    <title>Tomo VII: El Pliego de la Dignidad | Biblioteca Digital MS</title>
+    <meta name="description" content="La ruta técnica hacia la soberanía magisterial. Auditoría forense y rescate del FPIP.">
     <meta property="og:title" content="Tomo VII: El Pliego de la Dignidad | Biblioteca Digital MS">
     <meta property="og:description" content="Desglose técnico de las demandas: Auditoría, Ley de Pensiones, FPIP y Justicia para el Jubilado.">
     <meta property="og:image:width" content="1200">
@@ -14,9 +14,6 @@
     <meta property="og:url" content="https://desarrollogm.github.io/biblioteca-ms/tomoVII/tomo7.html">
     <meta property="og:site_name" content="Biblioteca Digital MS">
     <meta property="og:type" content="article">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Tomo VII: El Pliego | Magisterio Sonorense">
-    <meta name="twitter:image" content="https://desarrollogm.github.io/biblioteca-ms/tomoVII/images/og_image.png">
     <link rel="icon" type="image/png" href="../assets/favicon-ms.png">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Cinzel:wght@700;900&display=swap" rel="stylesheet">
     <style>
@@ -46,7 +43,7 @@
             position: fixed;
             top: 20px;
             left: 20px;
-            z-index: 100;
+            z-index: 1000;
             pointer-events: none;
         }
 
@@ -66,6 +63,40 @@
             margin-bottom: 10px;
             filter: drop-shadow(0 0 5px rgba(0,0,0,0.5));
             pointer-events: auto;
+        }
+
+        .progress-nav {
+            position: fixed;
+            right: 20px; top: 50%;
+            transform: translateY(-50%);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .dot {
+            width: 8px; height: 8px;
+            background: #333;
+            border-radius: 50%;
+            transition: all 0.4s;
+            cursor: pointer;
+        }
+
+        .dot.active {
+            background: var(--primary-red);
+            transform: scale(1.5);
+            box-shadow: 0 0 10px var(--primary-red);
+        }
+
+        .footer-sig {
+            position: fixed;
+            bottom: 20px; left: 25px;
+            font-family: 'Cinzel', serif;
+            font-size: 0.65rem;
+            color: rgba(255, 255, 255, 0.4);
+            letter-spacing: 2px;
+            z-index: 1000;
         }
 
         .audio-control {
@@ -116,26 +147,6 @@
             background: var(--accent-gold);
             color: #8b0000;
             transform: scale(1.05);
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
-        }
-
-        .audio-control:hover {
-            background: var(--primary-red);
-            transform: scale(1.1) translateY(-5px);
-            box-shadow: 0 0 25px rgba(139, 0, 0, 0.5);
-        }
-
-        .audio-control.playing {
-            background: var(--accent-gold);
-            color: #8b0000;
-            box-shadow: 0 0 20px var(--accent-gold);
-            animation: pulse-gold 2s infinite;
-        }
-
-        @keyframes pulse-gold {
-            0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7); }
-            70% { box-shadow: 0 0 0 15px rgba(212, 175, 55, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
         }
 
         .progress-bar {
@@ -145,7 +156,7 @@
             height: 4px;
             background: var(--primary-red);
             width: 0%;
-            z-index: 200;
+            z-index: 2000;
             box-shadow: 0 0 15px var(--primary-red);
             transition: width 0.5s ease;
         }
@@ -170,16 +181,13 @@
             object-fit: cover;
             transform: scale(1.15);
             transition: transform 3s cubic-bezier(0.1, 0, 0.3, 1), filter 1s ease 4.5s;
-            filter: brightness(0.7) contrast(1.4) grayscale(1);
+            filter: brightness(0.6) contrast(1.2) grayscale(0.5);
         }
 
         .panel.active .panel-bg {
             transform: scale(1);
-            filter: brightness(0.8) contrast(1.2);
+            filter: brightness(0.7) contrast(1.1);
         }
-
-        .panel:nth-child(even) .panel-bg { transform-origin: top right; }
-        .panel:nth-child(odd) .panel-bg { transform-origin: bottom left; }
 
         .panel-content {
             position: relative;
@@ -192,7 +200,7 @@
             backdrop-filter: blur(15px);
             opacity: 0;
             transform: translateY(50px);
-            transition: all 1.5s cubic-bezier(0.19, 1, 0.22, 1) 4.5s;
+            transition: all 1.5s cubic-bezier(0.19, 1, 0.22, 1) 0.5s;
             box-shadow: 0 25px 50px rgba(0,0,0,0.5);
         }
 
@@ -221,30 +229,22 @@
         }
 
         .panel-text {
-            font-size: 1.15rem;
-            line-height: 1.7;
-            color: #ececec;
+            font-size: 1.05rem;
+            line-height: 1.5;
+            color: var(--accent-gold);
             font-weight: 400;
             font-style: italic;
             border-top: 1px solid rgba(255,193,7,0.2);
-            padding-top: 20px;
+            padding-top: 15px;
+            margin-bottom: 15px;
         }
 
-        .watermark {
-            position: fixed;
-            bottom: 30px;
-            left: 30px;
-            font-size: 0.8rem;
-            opacity: 0.8;
-            letter-spacing: 4px;
-            color: var(--accent-gold);
-            z-index: 100;
-            font-family: 'Cinzel', serif;
-            text-transform: uppercase;
-            text-shadow: 0 0 10px rgba(255, 193, 7, 0.5);
-            border-bottom: 2px solid var(--primary-red);
-            padding-bottom: 5px;
-            display: none; /* Oculto para favorecer footer-sig standard */
+        .panel-description {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #ccc;
+            font-weight: 300;
+            text-align: justify;
         }
 
         .btn-wa-tomo {
@@ -267,50 +267,20 @@
             font-size: 12px;
         }
 
-
-
-        .progress-nav {
+        .watermark {
             position: fixed;
-            right: 20px; top: 50%;
-            transform: translateY(-50%);
-            z-index: 100;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .dot {
-            width: 8px; height: 8px;
-            background: #333;
-            border-radius: 50%;
-            transition: all 0.4s;
-            cursor: pointer;
-        }
-
-        .dot.active {
-            background: var(--primary-red);
-            transform: scale(1.5);
-            box-shadow: 0 0 10px var(--primary-red);
-        }
-
-        .footer-sig {
-            position: fixed;
-            bottom: 20px; left: 25px;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.65rem;
-            font-weight: 700;
-            color: rgba(255, 255, 255, 0.4);
+            bottom: 30px;
+            left: 30px;
+            font-size: 0.8rem;
+            opacity: 0.8;
+            letter-spacing: 4px;
+            color: var(--accent-gold);
             z-index: 1000;
-            letter-spacing: 1px;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
-        }
-
-        @media (max-width: 600px) {
-            .btn-wa-tomo span { display: none; }
-            .btn-home { padding: 8px 12px; font-size: 10px; }
-            .panel-title { font-size: 1.5rem; }
-            .panel-text { font-size: 1rem; }
-            .progress-nav { right: 10px; }
+            font-family: 'Cinzel', serif;
+            text-transform: uppercase;
+            text-shadow: 0 0 10px rgba(255, 193, 7, 0.5);
+            border-bottom: 2px solid var(--primary-red);
+            padding-bottom: 5px;
         }
     </style>
 </head>
@@ -320,7 +290,7 @@
 
     <header class="header">
         <img src="../assets/logo_ms_oficial.jpg" class="ms-logo" alt="Logo MS">
-        <h1>Tomo 7: El Pliego de la Dignidad</h1>
+        <h1>Tomo VII: El Pliego de la Dignidad</h1>
     </header>
 
     <div class="progress-nav" id="progNav"></div>
@@ -341,7 +311,8 @@
             <div class="panel-content">
                 <span class="panel-number">INICIO</span>
                 <h2 class="panel-title">El Pliego de la Dignidad</h2>
-                <p class="panel-text">"La ruta técnica hacia la soberanía magisterial. Una demanda de justicia que no acepta esperas."</p>
+                <p class="panel-text">"La ruta técnica hacia la soberanía magisterial. Una demanda de justicia que no acepta esperas y se fundamenta en la verdad absoluta."</p>
+                <p class="panel-description">El Pliego de la Dignidad no es un listado de peticiones; es un manifiesto de supervivencia institucional. En estas páginas desglosamos la ingeniería legal necesaria para rescatar nuestro futuro de las garras de la negligencia administrativa y la opacidad financiera.</p>
             </div>
         </section>
 
@@ -350,8 +321,9 @@
             <img src="assets/images/panel1.png" alt="Cap 1" class="panel-bg">
             <div class="panel-content">
                 <span class="panel-number">CAPÍTULO I</span>
-                <h2 class="panel-title">Historia Predictiva</h2>
-                <p class="panel-text">"Nuestros datos revelan un futuro que la autoridad pretende ignorar. La auditoría es la clave."</p>
+                <h2 class="panel-title">Forense Histórica</h2>
+                <p class="panel-text">"Nuestros datos revelan un mapa del despojo que la autoridad pretende ocultar tras cortinas de humo burocráticas."</p>
+                <p class="panel-description">Mediante el análisis de tendencias FONE y registros históricos de aportaciones desviadas, hemos proyectado el colapso del sistema si no se aplica una Auditoría Forense inmediata y vinculante. La justicia no es negociable cuando los números demuestran el fraude.</p>
             </div>
         </section>
 
@@ -360,8 +332,9 @@
             <img src="assets/images/panel2.png" alt="Cap 2" class="panel-bg">
             <div class="panel-content">
                 <span class="panel-number">CAPÍTULO II</span>
-                <h2 class="panel-title">El Golpe de la UMA</h2>
-                <p class="panel-text">"Cuando el retiro se convierte en una cifra devaluada, el magisterio se levanta con razones."</p>
+                <h2 class="panel-title">El Verdugo de la UMA</h2>
+                <p class="panel-text">"Cuando el retiro del docente se convierte en una cifra devaluada, el magisterio se levanta con razones técnicas supremas."</p>
+                <p class="panel-description">La desindexación del salario mínimo para el cálculo de pensiones ha sido el robo más silencioso y cruel del siglo. Exigimos el retorno inmediato al esquema porcentual que garantice que la jubilación sea un premio digno al esfuerzo de una vida, no una condena a la miseria planificada.</p>
             </div>
         </section>
 
@@ -370,8 +343,9 @@
             <img src="assets/images/panel3.png" alt="Cap 3" class="panel-bg">
             <div class="panel-content">
                 <span class="panel-number">CAPÍTULO III</span>
-                <h2 class="panel-title">Jubilados en Lucha</h2>
-                <p class="panel-text">"Nuestros veteranos no son el pasado, son el escudo moral que protege el futuro de los noveles."</p>
+                <h2 class="panel-title">Veteranos del Desierto</h2>
+                <p class="panel-text">"Nuestros jubilados no son el pasado, son el escudo moral y la brújula técnica que protege a los nuevos docentes."</p>
+                <p class="panel-description">La deuda con quienes construyeron la educación sonorense es impagable. Su presencia activa en la lucha es un recordatorio de que la dignidad no tiene fecha de caducidad. Su experticia técnica es la garantía de que no nos volverán a engañar con promesas vacías.</p>
             </div>
         </section>
 
@@ -380,8 +354,9 @@
             <img src="assets/images/panel4.png" alt="Cap 4" class="panel-bg">
             <div class="panel-content">
                 <span class="panel-number">CAPÍTULO IV</span>
-                <h2 class="panel-title">El Rescate del FPIP</h2>
-                <p class="panel-text">"Blindar el fondo de pensiones hoy es asegurar que mañana no falte el pan en ninguna mesa docente."</p>
+                <h2 class="panel-title">Blindaje del FPIP</h2>
+                <p class="panel-text">"Blindar el fondo de pensiones hoy es asegurar la soberanía alimentaria de cada familia magisterial mañana."</p>
+                <p class="panel-description">La capitalización urgente del FPIP es el pilar central de nuestra demanda. Proponemos un candado de gobernanza técnica que impida el uso discrecional de estos recursos. El ahorro del maestro debe ser intocable, productivo y auditado por la propia base.</p>
             </div>
         </section>
 
@@ -391,7 +366,8 @@
             <div class="panel-content">
                 <span class="panel-number">CAPÍTULO V</span>
                 <h2 class="panel-title">Bóveda de Resiliencia</h2>
-                <p class="panel-text">"Donde guardamos no solo recursos, sino la esperanza técnica de una victoria colectiva."</p>
+                <p class="panel-text">"Donde guardamos no solo recursos, sino la inteligencia colectiva para una victoria definitiva."</p>
+                <p class="panel-description">La resiliencia magisterial no es pasividad; es la construcción de alternativas autónomas. Diseñamos estructuras de soporte financiero que trascienden las fallas del estado, blindando nuestra economía familiar contra las crisis inducidas por la mala administración pública.</p>
             </div>
         </section>
 
@@ -400,8 +376,9 @@
             <img src="assets/images/panel6.png" alt="Cap 6" class="panel-bg">
             <div class="panel-content">
                 <span class="panel-number">CAPÍTULO VI</span>
-                <h2 class="panel-title">Transparencia Radical</h2>
-                <p class="panel-text">"Bajo la luz de la verdad, las sombras del viejo sistema comienzan a disiparse."</p>
+                <h2 class="panel-title">Transparencia de Cristal</h2>
+                <p class="panel-text">"Bajo la luz de la verdad técnica, las sombras del viejo sistema clientelar se disuelven para siempre."</p>
+                <p class="panel-description">Exigimos portales de transparencia radical donde cada peso sea rastreable en tiempo real. La era de la opacidad y los desvíos inexplicables ha terminado. La base informada será, a partir de hoy, el máximo órgano de auditoría del sistema sonorense.</p>
             </div>
         </section>
 
@@ -410,8 +387,9 @@
             <img src="assets/images/panel7.png" alt="Cap 7" class="panel-bg">
             <div class="panel-content">
                 <span class="panel-number">CAPÍTULO VII</span>
-                <h2 class="panel-title">Fin de la Opacidad</h2>
-                <p class="panel-text">"Deducciones claras. Cuentas sanas. Un sindicato que sirve al maestro, no al burócrata."</p>
+                <h2 class="panel-title">El Fin de la Mafia Sindical</h2>
+                <p class="panel-text">"Deducciones claras. Cuentas sanas. Un sindicato que sirve al maestro de base, no al burócrata de cúpula."</p>
+                <p class="panel-description">El saneamiento de las cuotas y la transparencia en las deducciones de nómina son requisitos inalterables. No permitiremos que nuestro salario sea la caja chica de estructuras que han traicionado el mandato de la asamblea. La soberanía retorna a las bases.</p>
             </div>
         </section>
 
@@ -420,8 +398,9 @@
             <img src="assets/images/panel8.png" alt="Cap 8" class="panel-bg">
             <div class="panel-content">
                 <span class="panel-number">CAPÍTULO VIII</span>
-                <h2 class="panel-title">Cooperativismo MS</h2>
-                <p class="panel-text">"La unión de esfuerzos individuales genera la potencia de la soberanía financiera magisterial."</p>
+                <h2 class="panel-title">Cooperativa Soberana</h2>
+                <p class="panel-text">"La unión de esfuerzos individuales genera la potencia necesaria para romper las cadenas de la usura externa."</p>
+                <p class="panel-description">El modelo de cooperativismo del Magisterio Sonorense es la respuesta técnica a los préstamos abusivos. Al centralizar nuestro propio capital, generamos beneficios que retornan directamente al docente, rompiendo la dependencia del casino financiero tradicional.</p>
             </div>
         </section>
 
@@ -430,8 +409,9 @@
             <img src="assets/images/panel9.png" alt="Cap 9" class="panel-bg">
             <div class="panel-content">
                 <span class="panel-number">CAPÍTULO IX</span>
-                <h2 class="panel-title">Aula de la Victoria</h2>
-                <p class="panel-text">"La lucha se enseña con el ejemplo. Cada maestro es un líder en su propio territorio."</p>
+                <h2 class="panel-title">El Aula de la Libertad</h2>
+                <p class="panel-text">"La lucha se enseña con la coherencia. Cada aula es hoy un nodo de consciencia estratégica."</p>
+                <p class="panel-description">La concientización profunda es el motor imparable de la movilización. Estamos formando un magisterio que no solo enseña historia, sino que posee la capacidad técnica para reescribirla en favor de la justicia social y la soberanía profesional.</p>
             </div>
         </section>
 
@@ -440,8 +420,42 @@
             <img src="assets/images/panel10.png" alt="Cap 10" class="panel-bg">
             <div class="panel-content">
                 <span class="panel-number">CAPÍTULO X</span>
-                <h2 class="panel-title">La Firma del Destino</h2>
-                <p class="panel-text">"El pliego ha sido entregado. De aquí en adelante, el destino lo escribimos nosotros. ¡CONTINUARÁ!"</p>
+                <h2 class="panel-title">La Sentencia del Destino</h2>
+                <p class="panel-text">"El pliego es nuestra ley. De aquí en adelante, el destino de Sonora se escribe con pluma magisterial."</p>
+                <p class="panel-description">La entrega de estas demandas marca el punto de no retorno. La fuerza que respalda este documento reside en la unidad de las bases informadas. La historia registrará este momento como el nacimiento de la verdadera justicia en Sonora.</p>
+            </div>
+        </section>
+
+        <!-- CAP 11 -->
+        <section class="panel" id="p11">
+            <img src="assets/images/panel11.png" alt="Cap 11" class="panel-bg">
+            <div class="panel-content">
+                <span class="panel-number">CAPÍTULO XI</span>
+                <h2 class="panel-title">Justicia Reivindicada</h2>
+                <p class="panel-text">"La balanza se inclina finalmente hacia el lado del trabajo honesto, despojando a la mentira de su peso institucional."</p>
+                <p class="panel-description">Hemos desarticulado la narrativa oficial que culpaba a los maestros del déficit. La auditoría externa ahora confirma que la riqueza existe, pero ha sido mal administrada. Reclamar lo que es nuestro por ley no es un acto de rebeldía, sino de restauración ética del estado.</p>
+            </div>
+        </section>
+
+        <!-- CAP 12 -->
+        <section class="panel" id="p12">
+            <img src="assets/images/panel12.png" alt="Cap 12" class="panel-bg">
+            <div class="panel-content">
+                <span class="panel-number">CAPÍTULO XII</span>
+                <h2 class="panel-title">El Pacto del Desierto</h2>
+                <p class="panel-text">"Bajo el sol de Sonora, la palabra dada entre iguales tiene más valor que cualquier decreto burocrático."</p>
+                <p class="panel-description">Este pacto sella la alianza indisoluble entre jubilados y activos. No habrá negociación separada ni claudicación parcial. Somos un solo frente técnico, una sola voluntad política y una sola fuerza capaz de paralizar y transformar la realidad del estado.</p>
+            </div>
+        </section>
+
+        <!-- CAP 13 -->
+        <section class="panel" id="p13">
+            <img src="assets/images/panel13.png" alt="Cap 13" class="panel-bg">
+            <div class="panel-content">
+                <span class="panel-number">CAPÍTULO XIII</span>
+                <h2 class="panel-title">Victoria Técnica Total</h2>
+                <p class="panel-text">"El triunfo no es solo una meta, es la validación final de que la verdad técnica es invencible."</p>
+                <p class="panel-description">Llegamos a la culminación del despliegue del Arsenal de la Verdad. Con los sistemas financieros auditados y la base movilizada, la victoria es inminente. El 1 de Mayo no será una marcha más, será la celebración de nuestra independencia profesional y económica.</p>
             </div>
         </section>
     </main>
@@ -453,6 +467,7 @@
     <script>
         const panels = document.querySelectorAll('.panel');
         const dotsContainer = document.getElementById('progNav');
+        const progressBar = document.getElementById('progress');
         
         panels.forEach((panel, i) => {
             const dot = document.createElement('div');
@@ -470,6 +485,9 @@
                     entry.target.classList.add('active');
                     const index = Array.from(panels).indexOf(entry.target);
                     dots.forEach((d, i) => d.classList.toggle('active', i === index));
+                    
+                    const progress = ((index) / (panels.length - 1)) * 100;
+                    progressBar.style.width = progress + '%';
                 } else {
                     entry.target.classList.remove('active');
                 }
@@ -478,7 +496,6 @@
 
         panels.forEach(p => observer.observe(p));
 
-        // Audio Logic
         const audio = document.getElementById('himnoAudio');
         const audioBtn = document.getElementById('audioToggle');
         
