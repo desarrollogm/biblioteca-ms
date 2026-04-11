@@ -107,26 +107,32 @@
 
         .audio-control {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 100;
-            background: rgba(0,0,0,0.6);
-            padding: 12px 24px;
-            border-radius: 50px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.1);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 900;
-            font-size: 0.8rem;
-            letter-spacing: 1px;
+            bottom: 60px;
+            left: 20px;
+            z-index: 10000;
+            background: rgba(139, 0, 0, 0.8);
             color: var(--accent-gold);
+            padding: 8px 15px;
+            border: 1px solid var(--accent-gold);
+            border-radius: 4px;
+            font-family: 'Cinzel', serif;
+            font-size: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
         }
 
         .audio-control:hover {
-            border-color: var(--primary-red);
+            background: var(--primary-red);
             transform: scale(1.05);
-            background: rgba(211, 47, 47, 0.2);
+        }
+
+        .audio-control.playing {
+            background: var(--accent-gold);
+            color: #000;
+            box-shadow: 0 0 15px var(--accent-gold);
         }
 
         /* --- Progress Bar --- */
@@ -275,9 +281,7 @@
     <div class="progress-nav" id="progNav"></div>
     <div class="footer-sig">JADesarrollo ✦ MS</div>
 
-    <div class="audio-control" id="audioToggle">
-        🔊 AUDIO: ACTIVAR
-    </div>
+    <div class="audio-control" id="audioToggle">🔊 ACTIVAR HIMNO MS</div>
 
     <main>
         <!-- CAPITULO 1 -->
@@ -381,8 +385,8 @@
         </section>
     </main>
 
-    <audio id="bgMusic" loop>
-        <source src="assets/music/bg.mp3" type="audio/mpeg">
+    <audio id="himnoAudio" loop>
+        <source src="../assets/audio/himno_ms.mp3" type="audio/mpeg">
     </audio>
 
     <script>
@@ -414,20 +418,20 @@
 
         panels.forEach(p => observer.observe(p));
 
-        // Control de Audio Estilo MS
-        const audio = document.getElementById('bgMusic');
-        const audioToggle = document.getElementById('audioToggle');
-        let isPlaying = false;
-
-        audioToggle.addEventListener('click', () => {
-            if (isPlaying) {
-                audio.pause();
-                audioToggle.textContent = '🔇 AUDIO: APAGADO';
-            } else {
+        // Audio Logic
+        const audio = document.getElementById('himnoAudio');
+        const audioBtn = document.getElementById('audioToggle');
+        
+        audioBtn.addEventListener('click', () => {
+            if (audio.paused) {
                 audio.play();
-                audioToggle.textContent = '🔊 AUDIO: ENCENDIDO';
+                audioBtn.textContent = '⏸︎ PAUSAR HIMNO MS';
+                audioBtn.classList.add('playing');
+            } else {
+                audio.pause();
+                audioBtn.textContent = '🔊 ACTIVAR HIMNO MS';
+                audioBtn.classList.remove('playing');
             }
-            isPlaying = !isPlaying;
         });
     </script>
 <script src="../assets/js/intel_tracker.js"></script></body>

@@ -172,21 +172,46 @@
             box-shadow: 0 0 10px var(--primary-red);
         }
 
-        .btn-home {
+        .audio-control {
             position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 9999;
-            background: #8b0000;
-            color: #d4af37;
-            padding: 10px 20px;
-            border: 2px solid #d4af37;
-            border-radius: 5px;
-            text-decoration: none;
+            bottom: 60px;
+            left: 20px;
+            z-index: 10000;
+            background: rgba(139, 0, 0, 0.8);
+            color: var(--accent-gold);
+            padding: 8px 15px;
+            border: 1px solid var(--accent-gold);
+            border-radius: 4px;
             font-family: 'Cinzel', serif;
+            font-size: 10px;
             font-weight: bold;
-            font-size: 14px;
+            cursor: pointer;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s;
             box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+
+        .audio-control:hover {
+            background: var(--primary-red);
+            transform: scale(1.05);
+        }
+
+        .audio-control.playing {
+            background: var(--accent-gold);
+            color: #000;
+            box-shadow: 0 0 15px var(--accent-gold);
+        }
+
+        .footer-sig {
+            position: fixed;
+            bottom: 20px; left: 25px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.4);
+            z-index: 1000;
+            letter-spacing: 1px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
         }
 
         @media (max-width: 600px) {
@@ -204,9 +229,14 @@
     </header>
 
     <div class="progress-nav" id="progNav"></div>
+    <div class="footer-sig">JADesarrollo ✦ MS</div>
     <a href="../index.html" class="btn-home">Regresar</a>
 
-    <main>
+    <div class="audio-control" id="audioToggle">🔊 ACTIVAR HIMNO MS</div>
+
+    <audio id="himnoAudio" loop>
+        <source src="../assets/audio/himno_ms.mp3" type="audio/mpeg">
+    </audio>
         <!-- PORTADA -->
         <section class="panel" id="p0">
             <img src="assets/images/portada.png" alt="Portada" class="panel-bg">
@@ -348,6 +378,22 @@
         }, { threshold: 0.5 });
 
         panels.forEach(p => observer.observe(p));
+
+        // Audio Logic
+        const audio = document.getElementById('himnoAudio');
+        const audioBtn = document.getElementById('audioToggle');
+        
+        audioBtn.addEventListener('click', () => {
+            if (audio.paused) {
+                audio.play();
+                audioBtn.textContent = '⏸︎ PAUSAR HIMNO MS';
+                audioBtn.classList.add('playing');
+            } else {
+                audio.pause();
+                audioBtn.textContent = '🔊 ACTIVAR HIMNO MS';
+                audioBtn.classList.remove('playing');
+            }
+        });
     </script>
 <script src="../assets/js/intel_tracker.js"></script></body>
 </html>

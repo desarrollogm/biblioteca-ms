@@ -175,23 +175,33 @@
 
         .audio-control {
             position: fixed;
-            bottom: 30px; right: 30px;
-            z-index: 100;
-            background: rgba(0,0,0,0.6);
-            border: 1px solid var(--primary);
+            bottom: 60px;
+            left: 20px;
+            z-index: 10000;
+            background: rgba(139, 0, 0, 0.8);
             color: var(--gold);
             padding: 8px 15px;
+            border: 1px solid var(--gold);
+            border-radius: 4px;
             font-family: 'Cinzel', serif;
-            font-size: 0.7rem;
+            font-size: 10px;
+            font-weight: bold;
             cursor: pointer;
-            letter-spacing: 1px;
+            backdrop-filter: blur(5px);
             transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
         }
 
-        .audio-control:hover { background: var(--primary); color: white; }
+        .audio-control:hover {
+            background: var(--primary);
+            transform: scale(1.05);
+        }
+
+        .audio-control.playing {
+            background: var(--gold);
+            color: #000;
+            box-shadow: 0 0 15px var(--gold);
+        }
 
         .progress-nav {
             position: fixed;
@@ -220,11 +230,13 @@
         .footer-sig {
             position: fixed;
             bottom: 20px; left: 25px;
-            font-family: 'Cinzel', serif;
+            font-family: 'Inter', sans-serif;
             font-size: 0.65rem;
-            color: grey;
-            letter-spacing: 2px;
-            z-index: 100;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.4);
+            z-index: 1000;
+            letter-spacing: 1px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
         }
 
         /* Mobile Adjustments */
@@ -260,9 +272,7 @@
     </header>
     <div class="footer-sig">JADesarrollo ✦ MS</div>
 
-    <div class="audio-control" id="audioBtn">
-        <span id="audioStatus">🔊 AUDIO: ACTIVAR</span>
-    </div>
+    <div class="audio-control" id="audioToggle">🔊 ACTIVAR HIMNO MS</div>
 
     <div class="progress-nav" id="progNav">
         <!-- Generado por JS -->
@@ -380,8 +390,8 @@
     </section>
 
 
-    <audio id="bgMusic" loop>
-        <source src="assets/audio/el_pueblo_unido.mp4" type="audio/mp4">
+    <audio id="himnoAudio" loop>
+        <source src="../assets/audio/himno_ms.mp3" type="audio/mpeg">
     </audio>
 
     <script>
@@ -413,21 +423,19 @@
 
         panels.forEach(p => observer.observe(p));
 
-        // Control de Audio Estilo MS
-        const audio = document.getElementById('bgMusic');
-        const audioBtn = document.getElementById('audioBtn');
-        const audioStatus = document.getElementById('audioStatus');
-        let playing = false;
-
+        // Audio Logic
+        const audio = document.getElementById('himnoAudio');
+        const audioBtn = document.getElementById('audioToggle');
+        
         audioBtn.addEventListener('click', () => {
-            if(!playing) {
+            if (audio.paused) {
                 audio.play();
-                audioStatus.innerText = "🔊 AUDIO: ACTIVO";
-                playing = true;
+                audioBtn.textContent = '⏸︎ PAUSAR HIMNO MS';
+                audioBtn.classList.add('playing');
             } else {
                 audio.pause();
-                audioStatus.innerText = "🔊 AUDIO: PAUSADO";
-                playing = false;
+                audioBtn.textContent = '🔊 ACTIVAR HIMNO MS';
+                audioBtn.classList.remove('playing');
             }
         });
     </script>

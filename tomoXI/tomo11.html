@@ -194,6 +194,63 @@
             .panel-title { font-size: 1.4rem; }
             .panel-text { font-size: 0.95rem; }
         }
+
+        /* JADesarrollo & Himno Styles */
+        .watermark {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            font-family: 'Cinzel', serif;
+            font-size: 0.7rem;
+            color: rgba(255, 193, 7, 0.3);
+            letter-spacing: 3px;
+            z-index: 1000;
+            pointer-events: none;
+            text-transform: uppercase;
+        }
+
+        .footer-sig {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.4);
+            z-index: 1000;
+            letter-spacing: 1px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+        }
+
+        .audio-control {
+            position: fixed;
+            bottom: 60px;
+            left: 20px;
+            z-index: 10000;
+            background: rgba(139, 0, 0, 0.8);
+            color: var(--accent-gold);
+            padding: 8px 15px;
+            border: 1px solid var(--accent-gold);
+            border-radius: 4px;
+            font-family: 'Cinzel', serif;
+            font-size: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+
+        .audio-control:hover {
+            background: var(--primary-red);
+            transform: scale(1.05);
+        }
+
+        .audio-control.playing {
+            background: var(--accent-gold);
+            color: #000;
+            box-shadow: 0 0 15px var(--accent-gold);
+        }
     </style>
 </head>
 <body>
@@ -205,6 +262,14 @@
 
     <div class="progress-nav" id="progNav"></div>
     <a href="../index.html" class="btn-home">Regresar</a>
+
+    <div class="watermark">JADesarrollo</div>
+    <div class="footer-sig">JADesarrollo ✦ MS</div>
+    
+    <div class="audio-control" id="audioToggle">🔊 ACTIVAR HIMNO MS</div>
+    <audio id="himnoAudio" loop>
+        <source src="../assets/audio/himno_ms.mp3" type="audio/mpeg">
+    </audio>
 
     <main>
         <!-- PORTADA -->
@@ -359,6 +424,22 @@
         }, { threshold: 0.5 });
 
         panels.forEach(p => observer.observe(p));
+
+        // Audio Logic
+        const audio = document.getElementById('himnoAudio');
+        const audioBtn = document.getElementById('audioToggle');
+        
+        audioBtn.addEventListener('click', () => {
+            if (audio.paused) {
+                audio.play();
+                audioBtn.textContent = '⏸︎ PAUSAR HIMNO MS';
+                audioBtn.classList.add('playing');
+            } else {
+                audio.pause();
+                audioBtn.textContent = '🔊 ACTIVAR HIMNO MS';
+                audioBtn.classList.remove('playing');
+            }
+        });
     </script>
 <script src="../assets/js/intel_tracker.js"></script></body>
 </html>
