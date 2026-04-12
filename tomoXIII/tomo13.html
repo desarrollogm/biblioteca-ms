@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tomo XIII: El Arsenal de la Decisión | Biblioteca Digital MS</title>
     <meta name="description" content="Tomo XIII: Estrategias Mixtas y Verdad Actuarial en la lucha del Magisterio Sonorense.">
+    <meta property="og:title" content="Tomo XIII: El Arsenal de la Decisión | Biblioteca Digital MS">
+    <meta property="og:description" content="Tomo XIII: Estrategias Mixtas y Verdad Actuarial en la lucha del Magisterio Sonorense.">
+    <meta property="og:image" content="https://desarrollogm.github.io/biblioteca-ms/tomoXIII/images/portada.png">
+    <meta property="og:url" content="https://desarrollogm.github.io/biblioteca-ms/tomoXIII/tomo13.html">
+    <meta property="og:type" content="article">
     <link rel="icon" type="image/png" href="../assets/favicon-ms.png">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Playfair+Display:ital,wght@0,400;1,700&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
@@ -151,6 +156,26 @@
 
         .btn-home:hover { background: #8b0000; transform: scale(1.05); }
 
+        .btn-audio {
+            position: fixed;
+            top: 60px;
+            right: 20px;
+            z-index: 1001;
+            padding: 8px 15px;
+            background: rgba(0,0,0,0.8);
+            color: var(--accent-gold);
+            border: 1px solid var(--accent-gold);
+            font-family: 'Cinzel', serif;
+            font-size: 0.7rem;
+            cursor: pointer;
+            transition: 0.3s;
+            letter-spacing: 1px;
+        }
+        .btn-audio.playing {
+            background: var(--accent-gold);
+            color: #000;
+        }
+
         .progress-bar {
             position: fixed;
             bottom: 0;
@@ -182,6 +207,11 @@
     </header>
 
     <a href="../index.html" class="btn-home">Regresar</a>
+    <button id="audioToggle" class="btn-audio">🔊 ACTIVAR HIMNO MS</button>
+
+    <audio id="himnoAudio" loop>
+        <source src="../assets/audio/himno_ms.mp3" type="audio/mpeg">
+    </audio>
 
     <main>
         <!-- PORTADA -->
@@ -323,6 +353,21 @@
         }, { threshold: 0.5 });
 
         panels.forEach(p => observer.observe(p));
+
+        const audio = document.getElementById('himnoAudio');
+        const audioBtn = document.getElementById('audioToggle');
+        
+        audioBtn.addEventListener('click', () => {
+            if (audio.paused) {
+                audio.play();
+                audioBtn.textContent = '⏸︎ PAUSAR HIMNO MS';
+                audioBtn.classList.add('playing');
+            } else {
+                audio.pause();
+                audioBtn.textContent = '🔊 ACTIVAR HIMNO MS';
+                audioBtn.classList.remove('playing');
+            }
+        });
     </script>
 </body>
 </html>
