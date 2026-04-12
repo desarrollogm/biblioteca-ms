@@ -271,6 +271,11 @@
                 <a href="../documentos/Modelo_Demanda_Homologacion_Salarial.html" class="btn-portal" style="display:block; border-color:#fff; color:#fff;">DEMANDA TIPO</a>
                 <button class="btn-portal btn-copy" style="width:100%; border-color:#fff; color:#fff;" onclick="copyHomologacion()">COPIAR ARGUMENTO</button>
             </div>
+            <div style="border: 1px solid var(--header); padding: 15px;">
+                <span class="tactical-title" style="color:var(--header);">[13] DISCRIMINACIÓN (ART. 15)</span>
+                <a href="../documentos/Argumento_Discriminacion_Art15_Federalizados.html" class="btn-portal" style="display:block; border-color:var(--header); color:var(--header);">VER ARGUMENTO</a>
+                <button class="btn-portal btn-copy" style="width:100%; border-color:var(--header); color:var(--header);" onclick="copyDiscrimina()">COPIAR PITCH LEGAL</button>
+            </div>
         </div>
 
         <button class="btn-kill" onclick="killOperation()">[ LOGOUT AND SECURE TERMINAL ]</button>
@@ -364,6 +369,11 @@
         function copyArt15Ref() {
             const text = `❗ *MS - EL ANCLA ART. 15*\n\n"Sueldo base integrado = Sueldo + Emolumentos Permanentes". ¡El quinquenio DEBE cotizar!`;
             navigator.clipboard.writeText(text).then(() => alert("Cita de Art. 15 copiada."));
+        }
+
+        function copyDiscrimina() {
+            const text = `⚖️ *MS - ARGUMENTO DE DISCRIMINACIÓN*\n\n📍 *El Hecho:* El Estado de Sonora (Art. 15) ya reconoce que las primas permanentes deben integrarse al sueldo.\n📍 *La Injusticia:* Negar este estándar a los federales en el mismo territorio es *DISCRIMINACIÓN TERRITORIAL*.\n📍 *La Exigencia:* Trato igual ante la ley. #ParidadSonora`;
+            navigator.clipboard.writeText(text).then(() => alert("Pitch de discriminación copiado."));
         }
     </script>
 </body>
