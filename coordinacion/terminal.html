@@ -3,21 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CONSOLA DE AUDITORÍA ESTRATÉGICA - MAGISTERIO SONORENSE</title>
+    <title>CONSOLA DE INTELIGENCIA ESTRATÉGICA - MAGISTERIO SONORENSE</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --audit-primary: #00ff41;
-            --audit-alert: #ff3e3e;
-            --audit-bg: #0a0a0a;
-            --audit-dim: #004d1a;
-            --audit-header: #800000;
-            --audit-text: #e0e0e0;
+            --p: #00ff41; /* Audit Primary */
+            --a: #ff3e3e; /* Audit Alert */
+            --bg: #050505;
+            --header: #800000;
+            --gold: #c5a028;
+            --text: #e0e0e0;
+            --glow: rgba(0, 255, 65, 0.2);
         }
 
         body {
-            background-color: var(--audit-bg);
-            color: var(--audit-text);
+            background-color: var(--bg);
+            color: var(--text);
             font-family: 'Roboto Mono', monospace;
             margin: 0;
             padding: 20px;
@@ -27,398 +28,255 @@
         .container {
             max-width: 1000px;
             margin: 0 auto;
-            border: 1px solid var(--audit-dim);
+            border: 1px solid #222;
             padding: 40px;
-            background: rgba(0, 0, 0, 0.95);
-            box-shadow: 0 0 50px rgba(0, 0, 0, 1);
+            background: linear-gradient(145deg, #0a0a0a, #000);
+            box-shadow: 0 0 50px rgba(0, 0, 0, 1), 0 0 20px var(--glow);
             position: relative;
+            backdrop-filter: blur(10px);
         }
 
         .header {
             text-align: center;
-            border-bottom: 2px solid var(--audit-header);
+            border-bottom: 2px solid var(--header);
             padding-bottom: 20px;
             margin-bottom: 50px;
         }
 
-        .header h1 {
-            margin: 0;
-            font-size: 1.6rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            color: var(--audit-header);
-            font-weight: 700;
+        .ms-logo {
+            width: 120px;
+            margin-bottom: 15px;
+            filter: drop-shadow(0 0 10px var(--header));
         }
 
+        .header h1 {
+            margin: 0;
+            font-size: 1.4rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: #fff;
+            text-shadow: 0 0 10px rgba(255,255,255,0.3);
+        }
+
+        .header p { color: var(--p); font-size: 0.8rem; margin-top: 5px; opacity: 0.8; }
+
         .institutional-alert {
-            border-left: 5px solid var(--audit-alert);
+            border-left: 4px solid var(--a);
             background: rgba(255, 62, 62, 0.05);
             padding: 20px;
             margin-bottom: 40px;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             color: #fff;
+            position: relative;
+            overflow: hidden;
         }
 
+        .institutional-alert::after {
+            content: "AUDIT LIVE";
+            position: absolute;
+            top: 5px; right: 10px;
+            font-size: 0.6rem;
+            color: var(--a);
+            animation: blink 1.5s infinite;
+        }
+
+        @keyframes blink { 50% { opacity: 0; } }
+
         h2 {
-            font-size: 1.2rem;
-            color: var(--audit-primary);
-            border-bottom: 1px solid var(--audit-dim);
+            font-size: 1.1rem;
+            color: var(--p);
+            border-bottom: 1px solid #222;
             padding-bottom: 10px;
             margin-top: 60px;
             text-transform: uppercase;
             letter-spacing: 2px;
+            display: flex;
+            align-items: center;
         }
 
+        h2::before { content: ">"; margin-right: 15px; }
+
         .tactical-box {
-            border: 1px dashed var(--audit-primary);
+            border: 1px solid #1a1a1a;
             padding: 25px;
             margin: 20px 0;
-            background: rgba(0, 255, 65, 0.03);
+            background: rgba(255, 255, 255, 0.02);
+            transition: 0.3s;
+        }
+
+        .tactical-box:hover {
+            border-color: var(--p);
+            box-shadow: 0 0 15px var(--glow);
         }
 
         .tactical-title {
-            color: var(--audit-primary);
+            color: var(--p);
             font-weight: bold;
             text-transform: uppercase;
             margin-bottom: 15px;
             display: block;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
         }
-
-        .report-content {
-            line-height: 1.8;
-            font-size: 1.05rem;
-            text-align: justify;
-        }
-
-        .term-highlight { color: var(--audit-primary); font-weight: bold; }
-        .danger-text { color: var(--audit-alert); font-weight: bold; }
 
         .btn-portal {
             display: inline-block;
-            margin: 8px;
+            margin: 5px;
             background: transparent;
-            color: var(--audit-primary);
-            border: 1px solid var(--audit-primary);
-            padding: 12px 24px;
+            color: var(--p);
+            border: 1px solid var(--p);
+            padding: 10px 20px;
             font-family: inherit;
             cursor: pointer;
-            font-size: 0.85rem;
+            font-size: 0.75rem;
             text-decoration: none;
-            transition: all 0.3s;
+            transition: all 0.2s;
             text-transform: uppercase;
         }
 
         .btn-portal:hover {
-            background: var(--audit-primary);
+            background: var(--p);
             color: #000;
-            box-shadow: 0 0 20px rgba(0, 255, 65, 0.4);
+            box-shadow: 0 0 15px var(--p);
         }
+
+        .btn-copy { border-color: var(--gold); color: var(--gold); }
+        .btn-copy:hover { background: var(--gold); color: #000; box-shadow: 0 0 15px var(--gold); }
 
         .btn-kill {
             display: block;
             width: 100%;
-            margin-top: 50px;
-            background: #440000;
+            margin-top: 80px;
+            background: #200;
             color: #fff;
-            border: 1px solid var(--audit-alert);
+            border: 1px solid var(--a);
             padding: 15px;
             font-family: inherit;
             cursor: pointer;
             font-weight: bold;
             text-transform: uppercase;
             letter-spacing: 2px;
-            transition: 0.3s;
-        }
-
-        .btn-kill:hover { background: var(--audit-alert); }
-
-        .data-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-            font-size: 0.95rem;
-        }
-
-        .data-table th {
-            text-align: left;
-            border-bottom: 2px solid var(--audit-dim);
-            padding: 10px;
-            color: var(--audit-primary);
-        }
-
-        .data-table td {
-            padding: 12px 10px;
-            border-bottom: 1px solid rgba(0, 77, 26, 0.3);
         }
 
         #security-lock {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: var(--audit-bg);
+            background: #000;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
             z-index: 10000;
         }
 
         .lock-input {
-            background: transparent; border: none; border-bottom: 2px solid var(--audit-primary);
-            color: var(--audit-primary); padding: 10px; width: 320px;
-            font-family: inherit; font-size: 1.2rem; text-align: center;
+            background: transparent; border: none; border-bottom: 1px solid var(--p);
+            color: var(--p); padding: 10px; width: 300px;
+            font-family: inherit; font-size: 1rem; text-align: center;
             outline: none; margin-bottom: 20px;
         }
 
         .footer {
-            margin-top: 60px;
-            font-size: 0.75rem;
-            text-align: center;
-            opacity: 0.6;
-            border-top: 1px solid var(--audit-dim);
-            padding-top: 20px;
+            margin-top: 60px; font-size: 0.7rem; text-align: center; opacity: 0.4;
+            border-top: 1px solid #111; padding-top: 20px;
         }
     </style>
 </head>
 <body>
 
     <div id="security-lock">
-        <h1 style="color: #fff; font-size: 1.2rem; margin-bottom: 30px;">[ ACCESO DE COORDINACIÓN ESTRATÉGICA ]</h1>
-        <input type="password" id="access-code" class="lock-input" placeholder="INGRESAR CLAVE INSTITUCIONAL">
-        <button class="btn-portal" style="width: 320px;" onclick="authenticate()">VERIFICAR CREDENCIALES</button>
-        <p id="auth-error" style="color: var(--audit-alert); margin-top: 20px; display: none;">[ ERROR: AUTENTICACIÓN FALLIDA ]</p>
+        <img src="../media/ms_logo_header.png" style="width: 150px; margin-bottom: 40px; filter: grayscale(1) invert(1) brightness(2);">
+        <h1 style="color: #fff; font-size: 0.9rem; margin-bottom: 30px; letter-spacing: 5px;">[ ACCESO RESTRINGIDO COORDINACIÓN ]</h1>
+        <input type="password" id="access-code" class="lock-input" placeholder="PASSCODE">
+        <button class="btn-portal" style="width: 300px;" onclick="authenticate()">UNIDENTIFIED ACCESS</button>
+        <p id="auth-error" style="color: var(--a); margin-top: 20px; display: none; font-size: 0.7rem;">[ SECURITY BREACH : ACCESS DENIED ]</p>
     </div>
 
     <div id="dashboard-content" class="container" style="display: none;">
         <div class="header">
-            <h1>CONSOLA DE AUDITORÍA ESTRATÉGICA MS</h1>
-            <p style="color: var(--audit-primary); font-size: 0.9rem;">INTELIGENCIA TÉCNICA PARA LA MOVILIZACIÓN DEL 1 DE MAYO</p>
+            <img src="../media/ms_logo_header.png" class="ms-logo" alt="MS LOGO">
+            <h1>CONSOLA MAGISTERIO SONORENSE</h1>
+            <p>CENTRO DE MANDO TÁCTICO - INTELIGENCIA FORENSE QUINQUENIOS</p>
         </div>
 
         <div class="institutional-alert">
-            <strong>DICTAMEN TÉCNICO:</strong> Se ha consolidado la evidencia financiera y discursiva para la defensa de la autonomía regional de Sonora. El uso de esta información es estrictamente táctico.
+            <strong>ESTADO DE OPERACIÓN:</strong> Fase de Despliegue Avanzado. Todo el arsenal técnico está sincronizado en el servidor seguro. Use las herramientas de copiado para la difusión viral controlada.
         </div>
 
-        <h2>01. MARCO DE VULNERABILIDAD FEDERAL</h2>
-        <div class="intel-report">
-            <p class="report-content">La política fiscal 2026 orienta el ahorro de los trabajadores de la educación hacia fideicomisos de infraestructura de alto riesgo, comprometiendo la liquidez futura de las pensiones estatales.</p>
+        <h2>12. AUDITORÍA DE QUINQUENIOS (DIAGNÓSTICO)</h2>
+        <div class="tactical-box">
+            <span class="tactical-title">DICTAMEN FORENSE: EL CONGELAMIENTO</span>
+            <p style="font-size: 0.9rem; opacity: 0.8;">Evidencia del desfalco estructural del personal federalizado stuck en el año 2000 ($68 qna).</p>
+            <a href="../documentos/Analisis_Quinquenios_Concepto_07.html" target="_blank" class="btn-portal">VER PERITAJE</a>
+            <button class="btn-portal btn-copy" onclick="copyToWhatsapp()">WHATSAPP RESUMEN</button>
+            <button class="btn-portal btn-copy" onclick="copyFullDossier()">DOSSIER PARA COORDINADOR</button>
         </div>
 
-        <h2>02. AUDITORÍA DE PERCEPCIONES (ÉLITE ADMINISTRATIVA)</h2>
-        <div class="intel-report">
-            <p class="report-content">Desglose de remuneraciones mensuales integrales identificadas en portales de transparencia y auditorías externas. Estas cifras contrastan con la asfixia presupuestaria denunciada en el sector salud:</p>
-            <table class="data-table">
-                <thead>
-                    <tr>
-                        <th>NOMBRE</th>
-                        <th>REMUNERACIÓN MENSUAL</th>
-                        <th>OBSERVACIÓN FORESTAL</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td>JOSÉ REYES BAEZA</td><td class="term-highlight">$309,054.00</td><td>Ex-Director (Bajo Auditoría)</td></tr>
-                    <tr><td>RAFAEL NAVARRO M.</td><td class="term-highlight">$275,340.00</td><td>Anomalía en Fideicomisos</td></tr>
-                    <tr><td>DELIA MENDÍA Z.</td><td class="term-highlight">$210,120.00</td><td>Remuneración no justificada</td></tr>
-                    <tr><td>JOSÉ NARRO ROBLES</td><td class="danger-text">$5,000,000.00</td><td class="danger-text">DESVÍO DOCUMENTADO (SALUD)</td></tr>
-                </tbody>
-            </table>
-        </div>
-
-        <h2>03. CAJA DE HERRAMIENTAS TÁCTICAS (VIDEO FRAUSTO / ZACATECAS)</h2>
-        <div class="intel-report">
-            <p class="report-content">El análisis técnico del discurso de Filiberto Frausto revela una trampa de "unidad vertical" diseñada para neutralizar la resistencia sonorense. Use estas herramientas ante la base:</p>
-            
-            <div class="tactical-box">
-                <span class="tactical-title">HERRAMIENTA 1: EL ESPEJO DE ZACATECAS (TEORÍA DE JUEGOS)</span>
-                <p class="report-content">Basado en el Informe DC-2026-007. El colapso del ISSSTEZAC (déficit > 500 MDP) es el resultado de una "Trampa de Cooperación Centralista". En Sonora, el riesgo federal es la extracción de liquidez para proyectos externos bajo el disfraz de unidad sindical.</p>
-                <a href="../documentos/Analisis_Frausto_Espejo_Zacatecas.html" target="_blank" class="btn-portal" style="font-size: 0.75rem;">VER PERITAJE TEORÍA DE JUEGOS</a>
+        <h2>13. MODELOS TÁCTICOS (ZONA DE RECURSOS)</h2>
+        <div class="tactical-box" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+            <div style="border: 1px solid #222; padding: 15px;">
+                <span class="tactical-title">TRANSPARENCIA (PNT)</span>
+                <a href="../documentos/Solicitud_Transparencia_Modelos.html" class="btn-portal" style="display:block;">MODELOS PNT</a>
+                <button class="btn-portal btn-copy" style="width:100%;" onclick="copyTransparencia()">COPIAR MODELO</button>
             </div>
-
-            <div class="tactical-box">
-                <span class="tactical-title">HERRAMIENTA 2: NEUTRALIZACIÓN DE LA "UNIDAD" SIN TRANSPARENCIA</span>
-                <p class="report-content">Ante el llamado a la unidad, responda institucionalmente: <strong>"La unidad solo es posible bajo el principio de auditoría compartida".</strong> Si ellos guardan silencio sobre las minusvalías de la AFORE, su unidad no es gremial, es complicidad bancaria.</p>
-            </div>
-
-            <div class="tactical-box">
-                <span class="tactical-title">HERRAMIENTA 3: LA TRAMPA DE LA VERTICALIDAD</span>
-                <p class="report-content">Identifique que Frausto habla desde una estructura que busca centralizar las cuotas. Sonora debe defender el <strong>Modelismo Estatal</strong>. Nuestra fuerza no viene de la CDMX, sino de la soberanía de nuestros fondos regionales.</p>
-            </div>
-
-            <a href="https://www.facebook.com/share/v/17GzmtyRSV/" target="_blank" class="btn-portal" style="border-color: var(--audit-alert); color: var(--audit-alert);">ACCEDER A EVIDENCIA DISCURSIVA (VIDEO)</a>
-        </div>
-
-        <h2>04. EVIDENCIA DOCUMENTAL (ANEXOS DC)</h2>
-        <div class="intel-report">
-            <div style="display: flex; flex-wrap: wrap; justify-content: center;">
-                <a href="../documentos/Analisis_AFORE_Robo_Hormiga.html" target="_blank" class="btn-portal">AUDITORÍA AFORE</a>
-                <a href="../documentos/Analisis_FASM28_Caja_Negra.html" target="_blank" class="btn-portal">AUDITORÍA FASM28</a>
-                <a href="../documentos/Analisis_Educacion_Indigena_Focos_Rojos.html" target="_blank" class="btn-portal">AUDITORÍA ED. INDÍGENA</a>
-                <a href="../documentos/Analisis_Acuerdo_754_Punto_Quiebre.html" target="_blank" class="btn-portal">AUDITORÍA ACUERDO 754</a>
-                <a href="../documentos/Estrategia_War_Room_Pliego_2026.html" target="_blank" class="btn-portal" style="border-color: #00ff41; color: #00ff41;">WAR ROOM MS 2026</a>
-                <a href="../documentos/Analisis_Maquiavelo_Grupo00.html" target="_blank" class="btn-portal">CONTRAINTELIGENCIA 00</a>
-                <a href="../documentos/Reporte_Hacienda_Deuda_2026.html" target="_blank" class="btn-portal">INFORME SHCP</a>
-                <a href="../documentos/Arbitraje_Ganfeng_ICSID.html" target="_blank" class="btn-portal">DICTAMEN CIADI</a>
-                <a href="../documentos/Plan_Modernizacion_Guaymas_2026.html" target="_blank" class="btn-portal">PTO. GUAYMAS</a>
-                <a href="../documentos/Corrupcion_Fundacion_ISSSTE.html" target="_blank" class="btn-portal">AUDITORÍA ISSSTE</a>
-            </div>
-            <div style="display: flex; flex-wrap: wrap; justify-content: center; margin-top: 10px;">
-                <a href="https://www.gob.mx/consar" target="_blank" class="btn-portal">PORTAL CONSAR</a>
-                <a href="https://www.hacienda.gob.mx/" target="_blank" class="btn-portal">PORTAL SHCP</a>
-                <a href="https://www.gob.mx/issste/archivo/prensa" target="_blank" class="btn-portal">PRENSA ISSSTE</a>
-                <a href="https://www.puertodeguaymas.com.mx/" target="_blank" class="btn-portal">PORTAL ASIPONA</a>
+            <div style="border: 1px solid #222; padding: 15px;">
+                <span class="tactical-title">ANEXO PLIEGO 2026</span>
+                <a href="../documentos/Anexo_Tecnico_Pliego_Modelo.html" class="btn-portal" style="display:block;">MODELO ANEXO</a>
+                <button class="btn-portal btn-copy" style="width:100%;" onclick="copyAnexoTecnico()">COPIAR TÉCNICO</button>
             </div>
         </div>
 
-        <h2>06. AUDITORÍA FASM: LA CAJA NEGRA DEL MUTUALISMO</h2>
-        <div class="intel-report">
-            <p class="report-content">La investigación sobre el portal <strong>fasm28.org</strong> revela un déficit actuarial proyectado de <strong>$11,200 MXN</strong> por cada jubilado que se liquida. Este hueco financiero se subsidia mediante:</p>
-            <div class="tactical-box" style="border-color: var(--audit-alert); background: rgba(255, 62, 62, 0.05);">
-                <span class="tactical-title" style="color: var(--audit-alert);">EVIDENCIA FORENSE: CANIBALISMO DE CAPITAL MUERTO</span>
-                <p class="report-content">El fondo sobrevive gracias a la descapitalización de los socios que pierden sus derechos (Art. 61). Además, el beneficio nominal de $40,000 sufre una licuación inflacionaria del 60% en un ciclo de 30 años, dejando al docente con una fracción del poder adquisitivo original.</p>
-                <a href="../documentos/Analisis_FASM28_Caja_Negra.html" target="_blank" class="btn-portal" style="border-color: var(--audit-alert); color: var(--audit-alert);">ACCEDER A PRUEBAS PERICIALES V3.6</a>
+        <h2>14. ARSENAL AVANZADO (MISILES MS)</h2>
+        <div class="tactical-box" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+            <div style="border: 1px solid var(--a); padding: 15px;">
+                <span class="tactical-title" style="color: var(--a);">[1] CALCULADORA DESFALCO</span>
+                <a href="../documentos/Simulador_Desfalco_Quinquenios.html" class="btn-portal" style="display:block; border-color: var(--a); color: var(--a);">EJECUTAR</a>
+                <button class="btn-portal btn-copy" style="width:100%; border-color: var(--a); color: var(--a);" onclick="copySimulador()">COPIAR ALERTA %</button>
+            </div>
+            <div style="border: 1px solid var(--gold); padding: 15px;">
+                <span class="tactical-title" style="color: var(--gold);">[2] BALA DE PLATA (JUR)</span>
+                <a href="../documentos/Memo_Jurisprudencia_Quinquenios.html" class="btn-portal" style="display:block; border-color: var(--gold); color: var(--gold);">VER TESIS</a>
+                <button class="btn-portal btn-copy" style="width:100%; border-color: var(--gold); color: var(--gold);" onclick="copyJurisprudencia()">COPIAR ARGUMENTO</button>
+            </div>
+            <div style="border: 1px solid var(--p); padding: 15px;">
+                <span class="tactical-title">[3] HOYO NEGRO (1301)</span>
+                <a href="../documentos/Auditoria_Presupuestal_1301.html" class="btn-portal" style="display:block;">VER AUDITORÍA</a>
+                <button class="btn-portal btn-copy" style="width:100%;" onclick="copyAuditoria()">COPIAR EVIDENCIA</button>
+            </div>
+            <div style="border: 1px solid #fff; padding: 15px;">
+                <span class="tactical-title" style="color:#fff;">[4] LIBRO BLANCO</span>
+                <a href="../documentos/Libro_Blanco_Desfalco_Quinquenios.md" class="btn-portal" style="display:block; border-color:#fff; color:#fff;">LEER REPORTE</a>
+                <button class="btn-portal btn-copy" style="width:100%; border-color:#fff; color:#fff;" onclick="copyLibroBlanco()">COPIAR PITCH</button>
             </div>
         </div>
 
-        <h2>08. AUDITORÍA EDUCACIÓN INDÍGENA: LA DEUDA HISTÓRICA</h2>
-        <div class="intel-report">
-            <p class="report-content">Existen <strong>782 docentes indígenas</strong> invisibilizadas administrativamente como "agentes" para evadir el pago de claves base. La SEC Sonora omite aplicar el "Precedente Guerrero" de regularización masiva.</p>
-            <div class="tactical-box">
-                <span class="tactical-title">FOCO ROJO: ESCÁNDALO PRESUPUESTAL SEP</span>
-                <p class="report-content">Investigaciones revelan que la SEP "ahorró" millones al no imprimir el Plan de Estudio 2022 para zonas rurales, devolviendo el capital a Hacienda mientras las escuelas carecen de techos y materiales básicos. El Art. 45 de la LGSCMM está suspendido por omisión de reglas de operación.</p>
-                <a href="../documentos/Analisis_Educacion_Indigena_Focos_Rojos.html" target="_blank" class="btn-portal">VER INFORME DE IMPACTO INDÍGENA</a>
+        <h2>15. EL DICTAMEN TÉCNICO (ART. 15 ISSSTESON)</h2>
+        <div class="tactical-box">
+            <span class="tactical-title">EL ANCLA LEGAL DE SONORA</span>
+            <p style="font-size: 0.9rem; opacity: 0.8;">Fundamento de por qué el quinquenio ES un emolumento permanente y su omisión es negligencia grave.</p>
+            <a href="../documentos/Dictamen_Articulo_15_ISSSTESON.html" class="btn-portal">VER DICTAMEN ART. 15</a>
+            <button class="btn-portal btn-copy" onclick="copyArt15Ref()">COPIAR CITA LEY ESTATAL</button>
+        </div>
+
+        <h2>16. EL ESPEJO DE LA INJUSTICIA (PARIDAD)</h2>
+        <div class="tactical-box" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+            <div style="border: 1px solid var(--p); padding: 15px;">
+                <span class="tactical-title">[9] EL ABISMO SALARIAL</span>
+                <a href="../documentos/Reporte_Abismo_Salarial_Paridad.html" class="btn-portal" style="display:block;">VER BRECHA</a>
+                <button class="btn-portal btn-copy" style="width:100%;" onclick="copyAbismo()">COPIAR COMPARATIVA</button>
+            </div>
+            <div style="border: 1px solid var(--gold); padding: 15px;">
+                <span class="tactical-title">[10] IDENTIDAD TÉCNICA</span>
+                <a href="../documentos/Memo_Identidad_Funciones_Docentes.html" class="btn-portal" style="display:block; border-color: var(--gold); color: var(--gold);">VER PRUEBA</a>
+                <button class="btn-portal btn-copy" style="width:100%; border-color: var(--gold); color: var(--gold);" onclick="copyIdentidad()">COPIAR IDENTIDAD</button>
+            </div>
+            <div style="border: 1px solid #fff; padding: 15px;">
+                <span class="tactical-title" style="color:#fff;">[11] DEMANDA HOMOLOGACIÓN</span>
+                <a href="../documentos/Modelo_Demanda_Homologacion_Salarial.html" class="btn-portal" style="display:block; border-color:#fff; color:#fff;">DEMANDA TIPO</a>
+                <button class="btn-portal btn-copy" style="width:100%; border-color:#fff; color:#fff;" onclick="copyHomologacion()">COPIAR ARGUMENTO</button>
             </div>
         </div>
 
-        <h2>09. DESPLIEGUE TÁCTICO Y CONTRAINTELIGENCIA (GRUPO 00)</h2>
-        <div class="intel-report">
-            <p class="report-content">Se ha consolidado el <strong>Eje Estratégico Yaqui-Nogales-Hermosillo</strong>. El Grupo 00 mantiene autonomía operativa total de las dirigencias nacionales.</p>
-            <div class="tactical-box" style="border-color: #00ff41; background: rgba(0, 255, 65, 0.05);">
-                <span class="tactical-title" style="color: #00ff41;">MODO MAQUIAVELO: ACTIVADO</span>
-                <p class="report-content">Victoria Legislativa: El Senado admite error técnico en propuesta PIP. Se activa la "Maniobra de Pinza" contra la SEC. Inteligencia confirma la neutralización de agentes externos (Filiberto/Zacatecas).</p>
-                <a href="../documentos/Analisis_Maquiavelo_Grupo00.html" target="_blank" class="btn-portal" style="border-color: #00ff41; color: #00ff41;">ACCEDER AL PROTOCOLO MAQUIAVELO</a>
-            </div>
-        </div>
-
-        <h2>10. ACUERDO 754: EL PACTO DE LA EXCLUSIÓN (LICENCIAS MÉDICAS)</h2>
-        <div class="intel-report">
-            <p class="report-content">Auditoría revela el <strong>"Viacrucis de la Incapacidad"</strong>: esquemas de moches en ISSSTE y el uso indebido del abandono de empleo como herramienta de terrorismo laboral.</p>
-            <div class="tactical-box" style="border-color: #d4af37; background: rgba(212, 175, 55, 0.05);">
-                <span class="tactical-title" style="color: #d4af37;">ALERTA FOCO ROJO: FRAUDE EN NÓMINA FONE</span>
-                <p class="report-content">Se detectó que Recursos Humanos hackea el sistema para depositar solo el 60% a docentes con licencia al 100%. Denunciamos la "Mafia de las Fichas" en clínicas y la mentira administrativa de la única vez.</p>
-                <a href="../documentos/Analisis_Acuerdo_754_Punto_Quiebre.html" target="_blank" class="btn-portal" style="border-color: #d4af37; color: #d4af37;">PERITAJE ACUERDO 754 (PUNTO DE QUIEBRE)</a>
-            </div>
-        </div>
-
-        <h2>11. WAR ROOM Y ESTRATEGIA DE MOVILIZACIÓN 2026</h2>
-        <div class="intel-report">
-            <p class="report-content">Consolidación del <strong>Pliego Petitorio 2026</strong> y protocolos de respuesta en tiempo real. Se establece la línea de defensa institucional ante la cooptación sindical.</p>
-            
-            <div class="alert-terminal" style="border: 1px dashed #ff3e3e; background: rgba(255, 62, 62, 0.05); padding: 15px; margin: 15px 0; color: #ff3e3e; font-family: monospace;">
-                <strong>[!] PROTOCOLO DE SEGURIDAD VOCERÍA:</strong><br>
-                ESTRICTAMENTE CONFIDENCIAL: Ante cualquier duda sobre la vocería actual, la respuesta ES ÚNICA: <br>
-                <em>"RAMSÉS VALENZUELA INFANTE FUE VOCERO, HASTA NUEVO AVISO."</em>
-            </div>
-
-            <div class="tactical-box" style="border-color: #00ff41; background: rgba(0, 255, 65, 0.05);">
-                <span class="tactical-title" style="color: #00ff41;">DIRECTIVA OPERATIVA: GRAN MOVILIZACIÓN</span>
-                <p class="report-content">Análisis del "Caballo de Troya" de Cepeda Salas y el colapso logístico de Birmex ($1,000 MDP bajo sospecha). Prepárense para la toma de narrativa en asambleas regionales.</p>
-                <a href="../documentos/Estrategia_War_Room_Pliego_2026.html" target="_blank" class="btn-portal" style="border-color: #00ff41; color: #00ff41;">ACCEDER AL MANUAL DEL WAR ROOM</a>
-            </div>
-        </div>
-        <h2>12. AUDITORÍA DE QUINQUENIOS Y CONCEPTO 07 (FEDERALIZADOS)</h2>
-        <div class="intel-report">
-            <p class="report-content">Se ha detectado una anomalía estructural: el personal federalizado en Sonora cobra montos de quinquenios congelados desde el año 2000 ($68.00 quincenales), lo cual representa un desfalco del 95% frente al 25% (5% por cada 5 años) que marca la Circular Uno 2025 para estatales.</p>
-            <div class="tactical-box">
-                <span class="tactical-title">INTELIGENCIA: ESTRATEGIA DE COMPACTACIÓN 07</span>
-                <p class="report-content">Informe técnico sobre el anacronismo salarial y la ruta legal para el Lic. Angel Valdez.</p>
-                <a href="../documentos/Analisis_Quinquenios_Concepto_07.html" target="_blank" class="btn-portal">VER DICTAMEN FORENSE QUINQUENIOS</a>
-                <button class="btn-portal" style="border-color: #25D366; color: #25D366;" onclick="copyToWhatsapp()">COPIAR RESUMEN TÁCTICO</button>
-                <button class="btn-portal" style="border-color: #00ff41; color: #00ff41;" onclick="copyFullDossier()">COPIAR DOSSIER JURÍDICO (COMPLETO)</button>
-            </div>
-        </div>
-
-        <h2>13. MODELOS TÁCTICOS Y HERRAMIENTAS LEGALES</h2>
-        <div class="intel-report">
-            <p class="report-content">Modelos oficiales listos para su uso en la Plataforma Nacional de Transparencia (PNT) y como anexos del Pliego Petitorio 2026. Bajo llave para uso exclusivo de coordinación.</p>
-            <div class="tactical-box" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-                <div style="border: 1px solid #333; padding: 10px;">
-                    <span class="tactical-title">TRANSPARENCIA (PNT)</span>
-                    <a href="../documentos/Solicitud_Transparencia_Modelos.html" class="btn-portal" style="display:block; margin-bottom:5px;">VER MODELOS PNT</a>
-                    <button class="btn-portal" style="font-size: 0.7rem; width: 100%; border-color:#25D366; color:#25D366;" onclick="copyTransparencia()">COPIAR MODELO (FED+SON)</button>
-                </div>
-                <div style="border: 1px solid #333; padding: 10px;">
-                    <span class="tactical-title">ANEXO PLIEGO 2026</span>
-                    <a href="../documentos/Anexo_Tecnico_Pliego_Modelo.html" class="btn-portal" style="display:block; margin-bottom:5px;">VER ANEXO TÉCNICO</a>
-                    <button class="btn-portal" style="font-size: 0.7rem; width: 100%; border-color:#c5a028; color:#c5a028;" onclick="copyAnexoTecnico()">COPIAR ANEXO COMPLETO</button>
-                </div>
-            </div>
-        </div>
-
-        <h2>14. ARSENAL AVANZADO (MISILES TÁCTICOS MS)</h2>
-        <div class="intel-report">
-            <p class="report-content">Herramientas de auditoría activa y blindaje legal de alta potencia. Despliegue listo para el juicio de nivelación y movilización nacional.</p>
-            <div class="tactical-box" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-                <div style="border: 1px solid var(--audit-red); padding: 10px;">
-                    <span class="tactical-title" style="color: var(--audit-red);">[1] SIMULADOR DE DESFALCO</span>
-                    <a href="../documentos/Simulador_Desfalco_Quinquenios.html" class="btn-portal" style="display:block; margin-bottom:5px; border-color: var(--audit-red); color: var(--audit-red);">EJECUTAR CALCULADORA</a>
-                    <button class="btn-portal" style="font-size: 0.7rem; width: 100%;" onclick="copySimulador()">COPIAR RESULTADO PREDICHO</button>
-                </div>
-                <div style="border: 1px solid var(--audit-gold); padding: 10px;">
-                    <span class="tactical-title" style="color: var(--audit-gold);">[2] LA BALA DE PLATA (JUR)</span>
-                    <a href="../documentos/Memo_Jurisprudencia_Quinquenios.html" class="btn-portal" style="display:block; margin-bottom:5px; border-color: var(--audit-gold); color: var(--audit-gold);">VER JURISPRUDENCIA</a>
-                    <button class="btn-portal" style="font-size: 0.7rem; width: 100%;" onclick="copyJurisprudencia()">COPIAR TESIS 126/2008</button>
-                </div>
-                <div style="border: 1px solid #00ff41; padding: 10px;">
-                    <span class="tactical-title">[3] EL HOYO NEGRO (1301)</span>
-                    <a href="../documentos/Auditoria_Presupuestal_1301.html" class="btn-portal" style="display:block; margin-bottom:5px;">VER AUDITORÍA 1301</a>
-                    <button class="btn-portal" style="font-size: 0.7rem; width: 100%; border-color:#25D366; color:#25D366;" onclick="copyAuditoria()">COPIAR EVIDENCIA HOYO</button>
-                </div>
-                <div style="border: 1px solid #fff; padding: 10px;">
-                    <span class="tactical-title">[4] LIBRO BLANCO (PRENSA)</span>
-                    <a href="../documentos/Libro_Blanco_Desfalco_Quinquenios.md" class="btn-portal" style="display:block; margin-bottom:5px; border-color: #fff; color: #fff;">DESCARGAR REPORTAJE</a>
-                    <button class="btn-portal" style="font-size: 0.7rem; width: 100%;" onclick="copyLibroBlanco()">COPIAR PITCH A PRENSA</button>
-                </div>
-            </div>
-        </div>
-
-        <h2>16. EL ESPEJO DE LA INJUSTICIA (PARIDAD MS)</h2>
-        <div class="intel-report">
-            <p class="report-content">Estrategia de Homologación basada en el Art. 15 ISSSTESON. Uso de la ley estatal como estándar de justicia para el magisterio federalizado.</p>
-            <div class="tactical-box" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-                <div style="border: 1px solid var(--audit-primary); padding: 10px;">
-                    <span class="tactical-title">[9] EL ABISMO SALARIAL</span>
-                    <a href="../documentos/Reporte_Abismo_Salarial_Paridad.html" class="btn-portal" style="display:block; margin-bottom:5px;">VER COMPARATIVA</a>
-                    <button class="btn-portal" style="font-size: 0.7rem; width: 100%;" onclick="copyAbismo()">COPIAR BRECHA %</button>
-                </div>
-                <div style="border: 1px solid var(--audit-gold); padding: 10px;">
-                    <span class="tactical-title">[10] IDENTIDAD TÉCNICA</span>
-                    <a href="../documentos/Memo_Identidad_Funciones_Docentes.html" class="btn-portal" style="display:block; margin-bottom:5px; border-color: var(--audit-gold); color: var(--audit-gold);">VER PRUEBA IDENTIDAD</a>
-                    <button class="btn-portal" style="font-size: 0.7rem; width: 100%;" onclick="copyIdentidad()">COPIAR ARGUMENTO TRABAJO IGUAL</button>
-                </div>
-                <div style="border: 1px solid #fff; padding: 10px;">
-                    <span class="tactical-title">[11] DEMANDA HOMOLOGACIÓN</span>
-                    <a href="../documentos/Modelo_Demanda_Homologacion_Salarial.html" class="btn-portal" style="display:block; margin-bottom:5px; border-color: #fff; color: #fff;">DESCARGAR FORMATO</a>
-                    <button class="btn-portal" style="font-size: 0.7rem; width: 100%;" onclick="copyHomologacion()">COPIAR ARGUMENTO ESPEJO</button>
-                </div>
-                <div style="border: 1px solid var(--audit-red); padding: 10px;">
-                    <span class="tactical-title" style="color: var(--audit-red);">[12] COPIADO TÁCTICO "ART 15"</span>
-                    <button class="btn-portal" style="font-size: 0.7rem; width: 100%; color: var(--audit-red); border-color: var(--audit-red);" onclick="copyArt15Ref()">COPIAR CITA LEY ESTATAL</button>
-                </div>
-            </div>
-        </div>
-
-        <h2>07. MECANISMO DE EXTRACCIÓN PATRIMONIAL (LA GRÚA)</h2>
-        <div class="intel-report" style="text-align: center;">
-            <p class="report-content" style="border: 1px solid var(--audit-dim); padding: 25px; display: inline-block; background: rgba(0, 0, 0, 0.5);">
-                [ ÉLITE FINANCIERA / SECTOR BANCO ] <br>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|| <br>
-                &nbsp;[ LA GRÚA: EXTRACCIÓN DE LIQUIDEZ ] <br>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|| <br>
-                [ PATRIMONIO DOCENTE SONORA ]
-            </p>
-        </div>
-
-        <button class="btn-kill" onclick="killOperation()">[ FINALIZAR OPERACIÓN Y CERRAR CONSOLA SEGURA ]</button>
+        <button class="btn-kill" onclick="killOperation()">[ LOGOUT AND SECURE TERMINAL ]</button>
 
         <div class="footer">
-            CONSOLA ESTRATÉGICA MS V4.0 - GRAN MOVILIZACIÓN 2026
+            CONSOLA ESTRATÉGICA MS V5.0 | AFILADO TOTAL 2026
         </div>
     </div>
 
@@ -445,119 +303,67 @@
             document.getElementById('dashboard-content').style.display = 'block';
         }
 
-        document.getElementById('access-code').addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') authenticate();
-        });
+        document.getElementById('access-code').addEventListener('keypress', (e) => { if (e.key === 'Enter') authenticate(); });
 
+        // MOTORES DE COPIADO TÁCTICO
         function copyToWhatsapp() {
-            const report = `🔴 MS - ALERTA DE DESFALCO: QUINQUENIOS\n\n` +
-                `✅ Hallazgo: Cobramos montos congelados DESDE EL AÑO 2000 ($68 quincenales).\n` +
-                `✅ Ley Sonora 2025: Marca 5% por quinquenio. Deberíamos cobrar $1,282.\n` +
-                `✅ Diferencia: -$1,214 por quincena que nos están robando.\n` +
-                `✅ Exigencia: Compactación al Concepto 07 y nivelación inmediata.\n\n` +
-                `¡LA LUCHA SIGUE! #MagisterioSonorense #Justicia07`;
-            
-            navigator.clipboard.writeText(report).then(() => {
-                alert("Resumen táctico copiado al portapapeles. ¡Pégalo en tus grupos de WhatsApp!");
-            });
+            const report = `🔴 *MS - ALERTA DE DESFALCO: QUINQUENIOS*\n\n✅ *Hallazgo:* Cobramos montos congelados DESDE EL AÑO 2000 ($68 quincenales).\n✅ *Ley Sonora:* $1,282.58 por antigüedad.\n✅ *Diferencia:* -$1,214 por quincena.\n\n#MagisterioSonorense #Justicia07`;
+            navigator.clipboard.writeText(report).then(() => alert("Resumen viral copiado."));
         }
 
         function copyFullDossier() {
-            const dossier = `*MEMORIAL TÉCNICO-JURÍDICO: QUINQUENIOS SONORA*\n` +
-                `*ASUNTO:* Evidencia para Juicio de Nivelación y Compactación al 07.\n\n` +
-                `*1. ANATOMÍA DEL CONGELAMIENTO (AUDITORÍA 2025)*\n` +
-                `📍 *Caso:* Jose Alfonso Galvez Martinez (26 años servicio)\n` +
-                `📍 *Cobro Actual (A5):* $68.00 quincenales ($136 mensual)\n` +
-                `📍 *Sueldo Base (07):* $5,130.30 quincenales\n\n` +
-                `🧐 *EL HALLAZGO REINA:* El monto de $136 mensual coincide exactamente con el *TABULADOR FEDERAL DEL AÑO 2000*. ¡25 años congelado!\n\n` +
-                `*2. TABLAS DE DESFALCO TÉCNICO*\n\n` +
-                `📊 *Vs NORMA FEDERAL 2024 (DOF 31/05/2024)*\n` +
-                `- Real Sonora: $136.00 mensal\n` +
-                `- Norma Federal 2024: $285.00 mensual\n` +
-                `❌ *DÉFICIT FEDERAL:* -52%\n\n` +
-                `📊 *Vs PARIDAD SONORA (CIR. UNO 2025)*\n` +
-                `- Cobro Real: $68.00 quincenal\n` +
-                `- Debería ser (25% del 07): $1,282.58\n` +
-                `🔥 *DESFALCO ESTATAL:* -$1,214.58 quincenal (-95%)\n\n` +
-                `*3. FUNDAMENTOS LEGALES*\n` +
-                `⚖️ *Art. 34 LFTSE:* La prima es "complemento al salario".\n` +
-                `⚖️ *Art. 15 LEY ISSSTESON:* El sueldo base incluye emolumentos permanentes.\n` +
-                `⚖️ *Primacía de la Realidad:* Pago permanente = Salario Cotizable.\n` +
-                `⚖️ *Igualdad ante la Ley:* Discriminación laboral frente a estatales.\n\n` +
-                `*4. RUTA TÁCTICA*\n` +
-                `✅ Actualización FONE (Retroactividad 1 año).\n` +
-                `✅ Juicio de Nivelación de Jubilación ante ISSSTE.\n` +
-                `✅ Compactación definitiva al Concepto 07.\n\n` +
-                `*COORDINACIÓN DE INTELIGENCIA TÉCNICA MS*\n` +
-                `*¡LA LUCHA SIGUE!*`;
-            
-            navigator.clipboard.writeText(dossier).then(() => {
-                alert("Dossier Jurídico completo copiado. Mándalo directamente al Lic. Angel Valdez por WhatsApp.");
-            });
+            const dossier = `⚖️ *DOSSIER JURÍDICO MS - QUINQUENIOS*\n\n📍 *Evidencia:* Pago congelado desde el 2000.\n📍 *Fundamento:* Art. 34 LFTSE y Art. 15 ISSSTESON.\n📍 *Jurisprudencia:* Tesis 126/2008 (Prima = Sueldo).\n📍 *Acción:* Demanda de Homologación Nacional.\n\n#MagisterioSonorense`;
+            navigator.clipboard.writeText(dossier).then(() => alert("Dossier completo copiado."));
         }
 
         function copyTransparencia() {
-            const text = `*MODELO DE TRANSPARENCIA (PNT) - MAGISTERIO SONORENSE*\n\n` +
-                `✅ *SOLICITUD FEDERAL:* Se exige cuadro histórico SEP/SHCP de la Partida 1301 y Manual de Percepciones.\n\n` +
-                `✅ *SOLICITUD SONORA:* Se solicita normatividad de Oficialía Mayor y cotización ISSSTESON de la prima A5.\n\n` +
-                `👉 *INDICACIÓN:* Copia el modelo completo desde el portal para ajustarlo con tus datos personales. ¡No permitas más opacidad!`;
-            
-            navigator.clipboard.writeText(text).then(() => {
-                alert("Resumen de Transparencia copiado. Para el texto legal completo, use el botón VER MODELOS PNT.");
-            });
+            const text = `🕵️‍♂️ *MS - RUTA DE TRANSPARENCIA*\n\nSe exige a SEP/SHCP y SEC Sonora la transparencia de la *Partida 1301*. ¡No más desvíos de presupuesto!`;
+            navigator.clipboard.writeText(text).then(() => alert("Modelo PNT copiado."));
         }
 
         function copyAnexoTecnico() {
-            const anexo = `*ANEXO TÉCNICO: PRUEBA DEL DESFALCO DE QUINQUENIOS*\n\n` +
-                `📍 *Fundamento:* Art. 34 LFTSE y Norma SHCP 1998.\n` +
-                `📍 *Evidencia:* Montos en Sonora congelados en el AÑO 2000 ($68 qna).\n` +
-                `📍 *Exigencia:* Nivelación inmediata al Manual 2024 y Compactación al 07.\n` +
-                `📍 *Seguridad:* Reconocimiento de partida 1301 ante ISSSTESON.\n\n` +
-                `*COORDINACIÓN MS - EL ARSENAL DE LA VERDAD*`;
-            
-            navigator.clipboard.writeText(anexo).then(() => {
-                alert("Anexo Técnico táctico copiado. ¡Pégalo en el Pliego Petitorio!");
-            });
+            const text = `📜 *MS - ANEXO TÉCNICO PLIEGO*\n\n"Exigimos compactación definitiva al Concepto 07 basada en la Primacía de la Realidad."`;
+            navigator.clipboard.writeText(text).then(() => alert("Anexo copiado."));
         }
 
         function copySimulador() {
-            const text = `🚨 *ALERTA MS: CALCULA TU DESFALCO*\n\n¿Sabías que tu Quinquenio (A5) está congelado en el año 2000? 😱\n\n💸 En 20 años te han quitado más de *$240,000 MXN* solo por este concepto.\n\n👉 Entra a la Terminal MS y calcula tu cifra exacta. ¡Que no te roben tu futuro!`;
-            navigator.clipboard.writeText(text).then(() => alert("Copiado para WhatsApp. ¡Viraliza el robo!"));
+            const text = `🚨 *ALERTA MS: CALCULA TU ROBO*\n\nEn 20 años te han quitado *$240,000* por quinquenios congelados. ¡Calcula tu cifra ya en la Terminal MS!`;
+            navigator.clipboard.writeText(text).then(() => alert("Alerta viral copiada."));
         }
 
         function copyJurisprudencia() {
-            const text = `⚖️ *MS - LA BALA DE PLATA LEGAL*\n\n*SCJN Tesis 126/2008:* La prima quinquenal ES salario y debe cotizarse para pensión. 🛡️\n\nQue la SEC no te engañe: Su negligencia al no cotizar no borra tu derecho. ¡El juicio es viable!`;
-            navigator.clipboard.writeText(text).then(() => alert("Jurisprudencia copiada para el abogado."));
+            const text = `⚖️ *MS - BALA DE PLATA*\n\nSCJN Tesis 126/2008: ¡La prima quinquenal ES salario y se debe jubilar con ella!`;
+            navigator.clipboard.writeText(text).then(() => alert("Argumento legal copiado."));
         }
 
         function copyAuditoria() {
-            const text = `🕳️ *MS - EL HOYO NEGRO MÉDICO (PARTIDA 1301)*\n\nHay *$700 Millones* anuales que se esfuman en Sonora. El presupuesto asignado para Quinquenios NO llega a tu nómina.\n\n🕵️‍♂️ El MS ya tiene la auditoría forense. #DondeEstaElDinero`;
-            navigator.clipboard.writeText(text).then(() => alert("Evidencia del Hoyo Negro copiada."));
+            const text = `🕳️ *MS - EL HOYO NEGRO*\n\nHay *$700 Millones* anuales que no llegan a los profes de Sonora. #DondeEstaElDinero`;
+            navigator.clipboard.writeText(text).then(() => alert("Evidencia financiera copiada."));
         }
 
         function copyLibroBlanco() {
-            const text = `📰 *BOLETÍN MS - EL DESFALCO HISTÓRICO*\n\nDocumentamos el "Salto en el Tiempo": Docentes en Sonora cobrando montos de antigüedad del AÑO 2000.\n\n📍 25 años de omisión administrativa.\n📍 Daño patrimonial masivo.\n📍 Peor que la Estafa Maestra.\n\n#MagisterioSonorense #Escandalo07`;
-            navigator.clipboard.writeText(text).then(() => alert("Pitch para prensa copiado."));
+            const text = `📰 *BOLETÍN MS: EL DESFALCO HISTÓRICO*\n\nReportaje total sobre 25 años de congelamiento salarial en Sonora. #Escandalo07`;
+            navigator.clipboard.writeText(text).then(() => alert("Pitch enviado a prensa."));
         }
 
         function copyAbismo() {
-            const text = `💹 *MS - EL ABISMO DE LA INJUSTICIA*\n\n¿Por qué un docente estatal en Sonora cobra un 95% MÁS de antigüedad que nosotros?\n\n📍 Estatal: $1,282.58 (Art. 15)\n📍 Federalizado: $68.00 (Congelado)\n\n¡Mismo trabajo, mismo estado, diferente sueldo! #HomologacionYa`;
-            navigator.clipboard.writeText(text).then(() => alert("Copiado para WhatsApp. ¡Revela el abismo!"));
+            const text = `💹 *MS - EL ABISMO*\n\n📍 Estatal: $1,282\n📍 Federal: $68\n\nMismo trabajo, trato desigual. #HomologacionYa`;
+            navigator.clipboard.writeText(text).then(() => alert("Brecha copiada."));
         }
 
         function copyIdentidad() {
-            const text = `🤝 *MS - TRABAJO IGUAL, SALARIO IGUAL*\n\nMismo plan de estudios, mismo horario, mismos alumnos. La labor federalizada y estatal en Sonora es IDÉNTICA.\n\nLa ley prohíbe la discriminación salarial por fuente de presupuesto. ¡Exigimos paridad técnica!`;
-            navigator.clipboard.writeText(text).then(() => alert("Copiado para el pliego de negociación."));
+            const text = `🤝 *MS - TRABAJO IGUAL*\n\nMismo plan de estudios, mismo Sonora. ¡Exigimos paridad!`;
+            navigator.clipboard.writeText(text).then(() => alert("Identidad técnica copiada."));
         }
 
         function copyHomologacion() {
-            const text = `⚖️ *MS - ARGUMENTO ESPEJO*\n\n"Exigimos la homologación bajo el estándar del Art. 15 de Sonora. Si el estado ya reconoce este monto como justo para sus profes, negárselo a los federales es discriminación inconstitucional."`;
-            navigator.clipboard.writeText(text).then(() => alert("Copiado para redes sociales."));
+            const text = `⚖️ *MS - ARGUMENTO ESPEJO*\n\n"Si el Estado paga 5% a sus locales, negarlo a federales es discriminación inconstitucional."`;
+            navigator.clipboard.writeText(text).then(() => alert("Argumento espejo copiado."));
         }
 
         function copyArt15Ref() {
-            const text = `❗ *MS - EL ANCLA DEL ART. 15*\n\n"Ley ISSSTESON Art. 15: El sueldo base se integra por emolumentos permanentes."\n\nNuestras primas quinquenales SON permanentes. El gobierno de Sonora está obligado a reconocer la paridad.`;
-            navigator.clipboard.writeText(text).then(() => alert("Cita legal copiada."));
+            const text = `❗ *MS - EL ANCLA ART. 15*\n\n"Sueldo base integrado = Sueldo + Emolumentos Permanentes". ¡El quinquenio DEBE cotizar!`;
+            navigator.clipboard.writeText(text).then(() => alert("Cita de Art. 15 copiada."));
         }
     </script>
 </body>
