@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIMULADOR DE DESFALCO MS | AUDIT</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --audit-red: #ff3e3e;
+            --audit-primary: #00ff41;
+            --audit-bg: #050505;
+            --audit-card: #0e0e0e;
+            --audit-text: #e0e0e0;
+        }
+
+        body {
+            background-color: var(--audit-bg);
+            color: var(--audit-text);
+            font-family: 'Roboto Mono', monospace;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .calculator-card {
+            background: var(--audit-card);
+            border: 2px solid #222;
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 0 20px rgba(0,255,65,0.05);
+        }
+
+        h1 { color: var(--audit-primary); text-transform: uppercase; font-size: 1.2rem; margin-top: 0; text-align: center; border-bottom: 1px solid #333; padding-bottom: 15px; }
+
+        .form-group { margin-bottom: 25px; }
+        label { display: block; margin-bottom: 10px; font-size: 0.8rem; color: #888; }
+        input, select {
+            width: 100%;
+            background: #000;
+            border: 1px solid #333;
+            color: var(--audit-primary);
+            padding: 12px;
+            font-family: 'Roboto Mono';
+            box-sizing: border-box;
+        }
+
+        .result-box {
+            background: #000;
+            border: 1px dashed var(--audit-red);
+            padding: 20px;
+            margin-top: 30px;
+            display: none;
+            text-align: center;
+        }
+
+        .amount { color: var(--audit-red); font-size: 2rem; font-weight: bold; margin: 10px 0; }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            background: transparent;
+            border: 1px solid var(--audit-primary);
+            color: var(--audit-primary);
+            font-family: 'Roboto Mono';
+            font-weight: bold;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+        button:hover { background: var(--audit-primary); color: #000; }
+
+        .back-link { display: block; text-align: center; margin-top: 20px; color: #555; text-decoration: none; font-size: 0.7rem; }
+    </style>
+</head>
+<body>
+
+    <div class="calculator-card">
+        <h1>SIMULADOR DE DESFALCO MS (QUINQUENIOS)</h1>
+        <p style="font-size: 0.7rem; text-align: center; opacity: 0.6; margin-bottom: 30px;">AUDITORÍA DE PÉRDIDA PATRIMONIAL ACUMULADA</p>
+
+        <div class="form-group">
+            <label>Años de Servicio Efectivos:</label>
+            <input type="number" id="years" placeholder="Ej: 20" min="5">
+        </div>
+
+        <div class="form-group">
+            <label>Sueldo Base Quincenal (Concepto 07):</label>
+            <input type="number" id="baseSalary" placeholder="Ej: 5130">
+        </div>
+
+        <div class="form-group">
+            <label>Escenario de Reclamación:</label>
+            <select id="scenario">
+                <option value="federal">Nivelación Federal ($142 qna)</option>
+                <option value="state">Paridad Sonora 25% (Circular Uno)</option>
+            </select>
+        </div>
+
+        <button onclick="calculate()">EJECUTAR AUDITORÍA</button>
+
+        <div class="result-box" id="result-box">
+            <div style="font-size: 0.8rem;">PÉRDIDA PATRIMONIAL ESTIMADA :</div>
+            <div class="amount" id="result-amount">$ 0.00</div>
+            <p style="font-size: 0.7rem; color: #888;">Este monto representa la suma que la SEC ha omitido pagar e integrar a tu fondo de retiro por el congelamiento del Concepto A5.</p>
+        </div>
+
+        <a href="../coordinacion/terminal.html" class="back-link">REGRESAR A LA CAJA NEGRA</a>
+    </div>
+
+    <script>
+        function calculate() {
+            const years = parseInt(document.getElementById('years').value);
+            const baseSalary = parseFloat(document.getElementById('baseSalary').value);
+            const scenario = document.getElementById('scenario').value;
+
+            if (isNaN(years) || isNaN(baseSalary)) {
+                alert("Por favor ingresa datos válidos.");
+                return;
+            }
+
+            const totalQuincenas = years * 24;
+            let targetQuincenal = 0;
+
+            if (scenario === 'federal') {
+                targetQuincenal = 142.50; // Basado en $285 mensual del Manual 2024
+            } else {
+                targetQuincenal = baseSalary * 0.25; // 5% por cada 5 años (25% para 25 años o proporcional?)
+                // Ajustamos por quinquenio real:
+                const quinquenios = Math.floor(years / 5);
+                targetQuincenal = baseSalary * (quinquenios * 0.05);
+            }
+
+            const lossPerQuincena = targetQuincenal - 68;
+            const totalLoss = lossPerQuincena * totalQuincenas;
+
+            document.getElementById('result-amount').innerText = "$ " + totalLoss.toLocaleString('es-MX', {minimumFractionDigits: 2});
+            document.getElementById('result-box').style.display = 'block';
+        }
+    </script>
+</body>
+</html>

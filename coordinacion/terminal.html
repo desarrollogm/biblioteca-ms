@@ -351,6 +351,33 @@
             </div>
         </div>
 
+        <h2>14. ARSENAL AVANZADO (MISILES TÁCTICOS MS)</h2>
+        <div class="intel-report">
+            <p class="report-content">Herramientas de auditoría activa y blindaje legal de alta potencia. Despliegue listo para el juicio de nivelación y movilización nacional.</p>
+            <div class="tactical-box" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                <div style="border: 1px solid var(--audit-red); padding: 10px;">
+                    <span class="tactical-title" style="color: var(--audit-red);">[1] SIMULADOR DE DESFALCO</span>
+                    <a href="../documentos/Simulador_Desfalco_Quinquenios.html" class="btn-portal" style="display:block; margin-bottom:5px; border-color: var(--audit-red); color: var(--audit-red);">EJECUTAR CALCULADORA</a>
+                    <button class="btn-portal" style="font-size: 0.7rem; width: 100%;" onclick="copySimulador()">COPIAR RESULTADO PREDICHO</button>
+                </div>
+                <div style="border: 1px solid var(--audit-gold); padding: 10px;">
+                    <span class="tactical-title" style="color: var(--audit-gold);">[2] LA BALA DE PLATA (JUR)</span>
+                    <a href="../documentos/Memo_Jurisprudencia_Quinquenios.html" class="btn-portal" style="display:block; margin-bottom:5px; border-color: var(--audit-gold); color: var(--audit-gold);">VER JURISPRUDENCIA</a>
+                    <button class="btn-portal" style="font-size: 0.7rem; width: 100%;" onclick="copyJurisprudencia()">COPIAR TESIS 126/2008</button>
+                </div>
+                <div style="border: 1px solid #00ff41; padding: 10px;">
+                    <span class="tactical-title">[3] EL HOYO NEGRO (1301)</span>
+                    <a href="../documentos/Auditoria_Presupuestal_1301.html" class="btn-portal" style="display:block; margin-bottom:5px;">VER AUDITORÍA 1301</a>
+                    <button class="btn-portal" style="font-size: 0.7rem; width: 100%; border-color:#25D366; color:#25D366;" onclick="copyAuditoria()">COPIAR EVIDENCIA HOYO</button>
+                </div>
+                <div style="border: 1px solid #fff; padding: 10px;">
+                    <span class="tactical-title">[4] LIBRO BLANCO (PRENSA)</span>
+                    <a href="../documentos/Libro_Blanco_Desfalco_Quinquenios.md" class="btn-portal" style="display:block; margin-bottom:5px; border-color: #fff; color: #fff;">DESCARGAR REPORTAJE</a>
+                    <button class="btn-portal" style="font-size: 0.7rem; width: 100%;" onclick="copyLibroBlanco()">COPIAR PITCH A PRENSA</button>
+                </div>
+            </div>
+        </div>
+
         <h2>07. MECANISMO DE EXTRACCIÓN PATRIMONIAL (LA GRÚA)</h2>
         <div class="intel-report" style="text-align: center;">
             <p class="report-content" style="border: 1px solid var(--audit-dim); padding: 25px; display: inline-block; background: rgba(0, 0, 0, 0.5);">
@@ -465,6 +492,26 @@
             navigator.clipboard.writeText(anexo).then(() => {
                 alert("Anexo Técnico táctico copiado. ¡Pégalo en el Pliego Petitorio!");
             });
+        }
+
+        function copySimulador() {
+            const text = `🚨 *ALERTA MS: CALCULA TU DESFALCO*\n\n¿Sabías que tu Quinquenio (A5) está congelado en el año 2000? 😱\n\n💸 En 20 años te han quitado más de *$240,000 MXN* solo por este concepto.\n\n👉 Entra a la Terminal MS y calcula tu cifra exacta. ¡Que no te roben tu futuro!`;
+            navigator.clipboard.writeText(text).then(() => alert("Copiado para WhatsApp. ¡Viraliza el robo!"));
+        }
+
+        function copyJurisprudencia() {
+            const text = `⚖️ *MS - LA BALA DE PLATA LEGAL*\n\n*SCJN Tesis 126/2008:* La prima quinquenal ES salario y debe cotizarse para pensión. 🛡️\n\nQue la SEC no te engañe: Su negligencia al no cotizar no borra tu derecho. ¡El juicio es viable!`;
+            navigator.clipboard.writeText(text).then(() => alert("Jurisprudencia copiada para el abogado."));
+        }
+
+        function copyAuditoria() {
+            const text = `🕳️ *MS - EL HOYO NEGRO MÉDICO (PARTIDA 1301)*\n\nHay *$700 Millones* anuales que se esfuman en Sonora. El presupuesto asignado para Quinquenios NO llega a tu nómina.\n\n🕵️‍♂️ El MS ya tiene la auditoría forense. #DondeEstaElDinero`;
+            navigator.clipboard.writeText(text).then(() => alert("Evidencia del Hoyo Negro copiada."));
+        }
+
+        function copyLibroBlanco() {
+            const text = `📰 *BOLETÍN MS - EL DESFALCO HISTÓRICO*\n\nDocumentamos el "Salto en el Tiempo": Docentes en Sonora cobrando montos de antigüedad del AÑO 2000.\n\n📍 25 años de omisión administrativa.\n📍 Daño patrimonial masivo.\n📍 Peor que la Estafa Maestra.\n\n#MagisterioSonorense #Escandalo07`;
+            navigator.clipboard.writeText(text).then(() => alert("Pitch para prensa copiado."));
         }
     </script>
 </body>
