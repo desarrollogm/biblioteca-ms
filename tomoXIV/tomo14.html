@@ -116,7 +116,7 @@
             box-shadow: 0 40px 80px rgba(0,0,0,1);
             opacity: 0;
             transform: translateY(30px);
-            transition: all 1.2s cubic-bezier(0.19, 1, 0.22, 1) 0.3s;
+            transition: opacity 1.5s ease-out 4.5s, transform 1.5s ease-out 4.5s;
         }
 
         .panel.active .panel-content {
@@ -187,6 +187,35 @@
 
         .btn-home:hover { background: var(--accent-gold); color: #000; box-shadow: 0 0 20px var(--accent-gold); }
 
+        .btn-audio {
+            position: fixed;
+            top: 60px;
+            right: 20px;
+            z-index: 2005;
+            padding: 10px 20px;
+            background: #000;
+            color: var(--accent-gold);
+            border: 2px solid var(--accent-gold);
+            font-family: 'Cinzel', serif;
+            font-size: 0.75rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            letter-spacing: 2px;
+            box-shadow: 0 0 15px rgba(197, 160, 40, 0.4);
+            animation: pulse-gold 2s infinite;
+        }
+        .btn-audio.playing {
+            background: var(--accent-gold);
+            color: #000;
+            animation: none;
+        }
+        @keyframes pulse-gold {
+            0% { box-shadow: 0 0 0 0 rgba(197, 160, 40, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(197, 160, 40, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(197, 160, 40, 0); }
+        }
+
         .progress-bar {
             position: fixed;
             right: 10px;
@@ -226,6 +255,11 @@
     </header>
 
     <a href="../index.html" class="btn-home">Regresar</a>
+    <button id="audioToggle" class="btn-audio">🔊 ACTIVAR HIMNO MS</button>
+
+    <audio id="himnoAudio" loop>
+        <source src="../assets/audio/himno_ms.mp3" type="audio/mpeg">
+    </audio>
 
     <main>
         <!-- PORTADA -->
@@ -367,6 +401,21 @@
         }, { threshold: 0.5 });
 
         panels.forEach(p => observer.observe(p));
+
+        const audio = document.getElementById('himnoAudio');
+        const audioBtn = document.getElementById('audioToggle');
+        
+        audioBtn.addEventListener('click', () => {
+            if (audio.paused) {
+                audio.play();
+                audioBtn.textContent = '⏸︎ PAUSAR HIMNO MS';
+                audioBtn.classList.add('playing');
+            } else {
+                audio.pause();
+                audioBtn.textContent = '🔊 ACTIVAR HIMNO MS';
+                audioBtn.classList.remove('playing');
+            }
+        });
     </script>
 </body>
 </html>
