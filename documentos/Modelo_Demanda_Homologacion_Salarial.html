@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>MODELO DE DEMANDA: HOMOLOGACIÓN SALARIAL | MS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --p: #00ff41; --bg: #050505; --c: #0e0e0e; --t: #e0e0e0; }
+        body { background: var(--bg); color: var(--t); font-family: 'Roboto Mono', monospace; padding: 20px; }
+        .template-card { background: var(--c); border: 1px solid #333; padding: 40px; max-width: 800px; margin: 0 auto; }
+        h1 { color: var(--p); border-bottom: 2px solid var(--p); padding-bottom: 10px; font-size: 1.2rem; }
+        .legal-text { background: #000; padding: 20px; font-size: 0.85rem; border: 1px dashed #444; color: #aaa; white-space: pre-wrap; margin: 20px 0; }
+        .instruction { color: var(--p); font-size: 0.75rem; margin-bottom: 5px; text-transform: uppercase; }
+        button { cursor: pointer; background: var(--p); border: none; padding: 10px 20px; font-family: 'Roboto Mono'; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="template-card">
+        <h1>MISIL LEGAL: DEMANDA DE HOMOLOGACIÓN SALARIAL</h1>
+        <p style="font-size: 0.8rem;">Utiliza este formato para exigir legalmente un trato igualitario basado en el estándar del Art. 15 de Sonora.</p>
+
+        <div class="instruction">Argumento Central (Párrafo de Oro):</div>
+        <div class="legal-text" id="legalText">
+"Que en virtud del Principio de Igualdad Salarial consagrado en el Artículo 123, Apartado B, Fracción V de la Constitución Federal, y demostrada la identidad de funciones con el personal docente del subsistema estatal, exijo la HOMOLOGACIÓN de la Prima Quinquenal bajo el estándar que el propio Estado de Sonora reconoce como justo y legal en el Artículo 15 de su Ley de Seguridad Social (ISSSTESON). 
+
+Negar al personal federalizado el cálculo porcentual y la integración plena que ya perciben los docentes estatales bajo el mismo techo presupuestario del estado, constituye un acto de discriminación salarial y daño patrimonial continuado."
+        </div>
+        
+        <button onclick="copyText()">COPIAR ARGUMENTO LEGAL</button>
+
+        <div style="margin-top: 30px;">
+            <p style="font-size: 0.7rem; color: #666;">* NOTA TÁCTICA: Este párrafo es la base para juicios de nivelación salarial y amparos colectivos. El abogado debe integrarlo en el apartado de AGRAVIOS.</p>
+        </div>
+
+        <p style="text-align: center; margin-top: 30px;"><a href="../coordinacion/terminal.html" style="color: var(--p); text-decoration: none; font-size: 0.8rem;">[ VOLVER ]</a></p>
+    </div>
+
+    <script>
+        function copyText() {
+            const text = document.getElementById('legalText').innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                alert("Argumento de Homologación copiado. ¡Dale al abogado su mejor herramienta!");
+            });
+        }
+    </script>
+</body>
+</html>

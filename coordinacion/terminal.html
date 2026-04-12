@@ -378,6 +378,32 @@
             </div>
         </div>
 
+        <h2>16. EL ESPEJO DE LA INJUSTICIA (PARIDAD MS)</h2>
+        <div class="intel-report">
+            <p class="report-content">Estrategia de Homologación basada en el Art. 15 ISSSTESON. Uso de la ley estatal como estándar de justicia para el magisterio federalizado.</p>
+            <div class="tactical-box" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                <div style="border: 1px solid var(--audit-primary); padding: 10px;">
+                    <span class="tactical-title">[9] EL ABISMO SALARIAL</span>
+                    <a href="../documentos/Reporte_Abismo_Salarial_Paridad.html" class="btn-portal" style="display:block; margin-bottom:5px;">VER COMPARATIVA</a>
+                    <button class="btn-portal" style="font-size: 0.7rem; width: 100%;" onclick="copyAbismo()">COPIAR BRECHA %</button>
+                </div>
+                <div style="border: 1px solid var(--audit-gold); padding: 10px;">
+                    <span class="tactical-title">[10] IDENTIDAD TÉCNICA</span>
+                    <a href="../documentos/Memo_Identidad_Funciones_Docentes.html" class="btn-portal" style="display:block; margin-bottom:5px; border-color: var(--audit-gold); color: var(--audit-gold);">VER PRUEBA IDENTIDAD</a>
+                    <button class="btn-portal" style="font-size: 0.7rem; width: 100%;" onclick="copyIdentidad()">COPIAR ARGUMENTO TRABAJO IGUAL</button>
+                </div>
+                <div style="border: 1px solid #fff; padding: 10px;">
+                    <span class="tactical-title">[11] DEMANDA HOMOLOGACIÓN</span>
+                    <a href="../documentos/Modelo_Demanda_Homologacion_Salarial.html" class="btn-portal" style="display:block; margin-bottom:5px; border-color: #fff; color: #fff;">DESCARGAR FORMATO</a>
+                    <button class="btn-portal" style="font-size: 0.7rem; width: 100%;" onclick="copyHomologacion()">COPIAR ARGUMENTO ESPEJO</button>
+                </div>
+                <div style="border: 1px solid var(--audit-red); padding: 10px;">
+                    <span class="tactical-title" style="color: var(--audit-red);">[12] COPIADO TÁCTICO "ART 15"</span>
+                    <button class="btn-portal" style="font-size: 0.7rem; width: 100%; color: var(--audit-red); border-color: var(--audit-red);" onclick="copyArt15Ref()">COPIAR CITA LEY ESTATAL</button>
+                </div>
+            </div>
+        </div>
+
         <h2>07. MECANISMO DE EXTRACCIÓN PATRIMONIAL (LA GRÚA)</h2>
         <div class="intel-report" style="text-align: center;">
             <p class="report-content" style="border: 1px solid var(--audit-dim); padding: 25px; display: inline-block; background: rgba(0, 0, 0, 0.5);">
@@ -512,6 +538,26 @@
         function copyLibroBlanco() {
             const text = `📰 *BOLETÍN MS - EL DESFALCO HISTÓRICO*\n\nDocumentamos el "Salto en el Tiempo": Docentes en Sonora cobrando montos de antigüedad del AÑO 2000.\n\n📍 25 años de omisión administrativa.\n📍 Daño patrimonial masivo.\n📍 Peor que la Estafa Maestra.\n\n#MagisterioSonorense #Escandalo07`;
             navigator.clipboard.writeText(text).then(() => alert("Pitch para prensa copiado."));
+        }
+
+        function copyAbismo() {
+            const text = `💹 *MS - EL ABISMO DE LA INJUSTICIA*\n\n¿Por qué un docente estatal en Sonora cobra un 95% MÁS de antigüedad que nosotros?\n\n📍 Estatal: $1,282.58 (Art. 15)\n📍 Federalizado: $68.00 (Congelado)\n\n¡Mismo trabajo, mismo estado, diferente sueldo! #HomologacionYa`;
+            navigator.clipboard.writeText(text).then(() => alert("Copiado para WhatsApp. ¡Revela el abismo!"));
+        }
+
+        function copyIdentidad() {
+            const text = `🤝 *MS - TRABAJO IGUAL, SALARIO IGUAL*\n\nMismo plan de estudios, mismo horario, mismos alumnos. La labor federalizada y estatal en Sonora es IDÉNTICA.\n\nLa ley prohíbe la discriminación salarial por fuente de presupuesto. ¡Exigimos paridad técnica!`;
+            navigator.clipboard.writeText(text).then(() => alert("Copiado para el pliego de negociación."));
+        }
+
+        function copyHomologacion() {
+            const text = `⚖️ *MS - ARGUMENTO ESPEJO*\n\n"Exigimos la homologación bajo el estándar del Art. 15 de Sonora. Si el estado ya reconoce este monto como justo para sus profes, negárselo a los federales es discriminación inconstitucional."`;
+            navigator.clipboard.writeText(text).then(() => alert("Copiado para redes sociales."));
+        }
+
+        function copyArt15Ref() {
+            const text = `❗ *MS - EL ANCLA DEL ART. 15*\n\n"Ley ISSSTESON Art. 15: El sueldo base se integra por emolumentos permanentes."\n\nNuestras primas quinquenales SON permanentes. El gobierno de Sonora está obligado a reconocer la paridad.`;
+            navigator.clipboard.writeText(text).then(() => alert("Cita legal copiada."));
         }
     </script>
 </body>

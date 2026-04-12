@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>EL ABISMO SALARIAL: EL ESPEJO DE LA INJUSTICIA | MS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --audit-red: #ff3e3e; --audit-primary: #00ff41; --audit-bg: #050505; --audit-card: #0e0e0e; --audit-text: #e0e0e0; }
+        body { background: var(--audit-bg); color: var(--audit-text); font-family: 'Roboto Mono', monospace; padding: 40px; }
+        .container { max-width: 900px; margin: 0 auto; }
+        h1 { color: var(--audit-primary); text-transform: uppercase; text-align: center; border-bottom: 2px solid #333; padding-bottom: 20px; }
+        .comparison-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 40px; }
+        .card { background: var(--audit-card); border: 1px solid #222; padding: 30px; position: relative; }
+        .card-label { position: absolute; top: -10px; left: 20px; background: #000; padding: 0 10px; font-size: 0.7rem; font-weight: bold; }
+        .amount { font-size: 2.5rem; font-weight: bold; margin: 20px 0; }
+        .federal { color: var(--audit-red); }
+        .state { color: var(--audit-primary); }
+        .abismo-box { border: 2px solid var(--audit-red); padding: 30px; margin-top: 40px; background: rgba(255, 62, 62, 0.05); }
+        .percent { font-size: 3rem; font-weight: bold; color: var(--audit-red); display: block; text-align: center; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>COMPARATIVA DE PARIDAD: EL ABISMO SALARIAL</h1>
+        <p style="text-align: center; opacity: 0.6;">Análisis de discriminación laboral entre personal Federalizado y Estatal en Sonora.</p>
+
+        <div class="comparison-grid">
+            <div class="card">
+                <span class="card-label">DOCENTE FEDERALIZADO (SEC/FONE)</span>
+                <p style="font-size: 0.8rem;">Prima Quinquenal Actual (Concepto A5)</p>
+                <div class="amount federal">$ 68.00</div>
+                <p style="font-size: 0.7rem; color: #888;">Monto congelado desde el año 2000. Sin actualización porcentual ni integración plena.</p>
+            </div>
+
+            <div class="card">
+                <span class="card-label">DOCENTE ESTATAL (SONORA)</span>
+                <p style="font-size: 0.8rem;">Estándar Artículo 15 Ley ISSSTESON</p>
+                <div class="amount state">$ 1,282.58</div>
+                <p style="font-size: 0.7rem; color: #888;">Cálculo basado en el 25% del Sueldo Base (07) promedio. Monto actualizado y cotizable.</p>
+            </div>
+        </div>
+
+        <div class="abismo-box">
+            <h2 style="text-align: center; margin-top: 0; font-size: 1rem;">EL ABISMO DE LA DISCRIMINACIÓN</h2>
+            <span class="percent">94.7%</span>
+            <p style="text-align: center; font-weight: bold;">BRECHA SALARIAL POR EL MISMO TRABAJO</p>
+            <p style="font-size: 0.9rem; margin-top: 20px;">Este diferencial demuestra una **violación sistemática al Artículo 123 Constitucional**. Si un docente en Sonora, bajo el amparo de la Ley ISSSTESON Art. 15, ya percibe este estándar, negárselo al personal federalizado que realiza las mismas funciones en la misma zona es un acto de segregación laboral.</p>
+        </div>
+
+        <p style="text-align: center; margin-top: 40px;"><a href="../coordinacion/terminal.html" style="color: var(--audit-primary); text-decoration: none;">[ VOLVER A LA CAJA NEGRA ]</a></p>
+    </div>
+</body>
+</html>
