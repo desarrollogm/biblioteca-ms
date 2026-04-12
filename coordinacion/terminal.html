@@ -334,6 +334,23 @@
             </div>
         </div>
 
+        <h2>13. MODELOS TÁCTICOS Y HERRAMIENTAS LEGALES</h2>
+        <div class="intel-report">
+            <p class="report-content">Modelos oficiales listos para su uso en la Plataforma Nacional de Transparencia (PNT) y como anexos del Pliego Petitorio 2026. Bajo llave para uso exclusivo de coordinación.</p>
+            <div class="tactical-box" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                <div style="border: 1px solid #333; padding: 10px;">
+                    <span class="tactical-title">TRANSPARENCIA (PNT)</span>
+                    <a href="../documentos/Solicitud_Transparencia_Modelos.html" class="btn-portal" style="display:block; margin-bottom:5px;">VER MODELOS PNT</a>
+                    <button class="btn-portal" style="font-size: 0.7rem; width: 100%; border-color:#25D366; color:#25D366;" onclick="copyTransparencia()">COPIAR MODELO (FED+SON)</button>
+                </div>
+                <div style="border: 1px solid #333; padding: 10px;">
+                    <span class="tactical-title">ANEXO PLIEGO 2026</span>
+                    <a href="../documentos/Anexo_Tecnico_Pliego_Modelo.html" class="btn-portal" style="display:block; margin-bottom:5px;">VER ANEXO TÉCNICO</a>
+                    <button class="btn-portal" style="font-size: 0.7rem; width: 100%; border-color:#c5a028; color:#c5a028;" onclick="copyAnexoTecnico()">COPIAR ANEXO COMPLETO</button>
+                </div>
+            </div>
+        </div>
+
         <h2>07. MECANISMO DE EXTRACCIÓN PATRIMONIAL (LA GRÚA)</h2>
         <div class="intel-report" style="text-align: center;">
             <p class="report-content" style="border: 1px solid var(--audit-dim); padding: 25px; display: inline-block; background: rgba(0, 0, 0, 0.5);">
@@ -423,6 +440,30 @@
             
             navigator.clipboard.writeText(dossier).then(() => {
                 alert("Dossier Jurídico completo copiado. Mándalo directamente al Lic. Angel Valdez por WhatsApp.");
+            });
+        }
+
+        function copyTransparencia() {
+            const text = `*MODELO DE TRANSPARENCIA (PNT) - MAGISTERIO SONORENSE*\n\n` +
+                `✅ *SOLICITUD FEDERAL:* Se exige cuadro histórico SEP/SHCP de la Partida 1301 y Manual de Percepciones.\n\n` +
+                `✅ *SOLICITUD SONORA:* Se solicita normatividad de Oficialía Mayor y cotización ISSSTESON de la prima A5.\n\n` +
+                `👉 *INDICACIÓN:* Copia el modelo completo desde el portal para ajustarlo con tus datos personales. ¡No permitas más opacidad!`;
+            
+            navigator.clipboard.writeText(text).then(() => {
+                alert("Resumen de Transparencia copiado. Para el texto legal completo, use el botón VER MODELOS PNT.");
+            });
+        }
+
+        function copyAnexoTecnico() {
+            const anexo = `*ANEXO TÉCNICO: PRUEBA DEL DESFALCO DE QUINQUENIOS*\n\n` +
+                `📍 *Fundamento:* Art. 34 LFTSE y Norma SHCP 1998.\n` +
+                `📍 *Evidencia:* Montos en Sonora congelados en el AÑO 2000 ($68 qna).\n` +
+                `📍 *Exigencia:* Nivelación inmediata al Manual 2024 y Compactación al 07.\n` +
+                `📍 *Seguridad:* Reconocimiento de partida 1301 ante ISSSTESON.\n\n` +
+                `*COORDINACIÓN MS - EL ARSENAL DE LA VERDAD*`;
+            
+            navigator.clipboard.writeText(anexo).then(() => {
+                alert("Anexo Técnico táctico copiado. ¡Pégalo en el Pliego Petitorio!");
             });
         }
     </script>

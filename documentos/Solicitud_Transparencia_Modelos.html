@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MODELOS DE TRANSPARENCIA | MS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --audit-primary: #00ff41;
+            --audit-bg: #050505;
+            --audit-card: #0e0e0e;
+            --audit-gold: #c5a028;
+            --audit-text: #e0e0e0;
+        }
+
+        body {
+            background-color: var(--audit-bg);
+            color: var(--audit-text);
+            font-family: 'Roboto Mono', monospace;
+            padding: 30px;
+            line-height: 1.6;
+        }
+
+        .container { max-width: 900px; margin: 0 auto; }
+
+        .header-box {
+            border: 2px solid #333;
+            padding: 30px;
+            text-align: center;
+            background: #000;
+            margin-bottom: 40px;
+        }
+
+        .title { color: var(--audit-primary); font-size: 1.5rem; text-transform: uppercase; margin: 0; }
+
+        .model-card {
+            background: var(--audit-card);
+            border: 1px solid #222;
+            padding: 30px;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .model-tag {
+            background: var(--audit-gold);
+            color: #000;
+            padding: 5px 15px;
+            font-weight: bold;
+            font-size: 0.7rem;
+            position: absolute;
+            top: 0; right: 0;
+        }
+
+        pre {
+            background: #000;
+            padding: 20px;
+            border: 1px solid #1a1a1a;
+            white-space: pre-wrap;
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+
+        .btn-back {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: var(--audit-primary);
+            text-decoration: none;
+            font-size: 0.8rem;
+            border: 1px solid var(--audit-primary);
+            padding: 8px 15px;
+        }
+        .btn-back:hover { background: var(--audit-primary); color: #000; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <a href="../coordinacion/terminal.html" class="btn-back">⬅ VOLVER A LA TERMINAL</a>
+        
+        <div class="header-box">
+            <h1 class="title">[ CAJA NEGRA: MODELOS DE TRANSPARENCIA PNT ]</h1>
+            <p style="font-size: 0.8rem; opacity: 0.6;">HERRAMIENTAS PARA LA OBTENCIÓN DE EVIDENCIA SALARIAL</p>
+        </div>
+
+        <!-- MODELO FEDERAL -->
+        <div class="model-card">
+            <div class="model-tag">VERSIÓN FEDERAL (SHCP/SEP)</div>
+            <h2 style="color: var(--audit-gold);">Solicitud de Información: Prima Quinquenal (A5)</h2>
+            <p>Utilice este texto para solicitudes dirigidas a la SHCP o SEP a través de la Plataforma Nacional de Transparencia.</p>
+            <pre>
+Asunto: Solicitud de información sobre prima quinquenal (LFTSE, Manual de Percepciones y concepto A5)
+
+Unidad de Transparencia de la [Nombre de la Dependencia Federal]
+Presente.
+
+[Nombre completo del solicitante]
+
+Con fundamento en la Ley General de Transparencia y Acceso a la Información Pública, solicito:
+
+1. Cuadro histórico de montos de la prima quinquenal establecidos en el Manual de Percepciones de los Servidores Públicos de la APF, desde 1998 hasta la fecha, detallando montos mensuales por tramo de antigüedad (5, 10, 15, 20 y 25 años).
+
+2. Texto íntegro de la “Norma que regula el pago de la prima quinquenal” emitida por la SHCP (USC PE04 98, 17 de marzo de 1998) y sus actualizaciones vigentes.
+
+3. Confirmación de si la prima quinquenal se paga con cargo a la partida 1301 “Prima quinquenal por años de servicios efectivos prestados”.
+
+4. Tablas de montos correspondientes al concepto de pago A5 en los últimos cinco ejercicios fiscales para el magisterio federalizado.
+
+5. Oficio o normativa del ISSSTE donde se reconozca a la partida 1301 como sujeta a cuotas y aportaciones de seguridad social.
+
+Atentamente,
+[Nombre completo]
+            </pre>
+        </div>
+
+        <!-- MODELO SONORA -->
+        <div class="model-card">
+            <div class="model-tag">VERSIÓN SONORA (SEC/HACIENDA)</div>
+            <h2 style="color: var(--audit-gold);">Solicitud de Información: Paridad Estatal Sonora</h2>
+            <pre>
+Asunto: Solicitud de información sobre prima quinquenal y partida 1301 en Sonora.
+
+Unidad de Transparencia de la [Secretaría de Educación y Cultura / Secretaría de Hacienda Sonora]
+Presente.
+
+[Nombre completo del solicitante]
+
+Con fundamento en la Ley de Transparencia del Estado de Sonora, solicito:
+
+1. Copia de la normatividad interna (manuales, tabuladores, circulares) que regule la prima quinquenal para el personal al servicio del Estado de Sonora.
+
+2. Tablas de montos de prima quinquenal aplicadas en los últimos diez años, indicando tramos de antigüedad y montos mensuales/quincenales por nivel.
+
+3. Código de concepto de pago utilizado en nómina estatal para el quinquenio (A5 o equivalente) y su descripción oficial.
+
+4. Partida presupuestal del Clasificador por Objeto del Gasto donde se registra el quinquenio (Partida 1301 o equivalente local).
+
+5. Confirmación de si la prima quinquenal estatal es sujeta a cotización ante el ISSSTESON, adjuntando la lista de conceptos integradores de la base salarial.
+
+Atentamente,
+[Nombre completo]
+            </pre>
+        </div>
+
+    </div>
+
+</body>
+</html>
