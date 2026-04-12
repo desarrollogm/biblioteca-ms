@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tomo XIII: El Arsenal de la Decisión | Biblioteca Digital MS</title>
+    <meta name="description" content="Tomo XIII: Estrategias Mixtas y Verdad Actuarial en la lucha del Magisterio Sonorense.">
+    <link rel="icon" type="image/png" href="../assets/favicon-ms.png">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Playfair+Display:ital,wght@0,400;1,700&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #080808;
+            --primary-red: #b22222;
+            --accent-gold: #d4af37;
+            --text-white: #fdfdfd;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-white);
+            overflow-x: hidden;
+            scroll-snap-type: y mandatory;
+            height: 100vh;
+        }
+
+        .header {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+        }
+
+        .header h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        }
+
+        .ms-logo {
+            width: 100px;
+            margin-bottom: 5px;
+            filter: drop-shadow(0 0 8px var(--accent-gold));
+        }
+
+        .panel {
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            scroll-snap-align: start;
+            overflow: hidden;
+            background: #000;
+        }
+
+        .panel-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.5) contrast(1.2) saturate(1.2);
+            transition: transform 5s ease-out;
+            transform: scale(1.1);
+        }
+
+        .panel.active .panel-bg {
+            transform: scale(1);
+        }
+
+        .panel-content {
+            position: relative;
+            z-index: 10;
+            width: 90%;
+            max-width: 700px;
+            padding: 50px;
+            background: rgba(10, 10, 10, 0.85);
+            border-bottom: 4px solid var(--primary-red);
+            border-right: 1px solid var(--accent-gold);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.8);
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: all 1s cubic-bezier(0.2, 1, 0.3, 1) 0.5s;
+        }
+
+        .panel.active .panel-content {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .panel-number {
+            font-family: 'Cinzel', serif;
+            color: var(--primary-red);
+            font-weight: 900;
+            letter-spacing: 5px;
+            font-size: 0.8rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .panel-title {
+            font-family: 'Cinzel', serif;
+            font-size: 2.2rem;
+            color: var(--accent-gold);
+            margin-bottom: 20px;
+            line-height: 1.1;
+            text-transform: uppercase;
+        }
+
+        .panel-text {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.2rem;
+            color: #fff;
+            margin-bottom: 20px;
+            border-left: 2px solid var(--accent-gold);
+            padding-left: 20px;
+        }
+
+        .panel-description {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #eee;
+            text-align: justify;
+        }
+
+        .btn-home {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1001;
+            padding: 10px 20px;
+            background: var(--primary-red);
+            color: #fff;
+            text-decoration: none;
+            font-family: 'Cinzel', serif;
+            font-weight: bold;
+            font-size: 0.8rem;
+            border: 1px solid var(--accent-gold);
+            transition: 0.3s;
+        }
+
+        .btn-home:hover { background: #8b0000; transform: scale(1.05); }
+
+        .progress-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary-red), var(--accent-gold));
+            width: 0%;
+            z-index: 2000;
+            transition: width 0.3s;
+        }
+
+        .texture-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/canvas-orange.png');
+            opacity: 0.1;
+            pointer-events: none;
+            z-index: 5;
+        }
+    </style>
+</head>
+<body>
+    <div class="texture-overlay"></div>
+    <div class="progress-bar" id="progress"></div>
+
+    <header class="header">
+        <img src="../assets/logo_ms_oficial.jpg" class="ms-logo" alt="Logo MS">
+        <h1>Tomo XIII: El Arsenal de la Decisión</h1>
+    </header>
+
+    <a href="../index.html" class="btn-home">Regresar</a>
+
+    <main>
+        <!-- PORTADA -->
+        <section class="panel active">
+            <img src="images/portada.png" class="panel-bg">
+            <div class="panel-content">
+                <span class="panel-number">INICIO</span>
+                <h2 class="panel-title">La Alquimia de la Decisión</h2>
+                <p class="panel-text">"La incertidumbre es el arma de los justos."</p>
+                <p class="panel-description">Bienvenido al nivel estratégico definitivo. Tras la convergencia, llega el turno de la ingeniería táctica. En este tomo, el Magisterio Sonorense utiliza la Teoría de Juegos y la ciencia actuarial para desmantelar las Fábricas de Ignorancia. Ya no somos peones; somos los arquitectos de un nuevo equilibrio.</p>
+            </div>
+        </section>
+
+        <!-- CAP 1 -->
+        <section class="panel">
+            <img src="images/cap1.png" class="panel-bg">
+            <div class="panel-content">
+                <span class="panel-number">CAPÍTULO I</span>
+                <h2 class="panel-title">El Tablero de Cristal</h2>
+                <p class="panel-text">"Lo que vemos no es desorden, es un equilibrio de miedo."</p>
+                <p class="panel-description">Kristian revela que la parálisis de la Sección 28 es un Equilibrio de Nash perfecto. El sistema nos ha convencido de que movernos es peligroso. Pero el tablero es de cristal: transparente para quienes saben leer la estrategia y frágil ante la verdad colectiva.</p>
+            </div>
+        </section>
+
+        <!-- CAP 2 -->
+        <section class="panel">
+            <img src="images/cap2.png" class="panel-bg">
+            <div class="panel-content">
+                <span class="panel-number">CAPÍTULO II</span>
+                <h2 class="panel-title">Fábricas de Opacidad</h2>
+                <p class="panel-text">"Tu ignorancia es el dividendo de su control."</p>
+                <p class="panel-description">La agnotología aplicada al FASM28. Paloma descubre que la falta de transparencia no es un descuido, sino un diseño para ocultar el saqueo del ahorro mutualista. Aprender a leer sus trampas es el primer paso para recuperar nuestro patrimonio.</p>
+            </div>
+        </section>
+
+        <!-- CAP 3 -->
+        <section class="panel">
+            <img src="images/cap3.png" class="panel-bg">
+            <div class="panel-content">
+                <span class="panel-number">CAPÍTULO III</span>
+                <h2 class="panel-title">El Oráculo Actuarial</h2>
+                <p class="panel-text">"Contra la ciencia actuarial no tienen defensa."</p>
+                <p class="panel-description">La verdad sobre la PIP (Pensión Intergeneracional Protegida). A través de un estudio profesional, demostramos que la justicia es matemáticamente posible. El presupuesto existe; lo que falta es honestidad en la cúpula.</p>
+            </div>
+        </section>
+
+        <!-- CAP 4 -->
+        <section class="panel">
+            <img src="images/cap4.png" class="panel-bg">
+            <div class="panel-content">
+                <span class="panel-number">CAPÍTULO IV</span>
+                <h2 class="panel-title">La Paradoja de Jiang</h2>
+                <p class="panel-text">"La alfabetización estratégica es el hackeo definitivo."</p>
+                <p class="panel-description">El Profesor Jiang advierte que el sistema educa para la sumisión. Romper la "Baja Alfabetización Táctica" nos permite entender los incentivos del poder y dejar de ser víctimas de su narrativa oficial.</p>
+            </div>
+        </section>
+
+        <!-- CAP 5 -->
+        <section class="panel">
+            <img src="images/cap5.png" class="panel-bg">
+            <div class="panel-content">
+                <span class="panel-number">CAPÍTULO V</span>
+                <h2 class="panel-title">El Dilema de la Base</h2>
+                <p class="panel-text">"La unión no es un sentimiento, es una estrategia."</p>
+                <p class="panel-description">Coordinación vs Traición. Analizamos el Dilema del Prisionero en las bases de Sonora. Solo la coordinación técnica y la lealtad inquebrantable pueden romper el ciclo de derrotas individuales.</p>
+            </div>
+        </section>
+
+        <!-- CAP 6 -->
+        <section class="panel">
+            <img src="images/cap6.png" class="panel-bg">
+            <div class="panel-content">
+                <span class="panel-number">CAPÍTULO VI</span>
+                <h2 class="panel-title">Soluciones Mixtas I</h2>
+                <p class="panel-text">"La incertidumbre calculada es nuestro escudo."</p>
+                <p class="panel-description">Introducción al Factor X. Al ser impredecibles en nuestras tácticas (legal, social, técnica), le quitamos la iniciativa al adversario. Quien domina la incertidumbre, domina el tablero.</p>
+            </div>
+        </section>
+
+        <!-- CAP 7 -->
+        <section class="panel">
+            <img src="images/cap7.png" class="panel-bg">
+            <div class="panel-content">
+                <span class="panel-number">CAPÍTULO VII</span>
+                <h2 class="panel-title">La Auditoría del Honor</h2>
+                <p class="panel-text">"La luz de la verdad entrará hasta los rincones más oscuros."</p>
+                <p class="panel-description">No pedimos transparencia, la imponemos. La auditoría externa al FASM28 es una demanda de honor. Paloma lidera la exigencia técnica para limpiar las cuentas de la Sección 28.</p>
+            </div>
+        </section>
+
+        <!-- CAP 8 -->
+        <section class="panel">
+            <img src="images/cap8.png" class="panel-bg">
+            <div class="panel-content">
+                <span class="panel-number">CAPÍTULO VIII</span>
+                <h2 class="panel-title">Ingeniería de Incentivos</h2>
+                <p class="panel-text">"No cambiamos personas, cambiamos las reglas."</p>
+                <p class="panel-description">Ajustamos los engranajes del sistema para que a los líderes les salga más caro traicionar a la base que apoyarla. Es la reingeniería del poder magisterial en su fase más avanzada.</p>
+            </div>
+        </section>
+
+        <!-- CAP 9 -->
+        <section class="panel">
+            <img src="images/cap9.png" class="panel-bg">
+            <div class="panel-content">
+                <span class="panel-number">CAPÍTULO IX</span>
+                <h2 class="panel-title">El Arsenal de la Verdad</h2>
+                <p class="panel-text">"La frontera de la dignidad la ponemos nosotros."</p>
+                <p class="panel-description">Desde Nogales, presentamos la evidencia definitiva. Quinquenios y PIP unidos en un cuerpo de prueba técnica irrebatible. El Magisterio Sonorense está listo para cobrar lo que le pertenece.</p>
+            </div>
+        </section>
+
+        <!-- CAP 10 -->
+        <section class="panel">
+            <img src="images/cap10.png" class="panel-bg">
+            <div class="panel-content">
+                <span class="panel-number">CAPÍTULO X</span>
+                <h2 class="panel-title">Jaque Mate al 1 de Mayo</h2>
+                <p class="panel-text">"Hoy no solo marchamos, hoy tomamos el tablero."</p>
+                <p class="panel-description">La victoria de la inteligencia colectiva en Hermosillo. La movilización masiva del 1 de Mayo marca el fin del viejo equilibrio y el nacimiento de una soberanía docente real y técnica. ¡Fierro por la 300!</p>
+                <a href="../index.html" style="display:inline-block; margin-top:30px; padding:15px 30px; border:1px solid var(--accent-gold); color:var(--accent-gold); text-decoration:none; font-family:'Cinzel'; font-weight:900;">CERRAR TOMO XIII</a>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const panels = document.querySelectorAll('.panel');
+        const progress = document.getElementById('progress');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    const index = Array.from(panels).indexOf(entry.target);
+                    const percent = ((index) / (panels.length - 1)) * 100;
+                    progress.style.width = percent + '%';
+                }
+            });
+        }, { threshold: 0.5 });
+
+        panels.forEach(p => observer.observe(p));
+    </script>
+</body>
+</html>
