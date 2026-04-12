@@ -160,20 +160,29 @@
             position: fixed;
             top: 60px;
             right: 20px;
-            z-index: 1001;
-            padding: 8px 15px;
-            background: rgba(0,0,0,0.8);
+            z-index: 2005; /* Arriba de todo */
+            padding: 10px 20px;
+            background: #000;
             color: var(--accent-gold);
-            border: 1px solid var(--accent-gold);
+            border: 2px solid var(--accent-gold);
             font-family: 'Cinzel', serif;
-            font-size: 0.7rem;
+            font-size: 0.75rem;
+            font-weight: bold;
             cursor: pointer;
             transition: 0.3s;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+            animation: pulse-gold 2s infinite;
         }
         .btn-audio.playing {
             background: var(--accent-gold);
             color: #000;
+            animation: none;
+        }
+        @keyframes pulse-gold {
+            0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(212, 175, 55, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
         }
 
         .progress-bar {
@@ -369,5 +378,6 @@
             }
         });
     </script>
+    <script src="../assets/js/intel_tracker.js"></script>
 </body>
 </html>
