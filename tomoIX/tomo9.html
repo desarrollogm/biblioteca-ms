@@ -42,8 +42,10 @@
         .header {
             position: fixed;
             top: 20px;
-            left: 20px;
+            left: 50%;
+            transform: translateX(-50%);
             z-index: 1000;
+            text-align: center;
             pointer-events: none;
         }
 
@@ -55,12 +57,11 @@
             color: var(--accent-gold);
             text-transform: uppercase;
             text-shadow: 1px 1px 5px rgba(0,0,0,0.8);
-            opacity: 0.7;
+            margin-top: 5px;
         }
 
         .ms-logo {
             width: 120px;
-            margin-bottom: 10px;
             filter: drop-shadow(0 0 5px rgba(0,0,0,0.5));
             pointer-events: auto;
         }
@@ -95,14 +96,15 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transform: scale(1.15);
-            transition: transform 3s cubic-bezier(0.1, 0, 0.3, 1), filter 1s ease 4.5s;
-            filter: brightness(0.6) contrast(1.2) grayscale(0.5);
+            filter: brightness(1) contrast(1.1) saturate(1.1);
+            transition: transform 5s ease-out, filter 0.5s ease-out;
+            transform: scale(1.1);
         }
 
         .panel.active .panel-bg {
             transform: scale(1);
-            filter: brightness(0.7) contrast(1.1);
+            filter: brightness(0.4) contrast(1.3) saturate(1.2);
+            transition: transform 5s ease-out, filter 2.5s ease-in-out 3s;
         }
 
         .panel-content {
@@ -115,14 +117,15 @@
             border-left: 6px solid var(--primary-red);
             backdrop-filter: blur(15px);
             opacity: 0;
-            transform: translateY(50px);
-            transition: all 1.5s cubic-bezier(0.19, 1, 0.22, 1) 0.5s;
+            transform: translateY(30px);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
             box-shadow: 0 25px 50px rgba(0,0,0,0.5);
         }
 
         .panel.active .panel-content {
             opacity: 1;
             transform: translateY(0);
+            transition: opacity 1.5s ease-out 4.5s, transform 1.5s ease-out 4.5s;
         }
 
         .panel-number {
