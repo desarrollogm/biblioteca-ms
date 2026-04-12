@@ -329,7 +329,8 @@
                 <span class="tactical-title">INTELIGENCIA: ESTRATEGIA DE COMPACTACIÓN 07</span>
                 <p class="report-content">Informe técnico sobre el anacronismo salarial y la ruta legal para el Lic. Angel Valdez.</p>
                 <a href="../documentos/Analisis_Quinquenios_Concepto_07.html" target="_blank" class="btn-portal">VER DICTAMEN FORENSE QUINQUENIOS</a>
-                <button class="btn-portal" style="border-color: #25D366; color: #25D366;" onclick="copyToWhatsapp()">COPIAR RESUMEN TÁCTICO (WHATSAPP)</button>
+                <button class="btn-portal" style="border-color: #25D366; color: #25D366;" onclick="copyToWhatsapp()">COPIAR RESUMEN TÁCTICO</button>
+                <button class="btn-portal" style="border-color: #00ff41; color: #00ff41;" onclick="copyFullDossier()">COPIAR DOSSIER JURÍDICO (COMPLETO)</button>
             </div>
         </div>
 
@@ -388,6 +389,40 @@
             
             navigator.clipboard.writeText(report).then(() => {
                 alert("Resumen táctico copiado al portapapeles. ¡Pégalo en tus grupos de WhatsApp!");
+            });
+        }
+
+        function copyFullDossier() {
+            const dossier = `*MEMORIAL TÉCNICO-JURÍDICO: QUINQUENIOS SONORA*\n` +
+                `*ASUNTO:* Evidencia para Juicio de Nivelación y Compactación al 07.\n\n` +
+                `*1. ANATOMÍA DEL CONGELAMIENTO (AUDITORÍA 2025)*\n` +
+                `📍 *Caso:* Jose Alfonso Galvez Martinez (26 años servicio)\n` +
+                `📍 *Cobro Actual (A5):* $68.00 quincenales ($136 mensual)\n` +
+                `📍 *Sueldo Base (07):* $5,130.30 quincenales\n\n` +
+                `🧐 *EL HALLAZGO REINA:* El monto de $136 mensual coincide exactamente con el *TABULADOR FEDERAL DEL AÑO 2000*. ¡25 años congelado!\n\n` +
+                `*2. TABLAS DE DESFALCO TÉCNICO*\n\n` +
+                `📊 *Vs NORMA FEDERAL 2024 (DOF 31/05/2024)*\n` +
+                `- Real Sonora: $136.00 mensal\n` +
+                `- Norma Federal 2024: $285.00 mensual\n` +
+                `❌ *DÉFICIT FEDERAL:* -52%\n\n` +
+                `📊 *Vs PARIDAD SONORA (CIR. UNO 2025)*\n` +
+                `- Cobro Real: $68.00 quincenal\n` +
+                `- Debería ser (25% del 07): $1,282.58\n` +
+                `🔥 *DESFALCO ESTATAL:* -$1,214.58 quincenal (-95%)\n\n` +
+                `*3. FUNDAMENTOS LEGALES*\n` +
+                `⚖️ *Art. 34 LFTSE:* La prima es "complemento al salario".\n` +
+                `⚖️ *Art. 15 LEY ISSSTESON:* El sueldo base incluye emolumentos permanentes.\n` +
+                `⚖️ *Primacía de la Realidad:* Pago permanente = Salario Cotizable.\n` +
+                `⚖️ *Igualdad ante la Ley:* Discriminación laboral frente a estatales.\n\n` +
+                `*4. RUTA TÁCTICA*\n` +
+                `✅ Actualización FONE (Retroactividad 1 año).\n` +
+                `✅ Juicio de Nivelación de Jubilación ante ISSSTE.\n` +
+                `✅ Compactación definitiva al Concepto 07.\n\n` +
+                `*COORDINACIÓN DE INTELIGENCIA TÉCNICA MS*\n` +
+                `*¡LA LUCHA SIGUE!*`;
+            
+            navigator.clipboard.writeText(dossier).then(() => {
+                alert("Dossier Jurídico completo copiado. Mándalo directamente al Lic. Angel Valdez por WhatsApp.");
             });
         }
     </script>
