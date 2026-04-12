@@ -324,11 +324,12 @@
         </div>
         <h2>12. AUDITORÍA DE QUINQUENIOS Y CONCEPTO 07 (FEDERALIZADOS)</h2>
         <div class="intel-report">
-            <p class="report-content">Se ha detectado una anomalía estructural en el pago de la antigüedad para el personal federalizado. El rezago inflacionario y la no integración al sueldo base comprometen la integridad de la pensión futura.</p>
+            <p class="report-content">Se ha detectado una anomalía estructural: el personal federalizado en Sonora cobra montos de quinquenios congelados desde el año 2000 ($68.00 quincenales), lo cual representa un desfalco del 95% frente al 25% (5% por cada 5 años) que marca la Circular Uno 2025 para estatales.</p>
             <div class="tactical-box">
                 <span class="tactical-title">INTELIGENCIA: ESTRATEGIA DE COMPACTACIÓN 07</span>
-                <p class="report-content">Análisis profundo sobre el impacto en el ISSSTE y la ruta crítica de nivelación salarial frente al sistema estatal. Herramientas técnicas para la mesa de negociación 2026.</p>
-                <a href="../documentos/Analisis_Quinquenios_Concepto_07.html" target="_blank" class="btn-portal">ACCEDER A AUDITORÍA QUINQUENIOS</a>
+                <p class="report-content">Informe técnico sobre el anacronismo salarial y la ruta legal para el Lic. Angel Valdez.</p>
+                <a href="../documentos/Analisis_Quinquenios_Concepto_07.html" target="_blank" class="btn-portal">VER DICTAMEN FORENSE QUINQUENIOS</a>
+                <button class="btn-portal" style="border-color: #25D366; color: #25D366;" onclick="copyToWhatsapp()">COPIAR RESUMEN TÁCTICO (WHATSAPP)</button>
             </div>
         </div>
 
@@ -376,6 +377,19 @@
         document.getElementById('access-code').addEventListener('keypress', (e) => {
             if (e.key === 'Enter') authenticate();
         });
+
+        function copyToWhatsapp() {
+            const report = `🔴 MS - ALERTA DE DESFALCO: QUINQUENIOS\n\n` +
+                `✅ Hallazgo: Cobramos montos congelados DESDE EL AÑO 2000 ($68 quincenales).\n` +
+                `✅ Ley Sonora 2025: Marca 5% por quinquenio. Deberíamos cobrar $1,282.\n` +
+                `✅ Diferencia: -$1,214 por quincena que nos están robando.\n` +
+                `✅ Exigencia: Compactación al Concepto 07 y nivelación inmediata.\n\n` +
+                `¡LA LUCHA SIGUE! #MagisterioSonorense #Justicia07`;
+            
+            navigator.clipboard.writeText(report).then(() => {
+                alert("Resumen táctico copiado al portapapeles. ¡Pégalo en tus grupos de WhatsApp!");
+            });
+        }
     </script>
 </body>
 </html>
