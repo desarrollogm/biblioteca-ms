@@ -208,17 +208,17 @@
             <button class="btn-portal btn-copy" onclick="copyFullDossier()">DOSSIER PARA COORDINADOR</button>
         </div>
 
-        <h2>13. MODELOS TÁCTICOS (ZONA DE RECURSOS)</h2>
+        <h2>13. MODELOS TÁCTICOS Y PLIEGO OFICIAL</h2>
         <div class="tactical-box" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+            <div style="border: 1px solid var(--h); padding: 15px;">
+                <span class="tactical-title" style="color:var(--h);">PLIEGO PETITORIO 2026</span>
+                <a href="../documentos/Pliego_Petitorio_Oficial_MS_Quinquenios.html" class="btn-portal" style="display:block; border-color:var(--h); color:var(--h);">VER PLIEGO OFICIAL</a>
+                <button class="btn-portal btn-copy" style="width:100%; border-color:var(--h); color:var(--h);" onclick="copyResumenPliego()">COPIAR EXIGENCIAS</button>
+            </div>
             <div style="border: 1px solid #222; padding: 15px;">
                 <span class="tactical-title">TRANSPARENCIA (PNT)</span>
                 <a href="../documentos/Solicitud_Transparencia_Modelos.html" class="btn-portal" style="display:block;">MODELOS PNT</a>
                 <button class="btn-portal btn-copy" style="width:100%;" onclick="copyTransparencia()">COPIAR MODELO</button>
-            </div>
-            <div style="border: 1px solid #222; padding: 15px;">
-                <span class="tactical-title">ANEXO PLIEGO 2026</span>
-                <a href="../documentos/Anexo_Tecnico_Pliego_Modelo.html" class="btn-portal" style="display:block;">MODELO ANEXO</a>
-                <button class="btn-portal btn-copy" style="width:100%;" onclick="copyAnexoTecnico()">COPIAR TÉCNICO</button>
             </div>
         </div>
 
@@ -276,6 +276,15 @@
                 <a href="../documentos/Argumento_Discriminacion_Art15_Federalizados.html" class="btn-portal" style="display:block; border-color:var(--header); color:var(--header);">VER ARGUMENTO</a>
                 <button class="btn-portal btn-copy" style="width:100%; border-color:var(--header); color:var(--header);" onclick="copyDiscrimina()">COPIAR PITCH LEGAL</button>
             </div>
+        </div>
+
+        <h2>17. EL PRECEDENTE DE ORO (AUDITORÍA ACTUARIAL)</h2>
+        <div class="tactical-box">
+            <span class="tactical-title">PRUEBA REINA: INTEGRACIÓN 2019</span>
+            <p style="font-size: 0.9rem; opacity: 0.8;">Evidencia oficial de que ISSSTESON, ITSON y UNISON operan con sueldo integrado e integraron la Prima de Antigüedad en 2019.</p>
+            <a href="../documentos/Matriz_Actuarial_Sueldo_Integrado_Sonora.html" target="_blank" class="btn-portal">VER MATRIZ DE PRECEDENTES</a>
+            <button class="btn-portal btn-copy" onclick="copyPrecedente2019()">COPIAR LOGRO 2019</button>
+            <button class="btn-portal btn-copy" onclick="copyCitaITSON()">COPIAR CITA ITSON 2016</button>
         </div>
 
         <button class="btn-kill" onclick="killOperation()">[ LOGOUT AND SECURE TERMINAL ]</button>
@@ -374,6 +383,21 @@
         function copyDiscrimina() {
             const text = `⚖️ *MS - ARGUMENTO DE DISCRIMINACIÓN*\n\n📍 *El Hecho:* El Estado de Sonora (Art. 15) ya reconoce que las primas permanentes deben integrarse al sueldo.\n📍 *La Injusticia:* Negar este estándar a los federales en el mismo territorio es *DISCRIMINACIÓN TERRITORIAL*.\n📍 *La Exigencia:* Trato igual ante la ley. #ParidadSonora`;
             navigator.clipboard.writeText(text).then(() => alert("Pitch de discriminación copiado."));
+        }
+
+        function copyPrecedente2019() {
+            const text = `🔥 *MS - EL PRECEDENTE DE ORO*\n\n¿Sabías que ISSSTESON ya integró la Prima de Antigüedad al sueldo en 2019? 😱\n\nSi ya lo hicieron con una prima, no hay excusa técnica para no hacerlo con el Quinquenio. ¡El camino ya está trazado! #UsoDelPrecedente`;
+            navigator.clipboard.writeText(text).then(() => alert("Logro 2019 copiado."));
+        }
+
+        function copyCitaITSON() {
+            const text = `🏫 *MS - EVIDENCIA ITSON*\n\nEl estudio actuarial de ITSON define Salario de Cotización como: "Sueldo Básico + Emolumentos Permanentes".\n\nSi a los del ITSON sí les integran prestaciones, ¿por qué a nosotros no? #MismoEstadoMismoDerecho`;
+            navigator.clipboard.writeText(text).then(() => alert("Cita ITSON copiada."));
+        }
+
+        function copyResumenPliego() {
+            const text = `📜 *MS - RESUMEN PLIEGO 2026*\n\n1. Reforma al Art. 15 ISSSTESON.\n2. Manual de Percepciones Homologado.\n3. Integración de Quinquenios a Cotización.\n4. Fin a la Discriminación Territorial.\n\n¡Por la dignidad del magisterio!`;
+            navigator.clipboard.writeText(text).then(() => alert("Resumen de Pliego copiado."));
         }
     </script>
 </body>
