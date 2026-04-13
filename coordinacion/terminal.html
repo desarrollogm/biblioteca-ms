@@ -287,6 +287,18 @@
             <button class="btn-portal btn-copy" onclick="copyCitaITSON()">COPIAR CITA ITSON 2016</button>
         </div>
 
+        <h2 style="color:var(--p); border-color:var(--p);">18. LA CEREZA EN EL PASTEL (ZONA ROJA - INTELIGENCIA)</h2>
+        <div class="tactical-box" style="border-color:var(--p);">
+            <span class="tactical-title" style="color:var(--p);">OPERACIÓN PBM: EL RASTRO DEL DINERO</span>
+            <p style="font-size: 0.9rem; opacity: 0.8;">Vínculo criminal entre los quinquenios congelados y el desvío de recursos al Plan de Beneficios Múltiples.</p>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px;">
+                <a href="../documentos/Reporte_Forense_Operacion_PBM_SEC.html" target="_blank" class="btn-portal" style="border-color:var(--p); color:var(--p);">REPORTE FORENSE</a>
+                <a href="../documentos/Grafica_Hoyo_Negro_PBM.html" target="_blank" class="btn-portal" style="border-color:var(--p); color:var(--p);">VER HOYO NEGRO</a>
+            </div>
+            <button class="btn-portal btn-copy" style="width:100%; border-color:var(--p); color:var(--p); margin-top: 10px;" onclick="copyCorrupcionPBM()">COPIAR ALERTA CORRUPCIÓN PBM</button>
+            <button class="btn-portal btn-copy" style="width:100%; border-color:var(--p); color:var(--p); margin-top: 5px;" onclick="copyAlertaHoyoNegro()">COPIAR: NO ES FALTA DE DINERO</button>
+        </div>
+
         <button class="btn-kill" onclick="killOperation()">[ LOGOUT AND SECURE TERMINAL ]</button>
 
         <div class="footer">
@@ -398,6 +410,16 @@
         function copyResumenPliego() {
             const text = `📜 *MS - RESUMEN PLIEGO 2026*\n\n1. Reforma al Art. 15 ISSSTESON.\n2. Manual de Percepciones Homologado.\n3. Integración de Quinquenios a Cotización.\n4. Fin a la Discriminación Territorial.\n\n¡Por la dignidad del magisterio!`;
             navigator.clipboard.writeText(text).then(() => alert("Resumen de Pliego copiado."));
+        }
+
+        function copyCorrupcionPBM() {
+            const text = `🚨 *MS - LA CEREZA EN EL PASTEL*\n\n¿A dónde se va el dinero de tus quinquenios? 🤔\n\n📍 El presupuesto se solicita completo, pero te pagan $68.\n📍 El excedente se "distrae" a fideicomisos como el PBM (Plan de Beneficios Múltiples).\n📍 ¡Hay denuncias penales por PECULADO en la SEC por este esquema!\n\n#DondeEstaMiBillete #PBM #Justicia07`;
+            navigator.clipboard.writeText(text).then(() => alert("Alerta PBM copiada."));
+        }
+
+        function copyAlertaHoyoNegro() {
+            const text = `🕳️ *MS - EL HOYO NEGRO DE LA SEC*\n\nTe roban *$1,200 pesos* CADA QUINCENA por no actualizar el quinquenio.\n\nEse dinero alimenta la corrupción de los fideicomisos privados de los funcionarios. ¡No es falta de dinero, es ROBO! #MagisterioSonorense`;
+            navigator.clipboard.writeText(text).then(() => alert("Alerta Hoyo Negro copiada."));
         }
     </script>
 </body>
