@@ -299,6 +299,18 @@
             <button class="btn-portal btn-copy" style="width:100%; border-color:var(--p); color:var(--p); margin-top: 5px;" onclick="copyAlertaHoyoNegro()">COPIAR: NO ES FALTA DE DINERO</button>
         </div>
 
+        <h2 style="color:var(--w); border-color:var(--w);">19. GABINETE DE EVIDENCIA FEDERAL (ASF / FONE)</h2>
+        <div class="tactical-box" style="border-color:var(--w);">
+            <span class="tactical-title" style="color:var(--w);">LA PRUEBA REINA: EL DINERO SÍ LLEGÓ</span>
+            <p style="font-size: 0.9rem; opacity: 0.8;">Dictámenes oficiales de la ASF que confirman la recepción de $11,000 millones y el uso del sistema HARVEB para ajustes locales.</p>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px;">
+                <a href="../documentos/Prueba_Reina_FONE_ASF_Desvio_Sonora.html" target="_blank" class="btn-portal" style="border-color:var(--w); color:var(--w);">VER PERITAJE FEDERAL</a>
+                <a href="https://www.asf.gob.mx/Trans/Informes/IR2023c/Documentos/Auditorias/2023_1866_a.pdf" target="_blank" class="btn-portal" style="border-color:var(--w); color:var(--w);">DICTAMEN ASF 1866</a>
+            </div>
+            <button class="btn-portal btn-copy" style="width:100%; border-color:var(--w); color:var(--w); margin-top: 10px;" onclick="copyPruebaASF1866()">COPIAR: PRUEBA 11 MIL MILLONES</button>
+            <button class="btn-portal btn-copy" style="width:100%; border-color:var(--w); color:var(--w); margin-top: 5px;" onclick="copyHarvebSystem()">COPIAR: EL SOFTWARE DEL ENGAÑO</button>
+        </div>
+
         <button class="btn-kill" onclick="killOperation()">[ LOGOUT AND SECURE TERMINAL ]</button>
 
         <div class="footer">
@@ -420,6 +432,16 @@
         function copyAlertaHoyoNegro() {
             const text = `🕳️ *MS - EL HOYO NEGRO DE LA SEC*\n\nTe roban *$1,200 pesos* CADA QUINCENA por no actualizar el quinquenio.\n\nEse dinero alimenta la corrupción de los fideicomisos privados de los funcionarios. ¡No es falta de dinero, es ROBO! #MagisterioSonorense`;
             navigator.clipboard.writeText(text).then(() => alert("Alerta Hoyo Negro copiada."));
+        }
+
+        function copyPruebaASF1866() {
+            const text = `💎 *MS - LA PRUEBA REINA*\n\nASF Auditoría 1866: La Federación envió *$11,010,895,100 pesos* a Sonora para educación en 2023.\n\n¿Donde está ese dinero? ¿Por qué tus quinquenios siguen en $68 pesos? #ElDineroSiLlego #Justicia07`;
+            navigator.clipboard.writeText(text).then(() => alert("Prueba 11 Mil Millones copiada."));
+        }
+
+        function copyHarvebSystem() {
+            const text = `💻 *MS - EL SOFTWARE DEL ENGAÑO*\n\nSe detectó que el sistema *HARVEB* en Sonora permite "ajustar" la nómina federal. \n\nAhí es donde aplican el candado a tu sueldo mientras se quedan con el excedente federal. ¡Exigimos transparencia en el HARVEB! #NoMasAjustes`;
+            navigator.clipboard.writeText(text).then(() => alert("Alerta HARVEB copiada."));
         }
     </script>
 </body>
