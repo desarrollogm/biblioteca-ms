@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Especial: Arsenal de la Verdad | 1ro de Mayo | Biblioteca Digital MS</title>
+    <meta name="description" content="Material oficial de propaganda para la movilización del 1ro de Mayo. Magisterio Sonorense en pie de lucha.">
+    <link rel="icon" type="image/png" href="../assets/favicon-ms.png">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Playfair+Display:ital,wght@0,400;1,700&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #050505;
+            --primary-red: #8b0000;
+            --accent-gold: #c5a028;
+            --text-white: #e0e0e0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-white);
+            overflow-x: hidden;
+            scroll-snap-type: y mandatory;
+            height: 100vh;
+        }
+
+        .header {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            text-align: center;
+            width: 100%;
+        }
+
+        .header h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.9);
+        }
+
+        .ms-logo {
+            width: 90px;
+            margin-bottom: 5px;
+            filter: drop-shadow(0 0 10px var(--accent-gold));
+        }
+
+        .panel {
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            scroll-snap-align: start;
+            overflow: hidden;
+            background: #000;
+        }
+
+        .panel-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.4);
+            transition: transform 5s ease-out;
+        }
+
+        .panel.active .panel-bg {
+            transform: scale(1.05);
+        }
+
+        .panel-content {
+            position: relative;
+            z-index: 10;
+            width: 90%;
+            max-width: 800px;
+            padding: 40px;
+            background: rgba(5, 5, 5, 0.85);
+            border-left: 5px solid var(--accent-gold);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 40px 80px rgba(0,0,0,0.8);
+        }
+
+        .panel-title {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            color: var(--accent-gold);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .panel-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #ccc;
+            margin-bottom: 20px;
+        }
+
+        .btn-download {
+            display: inline-block;
+            padding: 12px 24px;
+            background: var(--primary-red);
+            color: white;
+            text-decoration: none;
+            font-family: 'Cinzel', serif;
+            font-weight: bold;
+            border-radius: 4px;
+            transition: 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.8rem;
+        }
+
+        .btn-download:hover { background: #b00000; transform: scale(1.05); }
+
+        .btn-home {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1001;
+            padding: 10px 25px;
+            background: transparent;
+            color: var(--accent-gold);
+            text-decoration: none;
+            font-family: 'Cinzel', serif;
+            border: 1px solid var(--accent-gold);
+            transition: 0.4s;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+        }
+
+        .btn-home:hover { background: var(--accent-gold); color: #000; }
+
+        .copy-box {
+            background: #111;
+            padding: 15px;
+            border: 1px solid #333;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.85rem;
+            color: #0f0;
+            margin-top: 15px;
+            white-space: pre-wrap;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <img src="../assets/logo_ms_oficial.jpg" class="ms-logo" alt="Logo MS">
+        <h1>Arsenal de la Verdad: 1ro de Mayo</h1>
+    </header>
+
+    <a href="../index.html" class="btn-home">Regresar</a>
+
+    <main>
+        <!-- PORTADA -->
+        <section class="panel active">
+            <img src="../assets/propaganda/facebook_cover.png" class="panel-bg">
+            <div class="panel-content">
+                <h2 class="panel-title">La Verdad se Moviliza</h2>
+                <p class="panel-text">Este 1ro de mayo, el Magisterio Sonorense toma las calles. No es solo una marcha, es la demostración técnica y política de nuestra fuerza. Utiliza este material para inundar las redes con nuestra exigencia.</p>
+                <a href="../assets/propaganda/facebook_cover.png" download class="btn-download">Descargar Banner FB</a>
+            </div>
+        </section>
+
+        <!-- LÍDERES -->
+        <section class="panel">
+            <img src="../assets/propaganda/profe_kristian.png" class="panel-bg">
+            <div class="panel-content">
+                <h2 class="panel-title">Profe Kristian</h2>
+                <p class="panel-text">Representando la claridad técnica y el liderazgo firme del MS. Un símbolo de la verdad actuarial que la autoridad no puede ignorar.</p>
+                <a href="../assets/propaganda/profe_kristian.png" download class="btn-download">Descargar Avatar</a>
+            </div>
+        </section>
+
+        <section class="panel">
+            <img src="../assets/propaganda/mtra_paloma.png" class="panel-bg">
+            <div class="panel-content">
+                <h2 class="panel-title">Mtra Paloma</h2>
+                <p class="panel-text">La fuerza estratégica y la empatía con la base. El rostro de la organización y la lucha por un futuro digno para cada docente.</p>
+                <a href="../assets/propaganda/mtra_paloma.png" download class="btn-download">Descargar Avatar</a>
+            </div>
+        </section>
+
+        <!-- VERTICAL -->
+        <section class="panel">
+            <img src="../assets/propaganda/tiktok_vertical.png" class="panel-bg">
+            <div class="panel-content">
+                <h2 class="panel-title">Impacto en Vertical</h2>
+                <p class="panel-text">Diseñado para TikTok y Reels. Máxima visibilidad para las nuevas generaciones de maestros y para irrumpir en el algoritmo con nuestra dignidad.</p>
+                <a href="../assets/propaganda/tiktok_vertical.png" download class="btn-download">Descargar Vertical</a>
+            </div>
+        </section>
+
+        <!-- SQUARE -->
+        <section class="panel">
+            <img src="../assets/propaganda/square_demand.png" class="panel-bg">
+            <div class="panel-content">
+                <h2 class="panel-title">Demandas de Poder</h2>
+                <p class="panel-text">Láminas cuadradas listas para Instagram y estados de WhatsApp. Mensajes directos: 100% Rezonificación, No a la UMA, Justicia PAAE.</p>
+                <a href="../assets/propaganda/square_demand.png" download class="btn-download">Descargar Cuadrado</a>
+            </div>
+        </section>
+
+        <!-- COPYWRITING -->
+        <section class="panel">
+            <div class="panel-content">
+                <h2 class="panel-title">Guía de Combate Digital</h2>
+                <p class="panel-text">Copia y pega estos mensajes en tus grupos de WhatsApp y publicaciones de Facebook para coordinar la movilización.</p>
+                <div class="copy-box">🚨 ¡EL MAGISTERIO SONORENSE DESPIERTA! 🚨
+
+Compañeros, la cita es este 1ro de mayo. No es solo un desfile, es la batalla por nuestra dignidad.
+
+✅ 100% Rezonificación YA.
+✅ No a la UMA, Sí al Salario Mínimo.
+✅ Fuera USICAMM.
+
+¡Si uno se mueve, nos movemos todos! #MagisterioSonorense</div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const panels = document.querySelectorAll('.panel');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('active');
+                else entry.target.classList.remove('active');
+            });
+        }, { threshold: 0.5 });
+        panels.forEach(p => observer.observe(p));
+    </script>
+</body>
+</html>
