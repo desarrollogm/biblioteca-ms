@@ -410,6 +410,14 @@
             <button class="btn-portal btn-copy" style="width:100%; border-color:var(--p); color:var(--p); margin-top: 10px;" onclick="copyCodigoDragon()">COPIAR SEÑAL ESTRATÉGICA</button>
         </div>
 
+        <h2 style="color:var(--a); border-color:var(--a);">22. VIGILANCIA BIOMÉTRICA (ALERTA CURP)</h2>
+        <div class="tactical-box" style="border-color:var(--a);">
+            <span class="tactical-title" style="color:var(--a);">DICTAMEN DE PRIVACIDAD: BIOMÉTRICOS</span>
+            <p style="font-size: 0.9rem; opacity: 0.8;">Análisis de la vulnerabilidad de datos sensibles en la CURP 2026 y rutas de defensa legal (Amparo).</p>
+            <a href="../documentos/Analisis_CURP_Biometrica_Vigilancia.html" target="_blank" class="btn-portal" style="border-color:var(--a); color:var(--a);">VER REPORTE DE VIGILANCIA</a>
+            <button class="btn-portal btn-copy" style="width:100%; border-color:var(--a); color:var(--a); margin-top: 10px;" onclick="copyBiometrica()">COPIAR ALERTA BIOMÉTRICA</button>
+        </div>
+
         <button class="btn-kill" onclick="killOperation()">[ LOGOUT AND SECURE TERMINAL ]</button>
 
         <div class="footer" style="position: relative;">
@@ -547,6 +555,11 @@
         function copyCodigoDragon() {
             const text = `🐉 *MS - EL CÓDIGO DEL DRAGÓN*\n\n📍 *La Señal:* Tenemos acceso a folios clasificados que la SEC no quiere que toquen la luz.\n📍 *La Exigencia:* Instalación inmediata de la *Mesa Técnica* para la Propuesta PIP ante el Senado.\n📍 *El Mensaje:* Ya no jugamos con sus reglas. Jugamos con la verdad forense.\n\n#MagisterioSonorense #PropuestaPIP #MesaTecnicaYa`;
             navigator.clipboard.writeText(text).then(() => alert("Señal estratégica copiada."));
+        }
+
+        function copyBiometrica() {
+            const text = `🚫 *MS - ALERTA BIOMÉTRICA (CURP)*\n\n📍 *El Riesgo:* Centralización de iris y huellas para rastreo digital.\n📍 *Defensa:* El trámite es VOLUNTARIO por ley.\n📍 *Acción:* No entregues tus datos. Si te presionan, tramita tu AMPARO INDIVIDUAL.\n\n#PrivacidadMaestro #MS #NoBiometricos`;
+            navigator.clipboard.writeText(text).then(() => alert("Alerta biométrica copiada."));
         }
     </script>
 </body>
