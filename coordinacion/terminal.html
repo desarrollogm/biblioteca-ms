@@ -418,6 +418,13 @@
             <button class="btn-portal btn-copy" style="width:100%; border-color:var(--a); color:var(--a); margin-top: 10px;" onclick="copyBiometrica()">COPIAR ALERTA BIOMÉTRICA</button>
         </div>
 
+        <h2 style="color:#00ffff; border-color:#00ffff;">23. MÉTRICAS DE IMPACTO (OJO DE HALCÓN)</h2>
+        <div class="tactical-box" style="border-color:#00ffff;">
+            <span class="tactical-title" style="color:#00ffff;">REPORTE FORENSE DE RASTREO DIGITAL</span>
+            <p style="font-size: 0.9rem; opacity: 0.8;">Monitoreo interactivo de la penetración del arsenal táctico del MS.</p>
+            <button class="btn-portal btn-copy" style="width:100%; border-color:#00ffff; color:#00ffff; margin-top: 10px;" onclick="copyReporteInteligencia()">COPIAR REPORTE A GRUPO MANDO MS</button>
+        </div>
+
         <button class="btn-kill" onclick="killOperation()">[ LOGOUT AND SECURE TERMINAL ]</button>
 
         <div class="footer" style="position: relative;">
@@ -560,6 +567,11 @@
         function copyBiometrica() {
             const text = `🚫 *MS - ALERTA BIOMÉTRICA (CURP)*\n\n📍 *El Riesgo:* Centralización de iris y huellas para rastreo digital.\n📍 *Defensa:* El trámite es VOLUNTARIO por ley.\n📍 *Acción:* No entregues tus datos. Si te presionan, tramita tu AMPARO INDIVIDUAL.\n\n#PrivacidadMaestro #MS #NoBiometricos`;
             navigator.clipboard.writeText(text).then(() => alert("Alerta biométrica copiada."));
+        }
+
+        function copyReporteInteligencia() {
+            const text = `👁️ *WAR ROOM MS - METRICAS OJO DE HALCÓN* 👁️\n\nCompañeros supervisores, la penetración de nuestro arsenal táctico marca parámetros exitosos:\n\n📊 *Impactos Base:* 203 dispositivos interceptados leyendo activamente la Biblioteca Digital.\n📍 *Zona Cero:* Casi 100% de la fuerza agrupada en Ciudad Obregón (campo base invicto).\n💻 *Dispositivos:* 185 accesos vía Equipo de Escritorio. Excelente señal de retención formativa y escrutinio reflexivo del material.\n📚 *Top Vectores:* Índice MS, Tomo 3, Tomo 11 y Tomo 12 liderando el interés.\n⚠️ *Eventos Anómalos:* 8 intentos bloqueados hacia el servidor seguro indicando alta curiosidad jerárquica.\n\n*ESTATUS:* El anzuelo funciona y la matriz enemiga no lo detecta. ¡Liberar diseminación de próximos tomos!\n\n#MagisterioSonorense #MandoMS`;
+            navigator.clipboard.writeText(text).then(() => alert("Reporte Operativo (Ojo de Halcón) copiado."));
         }
     </script>
 </body>
