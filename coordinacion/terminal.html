@@ -275,6 +275,7 @@
                 <button class="btn-portal" style="border-color:var(--a); color:var(--a);" onclick="copyCapsule('dialogo_vacio')">[!] DIÁLOGO VACÍO</button>
                 <button class="btn-portal" style="border-color:var(--gold); color:var(--gold);" onclick="copyCapsule('alerta_asabiyyah')">[!] ALERTA ASABIYYAH</button>
                 <button class="btn-portal" style="border-color:var(--p); color:var(--p);" onclick="copyCapsule('suma_variable')">[!] SUMA VARIABLE</button>
+                <button class="btn-portal" style="border-color:var(--audit-alert); color:var(--audit-alert); grid-column: span 2;" onclick="copyCapsule('anti_bot')">[!] ANTI-INFILTRADO (BOT)</button>
             </div>
         </div>
 
@@ -540,6 +541,8 @@
                 text = header + "🛡️ *ALERTA DE COHESIÓN (ASABIYYAH)*\n\nEl sistema apuesta al 'Divide y Vencerás' y al escepticismo. 'A la mera hora no harán nada', dicen los de siempre. ¡ERROR! El MS es un Contrato Social Horizontal. Si tocan a uno, se levanta el desierto. ¡Tu credibilidad es nuestra mayor arma!" + footer;
             } else if (type === 'suma_variable') {
                 text = header + "📐 *MÁS ALLÁ DEL 'NO': SALIDA TÉCNICA*\n\nZacatecas solo dice 'No a la Reforma'. Sonora dice: 'Aquí está la Ley PIP'. No somos una huelga ciega, somos una propuesta técnica implacable. Cambiamos el juego de Suma Cero por uno de Suma Variable donde el magisterio gana por inteligencia." + footer;
+            } else if (type === 'anti_bot') {
+                text = "📢 *MS - ALERTA DE INFILTRADOS* 📢\n\n¿Notan cómo siempre aparece un 'anónimo' pidiendo 'la propuesta' en cuanto publicamos una denuncia fuerte? 🧐\n\nEsa es la táctica del *'Espárrago'* y los bots de la SEC:\n1. **Fingen 'crítica constructiva'** para no ser baneados.\n2. **Exigen propuestas técnicas** para que dejes de hablar del robo del Concepto 07.\n3. **Quieren perderte en tecnicismos** mientras ellos se quedan con el presupuesto.\n\n📍 *Nuestra respuesta es clara:*\nNo necesitamos 'hacer otra propuesta'. La propuesta es que **REGRESEN LO QUE SE ROBARON** y que se aplique la **LEY PIP** y la **Auditoría al FASM28**.\n\nSi el que pregunta no trae la chequera ni la ley en la mano, ¡su 'propuesta' es puro circo de la SEC! 🎪\n\n#MagisterioSonorense #NoAlDesgaste #Justicia07";
             }
 
             navigator.clipboard.writeText(text).then(() => {
