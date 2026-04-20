@@ -225,6 +225,17 @@
             <a href="../documentos/Analisis_Educacion_Indigena_Focos_Rojos.html" target="_blank" class="btn-portal">VER INVESTIGACIÓN</a>
         </div>
 
+        <h2>15. CONTRA-NARRATIVA: REFORMA PENSIONES 127</h2>
+        <div class="tactical-box" style="border-color: var(--a);">
+            <p style="font-size: 0.8rem; margin-bottom: 15px; opacity: 0.7;">Kit de respuesta rápida para WhatsApp. Click para copiar y reenviar.</p>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px;">
+                <button class="btn-portal" style="border-color: #00ff41; color: #00ff41;" onclick="copyCapsule('base')">[1] CALMA BASE</button>
+                <button class="btn-portal" style="border-color: #00ffff; color: #00ffff;" onclick="copyCapsule('pip')">[2] BLINDAJE PIP</button>
+                <button class="btn-portal" style="border-color: #ff3e3e; color: #ff3e3e;" onclick="copyCapsule('legal')">[3] DEFENSA LEGAL</button>
+            </div>
+        </div>
+
         <h2>04. AFORE / ROBO HORMIGA</h2>
         <div class="tactical-box">
             <span class="tactical-title">DICTAMEN DE RETIRO</span>
@@ -281,11 +292,10 @@
             <a href="../documentos/Corrupcion_Fundacion_ISSSTE.html" target="_blank" class="btn-portal">VER EVIDENCIA</a>
         </div>
 
-        <h2>12. AUDITORÍA DE QUINQUENIOS (DIAGNÓSTICO)</h2>
         <div class="tactical-box">
-            <span class="tactical-title">DICTAMEN FORENSE: EL CONGELAMIENTO</span>
-            <p style="font-size: 0.9rem; opacity: 0.8;">Evidencia del desfalco estructural del personal federalizado stuck en el año 2000 ($68 qna).</p>
-            <a href="../documentos/Analisis_Quinquenios_Concepto_07.html" target="_blank" class="btn-portal">VER PERITAJE</a>
+            <span class="tactical-title">DICTAMEN FORENSE: EL CONGELAMIENTO (07)</span>
+            <p style="font-size: 0.9rem; opacity: 0.8;">Evidencia del desfalco estructural del personal federalizado. Fundamento en Art. 34 LFTSE y Jurisprudencia SCJN.</p>
+            <a href="../documentos/Analisis_Compactacion_07.html" target="_blank" class="btn-portal">VER DICTAMEN 07</a>
             <button class="btn-portal btn-copy" onclick="copyToWhatsapp()">WHATSAPP RESUMEN</button>
             <button class="btn-portal btn-copy" onclick="copyFullDossier()">DOSSIER PARA COORDINADOR</button>
         </div>
@@ -307,8 +317,8 @@
         <h2>14. ARSENAL AVANZADO (MISILES MS)</h2>
         <div class="tactical-box" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
             <div style="border: 1px solid var(--a); padding: 15px;">
-                <span class="tactical-title" style="color: var(--a);">[1] CALCULADORA DESFALCO</span>
-                <a href="../documentos/Simulador_Desfalco_Quinquenios.html" class="btn-portal" style="display:block; border-color: var(--a); color: var(--a);">EJECUTAR</a>
+                <span class="tactical-title" style="color: var(--a);">[1] CALCULADORA DESFALCO 07</span>
+                <a href="Simulador_Quinquenio_MS.html" class="btn-portal" style="display:block; border-color: var(--a); color: var(--a);">EJECUTAR SIMULADOR</a>
                 <button class="btn-portal btn-copy" style="width:100%; border-color: var(--a); color: var(--a);" onclick="copySimulador()">COPIAR ALERTA %</button>
             </div>
             <div style="border: 1px solid var(--gold); padding: 15px;">
@@ -478,6 +488,27 @@
         function copyAnexoTecnico() {
             const text = `📜 *MS - ANEXO TÉCNICO PLIEGO*\n\n"Exigimos compactación definitiva al Concepto 07 basada en la Primacía de la Realidad."`;
             navigator.clipboard.writeText(text).then(() => alert("Anexo copiado."));
+        }
+
+        function copyCapsule(type) {
+            let text = "";
+            const header = "📢 *MAGISTERIO SONORENSE - COMUNICADO TÁCTICO* 📢\n\n";
+            const footer = "\n\n⚠️ _Inteligencia al servicio del Docente._\n#MSInteligencia #PensiónDigna";
+
+            if (type === 'base') {
+                text = header + "🛑 *NO CAIGAN EN PÁNICO POR EL TOPE DE PENSIÓN*\n\nCompañeros, la reforma al 127 busca a la 'alta burocracia'. El tope es de ~$80,000 mensuales. El 95% de los docentes de Sonora estamos por debajo de eso. ¡Tu pensión no corre riesgo por el tope presidencial!" + footer;
+            } else if (type === 'pip') {
+                text = header + "💎 *TU PENSIÓN PROTEGIDA ESTÁ BLINDADA*\n\nLa Reforma 127 EXCLUYE expresamente a los 'Sistemas Complementarios Sindicales'. Nuestro modelo PIP del MS entra en esta categoría legal. ¡El PIP es el único camino para proteger tu jubilación ante el gobierno!" + footer;
+            } else if (type === 'legal') {
+                text = header + "⚖️ *DEFENSA CONTRA LA RETROACTIVIDAD*\n\nNadie puede ajustar una pensión ya ganada. El ajuste de pensiones vigentes es ILEGAL y viola tus derechos adquiridos. El Lic. Valdez y el MS ya preparan el Amparo Masivo. ¡Ni un peso menos!" + footer;
+            }
+
+            navigator.clipboard.writeText(text).then(() => {
+                const btn = event.target;
+                const originalText = btn.innerText;
+                btn.innerText = "¡COPIADO!";
+                setTimeout(() => { btn.innerText = originalText; }, 2000);
+            });
         }
 
         function copySimulador() {
