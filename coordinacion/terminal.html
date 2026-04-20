@@ -244,6 +244,13 @@
             <a href="../documentos/Analisis_AFORE_Robo_Hormiga.html" target="_blank" class="btn-portal">VER ANÁLISIS</a>
         </div>
 
+        <h2>16. CONTRA-DESINFORMACIÓN NACIONAL (CASO SECC. 36)</h2>
+        <div class="tactical-box" style="border-color: var(--gold);">
+            <p style="font-size: 0.8rem; margin-bottom: 15px; opacity: 0.7;">Respuesta estratégica al discurso de 'Unidad' oficialista del SNTE.</p>
+            <a href="../documentos/Analisis_Narrativa_SNTE_2026.html" target="_blank" class="btn-portal" style="border-color: var(--gold); color: var(--gold);">VER REPORTE DE CONTRAINTELIGENCIA</a>
+            <button class="btn-portal btn-copy" style="border-color: var(--gold); color: var(--gold); margin-top: 10px;" onclick="copyCapsule('tactica36')">COPIAR RESPUESTA TÁCTICA 36</button>
+        </div>
+
         <h2>05. MAQUIAVELO / GRUPO 00</h2>
         <div class="tactical-box">
             <span class="tactical-title">OPERACIÓN POLÍTICA</span>
@@ -506,6 +513,8 @@
                 text = header + "📉 *EXIGENCIA MÍNIMA: MANUAL 2024*\n\nLa SEP paga $68 mientras el Manual de Percepciones Federal (Art. 24) marca un tope de $142.50 quincenales. El desfalco es del 100%. ¡Nivelación inmediata ya!" + footer;
             } else if (type === 'ancla') {
                 text = "❗ *MS - EL ANCLA ART. 15*\n\n'Sueldo base integrado = Sueldo + Emolumentos Permanentes'. ¡El quinquenio DEBE cotizar! Fundamento en Art. 15 Ley ISSSTESON (Analogía) y Art. 34 LFTSE.\n\n#MSInteligencia #AnclaLegal";
+            } else if (type === 'tactica36') {
+                text = "📢 *MS REACCIONA: LA TRAMPA DE LA UNIDAD*\n\nAnte el discurso de 'Unidad' de la Secc. 36 y el SNTE Nacional, el Magisterio Sonorense responde:\n\n1. UNIDAD no significa obediencia ciega a líderes que negocian migajas.\n2. UNIDAD es exigir que los aumentos superen la inflación real (INEGI).\n3. UNIDAD es defender que todo aumento vaya al CONCEPTO 07.\n\n¡Un magisterio dividido es fácil de administrar, pero un magisterio informado es imposible de someter!\n\n#UnidadDeExigencia #MagisterioSonorense #DignidadDocente";
             }
 
             navigator.clipboard.writeText(text).then(() => {
