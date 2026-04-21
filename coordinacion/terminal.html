@@ -462,6 +462,18 @@
             <button class="btn-portal btn-copy" style="width:100%; border-color:#00ffff; color:#00ffff; margin-top: 10px;" onclick="copyReporteInteligencia()">COPIAR REPORTE A GRUPO MANDO MS</button>
         </div>
 
+        <h2 style="color:var(--p); border-color:var(--p);">24. PROYECTO PIP / FPIP (ARQUITECTURA DE LA DIGNIDAD)</h2>
+        <div class="tactical-box" style="border-color:var(--p);">
+            <span class="tactical-title" style="color:var(--p);">EL ARSENAL DE LA PENSIÓN DIGNA</span>
+            <p style="font-size: 0.9rem; opacity: 0.8;">Documentación técnica y guion de difusión masiva para la Pensión Intergeneracional Protegida.</p>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px;">
+                <a href="../documentos/Analisis_FPIP_Tecnico_2026.html" target="_blank" class="btn-portal" style="border-color:var(--p); color:var(--p);">VER ANÁLISIS FPIP</a>
+                <a href="../documentos/Guion_Video_Explosivo_PIP.html" target="_blank" class="btn-portal" style="border-color:var(--gold); color:var(--gold);">VER GUION VIDEO</a>
+            </div>
+            <button class="btn-portal btn-copy" style="width:100%; border-color:var(--p); color:var(--p); margin-top: 10px;" onclick="copyCapsule('fpip_master')">COPIAR LANZAMIENTO FPIP (WHATSAPP)</button>
+        </div>
+
+
         <button class="btn-kill" onclick="killOperation()">[ LOGOUT AND SECURE TERMINAL ]</button>
 
         <div class="footer" style="position: relative;">
@@ -543,6 +555,8 @@
                 text = header + "📐 *MÁS ALLÁ DEL 'NO': SALIDA TÉCNICA*\n\nZacatecas solo dice 'No a la Reforma'. Sonora dice: 'Aquí está la Ley PIP'. No somos una huelga ciega, somos una propuesta técnica implacable. Cambiamos el juego de Suma Cero por uno de Suma Variable donde el magisterio gana por inteligencia." + footer;
             } else if (type === 'anti_bot') {
                 text = "📢 *MS - ALERTA DE INFILTRADOS* 📢\n\n¿Notan cómo siempre aparece un 'anónimo' pidiendo 'la propuesta' en cuanto publicamos una denuncia fuerte? 🧐\n\nEsa es la táctica del *'Espárrago'* y los bots de la SEC:\n1. **Fingen 'crítica constructiva'** para no ser baneados.\n2. **Exigen propuestas técnicas** para que dejes de hablar del robo del Concepto 07.\n3. **Quieren perderte en tecnicismos** mientras ellos se quedan con el presupuesto.\n\n📍 *Nuestra respuesta es clara:*\nNo necesitamos 'hacer otra propuesta'. La propuesta es que **REGRESEN LO QUE SE ROBARON** y que se aplique la **LEY PIP** y la **Auditoría al FASM28**.\n\nSi el que pregunta no trae la chequera ni la ley en la mano, ¡su 'propuesta' es puro circo de la SEC! 🎪\n\n#MagisterioSonorense #NoAlDesgaste #Justicia07";
+            } else if (type === 'fpip_master') {
+                text = header + "💎 *LANZAMIENTO: PROYECTO FPIP 2026* 💎\n\nCompañeros, ¡ya está aquí la ARQUITECTURA DE LA DIGNIDAD!\n\n📍 *¿Qué es el FPIP?* Es el fondo que garantiza tu jubilación al 100% de tasa de reemplazo.\n📍 *¿De dónde sale?* No es magia, es justicia: Recuperamos el 2% de comisiones que hoy se quedan las AFOREs privadas.\n📍 *La Meta:* Ni un peso más para el lucro bancario, todo para el retiro magisterial.\n\n¡Consulte el dictamen completo en la Terminal MS! No permitas que jueguen con tu futuro.\n\n#FPIP #PensiónDigna #MagisterioSonorense #NiUnPasoAtras" + footer;
             }
 
             navigator.clipboard.writeText(text).then(() => {

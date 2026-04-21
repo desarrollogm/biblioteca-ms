@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tomo XIX: El Motor de la Dignidad - Biblioteca Digital MS</title>
+    <!-- Metadatos para Previsualización (WhatsApp/Social) -->
+    <meta property="og:title" content="Tomo XIX: El Motor de la Dignidad - FPIP">
+    <meta property="og:description" content="Análisis de la Pensión Intergeneracional Protegida (PIP) mediante la Teoría de Juegos de Jiang Xueqin.">
+    <meta property="og:image" content="https://desarrollogm.github.io/biblioteca-ms/tomoXIX/images/portada.png">
+    <meta property="og:url" content="https://desarrollogm.github.io/biblioteca-ms/tomoXIX/tomo19.html">
+    <meta property="og:type" content="article">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700&family=Playfair+Display:wght@700&family=Roboto+Mono&display=swap');
+
+        :root {
+            --gold: #D4AF37;
+            --dark-gold: #996515;
+            --bg-dark: #0a0a0a;
+            --text-light: #e0e0e0;
+            --shadow: 0 10px 30px rgba(0,0,0,0.8);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: var(--bg-dark);
+            color: var(--text-light);
+            font-family: 'Outfit', sans-serif;
+            overflow-x: hidden;
+            scroll-snap-type: y mandatory;
+        }
+
+        /* Indicador de Activación de Audio */
+        #audio-prompt {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: rgba(212, 175, 55, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 10px 20px;
+            border: 1px solid var(--gold);
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            color: var(--gold);
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        #audio-prompt:hover { background: var(--gold); color: black; }
+
+        .panel {
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            scroll-snap-align: start;
+            overflow: hidden;
+            border-bottom: 2px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .panel-bg {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            object-fit: cover;
+            opacity: 0.5;
+            transition: transform 0.8s ease-out;
+            filter: brightness(0.4) contrast(1.1);
+        }
+
+        .panel:hover .panel-bg { transform: scale(1.05); }
+
+        .panel-content {
+            position: relative;
+            z-index: 10;
+            max-width: 900px;
+            padding: 40px;
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .panel-number {
+            font-family: 'Roboto+Mono', monospace;
+            color: var(--gold);
+            letter-spacing: 5px;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .panel-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            text-transform: uppercase;
+        }
+
+        .panel-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            color: #ccc;
+        }
+
+        .btn-action {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 30px;
+            background: var(--gold);
+            color: black;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .btn-action:hover {
+            background: white;
+            box-shadow: 0 0 20px var(--gold);
+        }
+
+        /* BARRA DE PROGRESO LATERAL */
+        .progress-nav {
+            position: fixed;
+            left: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .dot {
+            width: 10px; height: 10px;
+            border: 1px solid var(--gold);
+            border-radius: 50%;
+            transition: 0.3s;
+        }
+
+        .dot.active {
+            background: var(--gold);
+            transform: scale(1.5);
+            box-shadow: 0 0 10px var(--gold);
+        }
+
+        @media (max-width: 768px) {
+            .panel-content { margin: 20px; padding: 20px; }
+            .panel-title { font-size: 1.8rem; }
+            .progress-nav { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="audio-prompt" onclick="toggleAudio()">
+        <span id="audio-icon">🔈</span>
+        <span id="audio-text">ACTIVAR HIMNO MS</span>
+    </div>
+
+    <audio id="himnoAudio" loop>
+        <source src="../assets/audio/himno_ms.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="progress-nav">
+        <div class="dot active"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+    </div>
+
+    <main>
+        <!-- PORTADA -->
+        <section class="panel">
+            <img src="images/portada.png" class="panel-bg">
+            <div class="panel-content">
+                <span class="panel-number">TOMO XIX</span>
+                <h2 class="panel-title">El Motor de la Dignidad</h2>
+                <p class="panel-text">Bajo la guía del Profr. Juan Pablo de Navojoa, el arquitecto de la PIP, el Magisterio Sonorense traza la ruta técnica hacia el retiro digno. Junto a Kristian y Paloma, desglosamos la ingeniería del futuro.</p>
+                <a href="#cap1" class="btn-action">Iniciar Lectura</a>
+            </div>
+        </section>
+
+        <!-- CAP 1 -->
+        <section class="panel" id="cap1">
+            <img src="images/cap1.png" class="panel-bg">
+            <div class="panel-content">
+                <span class="panel-number">CAPÍTULO I</span>
+                <h2 class="panel-title">El Juego de Suma Cero</h2>
+                <p class="panel-text">La reforma de 2007 fue un diseño donde para que el sistema ganara, el maestro debía perder. Jiang Xueqin nos advierte que un juego así solo es sostenible mediante la opresión. Aquí revelamos la trampa de las AFORES.</p>
+                <span class="panel-number">TEORÍA DE JUEGOS: ZERO-SUM GAME</span>
+            </div>
+        </section>
+
+        <!-- CAP 2 -->
+        <section class="panel">
+            <img src="images/cap2.png" class="panel-bg">
+            <div class="panel-content">
+                <span class="panel-number">CAPÍTULO II</span>
+                <h2 class="panel-title">La Manufactura de la Ignorancia</h2>
+                <p class="panel-text">La Agnotología es la ignorancia producida deliberadamente. Los estados de cuenta confusos no son un error; son una herramienta del charrismo para que no sepas cuánto estás perdiendo.</p>
+            </div>
+        </section>
+
+        <!-- CAP 3 -->
+        <section class="panel">
+            <img src="images/cap3.png" class="panel-bg">
+            <div class="panel-content">
+                <span class="panel-number">CAPÍTULO III</span>
+                <h2 class="panel-title">Inducción hacia Atrás</h2>
+                <p class="panel-text">Si el objetivo es Junio de 2026 con tasa de reemplazo del 100%, la Induction hacia Atrás nos obliga a organizar la movilización del 1 de Mayo hoy mismo. No hay tiempo que perder.</p>
+            </div>
+        </section>
+
+        <!-- CAP 4 -->
+        <section class="panel">
+            <img src="images/cap4.png" class="panel-bg">
+            <div class="panel-content">
+                <span class="panel-number">CAPÍTULO IV</span>
+                <h2 class="panel-title">El Dilema del Magisterio</h2>
+                <p class="panel-text">La fragmentación individual es la derrota colectiva. La PIP genera un nuevo Equilibrio de Nash donde la cooperación es la única estrategia ganadora para todos los niveles.</p>
+            </div>
+        </section>
+
+        <!-- CAP 5 -->
+        <section class="panel">
+            <img src="images/cap5.png" class="panel-bg">
+            <div class="panel-content">
+                <span class="panel-number">CAPÍTULO V</span>
+                <h2 class="panel-title">Cambiando la Matriz de Pagos</h2>
+                <p class="panel-text">Al proponer el 6%+6%, elevamos el costo de traición del Gobierno. Ya no pedimos presupuesto; diseñamos una estructura que alinea los intereses del Estado con la dignidad del docente.</p>
+            </div>
+        </section>
+
+        <!-- CAP 6 -->
+        <section class="panel">
+            <img src="images/cap6.png" class="panel-bg">
+            <div class="panel-content">
+                <span class="panel-number">CAPÍTULO VI</span>
+                <h2 class="panel-title">La Ecuación Dorada</h2>
+                <p class="panel-text">El blindaje técnico de la PIP asegura que el desfalco de 2007 no se repita. Puntos de cristal y fondos intergeneracionales protegidos por la Ley.</p>
+            </div>
+        </section>
+
+        <!-- CAP 7 -->
+        <section class="panel">
+            <img src="images/cap7.png" class="panel-bg">
+            <div class="panel-content">
+                <span class="panel-number">CAPÍTULO VII</span>
+                <h2 class="panel-title">Señalización y Credibilidad</h2>
+                <p class="panel-text">Nuestra consulta a las bases no es un ejercicio de debate, es una señal de compromiso irrevocable en el tablero de negociación.</p>
+            </div>
+        </section>
+
+        <!-- CAP 8 -->
+        <section class="panel">
+            <img src="images/cap8.png" class="panel-bg">
+            <div class="panel-content">
+                <span class="panel-number">CAPÍTULO VIII</span>
+                <h2 class="panel-title">El Punto de Inflexión</h2>
+                <p class="panel-text">De la indignación al engranaje. Cómo el Magisterio Sonorense ha superado el umbral crítico para convertirse en el motor del cambio nacional.</p>
+            </div>
+        </section>
+
+        <!-- CAP 9 -->
+        <section class="panel">
+            <img src="images/cap9.png" class="panel-bg">
+            <div class="panel-content">
+                <span class="panel-number">CAPÍTULO IX</span>
+                <h2 class="panel-title">Asabiyyah: El Contrato de Honor</h2>
+                <p class="panel-text">Maestros retirados, activos e internos unidos por una cohesión social indestructible. De Navojoa a San Luis, somos una sola fuerza.</p>
+            </div>
+        </section>
+
+        <!-- CAP 10 -->
+        <section class="panel">
+            <img src="images/cap10.png" class="panel-bg">
+            <div class="panel-content">
+                <span class="panel-number">CAPÍTULO X</span>
+                <h2 class="panel-title">Jaque Mate</h2>
+                <p class="panel-text">Juan Pablo, Kristian y Paloma cierran este tomo con la certeza de la victoria. La PIP es el motor que nos lleva a la dignidad final. Jaque mate al olvido.</p>
+                <a href="../index.html" class="btn-action">Volver a Biblioteca</a>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        function toggleAudio() {
+            const audio = document.getElementById('himnoAudio');
+            const prompt = document.getElementById('audio-text');
+            const icon = document.getElementById('audio-icon');
+            if (audio.paused) {
+                audio.play();
+                prompt.innerText = "HIMNO MS ACTIVO";
+                icon.innerText = "🔊";
+            } else {
+                audio.pause();
+                prompt.innerText = "ACTIVAR HIMNO MS";
+                icon.innerText = "🔈";
+            }
+        }
+
+        // Observer para el scroll y progreso
+        const panels = document.querySelectorAll('.panel');
+        const dots = document.querySelectorAll('.dot');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const index = Array.from(panels).indexOf(entry.target);
+                    dots.forEach(dot => dot.classList.remove('active'));
+                    dots[index].classList.add('active');
+                }
+            });
+        }, { threshold: 0.5 });
+
+        panels.forEach(panel => observer.observe(panel));
+    </script>
+</body>
+</html>
