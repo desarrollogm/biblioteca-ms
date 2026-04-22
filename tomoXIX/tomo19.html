@@ -1,212 +1,318 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-MX">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tomo XIX: El Motor de la Dignidad - Biblioteca Digital MS</title>
-    <!-- Metadatos para Previsualización (WhatsApp/Social) -->
-    <meta property="og:title" content="Tomo XIX: El Motor de la Dignidad - FPIP">
+    <title>Tomo XIX: El Motor de la Dignidad | Biblioteca Digital MS</title>
+    <meta name="description" content="Tomo XIX: El Motor de la Dignidad. Análisis de la Pensión Intergeneracional Protegida (PIP).">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Biblioteca Digital MS">
+    <meta property="og:url" content="https://desarrollogm.github.io/biblioteca-ms/tomoXIX/tomo19.html">
+    <meta property="og:title" content="Tomo XIX: El Motor de la Dignidad | Biblioteca Digital MS">
     <meta property="og:description" content="Análisis de la Pensión Intergeneracional Protegida (PIP) mediante la Teoría de Juegos de Jiang Xueqin.">
     <meta property="og:image" content="https://desarrollogm.github.io/biblioteca-ms/tomoXIX/images/portada.png">
-    <meta property="og:url" content="https://desarrollogm.github.io/biblioteca-ms/tomoXIX/tomo19.html">
-    <meta property="og:type" content="article">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700&family=Playfair+Display:wght@700&family=Roboto+Mono&display=swap');
+    <meta property="og:image:secure_url" content="https://desarrollogm.github.io/biblioteca-ms/tomoXIX/images/portada.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
 
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Tomo XIX: El Motor de la Dignidad | Magisterio Sonorense">
+    <meta name="twitter:description" content="La ingeniería del retiro digno bajo la guía estratégica del Profr. Juan Pablo.">
+    <meta name="twitter:image" content="https://desarrollogm.github.io/biblioteca-ms/tomoXIX/images/portada.png">
+
+    <link rel="icon" type="image/png" href="../assets/favicon-ms.png">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Playfair+Display:ital,wght@0,400;1,700&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <style>
         :root {
-            --gold: #D4AF37;
-            --dark-gold: #996515;
-            --bg-dark: #0a0a0a;
-            --text-light: #e0e0e0;
-            --shadow: 0 10px 30px rgba(0,0,0,0.8);
+            --bg-color: #050505;
+            --primary-red: #8b0000;
+            --accent-gold: #c5a028;
+            --text-white: #e0e0e0;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            background: var(--bg-dark);
-            color: var(--text-light);
-            font-family: 'Outfit', sans-serif;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-white);
             overflow-x: hidden;
             scroll-snap-type: y mandatory;
+            height: 100vh;
+            font-size: 14px;
         }
 
-        /* Indicador de Activación de Audio */
-        #audio-prompt {
+        /* Texture Overlay */
+        .texture-overlay {
             position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1000;
-            background: rgba(212, 175, 55, 0.2);
-            backdrop-filter: blur(10px);
-            padding: 10px 20px;
-            border: 1px solid var(--gold);
-            border-radius: 50px;
-            cursor: pointer;
-            font-size: 0.8rem;
-            color: var(--gold);
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/dark-matter.png');
+            opacity: 0.15;
+            pointer-events: none;
+            z-index: 5;
         }
 
-        #audio-prompt:hover { background: var(--gold); color: black; }
+        .header {
+            position: fixed;
+            top: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            text-align: center;
+            width: 100%;
+            pointer-events: none;
+        }
+
+        .header h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,1);
+        }
+
+        .ms-logo {
+            width: 100px;
+            margin-bottom: 8px;
+            filter: drop-shadow(0 0 15px var(--accent-gold));
+            pointer-events: auto;
+        }
 
         .panel {
             height: 100vh;
-            width: 100%;
+            width: 100vw;
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
             scroll-snap-align: start;
             overflow: hidden;
-            border-bottom: 2px solid rgba(212, 175, 55, 0.1);
+            background: #000;
         }
 
         .panel-bg {
             position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             object-fit: cover;
-            opacity: 0.5;
-            transition: transform 0.8s ease-out;
-            filter: brightness(0.4) contrast(1.1);
+            filter: brightness(1) contrast(1.1);
+            transition: transform 6s ease-out, filter 0.8s ease-out;
+            transform: scale(1.15);
         }
 
-        .panel:hover .panel-bg { transform: scale(1.05); }
+        .panel.active .panel-bg {
+            transform: scale(1);
+            filter: brightness(0.35) contrast(1.2) saturate(1.1);
+            transition: transform 6s ease-out, filter 2s ease-in-out 3s;
+        }
 
         .panel-content {
             position: relative;
             z-index: 10;
-            max-width: 900px;
-            padding: 40px;
-            background: rgba(0,0,0,0.7);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            box-shadow: var(--shadow);
-            text-align: center;
+            width: 90%;
+            max-width: 850px;
+            padding: 30px;
+            background: rgba(5, 5, 5, 0.9);
+            border-left: 6px solid var(--accent-gold);
+            border-top: 1px solid rgba(197, 160, 40, 0.2);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 50px 100px rgba(0,0,0,1);
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .panel.active .panel-content {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 1.8s ease-out 4s, transform 1.8s ease-out 4.2s;
         }
 
         .panel-number {
-            font-family: 'Roboto+Mono', monospace;
-            color: var(--gold);
+            font-family: 'Cinzel', serif;
+            color: var(--accent-gold);
+            font-weight: 700;
             letter-spacing: 5px;
-            font-size: 0.9rem;
-            margin-bottom: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 10px;
             display: block;
+            opacity: 0.9;
         }
 
         .panel-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            color: white;
+            font-family: 'Cinzel', serif;
+            font-size: 2.2rem;
+            color: #fff;
             margin-bottom: 20px;
-            line-height: 1.2;
+            line-height: 1.1;
             text-transform: uppercase;
+            text-shadow: 0 0 25px rgba(255,255,255,0.1);
         }
 
         .panel-text {
-            font-size: 1.1rem;
-            line-height: 1.8;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: #ddd;
             margin-bottom: 20px;
-            color: #ccc;
+            text-align: justify;
         }
 
-        .btn-action {
-            display: inline-block;
-            margin-top: 30px;
+        .panel-quote {
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+            color: var(--accent-gold);
+            padding: 15px;
+            border: 1px solid rgba(197, 160, 40, 0.3);
+            background: rgba(197, 160, 40, 0.04);
+            display: block;
+            text-align: center;
+            letter-spacing: 1.5px;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        .btn-home {
+            position: fixed;
+            top: 25px;
+            right: 30px;
+            z-index: 1001;
             padding: 12px 30px;
-            background: var(--gold);
-            color: black;
+            background: transparent;
+            color: var(--accent-gold);
             text-decoration: none;
+            font-family: 'Cinzel', serif;
             font-weight: bold;
-            border-radius: 5px;
+            font-size: 0.85rem;
+            border: 1px solid var(--accent-gold);
+            transition: 0.5s;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .btn-home:hover { background: var(--accent-gold); color: #000; box-shadow: 0 0 25px var(--accent-gold); }
+
+        .btn-inner-return {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            border: 1px solid var(--accent-gold);
+            color: var(--accent-gold);
+            text-decoration: none;
+            font-family: 'Cinzel', serif;
+            font-size: 0.75rem;
+            font-weight: 900;
+            letter-spacing: 2px;
             transition: 0.3s;
         }
-
-        .btn-action:hover {
-            background: white;
-            box-shadow: 0 0 20px var(--gold);
+        
+        .btn-inner-return:hover {
+            background: var(--accent-gold);
+            color: #000;
         }
 
-        /* BARRA DE PROGRESO LATERAL */
-        .progress-nav {
+        .progress-bar {
             position: fixed;
-            left: 30px;
+            right: 15px;
             top: 50%;
             transform: translateY(-50%);
-            z-index: 100;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
+            height: 250px;
+            width: 3px;
+            background: rgba(255,255,255,0.1);
+            z-index: 2000;
+            border-radius: 5px;
         }
 
-        .dot {
-            width: 10px; height: 10px;
-            border: 1px solid var(--gold);
-            border-radius: 50%;
-            transition: 0.3s;
+        .progress-fill {
+            width: 100%;
+            background: var(--accent-gold);
+            height: 0%;
+            transition: height 0.5s;
+            box-shadow: 0 0 15px var(--accent-gold);
+            border-radius: 5px;
         }
 
-        .dot.active {
-            background: var(--gold);
-            transform: scale(1.5);
-            box-shadow: 0 0 10px var(--gold);
+        .btn-audio {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 2005;
+            padding: 12px 24px;
+            background: rgba(0,0,0,0.8);
+            color: var(--accent-gold);
+            border: 1px solid var(--accent-gold);
+            font-family: 'Cinzel', serif;
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: 0.4s;
+            letter-spacing: 2px;
+            backdrop-filter: blur(10px);
         }
+
+        .btn-audio:hover { background: var(--accent-gold); color: #000; }
+
+        .panel-content::-webkit-scrollbar { width: 6px; }
+        .panel-content::-webkit-scrollbar-track { background: rgba(0,0,0,0.5); }
+        .panel-content::-webkit-scrollbar-thumb { background: var(--accent-gold); border-radius: 3px; }
+        .panel-content::-webkit-scrollbar-thumb:hover { background: #fff; }
 
         @media (max-width: 768px) {
-            .panel-content { margin: 20px; padding: 20px; }
-            .panel-title { font-size: 1.8rem; }
-            .progress-nav { display: none; }
+            .panel-title { font-size: 1.6rem; }
+            .panel-content { padding: 25px; }
+            .panel-text { font-size: 0.95rem; }
+            .header h1 { font-size: 0.7rem; }
+            .btn-home { font-size: 0.7rem; padding: 8px 15px; top: 15px; right: 15px; }
         }
     </style>
 </head>
 <body>
+    <div class="texture-overlay"></div>
+    <div class="progress-bar"><div class="progress-fill" id="progress"></div></div>
 
-    <div id="audio-prompt" onclick="toggleAudio()">
-        <span id="audio-icon">🔈</span>
-        <span id="audio-text">ACTIVAR HIMNO MS</span>
-    </div>
+    <header class="header">
+        <a href="../index.html"><img src="../assets/logo_ms_oficial.jpg" class="ms-logo" alt="Logo MS"></a>
+        <h1>Tomo XIX: El Motor de la Dignidad</h1>
+    </header>
+
+    <a href="../index.html" class="btn-home">Regresar</a>
+    <button id="audioToggle" class="btn-audio">🔊 AUDIO: HIMNO MS</button>
 
     <audio id="himnoAudio" loop>
         <source src="../assets/audio/himno_ms.mp3" type="audio/mpeg">
     </audio>
 
-    <div class="progress-nav">
-        <div class="dot active"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-    </div>
-
     <main>
         <!-- PORTADA -->
-        <section class="panel">
+        <section class="panel active">
             <img src="images/portada.png" class="panel-bg">
             <div class="panel-content">
                 <span class="panel-number">TOMO XIX</span>
                 <h2 class="panel-title">El Motor de la Dignidad</h2>
-                <p class="panel-text">Bajo la guía del Profr. Juan Pablo de Navojoa, el arquitecto de la PIP, el Magisterio Sonorense traza la ruta técnica hacia el retiro digno. Junto a Kristian y Paloma, desglosamos la ingeniería del futuro.</p>
-                <a href="#cap1" class="btn-action">Iniciar Lectura</a>
+                <p class="panel-text">Bajo la guía estratégica del Profr. Juan Pablo de Navojoa, arquitecto de la Pensión Intergeneracional Protegida (PIP), el Magisterio Sonorense traza la ruta técnica hacia el retiro digno. Junto a Kristian y Paloma, desglosamos la ingeniería del futuro para blindar el esfuerzo de una vida contra la rapiña financiera y el charrismo corporativo. Este volumen es el plano de construcción de nuestra propia libertad soberana.</p>
+                <span class="panel-quote">"No vamos con la mano extendida, vamos con una propuesta construida desde las bases."</span>
+                <a href="../index.html" class="btn-inner-return">VOLVER AL MENÚ</a>
             </div>
         </section>
 
         <!-- CAP 1 -->
-        <section class="panel" id="cap1">
+        <section class="panel">
             <img src="images/cap1.png" class="panel-bg">
             <div class="panel-content">
                 <span class="panel-number">CAPÍTULO I</span>
                 <h2 class="panel-title">El Juego de Suma Cero</h2>
-                <p class="panel-text">La reforma de 2007 fue un diseño donde para que el sistema ganara, el maestro debía perder. Jiang Xueqin nos advierte que un juego así solo es sostenible mediante la opresión. Aquí revelamos la trampa de las AFORES.</p>
-                <span class="panel-number">TEORÍA DE JUEGOS: ZERO-SUM GAME</span>
+                <p class="panel-text">La reforma de 2007 no fue un error administrativo; fue un diseño actuarial deliberado para transferir la riqueza docente al capital financiero. Jiang Xueqin nos advierte: en un juego de suma cero, la ganancia del sistema es el despojo del maestro. Aquí exponemos la trampa de las AFORES y la necesidad de una ruptura estructural para recuperar el pacto intergeneracional que una vez sostuvo nuestra dignidad.</p>
+                <span class="panel-quote">"Un juego donde uno pierde para que otro gane no es justicia, es despojo institucional."</span>
+                <a href="../index.html" class="btn-inner-return">VOLVER AL MENÚ</a>
             </div>
         </section>
 
@@ -216,7 +322,9 @@
             <div class="panel-content">
                 <span class="panel-number">CAPÍTULO II</span>
                 <h2 class="panel-title">La Manufactura de la Ignorancia</h2>
-                <p class="panel-text">La Agnotología es la ignorancia producida deliberadamente. Los estados de cuenta confusos no son un error; son una herramienta del charrismo para que no sepas cuánto estás perdiendo.</p>
+                <p class="panel-text">La Agnotología es la ignorancia producida deliberadamente por el Estado. Los conceptos salariales opacos y los estados de cuenta confusos no son accidentes; son herramientas de control del charrismo corporativo. Kristian y Paloma iluminan la oscuridad burocrática para que el maestro sonorense recupere su soberanía informativa y técnica frente al sistema.</p>
+                <span class="panel-quote">"La luz de la verdad técnica es el peor enemigo de la opacidad sindical."</span>
+                <a href="../index.html" class="btn-inner-return">VOLVER AL MENÚ</a>
             </div>
         </section>
 
@@ -226,7 +334,9 @@
             <div class="panel-content">
                 <span class="panel-number">CAPÍTULO III</span>
                 <h2 class="panel-title">Inducción hacia Atrás</h2>
-                <p class="panel-text">Si el objetivo es Junio de 2026 con tasa de reemplazo del 100%, la Induction hacia Atrás nos obliga a organizar la movilización del 1 de Mayo hoy mismo. No hay tiempo que perder.</p>
+                <p class="panel-text">La Inducción hacia Atrás (Backward Induction) nos permite ver el colapso de 2026 y actuar hoy para evitarlo. Si el objetivo es el 100% de tasa de reemplazo, nuestra ruta crítica marca hitos innegociables. El 1 de Mayo no es una fecha en el calendario; es un hito de presión estructural en nuestro tablero de negociación. No esperamos el futuro; lo construimos desde la necesidad técnica del presente.</p>
+                <span class="panel-quote">"Para llegar a la victoria, debemos empezar diseñando el final."</span>
+                <a href="../index.html" class="btn-inner-return">VOLVER AL MENÚ</a>
             </div>
         </section>
 
@@ -236,7 +346,9 @@
             <div class="panel-content">
                 <span class="panel-number">CAPÍTULO IV</span>
                 <h2 class="panel-title">El Dilema del Magisterio</h2>
-                <p class="panel-text">La fragmentación individual es la derrota colectiva. La PIP genera un nuevo Equilibrio de Nash donde la cooperación es la única estrategia ganadora para todos los niveles.</p>
+                <p class="panel-text">La fragmentación individual es el Equilibrio de Nash que el sistema prefiere para mantenernos dóciles. La PIP propone un nuevo contrato social donde la cooperación es la única estrategia ganadora para todos los niveles: desde el nuevo ingreso hasta el jubilado. La cohesión no es solo un lema; es la variable matemática que decide nuestra supervivencia colectiva.</p>
+                <span class="panel-quote">"Solos somos piezas de cambio; unidos somos el motor del tablero."</span>
+                <a href="../index.html" class="btn-inner-return">VOLVER AL MENÚ</a>
             </div>
         </section>
 
@@ -246,7 +358,9 @@
             <div class="panel-content">
                 <span class="panel-number">CAPÍTULO V</span>
                 <h2 class="panel-title">Cambiando la Matriz de Pagos</h2>
-                <p class="panel-text">Al proponer el 6%+6%, elevamos el costo de traición del Gobierno. Ya no pedimos presupuesto; diseñamos una estructura que alinea los intereses del Estado con la dignidad del docente.</p>
+                <p class="panel-text">Al proponer el modelo solidario del 6%+6%, elevamos drásticamente el costo de traición del Gobierno. Ya no pedimos presupuesto como una limosna; imponemos una estructura técnica que alinea los intereses del Estado con la justicia social del magisterio. Es una jugada maestra que obliga al poder a elegir entre la estabilidad o la ruptura total.</p>
+                <span class="panel-quote">"La técnica es el único lenguaje que el poder se ve obligado a respetar."</span>
+                <a href="../index.html" class="btn-inner-return">VOLVER AL MENÚ</a>
             </div>
         </section>
 
@@ -256,7 +370,9 @@
             <div class="panel-content">
                 <span class="panel-number">CAPÍTULO VI</span>
                 <h2 class="panel-title">La Ecuación Dorada</h2>
-                <p class="panel-text">El blindaje técnico de la PIP asegura que el desfalco de 2007 no se repita. Puntos de cristal y fondos intergeneracionales protegidos por la Ley.</p>
+                <p class="panel-text">La Ecuación Dorada de la PIP es el blindaje técnico que garantiza que el esfuerzo del maestro se quede en manos del maestro. Fondos intergeneracionales protegidos por ley, auditables y transparentes, lejos de la rapiña política y el desvío sindical. Es la garantía de que el 'agujero negro' de 2007 nunca volverá a tragarse nuestro retiro.</p>
+                <span class="panel-quote">"La transparencia es el candado definitivo contra el desvío histórico."</span>
+                <a href="../index.html" class="btn-inner-return">VOLVER AL MENÚ</a>
             </div>
         </section>
 
@@ -266,7 +382,9 @@
             <div class="panel-content">
                 <span class="panel-number">CAPÍTULO VII</span>
                 <h2 class="panel-title">Señalización y Credibilidad</h2>
-                <p class="panel-text">Nuestra consulta a las bases no es un ejercicio de debate, es una señal de compromiso irrevocable en el tablero de negociación.</p>
+                <p class="panel-text">Nuestra consulta masiva es la señal de credibilidad (Signal) más potente en el tablero. Demostramos al sistema que no dependemos de cúpulas negociables ni de líderes 'doblables', sino de una base informada y decidida que no aceptará migajas. Cada firma es un mensaje directo: el Magisterio Sonorense ha cruzado el umbral del compromiso irrevocable.</p>
+                <span class="panel-quote">"Nuestra firma es el juramento técnico de nuestra libertad colectiva."</span>
+                <a href="../index.html" class="btn-inner-return">VOLVER AL MENÚ</a>
             </div>
         </section>
 
@@ -276,7 +394,9 @@
             <div class="panel-content">
                 <span class="panel-number">CAPÍTULO VIII</span>
                 <h2 class="panel-title">El Punto de Inflexión</h2>
-                <p class="panel-text">De la indignación al engranaje. Cómo el Magisterio Sonorense ha superado el umbral crítico para convertirse en el motor del cambio nacional.</p>
+                <p class="panel-text">El Punto de Inflexión se alcanza cuando la indignación se convierte en engranaje. El Magisterio Sonorense ha superado el umbral crítico; ahora somos el motor que arrastra al resto del país hacia la dignidad. Ya no somos reactivos; somos la fuerza proactiva que define el ritmo de la negociación nacional. La inercia del cambio ha comenzado.</p>
+                <span class="panel-quote">"Cuando el motor de la base arranca, el tablero oficial colapsa."</span>
+                <a href="../index.html" class="btn-inner-return">VOLVER AL MENÚ</a>
             </div>
         </section>
 
@@ -286,7 +406,9 @@
             <div class="panel-content">
                 <span class="panel-number">CAPÍTULO IX</span>
                 <h2 class="panel-title">Asabiyyah: El Contrato de Honor</h2>
-                <p class="panel-text">Maestros retirados, activos e internos unidos por una cohesión social indestructible. De Navojoa a San Luis, somos una sola fuerza.</p>
+                <p class="panel-text">Asabiyyah: El vínculo de honor que une a Navojoa con San Luis y a cada rincón del desierto. Maestros activos y retirados formando un solo escudo contra la traición del charrismo. Nuestra cohesión social es la única protección contra el olvido oficial. Somos una sola fuerza, un solo contrato de honor que no conoce fronteras jerárquicas.</p>
+                <span class="panel-quote">"Honor a la base: la única soberanía que el sistema no puede decapitar."</span>
+                <a href="../index.html" class="btn-inner-return">VOLVER AL MENÚ</a>
             </div>
         </section>
 
@@ -296,43 +418,44 @@
             <div class="panel-content">
                 <span class="panel-number">CAPÍTULO X</span>
                 <h2 class="panel-title">Jaque Mate</h2>
-                <p class="panel-text">Juan Pablo, Kristian y Paloma cierran este tomo con la certeza de la victoria. La PIP es el motor que nos lleva a la dignidad final. Jaque mate al olvido.</p>
-                <a href="../index.html" class="btn-action">Volver a Biblioteca</a>
+                <p class="panel-text">Jaque Mate al Olvido. Juan Pablo, Kristian y Paloma cierran este tomo con la certeza absoluta de la victoria técnica. La PIP es el motor de la dignidad final que ha desmantelado la fábrica de ignorancia. El tablero ahora es nuestro, y el resultado es la justicia histórica para el docente sonorense. La dignidad ha ganado la partida.</p>
+                <span class="panel-quote">"El tablero es nuestro. La victoria es de la base. Jaque mate."</span>
+                <a href="../index.html" class="btn-inner-return">CERRAR TOMO XIX Y VOLVER</a>
             </div>
         </section>
     </main>
 
     <script>
-        function toggleAudio() {
-            const audio = document.getElementById('himnoAudio');
-            const prompt = document.getElementById('audio-text');
-            const icon = document.getElementById('audio-icon');
-            if (audio.paused) {
-                audio.play();
-                prompt.innerText = "HIMNO MS ACTIVO";
-                icon.innerText = "🔊";
-            } else {
-                audio.pause();
-                prompt.innerText = "ACTIVAR HIMNO MS";
-                icon.innerText = "🔈";
-            }
-        }
-
-        // Observer para el scroll y progreso
         const panels = document.querySelectorAll('.panel');
-        const dots = document.querySelectorAll('.dot');
-        
+        const progress = document.getElementById('progress');
+
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
                     const index = Array.from(panels).indexOf(entry.target);
-                    dots.forEach(dot => dot.classList.remove('active'));
-                    dots[index].classList.add('active');
+                    const percent = (index / (panels.length - 1)) * 100;
+                    progress.style.height = percent + '%';
+                } else {
+                    entry.target.classList.remove('active');
                 }
             });
         }, { threshold: 0.5 });
 
-        panels.forEach(panel => observer.observe(panel));
+        panels.forEach(p => observer.observe(p));
+
+        const audio = document.getElementById('himnoAudio');
+        const audioBtn = document.getElementById('audioToggle');
+        
+        audioBtn.addEventListener('click', () => {
+            if (audio.paused) {
+                audio.play();
+                audioBtn.textContent = '⏸︎ PAUSAR HIMNO MS';
+            } else {
+                audio.pause();
+                audioBtn.textContent = '🔊 AUDIO: HIMNO MS';
+            }
+        });
     </script>
 </body>
 </html>
