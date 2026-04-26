@@ -256,6 +256,19 @@ h1, h2, h3 {
     margin-top: 0.5rem;
 }
 
+.signature {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 2rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: var(--gold);
+    opacity: 0.6;
+    letter-spacing: 2px;
+    pointer-events: none;
+    z-index: 1000;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .intro-card, .modal-body {
