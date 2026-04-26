@@ -89,3 +89,22 @@ window.onclick = function(event) {
         closeModal();
     }
 }
+
+// Audio Control Logic
+const audio = document.getElementById('bg-audio');
+const playBtn = document.getElementById('play-pause');
+const audioIcon = document.getElementById('audio-icon');
+
+playBtn.addEventListener('click', () => {
+    if (audio.paused) {
+        audio.play();
+        playBtn.innerHTML = '<span id="audio-icon">⏸️</span> Detener Himno';
+        playBtn.style.background = 'var(--gold)';
+        playBtn.style.color = '#000';
+    } else {
+        audio.pause();
+        playBtn.innerHTML = '<span id="audio-icon">🎵</span> Escuchar Himno MS';
+        playBtn.style.background = 'var(--card-bg)';
+        playBtn.style.color = 'var(--text-main)';
+    }
+});

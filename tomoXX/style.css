@@ -23,6 +23,47 @@ body {
     overflow-x: hidden;
 }
 
+/* Top Navigation */
+.top-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 2000;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    background: rgba(10, 10, 11, 0.8);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--frame-border);
+}
+
+.nav-btn {
+    text-decoration: none;
+    color: var(--text-main);
+    background: var(--card-bg);
+    padding: 0.6rem 1.2rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    border: 1px solid var(--gold);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.nav-btn:hover {
+    background: var(--gold);
+    color: #000;
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+}
+
+.audio-btn {
+    font-family: inherit;
+}
+
 h1, h2, h3 {
     font-family: 'Playfair Display', serif;
 }
