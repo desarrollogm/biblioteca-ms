@@ -6,61 +6,103 @@
     <title>Tomo XXI - La Cúpula de Cristal | Biblioteca MS</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --gold: #D4AF37;
+            --dark-red: #8B0000;
+            --white: #FFFFFF;
+            --gray: #AAAAAA;
+            --black: #000000;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            background-color: var(--black);
+            color: var(--white);
+            font-family: 'Roboto', sans-serif;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, p, div {
+            color: var(--white);
+        }
+
+        h1, h2, .tomo-label {
+            font-family: 'Cinzel', serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
         .parallax-section {
             position: relative;
             height: 100vh;
             display: flex;
-            flex-direction: row; /* Split screen */
+            flex-direction: row;
             align-items: stretch;
             border-bottom: 2px solid var(--gold);
         }
 
         .img-side {
-            flex: 1;
-            background-size: cover;
-            background-position: center;
-            border-right: 2px solid var(--gold);
+            flex: 1.2;
+            background-color: #000;
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #050505;
+            border-right: 2px solid var(--gold);
+            overflow: hidden;
         }
 
         .img-side img {
-            max-width: 85%;
-            max-height: 85%;
-            border: 6px solid var(--gold);
-            box-shadow: 0 0 50px rgba(0,0,0,1);
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: sepia(0.2) contrast(1.1);
+            transition: transform 0.5s;
         }
+        .img-side:hover img { transform: scale(1.05); }
 
         .text-side {
-            flex: 1;
+            flex: 0.8;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: flex-start;
-            padding: 4rem;
-            text-align: left;
-            background: linear-gradient(90deg, rgba(10,10,10,1) 0%, rgba(20,20,20,1) 100%);
+            padding: 5rem;
+            background: #0a0a0a;
+            position: relative;
+        }
+
+        .text-side::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(139, 0, 0, 0.05) 0%, transparent 70%);
+            pointer-events: none;
         }
 
         .content-wrap {
-            max-width: 500px;
+            max-width: 600px;
+            z-index: 2;
         }
 
-        .caricatura {
-            display: none; /* Removed from box, now in side */
-        }
+        h1 { font-size: 3rem; color: var(--white); margin: 0.5rem 0; line-height: 1.1; }
+        .gold-text { color: var(--gold) !important; font-weight: bold; }
+        .gray { color: var(--gray) !important; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 2px; }
 
-        h1 { font-size: 2.8rem; margin-top: 0.5rem; }
-        .gold-text { color: var(--gold); font-weight: bold; }
         .quote {
-            border-left: 3px solid var(--dark-red);
-            padding-left: 1.5rem;
-            margin-top: 2rem;
+            border-left: 4px solid var(--dark-red);
+            padding-left: 2rem;
+            margin-top: 3rem;
             font-style: italic;
-            color: var(--gray);
-            font-size: 1.1rem;
+            color: #ddd !important;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            background: rgba(255,255,255,0.03);
+            padding: 1.5rem;
         }
     </style>
 </head>
@@ -102,26 +144,28 @@
                 <h2 class="gold-text">CAPÍTULO 1</h2>
                 <h1>EL CAMALEÓN DE LA CALZADA</h1>
                 <p class="gray">Azael Santiago Chepi (Oaxaca - S22)</p>
-                <p>El salto del tigre con red de protección. Chepi es el maestro del disfraz político: un día está con el megáfono quemándose las suelas en la calzada de Oaxaca y al siguiente está de traje italiano votando en San Lázaro lo que sus bases juraron destruir.</p>
+                <p>El salto del tigre con red de protección institucional. Chepi es el maestro del disfraz: de quemarse las suelas en la calzada a los trajes de seda en San Lázaro. En 2019 operó para que la reforma pasara "sin raspones" mientras sus bases se asoleaban pidiendo justicia. Es el que usa el sudor del maestro para comprar el aire acondicionado del Congreso.</p>
                 <div class="quote">
-                    "Votó lo que hoy le duele al maestro, pero sigue posteando con el puño en alto. ¡Cínico!"
+                    "Votó lo que hoy le duele al maestro, pero sigue posteando con el puño en alto para la foto. ¡Cínico e hipócrita!"
                 </div>
             </div>
         </div>
     </section>
 
     <section id="cap2" class="parallax-section">
-        <div class="img-side">
-            <img src="https://via.placeholder.com/600x800/000000/D4AF37?text=LA+CELADORA" alt="Adela Piña">
+        <div class="img-side" style="background: url('../assets/hero_bg.jpg') center/cover; filter: grayscale(1);">
+            <div style="background: rgba(0,0,0,0.7); width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
+                <h2 class="gold-text" style="font-size: 3rem; text-align: center; border: 2px solid var(--gold); padding: 2rem;">RESERVADO:<br>LA CELADORA</h2>
+            </div>
         </div>
         <div class="text-side">
             <div class="content-wrap">
                 <h2 class="gold-text">CAPÍTULO 2</h2>
                 <h1>LA DOÑA USICAMM</h1>
                 <p class="gray">Adela Piña Bernal (CDMX - S9)</p>
-                <p>De las asambleas radicales a ser la celadora mayor de la jaula llamada USICAMM. Ella es la que administra el calvario de tus ascensos y la que dice "no hay presupuesto" mientras goza de las mieles del poder.</p>
+                <p>La fundadora del calvario magisterial moderno. De las asambleas radicales saltó a ser la jefa absoluta de la jaula llamada USICAMM. Ella es la que le puso el candado a tu plaza y se tragó la llave mientras cobra como alta funcionaria. Es la que dice "no hay presupuesto" mientras goza del presupuesto que era para las escuelas.</p>
                 <div class="quote">
-                    "¿Abrogar la USICAMM? ¡Si ella es la dueña del negocio!"
+                    "¿Abrogar la USICAMM? ¡Ni de broma! La CNTE grita en la calle pero su ex-dirigente es la que elije quién sube y quién baja."
                 </div>
             </div>
         </div>
@@ -136,9 +180,9 @@
                 <h2 class="gold-text">CAPÍTULO 3</h2>
                 <h1>EL TRAMPOLÍN MICHOACANO</h1>
                 <p class="gray">Raúl Morón Orozco (Michoacán - S18)</p>
-                <p>Morón no lucha, él escala. Usó a la Sección 18 como su elevador personal. Hoy, desde su escaño en el Senado, el aula le queda tan lejos como la honestidad. Puro perfume de cúpula.</p>
+                <p>Morón no lucha, él escala usando a los profes de peldaños. Infló el movimiento en la Sección 18 y cuando tuvo el peso político, negoció su salida al poder civil. Hoy desde el Senado la tiza y el pizarrón le quedan tan lejos como su honestidad magisterial.</p>
                 <div class="quote">
-                    "Ya no recuerda el aroma del gis, ahora puro perfume de cúpula y acuerdos por debajo de la mesa."
+                    "Ya no huele a gis, ahora puro perfume de cúpula y acuerdos por debajo de la mesa en los pasillos del Senado."
                 </div>
             </div>
         </div>
@@ -153,9 +197,9 @@
                 <h2 class="gold-text">CAPÍTULO 4</h2>
                 <h1>EL CAJERO DE LA REFORMA</h1>
                 <p class="gray">Irán Santiago Manuel (Oaxaca - S22)</p>
-                <p>Del manejo de la nómina en Oaxaca al manejo del presupuesto nacional. Salió de la oficina de pagos de la 22 para irse a la Comisión de Presupuesto en San Lázaro. El que paga manda.</p>
+                <p>Del manejo de la nómina seccional al presupuesto nacional. Salió de la oficina de pagos con el mapa de los dineros bajo el brazo y se lo entregó al patrón en la Comisión de Presupuesto. Sabe dónde está cada peso y asegura que no llegue a las manos del maestro de base.</p>
                 <div class="quote">
-                    "Se le olvidó el gis en cuanto tocó los billetes federales decidiendo tu futuro."
+                    "El operador financiero que cambió la mística por la aritmética del poder. El que paga manda."
                 </div>
             </div>
         </div>
