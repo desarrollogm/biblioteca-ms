@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tomo XXI - La Cúpula de Cristal | Biblioteca MS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --dark-red: #8B0000;
+            --black: #000000;
+            --white: #ffffff;
+            --gray: #b0b0b0;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            background-color: var(--black);
+            color: var(--white);
+            font-family: 'Roboto', sans-serif;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, .tomo-label {
+            font-family: 'Cinzel', serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .parallax-section {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            border-bottom: 2px solid var(--gold);
+        }
+
+        .content-box {
+            background: rgba(0, 0, 0, 0.86);
+            padding: 2.5rem;
+            border: 1px solid var(--gold);
+            max-width: 800px;
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+        }
+
+        .caricatura {
+            max-width: 380px;
+            border: 4px solid var(--gold);
+            margin-bottom: 1.5rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+        }
+
+        .gold-text { color: var(--gold); }
+        .gray { color: var(--gray); text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px; }
+
+        .red-btn {
+            background: var(--dark-red);
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 4px;
+            display: inline-block;
+            margin-top: 20px;
+            font-weight: bold;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid transparent;
+        }
+        .red-btn:hover { 
+            background: #a00000; 
+            transform: translateY(-3px); 
+            box-shadow: 0 5px 15px rgba(139, 0, 0, 0.4);
+            border: 1px solid var(--gold);
+        }
+
+        .nav-dots {
+            position: fixed;
+            right: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 100;
+        }
+        .dot {
+            width: 10px;
+            height: 10px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            margin: 18px 0;
+            display: block;
+            border: 1px solid var(--gold);
+            transition: all 0.3s;
+        }
+        .dot:hover { background: var(--gold); }
+
+        .back-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            color: var(--white);
+            text-decoration: none;
+            font-family: 'Cinzel', serif;
+            font-size: 0.8rem;
+            background: rgba(0,0,0,0.5);
+            padding: 5px 15px;
+            border: 1px solid var(--gold);
+        }
+    </style>
+</head>
+<body>
+
+    <a href="../index.html" class="back-btn">← REGRESAR</a>
+
+    <div class="nav-dots">
+        <a href="#portada" class="dot" title="Portada"></a>
+        <a href="#cap1" class="dot" title="Capítulo 1"></a>
+        <a href="#cap2" class="dot" title="Capítulo 2"></a>
+        <a href="#cap3" class="dot" title="Capítulo 3"></a>
+        <a href="#cap4" class="dot" title="Capítulo 4"></a>
+    </div>
+
+    <!-- PORTADA -->
+    <section id="portada" class="parallax-section">
+        <div class="content-box">
+            <img src="../img/tomos/tomo21/portada.png" class="caricatura" alt="La Cúpula de Cristal">
+            <h2 class="gold-text">Tomo XXI</h2>
+            <h1>La Cúpula de Cristal</h1>
+            <p class="gray">Nuestras Fábricas de Ignorancia</p>
+            <p>De la Calzada al Congreso: Una crónica satírica sobre la cooptación de la cúpula de la CNTE.</p>
+            <a href="#cap1" class="red-btn">INICIAR RECORRIDO</a>
+        </div>
+    </section>
+
+    <!-- CAPITULOS -->
+    <section id="cap1" class="parallax-section">
+        <div class="content-box">
+            <h2 class="gold-text">CAPÍTULO 1</h2>
+            <h1>EL CAMALEÓN DE LA CALZADA</h1>
+            <img src="../img/tomos/tomo21/chepi.png" class="caricatura" alt="Azael Santiago Chepi">
+            <p class="gold-text">Azael Santiago Chepi (Oaxaca - S22)</p>
+            <p>De gritar en la calzada a cobrar en San Lázaro. En 2019 operó la reforma para que pasara "sin raspones" mientras sus bases pedían justicia. </p>
+            <p><i>"Votó lo que hoy le duele al maestro, pero sigue posteando con el puño en alto. ¡Cínico!"</i></p>
+        </div>
+    </section>
+
+    <section id="cap2" class="parallax-section">
+        <div class="content-box">
+            <h2 class="gold-text">CAPÍTULO 2</h2>
+            <h1>LA DOÑA USICAMM</h1>
+            <img src="https://via.placeholder.com/400x500/000000/D4AF37?text=PRÓXIMAMENTE" class="caricatura" alt="Adela Piña">
+            <p class="gold-text">Adela Piña Bernal (CDMX - S9)</p>
+            <p>De las marchas de la 9 a ser la jefa absoluta de la jaula (USICAMM). Ella es la que le pone el candado a tu plaza. </p>
+            <p><i>"¿Abrogar la USICAMM? ¡Si ella es la dueña del negocio!"</i></p>
+        </div>
+    </section>
+
+    <section id="cap3" class="parallax-section">
+        <div class="content-box">
+            <h2 class="gold-text">CAPÍTULO 3</h2>
+            <h1>EL TRAMPOLÍN MICHOACANO</h1>
+            <img src="../img/tomos/tomo21/moron.png" class="caricatura" alt="Raúl Morón">
+            <p class="gold-text">Raúl Morón Orozco (Michoacán - S18)</p>
+            <p>Usó a la 18 de escalera ministerial. Brincó a la alcaldía de Morelia y luego al Senado. Su lealtad es por disciplina de partido.</p>
+            <p><i>"Ya no sabe qué es un aula, ahora puro 'acuerdo de cúpula'."</i></p>
+        </div>
+    </section>
+
+    <section id="cap4" class="parallax-section">
+        <div class="content-box">
+            <h2 class="gold-text">CAPÍTULO 4</h2>
+            <h1>EL CAJERO DE LA REFORMA</h1>
+            <img src="../img/tomos/tomo21/iran.png" class="caricatura" alt="Irán Santiago">
+            <p class="gold-text">Irán Santiago Manuel (Oaxaca - S22)</p>
+            <p>Salió de la oficina de pagos de la 22 para irse a la Comisión de Presupuesto. Sabe dónde está el dinero y cómo usarlo.</p>
+            <p><i>"Se le olvidó el gis en cuanto tocó los billetes federales."</i></p>
+        </div>
+    </section>
+
+    <footer style="padding: 40px; text-align: center; border-top: 1px solid var(--gold); font-size: 0.8rem; background: #050505;">
+        <p class="gold-text">BIBLIOTECA DIGITAL MS</p>
+        <p>&copy; 2026 Magisterio Sonorense. Todos los derechos de la verdad reservados.</p>
+    </footer>
+
+</body>
+</html>
