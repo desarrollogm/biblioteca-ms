@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tomo XXII - La Fuerza de la Base | Biblioteca MS</title>
+    <meta name="description" content="La Firma de Cajeme: Crónica forense de la histórica entrega de la propuesta PIP a la Presidenta de la República.">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Biblioteca Digital MS">
+    <meta property="og:url" content="https://desarrollogm.github.io/biblioteca-ms/tomoXXII/index.html">
+    <meta property="og:title" content="Tomo XXII - La Fuerza de la Base | Biblioteca MS">
+    <meta property="og:description" content="La Firma de Cajeme: Crónica forense de la histórica entrega de la propuesta PIP a la Presidenta de la República.">
+    <meta property="og:image" content="https://desarrollogm.github.io/biblioteca-ms/investigaciones/imgs/portada_kristian_paloma_oleo.png">
+    <meta property="og:image:secure_url" content="https://desarrollogm.github.io/biblioteca-ms/investigaciones/imgs/portada_kristian_paloma_oleo.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Tomo XXII - La Fuerza de la Base | Biblioteca MS">
+    <meta name="twitter:description" content="La Firma de Cajeme: Crónica forense de la histórica entrega de la propuesta PIP a la Presidenta de la República.">
+    <meta name="twitter:image" content="https://desarrollogm.github.io/biblioteca-ms/investigaciones/imgs/portada_kristian_paloma_oleo.png">
+
+    <!-- WhatsApp / Google -->
+    <meta itemprop="name" content="Tomo XXII - La Fuerza de la Base | Biblioteca MS">
+    <meta itemprop="description" content="La Firma de Cajeme: Crónica forense de la histórica entrega de la propuesta PIP a la Presidenta de la República.">
+    <meta itemprop="image" content="https://desarrollogm.github.io/biblioteca-ms/investigaciones/imgs/portada_kristian_paloma_oleo.png">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Playfair+Display:ital,wght@0,400;1,700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --dark-red: #8B0000;
+            --white: #FFFFFF;
+            --gray: #AAAAAA;
+            --black: #050505;
+            --card-bg: #121212;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            background-color: var(--black);
+            color: var(--white);
+            font-family: 'Roboto', sans-serif;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, p, div {
+            color: var(--white);
+        }
+
+        h1, h2, h3, .tomo-label {
+            font-family: 'Cinzel', serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .parallax-section {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: row;
+            align-items: stretch;
+            border-bottom: 2px solid var(--gold);
+            box-sizing: border-box;
+        }
+
+        .img-side {
+            flex: 1.2;
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-right: 2px solid var(--gold);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .img-side img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: sepia(0.15) contrast(1.1) brightness(0.9);
+            transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .img-side:hover img {
+            transform: scale(1.05);
+            filter: sepia(0) contrast(1.15) brightness(1);
+        }
+
+        .text-side {
+            flex: 0.8;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 4rem 5rem;
+            background: linear-gradient(135deg, #0d0d0d 0%, #050505 100%);
+            position: relative;
+            box-sizing: border-box;
+        }
+
+        .text-side::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 10% 20%, rgba(139, 0, 0, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .nav-dots {
+            position: fixed;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1000;
+            background: rgba(0,0,0,0.6);
+            padding: 15px 8px;
+            border-radius: 30px;
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            backdrop-filter: blur(10px);
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 50%;
+            margin: 15px 0;
+            display: block;
+            border: 2px solid var(--gold);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
+        }
+
+        .dot:hover {
+            background: var(--gold);
+            transform: scale(1.3);
+            box-shadow: 0 0 15px var(--gold);
+        }
+
+        .content-wrap {
+            max-width: 600px;
+            z-index: 2;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            color: var(--white);
+            margin: 0.5rem 0 1.5rem 0;
+            line-height: 1.2;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .gold-text {
+            color: var(--gold) !important;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin: 0;
+        }
+
+        .gray {
+            color: var(--gray) !important;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            font-weight: bold;
+            margin-bottom: 2rem;
+        }
+
+        p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #ddd;
+            text-align: justify;
+        }
+
+        .quote {
+            border-left: 4px solid var(--dark-red);
+            padding-left: 2rem;
+            margin-top: 2.5rem;
+            font-style: italic;
+            color: #eee !important;
+            font-size: 1.15rem;
+            line-height: 1.7;
+            background: rgba(255,255,255,0.02);
+            padding: 1.5rem 2rem;
+            border-radius: 0 8px 8px 0;
+            font-family: 'Playfair Display', serif;
+            box-shadow: inset 5px 0 10px rgba(0,0,0,0.2);
+        }
+
+        .back-btn {
+            position: fixed;
+            top: 25px;
+            left: 25px;
+            z-index: 100;
+            color: var(--white);
+            text-decoration: none;
+            background: rgba(0,0,0,0.7);
+            padding: 12px 20px;
+            border: 1px solid var(--gold);
+            font-family: 'Cinzel', serif;
+            font-weight: bold;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            backdrop-filter: blur(5px);
+            border-radius: 4px;
+        }
+
+        .back-btn:hover {
+            background: var(--gold);
+            color: black;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .btn-action {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 12px 30px;
+            background: var(--dark-red);
+            color: white;
+            text-decoration: none;
+            font-family: 'Cinzel', serif;
+            font-weight: bold;
+            border: 1px solid var(--gold);
+            transition: all 0.3s;
+            letter-spacing: 1px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .btn-action:hover {
+            background: transparent;
+            color: var(--gold);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+            transform: scale(1.03);
+        }
+
+        .editorial-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin: 2rem 0;
+            background: rgba(255,255,255,0.02);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .editorial-item {
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+
+        .editorial-item strong {
+            color: var(--gold);
+            display: block;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            margin-bottom: 0.2rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .parallax-section {
+                flex-direction: column;
+            }
+            .img-side {
+                height: 50vh;
+                flex: none;
+                border-right: none;
+                border-bottom: 2px solid var(--gold);
+            }
+            .text-side {
+                padding: 3rem 2rem;
+                flex: none;
+            }
+            .nav-dots {
+                display: none;
+            }
+            h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <a href="../index.html" class="back-btn">← BIBLIOTECA MS</a>
+
+    <div class="nav-dots">
+        <a href="#portada" class="dot" title="Portada"></a>
+        <a href="#prologo" class="dot" title="Prólogo"></a>
+        <a href="#cap1" class="dot" title="Capítulo 1"></a>
+        <a href="#cap2" class="dot" title="Capítulo 2"></a>
+        <a href="#cap3" class="dot" title="Capítulo 3"></a>
+        <a href="#cap4" class="dot" title="Comparativa"></a>
+    </div>
+
+    <!-- PORTADA -->
+    <section id="portada" class="parallax-section">
+        <div class="img-side">
+            <img src="../investigaciones/imgs/portada_kristian_paloma_oleo.png" alt="La Firma de Cajeme">
+        </div>
+        <div class="text-side">
+            <div class="content-wrap">
+                <span class="gold-text">Tomo XXII</span>
+                <h1>La Fuerza de la Base</h1>
+                <p class="gray">La Firma de Cajeme • Crónica Operativa</p>
+                
+                <div class="editorial-grid">
+                    <div class="editorial-item">
+                        <strong>Título:</strong>
+                        La Fuerza de la Base
+                    </div>
+                    <div class="editorial-item">
+                        <strong>Autor:</strong>
+                        Comité de Inteligencia MS
+                    </div>
+                    <div class="editorial-item">
+                        <strong>Clasificación:</strong>
+                        Crónica Operativa Forense
+                    </div>
+                    <div class="editorial-item">
+                        <strong>Fecha / Locus:</strong>
+                        10 de Mayo, 2026 / Cajeme
+                    </div>
+                </div>
+
+                <p>La crónica histórica de la jornada del Día de las Madres en Cajeme, Sonora, donde las bases docentes superaron los cercos tradicionales para obtener del puño y letra de la Presidenta de la República la firma oficial del pliego PIP.</p>
+                <a href="#prologo" class="btn-action">INICIAR RECORRIDO</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- INTRODUCCIÓN / PRÓLOGO -->
+    <section id="prologo" class="parallax-section">
+        <div class="img-side">
+            <!-- Usamos la portada para el prólogo con un enfoque elegante -->
+            <img src="../investigaciones/imgs/portada_kristian_paloma_oleo.png" style="transform: scale(1.1); filter: sepia(0.3) hue-rotate(320deg) brightness(0.8);" alt="Resistencia Magisterial">
+        </div>
+        <div class="text-side">
+            <div class="content-wrap">
+                <span class="gold-text">Introducción</span>
+                <h1>El Despertar en Territorio</h1>
+                <p class="gray">Ruptura de la Inercia Sindical</p>
+                <p>¿Creían las cúpulas y los burócratas de oficina que nos quedaríamos inmóviles esperando a que sigan postergando nuestra jubilación? Subestimaron la capacidad organizativa del Magisterio Sonorense (MS). Mientras el sindicato tradicional ensaya simulaciones frente al espejo, la base real opera con rigor científico y representatividad de primer nivel.</p>
+                <p>Este tomo se forjó bajo el sol ardiente de Cajeme, con la firmeza del magisterio en el pecho y el rigor actuarial de la <strong>Pensión Intergeneracional Protegida (PIP)</strong> en la mano. Hoy, demostramos que la organización inteligente rompe cualquier barrera institucional.</p>
+                <a href="#cap1" class="btn-action">CAPÍTULO Siguiente</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CAPITULO 1: LA ESCENA Y LA SIMULACIÓN -->
+    <section id="cap1" class="parallax-section">
+        <div class="img-side" style="background-color: #0d0000;">
+            <!-- Usamos el logo oficial o una visualización solemne en óleo de la simulación oficialista -->
+            <img src="../assets/logo_ms_oficial.jpg" style="width: 80%; height: auto; object-fit: contain; filter: grayscale(0.2) contrast(1.2) drop-shadow(0 0 15px var(--gold));" alt="Logo MS Oficial">
+        </div>
+        <div class="text-side">
+            <div class="content-wrap">
+                <span class="gold-text">Capítulo I</span>
+                <h1>La Simulación Oficial</h1>
+                <p class="gray">La farsa desmontada de la Sección 28</p>
+                <p>El domingo 10 de mayo, la dirigencia de la Sección 28 del SNTE intentó montar una simulación de protesta de última hora. Plagiando consignas construidas por el MS para pensiones, buscaban llamar la atención institucional ante la llegada de la Presidenta. Su intención táctica era colgarse de nuestra agenda para simular fuerza de base y mantener sus canonjías cupulares.</p>
+                <p><strong>Pero la maniobra quedó neutralizada.</strong> Frente a una dirigencia oficialista que repite consignas vacías sin poseer un solo estudio de viabilidad actuarial, el MS se presentó con propuestas de primer nivel y solvencia técnica absoluta.</p>
+                <div class="quote">
+                    "Las cúpulas repiten frases ajenas para ocultar su propia parálisis intelectual, pero las bases de Sonora ya no se dejan engañar por consignas de aparador."
+                </div>
+                <a href="#cap2" class="btn-action">CAPÍTULO II</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CAPITULO 2: KRISTIAN Y PALOMA -->
+    <section id="cap2" class="parallax-section">
+        <div class="img-side">
+            <img src="../investigaciones/imgs/portada_kristian_paloma_oleo.png" style="transform: scale(1.05); filter: contrast(1.15) brightness(1);" alt="Mtro. Kristian y Paloma">
+        </div>
+        <div class="text-side">
+            <div class="content-wrap">
+                <span class="gold-text">Capítulo II</span>
+                <h1>Legitimidad de Base</h1>
+                <p class="gray">El Maestro Kristian y Paloma en Primera Línea</p>
+                <p>En el Día de las Madres, fueron nuestros compañeros en territorio quienes asumieron la representación en la valla. El <strong>Maestro Kristian</strong> y la maestra <strong>Paloma</strong> no portaban consignas estériles ni buscaban la provocación vulgar; portaban la legitimidad de la base y el <strong>Oficio MS-01/2026</strong> en mano.</p>
+                <p>Al identificar la seriedad del planteamiento, la Presidenta Claudia Sheinbaum se detuvo a recibirlos. Ella, con su formación científica rigurosa, plasmó su firma de puño y letra en la recepción del oficio, validando de facto al MS como interlocutor técnico directo.</p>
+                <div class="quote">
+                    "Mtro. Kristian y Paloma representaron la dignidad y solvencia intelectual del Magisterio Sonorense. Directo, sin intermediarios cooptados."
+                </div>
+                <a href="#cap3" class="btn-action">CAPÍTULO III</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CAPITULO 3: EL AUDIO FORENSE -->
+    <section id="cap3" class="parallax-section">
+        <div class="img-side" style="background-color: #030303;">
+            <!-- Una representación abstracta de audio forense con los colores dorados y rojos oficiales -->
+            <div style="width: 80%; text-align: center; border: 1px solid var(--gold); border-radius: 10px; padding: 3rem; background: rgba(139,0,0,0.05); backdrop-filter: blur(5px);">
+                <span style="font-family:'Cinzel'; color: var(--gold); font-size: 1.5rem; letter-spacing: 2px;">REGISTRO DE AUDIO FORENSE</span>
+                <div style="display:flex; justify-content:center; gap:5px; margin: 2rem 0; align-items:center; height:60px;">
+                    <div style="width:4px; height:20px; background:var(--gold); animation: pulse 1s infinite alternate;"></div>
+                    <div style="width:4px; height:45px; background:var(--dark-red); animation: pulse 0.7s infinite alternate;"></div>
+                    <div style="width:4px; height:15px; background:var(--gold); animation: pulse 1.2s infinite alternate;"></div>
+                    <div style="width:4px; height:55px; background:var(--gold); animation: pulse 0.8s infinite alternate;"></div>
+                    <div style="width:4px; height:35px; background:var(--dark-red); animation: pulse 1.1s infinite alternate;"></div>
+                    <div style="width:4px; height:60px; background:var(--gold); animation: pulse 0.6s infinite alternate;"></div>
+                    <div style="width:4px; height:25px; background:var(--gold); animation: pulse 1.3s infinite alternate;"></div>
+                    <div style="width:4px; height:40px; background:var(--dark-red); animation: pulse 0.9s infinite alternate;"></div>
+                    <div style="width:4px; height:10px; background:var(--gold); animation: pulse 1.4s infinite alternate;"></div>
+                </div>
+                <p style="text-align:center; font-family:'Playfair Display'; font-style:italic; font-size:0.95rem; margin:0; color:#ccc;">"¡No somos la CNTE, somos la base que queremos ser escuchados!"</p>
+            </div>
+            <style>
+                @keyframes pulse {
+                    0% { transform: scaleY(0.4); }
+                    100% { transform: scaleY(1); }
+                }
+            </style>
+        </div>
+        <div class="text-side">
+            <div class="content-wrap">
+                <span class="gold-text">Capítulo III</span>
+                <h1>El Mensaje Técnico</h1>
+                <p class="gray">Análisis Forense del Posicionamiento</p>
+                <p>La transcripción de la conversación en Cajeme devela la brillantez discursiva del MS. Al señalar explícitamente a la Presidenta que el modelo de la PIP <strong>no lastima la economía nacional ni las finanzas públicas</strong>, se destruye la principal objeción de la Secretaría de Hacienda.</p>
+                <p>Al desmarcarse con firmeza de la CNTE ("¡No somos la CNTE, somos la base!"), el movimiento se blindó de ser tildado como choque político radical. El MS se consolida como la <strong>Tercera Vía</strong>: técnica, representativa, honesta y propositiva.</p>
+                <div class="quote">
+                    "Al Gobernador Alfonso Durazo se le involucró directamente en presencia de la Presidenta, sellando una pinza institucional que exige respuestas concretas."
+                </div>
+                <a href="#cap4" class="btn-action">ANÁLISIS COMPARATIVO</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CAPITULO 4: COMPARATIVA Y CONCLUSIÓN -->
+    <section id="cap4" class="parallax-section" style="background: linear-gradient(135deg, #050505 0%, #150000 100%);">
+        <div class="img-side" style="flex: 1; border: none; background: transparent;">
+            <div style="width: 85%; background: rgba(18,18,18,0.8); border: 1px solid var(--gold); border-radius: 12px; padding: 3rem; backdrop-filter: blur(10px); box-sizing: border-box; box-shadow: 0 15px 40px rgba(0,0,0,0.6);">
+                <h2 class="gold-text" style="font-size: 1.8rem; margin-bottom: 2rem; border-bottom: 1px solid rgba(212,175,55,0.2); padding-bottom: 1rem; text-align: center;">Tres Modelos de Representación</h2>
+                
+                <div style="margin-bottom: 1.5rem;">
+                    <span style="color:var(--gold); font-weight:bold; font-size: 1.1rem; text-transform:uppercase; letter-spacing:1px;">1. SNTE Sección 28 (Oficialismo)</span>
+                    <p style="font-size:0.9rem; margin-top:0.3rem; line-height:1.6; color:#bbb;">Parálisis intelectual completa. Movilizaciones reactivas e improvisadas que carecen de estudios técnicos y pretenden calcar los argumentos del MS.</p>
+                </div>
+                
+                <div style="margin-bottom: 1.5rem;">
+                    <span style="color:#d9534f; font-weight:bold; font-size: 1.1rem; text-transform:uppercase; letter-spacing:1px;">2. CNTE (Cooptación de Cúpula)</span>
+                    <p style="font-size:0.9rem; margin-top:0.3rem; line-height:1.6; color:#bbb;">Ciclo histórico de movilización-negociación que canjea la lucha genuina por cuotas, plazas y curules de poder personal (expuesta en Tomo XXI).</p>
+                </div>
+
+                <div>
+                    <span style="color:#22bb33; font-weight:bold; font-size: 1.1rem; text-transform:uppercase; letter-spacing:1px;">3. Magisterio Sonorense (Alternativa Técnica)</span>
+                    <p style="font-size:0.9rem; margin-top:0.3rem; line-height:1.6; color:#bbb;">Propuesta PIP de alta viabilidad financiera, sustentada en cálculos reales, migración transparente a PENSIONISSSTE y justicia para jubilados.</p>
+                </div>
+            </div>
+        </div>
+        <div class="text-side" style="flex: 1;">
+            <div class="content-wrap">
+                <span class="gold-text">Conclusión de Inteligencia</span>
+                <h1>La Firma del Avance</h1>
+                <p class="gray">La Victoria de la Razón y la Propuesta</p>
+                <p>La recepción firmada de puño y letra de la Presidenta Claudia Sheinbaum es el hito estratégico más contundente del movimiento magisterial de Sonora. Demuestra que no se necesitan intermediarios viciados ni pactos de cúpula para llegar al primer nivel del Estado Mexicano.</p>
+                <p>La firma está plasmada, el registro es histórico, y la PIP avanza. Corresponde a la base socializar esta enorme victoria en cada escuela del territorio sonorense. <strong>¡El magisterio propone y conquista!</strong></p>
+                
+                <div style="margin-top: 3rem;">
+                    <a href="../index.html" class="btn-action" style="background: transparent; color: var(--gold);">REGRESAR A LA BIBLIOTECA</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer style="padding: 60px; text-align: center; border-top: 2px solid var(--gold); background: #000; position: relative; z-index: 5;">
+        <h2 class="gold-text" style="font-size: 1.3rem; letter-spacing: 5px;">BIBLIOTECA DIGITAL MS</h2>
+        <p style="margin-top: 15px; color: var(--gray); font-size: 0.75rem;">MOVIMIENTO DEL MAGISTERIO SONORENSE • EDITORIAL 2026</p>
+    </footer>
+
+</body>
+</html>
