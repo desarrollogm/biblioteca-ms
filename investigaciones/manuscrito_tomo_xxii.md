@@ -65,6 +65,29 @@ Al interactuar con el mandatario estatal en presencia de la comitiva presidencia
 
 ---
 
+## CAPÍTULO 2: NAVOJOA — LA CNTE SIN ARGUMENTOS ANTE LA RAZÓN DE ESTADO
+
+### I. El Enfrentamiento en el Canal de Riego: Consignas contra Ciencia
+
+El sábado 9 de mayo de 2026, durante el evento oficial de inauguración de la primera etapa del Canal de Riego en Navojoa, la delegación de la Coordinadora Nacional de Trabajadores de la Educación (CNTE) en Sonora, encabezada por la maestra **Mercedes**, optó por su tradicional estrategia de choque directo y disrupción ruidosa. 
+
+Interrumpiendo a gritos el discurso oficial de la Presidenta **Dra. Claudia Sheinbaum Pardo**, la dirigencia local de la CNTE exigió la apertura inmediata de una Mesa Nacional de Diálogo, demandando la asignación directa de bases para telesecundarias y la abrogación general de la Ley del ISSSTE de 2007.
+
+La respuesta de la Presidenta fue un ejercicio de absoluta templanza y firmeza de Estado. Sheinbaum, con su rigurosa formación científica y pragmatismo técnico, no rehuyó el debate, sino que desarmó de origen la retórica vociferante de la CNTE: les solicitó de forma calmada pero enérgica permitir el desarrollo del evento institucional y propuso una mesa de trabajo coordinada con las autoridades educativas federales y el Gobernador **Alfonso Durazo Montaño**, dejando en claro que el diálogo gubernamental se rige por canales formales, no por el chantaje ni la disrupción de la agenda pública.
+
+### II. Mtra. Mercedes ante el Gobernador Durazo: El Vacío de la Propuesta
+
+El registro audiovisual del diálogo posterior entre la maestra Mercedes de la CNTE y el Gobernador Alfonso Durazo revela la debilidad estructural del movimiento ultra-radical. Frente al cuestionamiento respetuoso del mandatario sonorense —quien escuchó atento con gesto pensativo y mano al mentón bajo el sol de la tarde—, la representación de la CNTE demostró su total parálisis de propuesta. 
+
+La maestra Mercedes insistió de forma reiterativa:
+> *“Lo concreto es que se pueda aperturar la mesa nacional de diálogo con la CNTE para que trabaje la... hemos tenido mesas en un nivel que no resuelve...”*
+
+Este planteamiento desnudó el vacío conceptual de la CNTE. Mientras el Magisterio Sonorense (MS) asiste al diálogo con un proyecto de ley redactado con absoluta solvencia técnica, cálculos de viabilidad financiera y pre-estudios actuariales (la PIP), la CNTE en Sonora acude a exigir "mesas de diálogo" genéricas para que "se trabaje" en soluciones que ellos mismos no saben formular. No poseen un solo estudio de costos presupuestales, carecen de análisis actuariales formales y su única bandera es la queja sistemática.
+
+La CNTE quedó expuesta: son un movimiento de denuncia estéril, sin argumentos de fondo ante los científicos y economistas del gobierno federal. Se demostró que exigir "mesas" sin un proyecto viable en la mano es solo una simulación más de movilización para justificar cuotas burocráticas personales.
+
+---
+
 ### 🔍 ANÁLISIS COMPARATIVO DE LA REPRESENTACIÓN
 
 *   **La Sección 28 del SNTE:** Evidencia su parálisis intelectual. Sus movilizaciones carecen de propuestas de fondo y se limitan a demandar una abrogación absoluta que resulta inviable bajo las actuales condiciones macroeconómicas del país. Utilizan retóricas ajenas para intentar contener el avance del MS sin ofrecer soluciones reales a sus agremiados.
