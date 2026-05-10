@@ -1,0 +1,9 @@
+node_modules/
+.gemini/
+brain/
+artifacts/
+*.log
+.DS_Store
+dist/
+build/
+.env
