@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tomo XXIII - El Tablero de la Ignorancia | Biblioteca MS</title>
+    <meta name="description" content="Teoría de Juegos, Simulación y el Fiasco del Calendario Escolar 2026.">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Biblioteca Digital MS">
+    <meta property="og:url" content="https://desarrollogm.github.io/biblioteca-ms/tomoXXIII/index.html">
+    <meta property="og:title" content="Tomo XXIII - El Tablero de la Ignorancia | Biblioteca MS">
+    <meta property="og:description" content="Teoría de Juegos, Simulación y el Fiasco del Calendario Escolar 2026.">
+    <meta property="og:image" content="https://desarrollogm.github.io/biblioteca-ms/img/tomos/tomo23/portada.png">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --dark-red: #8B0000;
+            --white: #FFFFFF;
+            --gray: #AAAAAA;
+            --black: #000000;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            background-color: var(--black);
+            color: var(--white);
+            font-family: 'Roboto', sans-serif;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, p, div {
+            color: var(--white);
+        }
+
+        h1, h2, .tomo-label {
+            font-family: 'Cinzel', serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .parallax-section {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            flex-direction: row;
+            align-items: stretch;
+            border-bottom: 2px solid var(--gold);
+            background-color: #000; 
+        }
+
+        .img-side {
+            flex: 1.2;
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-right: 2px solid var(--gold);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .img-side img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: sepia(0.2) contrast(1.1);
+            transition: transform 0.5s;
+        }
+        .img-side:hover img { transform: scale(1.05); }
+
+        .text-side {
+            flex: 0.8;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 5rem;
+            background: #0a0a0a;
+            position: relative;
+        }
+
+        .text-side::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(139, 0, 0, 0.05) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .nav-dots {
+            position: fixed;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1000;
+            background: rgba(0,0,0,0.4);
+            padding: 10px 5px;
+            border-radius: 20px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+        .dot {
+            width: 12px;
+            height: 12px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            margin: 15px 5px;
+            display: block;
+            border: 2px solid var(--gold);
+            transition: all 0.3s;
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+        }
+        .dot:hover { background: var(--gold); transform: scale(1.3); }
+
+        .content-wrap {
+            max-width: 600px;
+            z-index: 2;
+        }
+
+        h1 { font-size: 3rem; color: var(--white); margin: 0.5rem 0; line-height: 1.1; }
+        .gold-text { color: var(--gold) !important; font-weight: bold; }
+        .gray { color: var(--gray) !important; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 2px; }
+
+        .quote {
+            border-left: 4px solid var(--dark-red);
+            padding-left: 2rem;
+            margin-top: 3rem;
+            font-style: italic;
+            color: #ddd !important;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            background: rgba(255,255,255,0.03);
+            padding: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="../index.html" class="back-btn" style="position:fixed; top:20px; left:20px; z-index:100; color:var(--white); text-decoration:none; background:rgba(0,0,0,0.5); padding:10px; border:1px solid var(--gold); font-family:'Cinzel';">← BIBLIOTECA MS</a>
+
+    <div class="nav-dots">
+        <a href="#portada" class="dot" title="Portada"></a>
+        <a href="#cap1" class="dot" title="Capítulo 1"></a>
+        <a href="#cap2" class="dot" title="Capítulo 2"></a>
+        <a href="#cap3" class="dot" title="Capítulo 3"></a>
+        <a href="#cap4" class="dot" title="Capítulo 4"></a>
+        <a href="#cap5" class="dot" title="Capítulo 5"></a>
+        <a href="#cap6" class="dot" title="Capítulo 6"></a>
+        <a href="#cap7" class="dot" title="Capítulo 7"></a>
+        <a href="#cap8" class="dot" title="Capítulo 8"></a>
+        <a href="#cap9" class="dot" title="Capítulo 9"></a>
+        <a href="#cap10" class="dot" title="Capítulo 10"></a>
+    </div>
+
+    <!-- PORTADA -->
+    <section id="portada" class="parallax-section">
+        <div class="img-side">
+            <img src="../img/tomos/tomo23/portada.png" alt="El Tablero de la Ignorancia">
+        </div>
+        <div class="text-side">
+            <div class="content-wrap">
+                <h2 class="gold-text">Tomo XXIII</h2>
+                <h1>El Tablero de la Ignorancia</h1>
+                <p class="gray">Teoría de Juegos, Simulación y el Fiasco del Calendario 2026</p>
+                <p>El presente documento disecciona la reciente crisis administrativa respecto a la modificación del calendario escolar. Utilizando la Teoría de Juegos del Profesor Jiang, demostramos cómo las decisiones de la cúpula sindical y las autoridades no obedecen a la pedagogía, sino a cálculos políticos de supervivencia a corto plazo.</p>
+                <a href="#cap1" class="red-btn" style="display:inline-block; margin-top:20px; padding:15px 30px; background:var(--dark-red); color:white; text-decoration:none; font-family:'Cinzel'; border:1px solid var(--gold);">INICIAR RECORRIDO</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CAPITULO 1 -->
+    <section id="cap1" class="parallax-section">
+        <div class="img-side">
+            <!-- Usando la misma portada como fondo abstracto o placeholder por ahora -->
+            <img src="../img/tomos/tomo23/portada.png" alt="Apertura" style="filter: brightness(0.4) sepia(0.5);">
+        </div>
+        <div class="text-side">
+            <div class="content-wrap">
+                <h2 class="gold-text">CAPÍTULO 1</h2>
+                <h1>EL MOVIMIENTO DE APERTURA</h1>
+                <p class="gray">La Falsa Promesa del 5 de Junio</p>
+                <p>La jugada inicial provino de la SEP (bajo Mario Delgado) y encontró eco inmediato en la SEC Sonora (liderada por Froylán Gámez). Utilizando el calor extremo como pretexto, se anunció un recorte abrupto del ciclo escolar. En la Teoría de Juegos, esto se define como <strong>Señalización Engañosa y Asimetría de Información</strong>. Lanzaron la señal para comprar la simpatía efímera de una base agotada, un movimiento populista sin rigor técnico.</p>
+                <div class="quote">
+                    "La cúpula sabía que la viabilidad del recorte era nula frente al marco legal de los 185 días."
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CAPITULO 2 -->
+    <section id="cap2" class="parallax-section">
+        <div class="img-side">
+            <img src="../img/tomos/tomo23/portada.png" alt="Peón Sacrificado" style="filter: brightness(0.3) contrast(1.2);">
+        </div>
+        <div class="text-side">
+            <div class="content-wrap">
+                <h2 class="gold-text">CAPÍTULO 2</h2>
+                <h1>EL PEÓN SACRIFICADO</h1>
+                <p class="gray">La Reacción de la Base</p>
+                <p>Ante el anuncio, docentes y escuelas comenzaron a reprogramar evaluaciones y clausuras. Las "fábricas de ignorancia" utilizaron a la base como el peón de sacrificio: al crear una falsa expectativa, desestabilizaron el entorno pedagógico. El Magisterio intentó adaptar la planeación, asumiendo un costo operativo altísimo que las autoridades ignoraron.</p>
+                <div class="quote">
+                    "El peón siempre paga el precio de las malas decisiones de los alfiles."
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CAPITULO 3 -->
+    <section id="cap3" class="parallax-section">
+        <div class="img-side">
+            <img src="../img/tomos/tomo23/portada.png" alt="Error Presidencial" style="filter: hue-rotate(320deg) brightness(0.4);">
+        </div>
+        <div class="text-side">
+            <div class="content-wrap">
+                <h2 class="gold-text">CAPÍTULO 3</h2>
+                <h1>EL ERROR DE CÁLCULO PRESIDENCIAL</h1>
+                <p class="gray">El "Siempre No" de Claudia Sheinbaum</p>
+                <p>La Presidenta, enfrentando la presión del marco normativo federal, ejecuta un <strong>Retroceso Táctico</strong> para mitigar el <strong>Costo de Reputación</strong>. Al revertir el calendario a su cierre original del 15 de julio, exhibió la desconexión total con la SEP. Optó por desautorizar a su propia línea de mando antes que asumir el costo histórico de recortar clases.</p>
+                <div class="quote">
+                    "En juegos dinámicos, retroceder a tiempo salva al rey, pero expone la fragilidad de la estrategia."
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CAPITULO 4 -->
+    <section id="cap4" class="parallax-section">
+        <div class="img-side">
+            <img src="../img/tomos/tomo23/portada.png" alt="SNTE" style="filter: grayscale(100%) brightness(0.3);">
+        </div>
+        <div class="text-side">
+            <div class="content-wrap">
+                <h2 class="gold-text">CAPÍTULO 4</h2>
+                <h1>EL SILENCIO CÓMPLICE DEL SNTE</h1>
+                <p class="gray">El Equilibrio de Nash Subóptimo en la Sección 28</p>
+                <p>Mientras el tablero ardía, la Sección 28 del SNTE optó por el <strong>Equilibrio de Nash Subóptimo</strong>: la inacción. Al no defender la certeza laboral durante el vaivén de fechas, el SNTE confirmó su papel como administrador del silencio. Juegan a no perder, asegurando sus cuotas, mientras el maestro sufre la incertidumbre.</p>
+                <div class="quote">
+                    "Su estrategia es minimizar el riesgo propio a costa del desgaste de la base."
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CAPITULO 5 -->
+    <section id="cap5" class="parallax-section">
+        <div class="img-side">
+            <img src="../img/tomos/tomo23/portada.png" alt="CNTE" style="filter: sepia(1) hue-rotate(300deg) brightness(0.4);">
+        </div>
+        <div class="text-side">
+            <div class="content-wrap">
+                <h2 class="gold-text">CAPÍTULO 5</h2>
+                <h1>EL BERRINCHE DE LA CNTE</h1>
+                <p class="gray">La Huelga Mundialista</p>
+                <p>La CNTE en Sonora, con miopía táctica, respondió llamando a movilizaciones y paros en pleno Mundial de Fútbol. Desde el análisis de Jiang, juegan un <strong>Juego de Suma Cero mal planteado</strong>. Pierden capital social y entregan el argumento para ser reprimidos mediáticamente.</p>
+                <div class="quote">
+                    "La estridencia sin estrategia no es lucha, es un berrinche que aniquila la legitimidad."
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CAPITULO 6 -->
+    <section id="cap6" class="parallax-section">
+        <div class="img-side">
+            <img src="../img/tomos/tomo23/portada.png" alt="Durazo" style="filter: brightness(0.2) contrast(1.5);">
+        </div>
+        <div class="text-side">
+            <div class="content-wrap">
+                <h2 class="gold-text">CAPÍTULO 6</h2>
+                <h1>EL TABLERO ESTATAL</h1>
+                <p class="gray">Gobernador Alfonso Durazo</p>
+                <p>Durazo quedó atrapado en el clásico dilema del prisionero: lealtad al centro (SEP) versus la realidad climática innegable de Sonora. Su posición reflejó la subordinación del estado ante el federalismo centralista, atando la educación local a la agenda de la Ciudad de México.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CAPITULO 7 -->
+    <section id="cap7" class="parallax-section">
+        <div class="img-side">
+            <img src="../img/tomos/tomo23/portada.png" alt="Froylan" style="filter: invert(0.1) brightness(0.3);">
+        </div>
+        <div class="text-side">
+            <div class="content-wrap">
+                <h2 class="gold-text">CAPÍTULO 7</h2>
+                <h1>LA CONTRADICCIÓN DE FROYLÁN</h1>
+                <p class="gray">El Costo de la Incongruencia (SEC Sonora)</p>
+                <p>Al avalar primero el cierre del 5 de junio y luego tener que recular por mandato presidencial, Froylán Gámez dilapidó la credibilidad institucional de la SEC. Un actor que modifica sus reglas operativas en menos de 72 horas pierde toda autoridad moral.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CAPITULO 8 -->
+    <section id="cap8" class="parallax-section">
+        <div class="img-side">
+            <img src="../img/tomos/tomo23/portada.png" alt="Fábricas" style="filter: sepia(0.8) brightness(0.3);">
+        </div>
+        <div class="text-side">
+            <div class="content-wrap">
+                <h2 class="gold-text">CAPÍTULO 8</h2>
+                <h1>FÁBRICAS DE IGNORANCIA AL DESCUBIERTO</h1>
+                <p class="gray">El Cártel de la Influencia</p>
+                <p>SEP, SEC, SNTE y CNTE operan como cárteles de influencia donde la educación es meramente moneda de cambio. La incertidumbre del calendario fue un síntoma de un sistema diseñado para mantener a la base reaccionando, sin tiempo para pensar ni organizarse.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CAPITULO 9 -->
+    <section id="cap9" class="parallax-section">
+        <div class="img-side">
+            <img src="../img/tomos/tomo23/portada.png" alt="Jaque Mate MS" style="filter: contrast(1.2) brightness(0.4) sepia(0.3);">
+        </div>
+        <div class="text-side">
+            <div class="content-wrap">
+                <h2 class="gold-text">CAPÍTULO 9</h2>
+                <h1>EL JAQUE MATE DEL MAGISTERIO SONORENSE</h1>
+                <p class="gray">Inteligencia vs Simulación</p>
+                <p>Frente a la simulación, el MS impone la técnica. Nuestra respuesta no es el paro (CNTE) ni el silencio (SNTE). Aplicando inteligencia estratégica, documentamos contradicciones y estructuramos demandas viables como la PIP. Nuestro jaque mate consiste en despojar a la cúpula de su monopolio narrativo.</p>
+                <div class="quote">
+                    "No somos peones; somos el jugador que lee el tablero completo."
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CAPITULO 10 -->
+    <section id="cap10" class="parallax-section" style="background: linear-gradient(135deg, #000 0%, #1a0000 100%);">
+        <div class="img-side" style="flex: 1; border: none;">
+            <div style="width: 80%; height: 80%; background: rgba(255,255,255,0.05); border: 1px solid var(--gold); border-radius: 20px; padding: 40px; display: flex; flex-direction: column; justify-content: center; backdrop-filter: blur(10px);">
+                <h2 class="gold-text" style="font-size: 3rem;">NUEVA REGLA DEL JUEGO</h2>
+                <div style="margin-top: 20px; font-size: 1.2rem; line-height: 1.8;">
+                    <p>Improvisación Administrativa | <span style="color: var(--dark-red);">Cero Tolerancia</span></p>
+                    <p>Defensa de Derechos | <span style="color: var(--gold);">Rigor y Datos</span></p>
+                    <br>
+                    <hr style="border: 0; border-top: 1px solid var(--gold); width: 50%;">
+                    <br>
+                    <p style="font-weight: bold;">MAGISTERIO SONORENSE (MS)</p>
+                    <p style="color: var(--gold);">LA VICTORIA NO ESTÁ EN EL GRITO,<br>SINO EN EL MÉTODO</p>
+                </div>
+            </div>
+        </div>
+        <div class="text-side" style="flex: 1;">
+            <div class="content-wrap">
+                <h2 class="gold-text">CAPÍTULO 10</h2>
+                <h1>LA NUEVA REGLA DEL JUEGO</h1>
+                <p class="gray">Directriz para el Ciclo 2026-2027</p>
+                <p>El Magisterio Sonorense establece una directriz clara: cero tolerancia a la improvisación que afecte los derechos laborales. Invitamos a la base a dejar de confiar en intermediarios caducos. La verdadera defensa requiere inteligencia y una estrategia que las fábricas de ignorancia son incapaces de comprender.</p>
+                <div class="quote" style="border-left-color: var(--gold);">
+                    "Mantener el enfoque en la conclusión técnica del ciclo escolar, blindar las evaluaciones y canalizar la indignación hacia la organización inteligente."
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer style="padding: 60px; text-align: center; border-top: 2px solid var(--gold); background: #000; position: relative; z-index: 5;">
+        <h2 class="gold-text" style="font-size: 1.5rem; letter-spacing: 5px;">BIBLIOTECA DIGITAL MS</h2>
+        <p style="margin-top: 20px; color: var(--gray); font-size: 0.8rem;">ESTADO DE SONORA - MAYO 2026</p>
+        <div style="margin-top: 40px;">
+           <a href="../index.html" style="color: var(--white); text-decoration: none; border: 1px solid var(--gray); padding: 10px 20px; font-size: 0.7rem; letter-spacing: 2px;">VOLVER AL ÍNDICE</a>
+        </div>
+    </footer>
+
+</body>
+</html>
